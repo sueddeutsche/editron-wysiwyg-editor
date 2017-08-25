@@ -1,0 +1,83 @@
+@import "mithril-material-forms/lib/units";
+@import "mithril-material-forms/lib/colors";
+@import "mithril-material-forms/lib/input";
+@import "editron-core/sass/colors";
+
+
+.medium-editor-element {
+    @include with-input();
+    min-height: 38px;
+
+    &.medium-editor-placeholder:after {
+        // @todo this is a copy of container title
+        @include font-light();
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 0.7rem;
+        line-height: inherit;
+        flex-grow: 2;
+        display: inline-block;
+
+        color: $mmf-color--secondary-text;
+        font-style: normal;
+    }
+}
+
+.medium-editor-toolbar {
+
+    &,
+    .medium-editor-toolbar-form,
+    .medium-editor-toolbar-input {
+        background-color: $color-elevation-8;
+        border-color: $color-elevation-4;
+    }
+
+    .medium-editor-action {
+        border-color: $color-elevation-4;
+
+        &:hover {
+            background-color: $color-primary-light;
+        }
+    }
+
+    .medium-editor-button-active {
+        background-color: $color-primary !important;
+    }
+}
+
+/**
+ * Content styling
+ */
+.medium-editor-element {
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    font-size: 14px;
+    line-height: 1.3em;
+    color: #333;
+
+    *:first-child {
+        margin-top: 0;
+    }
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin: 0 0 1em 0;
+    }
+
+    h1 {
+        font-size: 1.75em;
+        margin: 1em 0 .25em 0;
+    }
+
+    h2 {
+        font-size: 1.25em;
+        margin: 1em 0 .25em 0;
+    }
+
+    h3 {
+        font-size: 1em;
+        margin: 1em 0 .25em 0;
+    }
+}

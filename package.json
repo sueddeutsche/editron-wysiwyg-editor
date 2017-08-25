@@ -1,0 +1,35 @@
+{
+  "name": "editron-wysiwyg-editor",
+  "version": "0.1.0",
+  "description": "WYSIWYG Editor for the Editron json-editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "keywords": [],
+  "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "eslint": "^3.19.0",
+    "sinon": "^3.2.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "codemirror": "^5.25.2",
+    "gson-pointer": "^2.1.1",
+    "mithril": "lhorie/mithril.js#next",
+    "mithril-material-forms": "github:sueddeutsche/mithril-material-forms#develop"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "require": [
+      "editron-core/test/support/setupBrowserEnv.js"
+    ],
+    "verbose": true
+  }
+}

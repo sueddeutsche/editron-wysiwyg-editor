@@ -1,0 +1,13 @@
+@import "./wysiwyg-editor-medium";
+@import "mithril-material-forms/lib/form";
+@import "mithril-material-forms/lib/typography";
+
+
+.editron-wysiwig-editor {
+    @include with-moving-label(".medium-editor-element");
+
+    .editron-wysiwig-editor__actions {
+        right: -2 * $mmf-unit; // reverts padding?
+        position: absolute;
+    }
+}
