@@ -1,7 +1,7 @@
 const m = require("mithril");
 const gp = require("gson-pointer");
 const View = require("./View");
-const AbstractValueEditor = require("editron-core/editor/AbstractValueEditor");
+const AbstractValueEditor = require("editron-core/editors/AbstractValueEditor");
 
 /**
  * Displays a value with a html-wyswig editor and adds an option to open the content in an html-script editor

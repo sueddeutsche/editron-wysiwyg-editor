@@ -1,6 +1,6 @@
 /* global document, MediumEditor */
 const m = require("mithril");
-const Label = require("mithril-material-forms").label;
+const Label = require("mithril-material-forms/components/label");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 // const _ = require("../../i18n").translate;
