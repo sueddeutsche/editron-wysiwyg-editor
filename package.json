@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "codemirror": "^5.25.2",
-    "gson-pointer": "^2.1.1",
+    "gson-pointer": "^2.1.3",
     "mithril": "lhorie/mithril.js#next",
     "mithril-material-forms": "github:sueddeutsche/mithril-material-forms#develop"
   },
