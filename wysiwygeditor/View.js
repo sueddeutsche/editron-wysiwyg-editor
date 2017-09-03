@@ -4,6 +4,18 @@ const Label = require("mithril-material-forms/components/label");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 const _ = require("editron-core/utils/i18n").translate;
+const isNodeContext = require("editron-core/utils/isNodeContext");
+let MediumEditor;
+
+if (isNodeContext()) {
+    MediumEditor = function () {};
+    MediumEditor.prototype.subscribe = Function.prototype;
+    MediumEditor.prototype.getContent = Function.prototype;
+    MediumEditor.prototype.setContent = Function.prototype;
+    MediumEditor.prototype.destroy = Function.prototype;
+} else {
+    MediumEditor = window.MediumEditor;
+}
 
 const HTMLView = require("./HTMLView");
 const OverlayService = require("editron-core/services/OverlayService");
