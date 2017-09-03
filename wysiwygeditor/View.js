@@ -3,7 +3,7 @@ const m = require("mithril");
 const Label = require("mithril-material-forms/components/label");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
-// const _ = require("../../i18n").translate;
+const _ = require("editron-core/utils/i18n").translate;
 
 const HTMLView = require("./HTMLView");
 const OverlayService = require("editron-core/services/OverlayService");
@@ -121,7 +121,7 @@ const View = {
                 m(".editron-container__controls.editron-container__controls--child",
                     m("i.mmf-icon",
                         {
-                            // title: _("wysiwyg:edithtml:tooltip"),
+                            title: _("editor:wysiwyg:edithtml:tooltip"),
                             onclick: () => this.showHTMLMarkup(attrs)
                         },
                         "code"
