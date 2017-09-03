@@ -8,7 +8,7 @@ const isNodeContext = require("editron-core/utils/isNodeContext");
 let MediumEditor;
 
 if (isNodeContext()) {
-    MediumEditor = function () {};
+    MediumEditor = function () {}; // eslint-disable-line no-empty-function
     MediumEditor.prototype.subscribe = Function.prototype;
     MediumEditor.prototype.getContent = Function.prototype;
     MediumEditor.prototype.setContent = Function.prototype;
