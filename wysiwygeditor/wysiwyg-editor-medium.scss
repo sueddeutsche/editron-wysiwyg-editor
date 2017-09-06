@@ -1,6 +1,7 @@
 @import "mithril-material-forms/lib/units";
 @import "mithril-material-forms/lib/colors";
 @import "mithril-material-forms/lib/input";
+@import "mithril-material-forms/lib/typography";
 @import "editron-core/sass/colors";
 
 
@@ -50,7 +51,7 @@
  */
 .medium-editor-element {
     font-family: "Helvetica Neue", "Helvetica", "Arial";
-    font-size: 14px;
+    font-size: $mmf-input__text-size;
     line-height: 1.3em;
     color: #333;
 
