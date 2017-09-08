@@ -20,11 +20,18 @@ if (isNodeContext()) {
 const HTMLView = require("./HTMLView");
 const OverlayService = require("editron-core/services/OverlayService");
 
-
 const View = {
 
     createEditor($textarea, attrs) {
         const options = Object.assign(EditorDefaultOptions, {
+            targetBlank: true,
+            anchor: {
+                placeholderText: "Linkziel eingeben"
+            },
+            paste: {
+                forcePlainText: false,
+                cleanPastedHTML: true
+            },
             placeholder: {
                 text: attrs.placeholder,
                 hideOnClick: true

@@ -6,8 +6,10 @@
 
 .editron-wysiwig-editor {
 
-    .medium-editor-element {
+    // .medium-editor-element { // medium-editor >= 5.17
+    div[data-medium-editor-element="true"] { // medium-editor < 5.17
         @include with-input();
+        padding: $mmf-height-label 0 0 0;
         min-height: 38px;
 
         &.medium-editor-placeholder:after {
@@ -25,32 +27,11 @@
         }
     }
 
-    .medium-editor-toolbar {
-
-        &,
-        .medium-editor-toolbar-form,
-        .medium-editor-toolbar-input {
-            background-color: $color-elevation-8;
-            border-color: $color-elevation-4;
-        }
-
-        .medium-editor-action {
-            border-color: $color-elevation-4;
-
-            &:hover {
-                background-color: $color-primary-light;
-            }
-        }
-
-        .medium-editor-button-active {
-            background-color: $color-primary !important;
-        }
-    }
-
     /**
      * Content styling
      */
-    .medium-editor-element {
+     // .medium-editor-element { // medium-editor >= 5.17
+     div[data-medium-editor-element="true"] { // medium-editor < 5.17
         font-family: "Helvetica Neue", "Helvetica", "Arial";
         font-size: $mmf-input__text-size;
         line-height: 1.4em;
@@ -82,5 +63,27 @@
             font-size: 1em;
             margin: 1em 0 .25em 0;
         }
+    }
+}
+
+.medium-editor-toolbar {
+
+    &,
+    .medium-editor-toolbar-form,
+    .medium-editor-toolbar-input {
+        background-color: $color-elevation-8;
+        border-color: $color-elevation-4;
+    }
+
+    .medium-editor-action {
+        border-color: $color-elevation-4;
+
+        &:hover {
+            background-color: $color-primary-light;
+        }
+    }
+
+    .medium-editor-button-active {
+        background-color: $color-primary !important;
     }
 }
