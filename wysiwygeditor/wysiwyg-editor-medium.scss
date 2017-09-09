@@ -79,11 +79,11 @@
         border-color: $color-elevation-4;
 
         &:hover {
-            background-color: $color-primary-light;
+            background-color: $color-highlight;
         }
     }
 
     .medium-editor-button-active {
-        background-color: $color-primary !important;
+        background-color: $color-highlight !important;
     }
 }
