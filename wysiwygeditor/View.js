@@ -22,6 +22,9 @@ const OverlayService = require("editron-core/services/OverlayService");
 
 const View = {
 
+    hasFocus: false,
+    previousValue: null,
+
     createEditor($textarea, attrs) {
         const options = Object.assign(EditorDefaultOptions, {
             targetBlank: true,
@@ -87,17 +90,16 @@ const View = {
         if (this.editor) {
             this.editor.setContent(value);
         }
-        // if (this.htmlEditor) {
-        //     this.htmlEditor.setValue(value);
-        // }
     },
 
     focus() {
+        this.hasFocus = true;
         this.$element.classList.remove("hasNoFocus");
         this.$element.classList.add("hasFocus");
     },
 
     blur(value) {
+        this.hasFocus = false;
         this.$element.classList.remove("hasFocus");
         this.$element.classList.add("hasNoFocus");
         this.updateClasses(value);
@@ -110,11 +112,25 @@ const View = {
     },
 
     onupdate(vnode) {
+        if (this.shouldAbort(vnode.attrs.value)) {
+            return;
+        }
+
         this.setValue(vnode.attrs.value);
     },
 
     oncreate(vnode) {
         this.$element = vnode.dom;
+    },
+
+    shouldAbort(currentData) {
+        if (this.hasFocus && currentData === this.previousValue) {
+            console.log("WYSIWYG Abort");
+            return true;
+        }
+        this.previousValue = currentData;
+        console.log("WYSIWYG Update");
+        return false;
     },
 
     view(vnode) {
