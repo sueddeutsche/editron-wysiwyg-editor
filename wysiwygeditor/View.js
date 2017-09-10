@@ -84,13 +84,12 @@ const View = {
     },
 
     setValue(value) {
-        // value = isEmptyHTML(value) ? "" : value;
         if (this.editor) {
             this.editor.setContent(value);
         }
-        if (this.htmlEditor) {
-            this.htmlEditor.setValue(value);
-        }
+        // if (this.htmlEditor) {
+        //     this.htmlEditor.setValue(value);
+        // }
     },
 
     focus() {
