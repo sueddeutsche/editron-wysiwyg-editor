@@ -6,7 +6,7 @@
 .editron-wysiwig-editor {
     @include with-moving-label(".medium-editor-element");
     // why is this required? should be set by .mmf-form per default and not be changed locally
-    font-size: $mmf-input__text-size;
+    // font-size: $mmf-input__text-size;
 
     .editron-wysiwig-editor__actions {
         right: -2 * $mmf-unit; // reverts padding?
