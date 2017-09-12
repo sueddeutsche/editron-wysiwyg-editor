@@ -23,7 +23,7 @@
             flex-grow: 2;
             display: inline-block;
 
-            color: $mmf-color--secondary-text;
+            color: $mmf-color--secondary;
             font-style: normal;
         }
     }
@@ -80,11 +80,11 @@
         border-color: $color-elevation-4;
 
         &:hover {
-            background-color: $color-highlight;
+            background-color: $mmf-color-primary;
         }
     }
 
     .medium-editor-button-active {
-        background-color: $color-highlight !important;
+        background-color: $mmf-color--primary !important;
     }
 }
