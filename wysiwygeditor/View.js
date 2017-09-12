@@ -170,7 +170,7 @@ const View = {
                 oncreate: (node) => this.createEditor(node.dom, attrs),
                 onbeforeremove: () => this.destroyEditor()
             }),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",
