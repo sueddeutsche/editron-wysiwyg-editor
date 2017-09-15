@@ -34,7 +34,7 @@
      div[data-medium-editor-element="true"] { // medium-editor < 5.17
         font-family: "Helvetica Neue", "Helvetica", "Arial";
         line-height: 1.4em;
-        color: #333;
+        color: rgba($mmf-color--dark, $mmf-opacity--primary);
 
         *:first-child {
             margin-top: 0;
@@ -78,11 +78,11 @@
         border-color: $color-elevation-4;
 
         &:hover {
-            background-color: $mmf-color-primary--darker;
+            background-color: darken($mmf-color--secondary, $mmf-color-distance--focus);
         }
     }
 
     .medium-editor-button-active {
-        background-color: $mmf-color-primary--lighter !important;
+        background-color: $mmf-color--secondary !important;
     }
 }

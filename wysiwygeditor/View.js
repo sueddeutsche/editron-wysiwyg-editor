@@ -125,11 +125,9 @@ const View = {
 
     shouldAbort(currentData) {
         if (this.hasFocus && currentData === this.previousValue) {
-            console.log("WYSIWYG Abort");
             return true;
         }
         this.previousValue = currentData;
-        console.log("WYSIWYG Update");
         return false;
     },
 
