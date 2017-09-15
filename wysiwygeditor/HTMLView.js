@@ -38,7 +38,7 @@ module.exports = {
     },
 
     view(vnode) {
-        return m(".jed-html-overlay",
+        return m(".editron-html-overlay",
             {
                 style: "min-width: 540px;"
             },

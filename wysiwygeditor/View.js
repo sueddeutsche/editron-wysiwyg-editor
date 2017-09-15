@@ -1,18 +1,40 @@
 /* global document, MediumEditor */
 const m = require("mithril");
-const Label = require("mithril-material-forms").label;
+const Label = require("mithril-material-forms/components/label");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
-// const _ = require("../../i18n").translate;
+const _ = require("editron-core/utils/i18n").translate;
+const isNodeContext = require("editron-core/utils/isNodeContext");
+let MediumEditor;
+
+if (isNodeContext()) {
+    MediumEditor = function () {}; // eslint-disable-line no-empty-function
+    MediumEditor.prototype.subscribe = Function.prototype;
+    MediumEditor.prototype.getContent = Function.prototype;
+    MediumEditor.prototype.setContent = Function.prototype;
+    MediumEditor.prototype.destroy = Function.prototype;
+} else {
+    MediumEditor = window.MediumEditor;
+}
 
 const HTMLView = require("./HTMLView");
 const OverlayService = require("editron-core/services/OverlayService");
 
-
 const View = {
+
+    hasFocus: false,
+    previousValue: null,
 
     createEditor($textarea, attrs) {
         const options = Object.assign(EditorDefaultOptions, {
+            targetBlank: true,
+            anchor: {
+                placeholderText: "Linkziel eingeben"
+            },
+            paste: {
+                forcePlainText: false,
+                cleanPastedHTML: true
+            },
             placeholder: {
                 text: attrs.placeholder,
                 hideOnClick: true
@@ -65,21 +87,19 @@ const View = {
     },
 
     setValue(value) {
-        // value = isEmptyHTML(value) ? "" : value;
         if (this.editor) {
             this.editor.setContent(value);
-        }
-        if (this.htmlEditor) {
-            this.htmlEditor.setValue(value);
         }
     },
 
     focus() {
+        this.hasFocus = true;
         this.$element.classList.remove("hasNoFocus");
         this.$element.classList.add("hasFocus");
     },
 
     blur(value) {
+        this.hasFocus = false;
         this.$element.classList.remove("hasFocus");
         this.$element.classList.add("hasNoFocus");
         this.updateClasses(value);
@@ -92,11 +112,23 @@ const View = {
     },
 
     onupdate(vnode) {
+        if (this.shouldAbort(vnode.attrs.value)) {
+            return;
+        }
+
         this.setValue(vnode.attrs.value);
     },
 
     oncreate(vnode) {
         this.$element = vnode.dom;
+    },
+
+    shouldAbort(currentData) {
+        if (this.hasFocus && currentData === this.previousValue) {
+            return true;
+        }
+        this.previousValue = currentData;
+        return false;
     },
 
     view(vnode) {
@@ -121,7 +153,7 @@ const View = {
                 m(".editron-container__controls.editron-container__controls--child",
                     m("i.mmf-icon",
                         {
-                            // title: _("wysiwyg:edithtml:tooltip"),
+                            title: _("editor:wysiwyg:edithtml:tooltip"),
                             onclick: () => this.showHTMLMarkup(attrs)
                         },
                         "code"
@@ -136,7 +168,7 @@ const View = {
                 oncreate: (node) => this.createEditor(node.dom, attrs),
                 onbeforeremove: () => this.destroyEditor()
             }),
-            m("ul", attrs.errors.map((error) =>
+            m("ul.mmf-form__errors", attrs.errors.map((error) =>
                 m("li", error)
             )),
             m(".mmf-meta",
