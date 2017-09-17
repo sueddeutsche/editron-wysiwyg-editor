@@ -14,7 +14,7 @@
     "browser-env": "^3.2.0",
     "eslint": "^3.19.0",
     "mithril": "1.x",
-    "mithril-material-forms": "2.x",
+    "mithril-material-forms": "^2.1.0",
     "sinon": "^3.2.1"
   },
   "publishConfig": {
