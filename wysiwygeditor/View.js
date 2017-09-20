@@ -1,6 +1,7 @@
 /* global document, MediumEditor */
 const m = require("mithril");
 const Label = require("mithril-material-forms/components/label");
+const Errors = require("mithril-material-forms/components/errors");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 const _ = require("editron-core/utils/i18n").translate;
@@ -168,9 +169,7 @@ const View = {
                 oncreate: (node) => this.createEditor(node.dom, attrs),
                 onbeforeremove: () => this.destroyEditor()
             }),
-            m("ul.mmf-form__errors", attrs.errors.map((error) =>
-                m("li.mmf-form__error", error)
-            )),
+            m(Errors, attrs),
             m(".mmf-meta",
                 attrs.description
             )
