@@ -52,7 +52,9 @@ const View = {
         }
 
         this.editor.subscribe("blur", () => {
-            const value = this.editor.getContent();
+            let value = this.editor.getContent();
+            value = isEmptyHTML(value) ? "" : value;
+
             this.blur(value);
             attrs.onblur(value);
         });
