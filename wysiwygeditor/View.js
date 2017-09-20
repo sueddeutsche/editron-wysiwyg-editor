@@ -147,7 +147,7 @@ const View = {
         return m(".editron-wysiwig-editor.mmf-form",
             {
                 // eslint-disable-next-line max-len
-                "class": `hasNoFocus ${attrs.errors.length > 0 ? "hasError" : "hasNoError"} ${isEmptyHTML(attrs.value) ? "isEmpty" : "isNotEmpty"}`
+                "class": `hasNoFocus ${attrs.errors.length > 0 ? "has-error" : "no-error"} ${isEmptyHTML(attrs.value) ? "isEmpty" : "isNotEmpty"}`
             },
             m(".editron-wysiwig-editor__actions",
                 m(".editron-container__controls.editron-container__controls--child",
@@ -169,7 +169,7 @@ const View = {
                 onbeforeremove: () => this.destroyEditor()
             }),
             m("ul.mmf-form__errors", attrs.errors.map((error) =>
-                m("li", error)
+                m("li.mmf-form__error", error)
             )),
             m(".mmf-meta",
                 attrs.description
