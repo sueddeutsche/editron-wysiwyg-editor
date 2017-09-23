@@ -1,6 +1,7 @@
 /* global document, MediumEditor */
 const m = require("mithril");
 const Label = require("mithril-material-forms/components/label");
+const Errors = require("mithril-material-forms/components/errors");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 const _ = require("editron-core/utils/i18n").translate;
@@ -51,7 +52,9 @@ const View = {
         }
 
         this.editor.subscribe("blur", () => {
-            const value = this.editor.getContent();
+            let value = this.editor.getContent();
+            value = isEmptyHTML(value) ? "" : value;
+
             this.blur(value);
             attrs.onblur(value);
         });
@@ -147,7 +150,7 @@ const View = {
         return m(".editron-wysiwig-editor.mmf-form",
             {
                 // eslint-disable-next-line max-len
-                "class": `hasNoFocus ${attrs.errors.length > 0 ? "hasError" : "hasNoError"} ${isEmptyHTML(attrs.value) ? "isEmpty" : "isNotEmpty"}`
+                "class": `hasNoFocus ${attrs.errors.length > 0 ? "has-error" : "no-error"} ${isEmptyHTML(attrs.value) ? "isEmpty" : "isNotEmpty"}`
             },
             m(".editron-wysiwig-editor__actions",
                 m(".editron-container__controls.editron-container__controls--child",
@@ -168,9 +171,7 @@ const View = {
                 oncreate: (node) => this.createEditor(node.dom, attrs),
                 onbeforeremove: () => this.destroyEditor()
             }),
-            m("ul.mmf-form__errors", attrs.errors.map((error) =>
-                m("li", error)
-            )),
+            m(Errors, attrs),
             m(".mmf-meta",
                 attrs.description
             )
