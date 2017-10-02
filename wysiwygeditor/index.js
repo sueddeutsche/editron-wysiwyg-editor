@@ -19,7 +19,10 @@ class WYSIWYGEditor extends AbstractValueEditor {
             editorValueType: "html",
             viewModel: {
                 // update data on blur of editor
-                onblur: (value) => this.setValue(value)
+                onblur: (value) => {
+                    this.setValue(value);
+                    controller.location().blur(pointer);
+                }
             }
         }, options);
 
