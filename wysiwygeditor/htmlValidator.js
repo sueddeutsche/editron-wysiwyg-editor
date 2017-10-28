@@ -15,7 +15,11 @@ function dashCase(str) {
  * @return {ErrorObject|undefined}
  */
 function validateHTML(core, schema, html, pointer) {
-    if (wrappedInBlock.test(html) === false) {
+    if (schema.type !== "string" || schema.format !== "html") {
+        return undefined;
+    }
+
+    if (typeof html === "string" && html.length > 0 && wrappedInBlock.test(html) === false) {
         return {
             type: "error",
             severity: "warning",
@@ -28,6 +32,7 @@ function validateHTML(core, schema, html, pointer) {
             }
         };
     }
+
     return undefined;
 }
 
