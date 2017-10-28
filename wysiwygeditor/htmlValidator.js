@@ -15,19 +15,24 @@ function dashCase(str) {
  * @return {ErrorObject|undefined}
  */
 function validateHTML(core, schema, html, pointer) {
-    if (wrappedInBlock.test(html) === false) {
+    if (schema.type !== "string" || schema.format !== "html") {
+        return undefined;
+    }
+
+    if (typeof html === "string" && html.length > 0 && wrappedInBlock.test(html) === false) {
         return {
             type: "error",
             severity: "warning",
-            name: "InvalidHTMLError",
-            code: dashCase("InvalidHTMLError"),
-            message: "The html at '{{pointer}}' should be wrapped in a block element.",
+            name: "MissingBlockElementWarning",
+            code: dashCase("MissingBlockElementWarning"),
+            message: "The contents should be wrapped in a html block element.",
             data: {
                 value: html,
                 pointer
             }
         };
     }
+
     return undefined;
 }
 
