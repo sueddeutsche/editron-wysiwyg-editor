@@ -5,6 +5,10 @@ function dashCase(str) {
     return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
+function isWrappedInBlock(html) {
+    return !(typeof html === "string" && html.length > 0 && wrappedInBlock.test(html) === false);
+}
+
 /**
  * Show a warning if the given html is not wrapped in a block element
  *
@@ -19,7 +23,7 @@ function validateHTML(core, schema, html, pointer) {
         return undefined;
     }
 
-    if (typeof html === "string" && html.length > 0 && wrappedInBlock.test(html) === false) {
+    if (isWrappedInBlock(html) === false) {
         return {
             type: "error",
             severity: "warning",
@@ -41,5 +45,6 @@ module.exports = {
 
     type: "string",
     format: "html",
-    validate: validateHTML
+    validate: validateHTML,
+    isWrappedInBlock
 };
