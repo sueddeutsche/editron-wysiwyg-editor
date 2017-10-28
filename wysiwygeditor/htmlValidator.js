@@ -1,5 +1,5 @@
 const blockElements = "p|h[1-6]|[ou]l|pre|address|blockquote|dl|div|fieldset|form|hr|noscript|table";
-const wrappedInBlock = new RegExp(`^(<(${blockElements})[^>]*>.*</(${blockElements})>)?$`);
+const wrappedInBlock = new RegExp(`^[\n ]*(<(${blockElements})[^>]*>.*</(${blockElements})>)?[\n ]*$`);
 
 function dashCase(str) {
     return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
