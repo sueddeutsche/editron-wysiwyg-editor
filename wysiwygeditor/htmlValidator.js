@@ -23,8 +23,8 @@ function validateHTML(core, schema, html, pointer) {
         return {
             type: "error",
             severity: "warning",
-            name: "InvalidHTMLError",
-            code: dashCase("InvalidHTMLError"),
+            name: "MissingBlockElementError",
+            code: dashCase("MissingBlockElementError"),
             message: "The contents should be wrapped in a html block element.",
             data: {
                 value: html,
