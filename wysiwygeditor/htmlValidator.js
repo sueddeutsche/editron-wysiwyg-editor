@@ -25,7 +25,7 @@ function validateHTML(core, schema, html, pointer) {
             severity: "warning",
             name: "InvalidHTMLError",
             code: dashCase("InvalidHTMLError"),
-            message: "The html at '{{pointer}}' should be wrapped in a block element.",
+            message: "The contents should be wrapped in a html block element.",
             data: {
                 value: html,
                 pointer
