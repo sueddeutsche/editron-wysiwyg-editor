@@ -10,12 +10,12 @@
   "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
   "license": "ISC",
   "devDependencies": {
-    "editron-core": "^3.2.0",
+    "editron-core": "^3.5.0",
     "ava": "^0.22.0",
     "browser-env": "^3.2.0",
     "eslint": "^3.19.0",
     "mithril": "1.x",
-    "mithril-material-forms": "^2.3.0",
+    "mithril-material-forms": "^2.3.2",
     "sinon": "^3.2.1"
   },
   "publishConfig": {
