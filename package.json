@@ -1,6 +1,6 @@
 {
   "name": "editron-wysiwyg-editor",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "WYSIWYG Editor for the Editron json-editor",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
   "license": "ISC",
   "devDependencies": {
-    "editron-core": "^3.5.0",
+    "editron-core": "^3.5.1",
     "ava": "^0.22.0",
     "browser-env": "^3.2.0",
     "eslint": "^3.19.0",
