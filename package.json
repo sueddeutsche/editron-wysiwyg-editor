@@ -10,7 +10,7 @@
   "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
   "license": "ISC",
   "devDependencies": {
-    "editron-core": "4.x",
+    "editron-core": "^4.0.0",
     "ava": "^0.22.0",
     "browser-env": "^3.2.0",
     "eslint": "^3.19.0",
