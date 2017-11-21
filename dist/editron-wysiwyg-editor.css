@@ -1,0 +1,115 @@
+.editron-wysiwig-editor {
+  /**
+     * Content styling
+     */ }
+  .editron-wysiwig-editor div[data-medium-editor-element="true"] {
+    color: rgba(0, 0, 0, 0.87);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.54);
+    width: 100%;
+    font-size: inherit;
+    box-sizing: border-box;
+    background: transparent;
+    transform: translateZ(0);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.25s linear;
+    padding: 1.1em 0 0 0;
+    min-height: 38px; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"]:focus {
+      border-color: #00c853; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"]:hover {
+      border-color: #00c853; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"].medium-editor-placeholder:after {
+      font-family: "Roboto";
+      font-weight: 300;
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 0.7rem;
+      line-height: inherit;
+      flex-grow: 2;
+      display: inline-block;
+      color: #00c853;
+      font-style: normal; }
+  .editron-wysiwig-editor div[data-medium-editor-element="true"] {
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    line-height: 1.4em;
+    color: rgba(0, 0, 0, 0.87); }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] *:first-child {
+      margin-top: 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] *:last-child {
+      margin-bottom: 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] p {
+      margin: 0 0 1em 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] h1 {
+      font-size: 1.75em;
+      margin: 1em 0 .25em 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] h2 {
+      font-size: 1.25em;
+      margin: 1em 0 .25em 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] h3 {
+      font-size: 1em;
+      margin: 1em 0 .25em 0; }
+
+.medium-editor-toolbar,
+.medium-editor-toolbar .medium-editor-toolbar-form,
+.medium-editor-toolbar .medium-editor-toolbar-input {
+  background-color: #324047;
+  border-color: #2d3940; }
+
+.medium-editor-toolbar .medium-editor-action {
+  border-color: #2d3940; }
+  .medium-editor-toolbar .medium-editor-action:hover {
+    background-color: #00953e; }
+
+.medium-editor-toolbar .medium-editor-button-active {
+  background-color: #00c853 !important; }
+
+/**
+ * Default form styles, controlling label position by classnames. The Markup should look like
+ *
+ *  <my-form extends with-moving-label>
+ *      <label>Moving Title</label>
+ *      <input-type>
+ *      ...
+ * @param {string} input-type   - associated input selector
+ */
+.editron-wysiwig-editor .medium-editor-element {
+  padding: 1.1em 0 0 0; }
+
+.editron-wysiwig-editor label.mmf-label {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  color: #000;
+  opacity: 0.54;
+  font-size: 0.8em; }
+
+.editron-wysiwig-editor.hasFocus label.mmf-label {
+  color: #81c784;
+  opacity: 0.87; }
+
+.editron-wysiwig-editor.has-error select,
+.editron-wysiwig-editor.has-error input {
+  border-color: #d50000; }
+
+.editron-wysiwig-editor.has-error.hasFocus label.mmf-label {
+  color: #d50000; }
+
+.editron-wysiwig-editor.has-warning select,
+.editron-wysiwig-editor.has-warning input {
+  border-color: #F39C12; }
+
+.editron-wysiwig-editor.has-warning.hasFocus label.mmf-label {
+  color: #F39C12; }
+
+.editron-wysiwig-editor.isEmpty.hasNoFocus label.mmf-label {
+  transform: translateY(1.1em);
+  font-size: 1em; }
+
+.editron-wysiwig-editor .editron-wysiwig-editor__actions {
+  right: -16px;
+  position: absolute; }
