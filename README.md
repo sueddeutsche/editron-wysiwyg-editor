@@ -1,4 +1,4 @@
-# [editron](https://github.com/sueddeutsche/editron) WYSWIG-Editor
+# [editron](https://github.com/sueddeutsche/editron) WYSIWYG-Editor
 
 `npm i editron-wysiwyg-editor --save`
 
@@ -17,9 +17,12 @@ Add the editor after the core-modules and it will register automatically (paths 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.16.1/js/medium-editor.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.16.1/css/medium-editor.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.16.1/css/themes/bootstrap.css">
-<!-- plugin editor and styles -->
+<!-- styles -->
 <link rel="stylesheet" href="../node_modules/editron-wysiwyg-editor/dist/editron-wysiwyg-editor.css">
+
+<!-- plugin editor -->
 <script type="text/javascript" src="../node_modules/editron-core/dist/editron-modules.js"></script>
+<script type="text/javascript" src="../node_modules/editron-core/dist/editron-core.js"></script>
 <script type="text/javascript" src="../node_modules/editron-wysiwyg-editor/dist/editron-wysiwyg-editor.js"></script>
 ```
 
