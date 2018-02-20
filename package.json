@@ -1,6 +1,6 @@
 {
   "name": "editron-wysiwyg-editor",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "WYSIWYG Editor for the Editron json-editor",
   "main": "wysiwygeditor/index.js",
   "scripts": {
