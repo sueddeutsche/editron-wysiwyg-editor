@@ -63,6 +63,16 @@ const View = {
             this.focus();
             attrs.onfocus();
         });
+
+        // @overwrite native method
+        // delegate any focus actions from textarea to medium wysiwyg-editor
+        $textarea.focus = () => {
+            try {
+                this.editor.elements[0].dispatchEvent(new Event("focus"));
+            } catch (e) {
+                console.log("Failed focussing wysiwyg editor:", e);
+            }
+        };
     },
 
     destroyEditor() {
