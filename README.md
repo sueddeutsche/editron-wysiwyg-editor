@@ -1,4 +1,4 @@
-# [editron](https://github.com/sueddeutsche/editron) WYSIWYG-Editor
+# [editron](https://github.com/sueddeutsche/editron) wysiwyg-editor
 
 `npm i editron-wysiwyg-editor --save`
 
