@@ -3,6 +3,12 @@
   "version": "2.1.0",
   "description": "WYSIWYG Editor for the Editron json-editor",
   "main": "wysiwygeditor/index.js",
+  "homepage": "https://github.com/sueddeutsche/editron-wysiwyg-editor",
+  "bugs": "https://github.com/sueddeutsche/editron-wysiwyg-editor/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sueddeutsche/editron-wysiwyg-editor.git"
+  },
   "scripts": {
     "test": "ava",
     "build": "webpack",
