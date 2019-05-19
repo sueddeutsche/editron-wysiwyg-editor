@@ -4,8 +4,8 @@ const Label = require("mithril-material-forms/components/label");
 const Errors = require("mithril-material-forms/components/errors");
 const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
-const _ = require("editron-core/utils/i18n").translate;
-const isNodeContext = require("editron-core/utils/isNodeContext");
+const _ = require("editron/utils/i18n").translate;
+const isNodeContext = require("editron/utils/isNodeContext");
 let MediumEditor;
 
 if (isNodeContext()) {
@@ -19,7 +19,7 @@ if (isNodeContext()) {
 }
 
 const HTMLView = require("./HTMLView");
-const OverlayService = require("editron-core/services/OverlayService");
+const OverlayService = require("editron/services/OverlayService");
 
 const View = {
 

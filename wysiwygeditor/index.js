@@ -1,7 +1,7 @@
 const m = require("mithril");
 const gp = require("gson-pointer");
 const View = require("./View");
-const AbstractValueEditor = require("editron-core/editors/AbstractValueEditor");
+const AbstractValueEditor = require("editron/editors/AbstractValueEditor");
 
 /**
  * Displays a value with a html-wyswig editor and adds an option to open the content in an html-script editor
@@ -14,6 +14,7 @@ class WYSIWYGEditor extends AbstractValueEditor {
     }
 
     constructor(pointer, controller, options) {
+        console.log("editron -- build wysiwyg", options);
         options = Object.assign({
             // modify value type
             editorValueType: "html",

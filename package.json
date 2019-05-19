@@ -8,39 +8,43 @@
     "build": "webpack",
     "dist": "NODE_ENV=production webpack",
     "release": "npm run dist",
-    "prebulishOnly": "npm run dist"
+    "prebulishOnly": "npm run test && npm run dist",
+    "postinstall": "npm --prefix node_modules/editron install"
   },
   "keywords": [],
   "author": "Sascha Goldhofer <noreply@saschagoldhofer.de> (https://github.com/sagold/)",
   "license": "ISC",
   "devDependencies": {
-    "editron-core": "5.x",
     "ava": "^0.22.0",
     "browser-env": "^3.2.0",
+    "editron": "6.x",
     "eslint": "^3.19.0",
+    "gson-pointer": "3.x",
     "mithril": "1.x",
     "mithril-material-forms": "2.x",
     "sinon": "^3.2.1",
-    "gson-pointer": "3.x"
+    "webpack-cli": "^3.3.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "codemirror": "^5.25.2"
+    "codemirror": "^5.25.2",
+    "webpack": "^4.31.0"
   },
   "peerDependencies": {
-    "editron-core": "5.x",
+    "editron": "6.x",
     "mithril": "1.x",
     "mithril-material-forms": "2.x",
-    "gson-pointer": "3.x"
+    "gson-pointer": "3.x",
+    "webpack": "4.x"
   },
   "ava": {
     "files": [
       "test/**/*.test.js"
     ],
     "require": [
-      "editron-core/test/support/setupBrowserEnv.js"
+      "editron/test/support/setupBrowserEnv.js"
     ],
     "verbose": true
   }

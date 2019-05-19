@@ -1,5 +1,5 @@
 const WYSIWIGEditor = require("../../wysiwygeditor");
-const testEditorIntegration = require("editron-core/test/support/testEditorIntegration");
+const testEditorIntegration = require("editron/test/support/testEditorIntegration");
 
 
 testEditorIntegration(

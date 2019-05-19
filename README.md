@@ -37,12 +37,13 @@ Add the editor after the core-modules and it will register automatically (paths 
 To use this editor within a webpack build, require the editor and add it to the editors list
 
 ```js
+const { Controller } = require("editron");
 const editronWysiwygEditor = require("editron-wysiwyg-editor");
 const editors = [
     editronWysiwygEditor
     ...otherEditors
 ];
-const editron = new Editron(schema, data, { editors });
+const editron = new Controller(schema, data, { editors });
 ```
 
 Add the required wysiwyg-dependencies to your page
@@ -59,7 +60,7 @@ Add the required wysiwyg-dependencies to your page
 Optionally register the htmlValidator to editron
 
 ```js
-const editron = new Editron(schema, data);
+const editron = new Controller(schema, data);
 editron.addValidator("format", "html", require("./wysiwygeditor/htmlValidator").validate);
 ```
 

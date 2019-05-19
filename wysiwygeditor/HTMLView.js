@@ -1,6 +1,6 @@
 const m = require("mithril");
 let CodeMirror = require("codemirror");
-const isNodeContext = require("editron-core/utils/isNodeContext");
+const isNodeContext = require("editron/utils/isNodeContext");
 
 if (!isNodeContext()) { // eslint-disable-line no-negated-condition
     require("codemirror/lib/codemirror.css");
