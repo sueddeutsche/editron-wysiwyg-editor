@@ -29,14 +29,14 @@
     "mithril": "1.x",
     "mithril-material-forms": "2.x",
     "sinon": "^3.2.1",
+    "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "codemirror": "^5.25.2",
-    "webpack": "^4.31.0"
+    "codemirror": "^5.25.2"
   },
   "peerDependencies": {
     "editron": "6.x",
