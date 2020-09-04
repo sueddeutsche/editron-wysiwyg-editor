@@ -27,19 +27,31 @@ const View = {
     previousValue: null,
 
     createEditor($textarea, attrs) {
-        const options = Object.assign(EditorDefaultOptions, {
+        const options = Object.assign(EditorDefaultOptions, { // TODO: delete default options, set standard options here (no Object.assign)
             targetBlank: true,
             anchor: {
                 placeholderText: "Linkziel eingeben"
             },
             paste: {
-                forcePlainText: false,
-                cleanPastedHTML: true
+                forcePlainText: true,
+                cleanPastedHTML: true,
+                cleanTags: ["meta"],
+                cleanAttrs: ["class", "style", "dir"],
+                unwrapTags: [],
+                cleanReplacements: [
+                    [/ä/g, "ä"],
+                    [/Ä/g, "Ä"],
+                    [/ö/g, "ö"],
+                    [/Ö/g, "Ö"],
+                    [/ü/g, "ü"],
+                    [/Ü/g, "Ü"]
+                ]
             },
             placeholder: {
                 text: attrs.placeholder,
                 hideOnClick: true
-            }
+            },
+            disableDoubleReturn: true
         });
         // merge toolbar options (buttons)
         options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
