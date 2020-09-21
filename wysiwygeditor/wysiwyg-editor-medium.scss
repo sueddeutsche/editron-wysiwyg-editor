@@ -4,7 +4,7 @@
 @import "mithril-material-forms/lib/typography";
 
 
-.editron-wysiwig-editor {
+.er-json-editor .editron-wysiwig-editor {
 
     // .medium-editor-element { // medium-editor >= 5.17
     div[data-medium-editor-element="true"] { // medium-editor < 5.17
@@ -61,6 +61,26 @@
         h3 {
             font-size: 1em;
             margin: 1em 0 .25em 0;
+        }
+
+        blockquote {
+            font-size: inherit;
+            background-color: transparent;
+            box-shadow: none;
+            display: block;
+            margin-bottom: 10px;
+
+            &::before {
+                content: '„';
+                color: #c0c1c6;
+                font-size: 60px;
+                font-weight: 600;
+                margin-top: -35px;
+                margin-right: 10px;
+                line-height: 1em;
+                float: left;
+                display: block;
+            }
         }
     }
 }
