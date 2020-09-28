@@ -13151,7 +13151,6 @@ module.exports = {
 const m = __webpack_require__(/*! mithril */ "mithril");
 const Label = __webpack_require__(/*! mithril-material-forms/components/label */ "./node_modules/editron/node_modules/mithril-material-forms/components/label/index.js");
 const Errors = __webpack_require__(/*! mithril-material-forms/components/errors */ "./node_modules/editron/node_modules/mithril-material-forms/components/errors/index.js");
-const EditorDefaultOptions = __webpack_require__(/*! ./defaultOptions.json */ "./wysiwygeditor/defaultOptions.json");
 const isEmptyHTML = __webpack_require__(/*! ./isEmptyHTML */ "./wysiwygeditor/isEmptyHTML.js");
 const _ = __webpack_require__(/*! editron/utils/i18n */ "./node_modules/editron/utils/i18n.js").translate;
 const isNodeContext = __webpack_require__(/*! editron/utils/isNodeContext */ "./node_modules/editron/utils/isNodeContext.js");
@@ -13176,7 +13175,11 @@ const View = {
     previousValue: null,
 
     createEditor($textarea, attrs) {
-        const options = Object.assign(EditorDefaultOptions, { // TODO: delete default options, set standard options here (no Object.assign)
+        const options = {
+            placeholder: {
+                text: "",
+                hideOnClick: true
+            },
             targetBlank: true,
             anchor: {
                 placeholderText: "Linkziel eingeben"
@@ -13185,7 +13188,7 @@ const View = {
                 forcePlainText: true,
                 cleanPastedHTML: true,
                 cleanTags: ["meta"],
-                cleanAttrs: ["class", "style", "dir"],
+                cleanAttrs: ["class", "style", "dir", "role"],
                 unwrapTags: [],
                 cleanReplacements: [
                     [/ä/g, "ä"],
@@ -13196,14 +13199,36 @@ const View = {
                     [/Ü/g, "Ü"]
                 ]
             },
-            placeholder: {
-                text: attrs.placeholder,
-                hideOnClick: true
+            toolbar: {
+                buttons: [
+                    "h2",
+                    "h3",
+                    {
+                        name: "bold",
+                        contentDefault: "<b>b</b>"
+                    },
+                    {
+                        name: "italic",
+                        contentDefault: "i"
+                    },
+                    {
+                        name: "quote",
+                        contentDefault: "„ Zitat"
+                    },
+                    {
+                        name: "anchor",
+                        contentDefault: "Link"
+                    },
+                    "removeFormat"
+                ]
             },
             disableDoubleReturn: true
-        });
+        };
+
         // merge toolbar options (buttons)
-        options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
+        if (attrs.mediumEditorOptions.buttons) {
+            attrs.mediumEditorOptions.buttons.forEach((button) => options.toolbar.buttons.unshift(button));
+        }
 
         this.editor = new MediumEditor($textarea, options);
 
@@ -13353,17 +13378,6 @@ const View = {
 
 module.exports = View;
 
-
-/***/ }),
-
-/***/ "./wysiwygeditor/defaultOptions.json":
-/*!*******************************************!*\
-  !*** ./wysiwygeditor/defaultOptions.json ***!
-  \*******************************************/
-/*! exports provided: placeholder, paste, anchor, toolbar, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"placeholder\":{\"text\":\"\",\"hideOnClick\":true},\"paste\":{\"forcePlainText\":true,\"cleanPastedHTML\":true,\"cleanReplacements\":[],\"cleanAttrs\":[\"class\",\"style\",\"dir\"],\"cleanTags\":[\"meta\"],\"unwrapTags\":[]},\"anchor\":{\"placeholderText\":\"Linkziel eingeben\"},\"toolbar\":{\"buttons\":[\"bold\",\"italic\",\"anchor\",\"removeFormat\"]}}");
 
 /***/ }),
 

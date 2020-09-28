@@ -2,7 +2,6 @@
 const m = require("mithril");
 const Label = require("mithril-material-forms/components/label");
 const Errors = require("mithril-material-forms/components/errors");
-const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 const _ = require("editron/utils/i18n").translate;
 const isNodeContext = require("editron/utils/isNodeContext");
@@ -27,7 +26,11 @@ const View = {
     previousValue: null,
 
     createEditor($textarea, attrs) {
-        const options = Object.assign(EditorDefaultOptions, { // TODO: delete default options, set standard options here (no Object.assign)
+        const options = {
+            placeholder: {
+                text: "",
+                hideOnClick: true
+            },
             targetBlank: true,
             anchor: {
                 placeholderText: "Linkziel eingeben"
@@ -36,7 +39,7 @@ const View = {
                 forcePlainText: true,
                 cleanPastedHTML: true,
                 cleanTags: ["meta"],
-                cleanAttrs: ["class", "style", "dir"],
+                cleanAttrs: ["class", "style", "dir", "role"],
                 unwrapTags: [],
                 cleanReplacements: [
                     [/ä/g, "ä"],
@@ -47,14 +50,36 @@ const View = {
                     [/Ü/g, "Ü"]
                 ]
             },
-            placeholder: {
-                text: attrs.placeholder,
-                hideOnClick: true
+            toolbar: {
+                buttons: [
+                    "h2",
+                    "h3",
+                    {
+                        name: "bold",
+                        contentDefault: "<b>b</b>"
+                    },
+                    {
+                        name: "italic",
+                        contentDefault: "i"
+                    },
+                    {
+                        name: "quote",
+                        contentDefault: "„ Zitat"
+                    },
+                    {
+                        name: "anchor",
+                        contentDefault: "Link"
+                    },
+                    "removeFormat"
+                ]
             },
             disableDoubleReturn: true
-        });
+        };
+
         // merge toolbar options (buttons)
-        options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
+        if (attrs.mediumEditorOptions.buttons) {
+            attrs.mediumEditorOptions.buttons.forEach((button) => options.toolbar.buttons.unshift(button));
+        }
 
         this.editor = new MediumEditor($textarea, options);
 
