@@ -13205,7 +13205,7 @@ const View = {
                     "h3",
                     {
                         name: "bold",
-                        contentDefault: "<b>b</b>"
+                        contentDefault: "<b>B</b>"
                     },
                     {
                         name: "italic",
@@ -13226,9 +13226,7 @@ const View = {
         };
 
         // merge toolbar options (buttons)
-        if (attrs.mediumEditorOptions.buttons) {
-            attrs.mediumEditorOptions.buttons.forEach((button) => options.toolbar.buttons.unshift(button));
-        }
+        options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
 
         this.editor = new MediumEditor($textarea, options);
 
