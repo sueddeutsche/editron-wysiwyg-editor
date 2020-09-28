@@ -4,7 +4,7 @@
 @import "mithril-material-forms/lib/typography";
 
 
-.er-json-editor .editron-wysiwig-editor {
+.editron-wysiwig-editor {
 
     // .medium-editor-element { // medium-editor >= 5.17
     div[data-medium-editor-element="true"] { // medium-editor < 5.17
@@ -64,10 +64,7 @@
         }
 
         blockquote {
-            font-size: inherit;
             font-weight: 500;
-            background-color: transparent;
-            box-shadow: none;
             display: block;
             margin: 15px 0;
 
