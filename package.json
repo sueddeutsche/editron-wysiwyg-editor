@@ -1,6 +1,6 @@
 {
   "name": "editron-wysiwyg-editor",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "WYSIWYG Editor for the Editron json-editor",
   "main": "wysiwygeditor/index.js",
   "homepage": "https://github.com/sueddeutsche/editron-wysiwyg-editor",
@@ -13,6 +13,7 @@
     "test": "ava",
     "build": "webpack",
     "dist": "NODE_ENV=production webpack",
+    "devdist": "npm run build && mkdir -p dist && mv build/* dist/",
     "release": "npm run dist",
     "prebulishOnly": "npm run test && npm run dist",
     "postinstall": "npm --prefix node_modules/editron install"
@@ -29,14 +30,14 @@
     "mithril": "1.x",
     "mithril-material-forms": "2.x",
     "sinon": "^3.2.1",
+    "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "codemirror": "^5.25.2",
-    "webpack": "^4.31.0"
+    "codemirror": "^5.25.2"
   },
   "peerDependencies": {
     "editron": "6.x",
