@@ -2,7 +2,6 @@
 const m = require("mithril");
 const Label = require("mithril-material-forms/components/label");
 const Errors = require("mithril-material-forms/components/errors");
-const EditorDefaultOptions = require("./defaultOptions.json");
 const isEmptyHTML = require("./isEmptyHTML");
 const _ = require("editron/utils/i18n").translate;
 const isNodeContext = require("editron/utils/isNodeContext");
@@ -27,20 +26,56 @@ const View = {
     previousValue: null,
 
     createEditor($textarea, attrs) {
-        const options = Object.assign(EditorDefaultOptions, {
+        const options = {
+            placeholder: {
+                text: "",
+                hideOnClick: true
+            },
             targetBlank: true,
             anchor: {
                 placeholderText: "Linkziel eingeben"
             },
             paste: {
-                forcePlainText: false,
-                cleanPastedHTML: true
+                forcePlainText: true,
+                cleanPastedHTML: true,
+                cleanTags: ["meta"],
+                cleanAttrs: ["class", "style", "dir", "role"],
+                unwrapTags: [],
+                cleanReplacements: [
+                    [/ä/g, "ä"],
+                    [/Ä/g, "Ä"],
+                    [/ö/g, "ö"],
+                    [/Ö/g, "Ö"],
+                    [/ü/g, "ü"],
+                    [/Ü/g, "Ü"]
+                ]
             },
-            placeholder: {
-                text: attrs.placeholder,
-                hideOnClick: true
-            }
-        });
+            toolbar: {
+                buttons: [
+                    "h2",
+                    "h3",
+                    {
+                        name: "bold",
+                        contentDefault: "<b>B</b>"
+                    },
+                    {
+                        name: "italic",
+                        contentDefault: "i"
+                    },
+                    {
+                        name: "quote",
+                        contentDefault: "„ Zitat"
+                    },
+                    {
+                        name: "anchor",
+                        contentDefault: "Link"
+                    },
+                    "removeFormat"
+                ]
+            },
+            disableDoubleReturn: true
+        };
+
         // merge toolbar options (buttons)
         options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
 

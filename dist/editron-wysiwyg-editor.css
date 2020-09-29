@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .editron-wysiwig-editor {
   /**
      * Content styling
@@ -51,6 +52,20 @@
     .editron-wysiwig-editor div[data-medium-editor-element="true"] h3 {
       font-size: 1em;
       margin: 1em 0 .25em 0; }
+    .editron-wysiwig-editor div[data-medium-editor-element="true"] blockquote {
+      font-weight: 500;
+      display: block;
+      margin: 15px 0; }
+      .editron-wysiwig-editor div[data-medium-editor-element="true"] blockquote::before {
+        content: '„';
+        color: #c0c1c6;
+        font-size: 60px;
+        font-weight: 600;
+        margin-top: -35px;
+        margin-right: 10px;
+        line-height: 1em;
+        float: left;
+        display: block; }
 
 .medium-editor-toolbar,
 .medium-editor-toolbar .medium-editor-toolbar-form,
