@@ -1,1 +1,13551 @@
-!function(r){var n={};function i(e){if(n[e])return n[e].exports;var t=n[e]={i:e,l:!1,exports:{}};return r[e].call(t.exports,t,t.exports,i),t.l=!0,t.exports}i.m=r,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)i.d(r,n,function(e){return t[e]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="",i(i.s=0)}({"./editron-wysiwyg-editor.js":function(e,t,r){"use strict";var n=r("./node_modules/editron/plugin/index.js");n.editor(r("./wysiwygeditor/index.js")),n.validator("format","html",r("./wysiwygeditor/htmlValidator.js").validate)},"./editron-wysiwyg-editor.scss":function(e,t,r){e.exports=r.p+"editron-wysiwyg-editor.css"},"./node_modules/codemirror/lib/codemirror.css":function(e,t,r){var n=r("./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/lib/codemirror.css");"string"==typeof n&&(n=[[e.i,n,""]]);var i={hmr:!0,transform:void 0,insertInto:void 0};r("./node_modules/editron/node_modules/style-loader/lib/addStyles.js")(n,i);n.locals&&(e.exports=n.locals)},"./node_modules/codemirror/lib/codemirror.js":function(e,t,r){"use strict";var n,Ea="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};n=function(){var e=navigator.userAgent,t=navigator.platform,f=/gecko\/\d/i.test(e),r=/MSIE \d/.test(e),n=/Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(e),i=/Edge\/(\d+)/.exec(e),v=r||n||i,y=v&&(r?document.documentMode||6:+(i||n)[1]),h=!i&&/WebKit\//.test(e),n=h&&/Qt\/\d+\.\d+/.test(e),o=!i&&/Chrome\//.test(e),p=/Opera\//.test(e),u=/Apple Computer/.test(navigator.vendor),a=/Mac OS X 1\d\D([8-9]|\d\d)\D/.test(e),c=/PhantomJS/.test(e),l=!i&&/AppleWebKit/.test(e)&&/Mobile\/\w+/.test(e),s=/Android/.test(e),d=l||s||/webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(e),m=l||/Mac/.test(t),g=/\bCrOS\b/.test(e),b=/win/i.test(t),e=p&&e.match(/Version\/(\d*\.\d*)/);(e=e&&Number(e[1]))&&15<=e&&(h=!(p=!1));var w=m&&(n||p&&(null==e||e<12.11)),x=f||v&&9<=y;function k(e){return new RegExp("(^|\\s)"+e+"(?:$|\\s)\\s*")}var C,S=function(e,t){var r=e.className,n=k(t).exec(r);n&&(t=r.slice(n.index+n[0].length),e.className=r.slice(0,n.index)+(t?n[1]+t:""))};function M(e){for(var t=e.childNodes.length;0<t;--t)e.removeChild(e.firstChild);return e}function T(e,t){return M(e).appendChild(t)}function L(e,t,r,n){var i=document.createElement(e);if(r&&(i.className=r),n&&(i.style.cssText=n),"string"==typeof t)i.appendChild(document.createTextNode(t));else if(t)for(var o=0;o<t.length;++o)i.appendChild(t[o]);return i}function O(e,t,r,n){n=L(e,t,r,n);return n.setAttribute("role","presentation"),n}function N(e,t){if(3==t.nodeType&&(t=t.parentNode),e.contains)return e.contains(t);do{if(11==t.nodeType&&(t=t.host),t==e)return!0}while(t=t.parentNode)}function A(){var t;try{t=document.activeElement}catch(e){t=document.body||null}for(;t&&t.shadowRoot&&t.shadowRoot.activeElement;)t=t.shadowRoot.activeElement;return t}function z(e,t){var r=e.className;k(t).test(r)||(e.className+=(r?" ":"")+t)}function D(e,t){for(var r=e.split(" "),n=0;n<r.length;n++)r[n]&&!k(r[n]).test(t)&&(t+=" "+r[n]);return t}C=document.createRange?function(e,t,r,n){var i=document.createRange();return i.setEnd(n||e,r),i.setStart(e,t),i}:function(e,t,r){var n=document.body.createTextRange();try{n.moveToElementText(e.parentNode)}catch(e){return n}return n.collapse(!0),n.moveEnd("character",r),n.moveStart("character",t),n};var W=function(e){e.select()};function E(e){var t=Array.prototype.slice.call(arguments,1);return function(){return e.apply(null,t)}}function j(e,t,r){for(var n in t=t||{},e)!e.hasOwnProperty(n)||!1===r&&t.hasOwnProperty(n)||(t[n]=e[n]);return t}function P(e,t,r,n,i){null==t&&-1==(t=e.search(/[^\s\u00a0]/))&&(t=e.length);for(var o=n||0,a=i||0;;){var l=e.indexOf("\t",o);if(l<0||t<=l)return a+(t-o);a+=l-o,a+=r-a%r,o=l+1}}l?W=function(e){e.selectionStart=0,e.selectionEnd=e.value.length}:v&&(W=function(e){try{e.select()}catch(e){}});var F=function(){this.id=null,this.f=null,this.time=0,this.handler=E(this.onTimeout,this)};function H(e,t){for(var r=0;r<e.length;++r)if(e[r]==t)return r;return-1}F.prototype.onTimeout=function(e){e.id=0,e.time<=+new Date?e.f():setTimeout(e.handler,e.time-+new Date)},F.prototype.set=function(e,t){this.f=t;t=+new Date+e;(!this.id||t<this.time)&&(clearTimeout(this.id),this.id=setTimeout(this.handler,e),this.time=t)};var I=50,R={toString:function(){return"CodeMirror.Pass"}},_={scroll:!1},B={origin:"*mouse"},V={origin:"+move"};function U(e,t,r){for(var n=0,i=0;;){var o=e.indexOf("\t",n);-1==o&&(o=e.length);var a=o-n;if(o==e.length||t<=i+a)return n+Math.min(a,t-i);if(i+=o-n,n=o+1,t<=(i+=r-i%r))return n}}var K=[""];function G(e){for(;K.length<=e;)K.push($(K)+" ");return K[e]}function $(e){return e[e.length-1]}function q(e,t){for(var r=[],n=0;n<e.length;n++)r[n]=t(e[n],n);return r}function X(){}function Y(e,t){e=Object.create?Object.create(e):(X.prototype=e,new X);return t&&j(t,e),e}var Z=/[\u00df\u0587\u0590-\u05f4\u0600-\u06ff\u3040-\u309f\u30a0-\u30ff\u3400-\u4db5\u4e00-\u9fcc\uac00-\ud7af]/;function J(e){return/\w/.test(e)||""<e&&(e.toUpperCase()!=e.toLowerCase()||Z.test(e))}function Q(e,t){return t?!!(-1<t.source.indexOf("\\w")&&J(e))||t.test(e):J(e)}function ee(e){for(var t in e)if(e.hasOwnProperty(t)&&e[t])return;return 1}var te=/[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u065e\u0670\u06d6-\u06dc\u06de-\u06e4\u06e7\u06e8\u06ea-\u06ed\u0711\u0730-\u074a\u07a6-\u07b0\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0900-\u0902\u093c\u0941-\u0948\u094d\u0951-\u0955\u0962\u0963\u0981\u09bc\u09be\u09c1-\u09c4\u09cd\u09d7\u09e2\u09e3\u0a01\u0a02\u0a3c\u0a41\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a70\u0a71\u0a75\u0a81\u0a82\u0abc\u0ac1-\u0ac5\u0ac7\u0ac8\u0acd\u0ae2\u0ae3\u0b01\u0b3c\u0b3e\u0b3f\u0b41-\u0b44\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b82\u0bbe\u0bc0\u0bcd\u0bd7\u0c3e-\u0c40\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0cbc\u0cbf\u0cc2\u0cc6\u0ccc\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0d3e\u0d41-\u0d44\u0d4d\u0d57\u0d62\u0d63\u0dca\u0dcf\u0dd2-\u0dd4\u0dd6\u0ddf\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0f18\u0f19\u0f35\u0f37\u0f39\u0f71-\u0f7e\u0f80-\u0f84\u0f86\u0f87\u0f90-\u0f97\u0f99-\u0fbc\u0fc6\u102d-\u1030\u1032-\u1037\u1039\u103a\u103d\u103e\u1058\u1059\u105e-\u1060\u1071-\u1074\u1082\u1085\u1086\u108d\u109d\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b7-\u17bd\u17c6\u17c9-\u17d3\u17dd\u180b-\u180d\u18a9\u1920-\u1922\u1927\u1928\u1932\u1939-\u193b\u1a17\u1a18\u1a56\u1a58-\u1a5e\u1a60\u1a62\u1a65-\u1a6c\u1a73-\u1a7c\u1a7f\u1b00-\u1b03\u1b34\u1b36-\u1b3a\u1b3c\u1b42\u1b6b-\u1b73\u1b80\u1b81\u1ba2-\u1ba5\u1ba8\u1ba9\u1c2c-\u1c33\u1c36\u1c37\u1cd0-\u1cd2\u1cd4-\u1ce0\u1ce2-\u1ce8\u1ced\u1dc0-\u1de6\u1dfd-\u1dff\u200c\u200d\u20d0-\u20f0\u2cef-\u2cf1\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua66f-\ua672\ua67c\ua67d\ua6f0\ua6f1\ua802\ua806\ua80b\ua825\ua826\ua8c4\ua8e0-\ua8f1\ua926-\ua92d\ua947-\ua951\ua980-\ua982\ua9b3\ua9b6-\ua9b9\ua9bc\uaa29-\uaa2e\uaa31\uaa32\uaa35\uaa36\uaa43\uaa4c\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uabe5\uabe8\uabed\udc00-\udfff\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\uff9e\uff9f]/;function re(e){return 768<=e.charCodeAt(0)&&te.test(e)}function ne(e,t,r){for(;(r<0?0<t:t<e.length)&&re(e.charAt(t));)t+=r;return t}function ie(e,t,r){for(var n=r<t?-1:1;;){if(t==r)return t;var i=(t+r)/2,i=n<0?Math.ceil(i):Math.floor(i);if(i==t)return e(i)?t:r;e(i)?r=i:t=i+n}}var oe=null;function ae(e,t,r){var n;oe=null;for(var i=0;i<e.length;++i){var o=e[i];if(o.from<t&&o.to>t)return i;o.to==t&&(o.from!=o.to&&"before"==r?n=i:oe=i),o.from==t&&(o.from!=o.to&&"before"!=r?n=i:oe=i)}return null!=n?n:oe}var le,se,ce,ue,de,fe,he,pe=(le="bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN",se="nnnnnnNNr%%r,rNNmmmmmmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111",ce=/[\u0590-\u05f4\u0600-\u06ff\u0700-\u08ac]/,ue=/[stwN]/,de=/[LRr]/,fe=/[Lb1n]/,he=/[1n]/,function(e,t){var r="ltr"==t?"L":"R";if(0==e.length||"ltr"==t&&!ce.test(e))return!1;for(var n,i=e.length,o=[],a=0;a<i;++a)o.push((n=e.charCodeAt(a))<=247?le.charAt(n):1424<=n&&n<=1524?"R":1536<=n&&n<=1785?se.charAt(n-1536):1774<=n&&n<=2220?"r":8192<=n&&n<=8203?"w":8204==n?"b":"L");for(var l=0,s=r;l<i;++l){var c=o[l];"m"==c?o[l]=s:s=c}for(var u=0,d=r;u<i;++u){var f=o[u];"1"==f&&"r"==d?o[u]="n":de.test(f)&&"r"==(d=f)&&(o[u]="R")}for(var h=1,p=o[0];h<i-1;++h){var m=o[h];"+"==m&&"1"==p&&"1"==o[h+1]?o[h]="1":","!=m||p!=o[h+1]||"1"!=p&&"n"!=p||(o[h]=p),p=m}for(var g=0;g<i;++g){var v=o[g];if(","==v)o[g]="N";else if("%"==v){for(var y=void 0,y=g+1;y<i&&"%"==o[y];++y);for(var b=g&&"!"==o[g-1]||y<i&&"1"==o[y]?"1":"N",w=g;w<y;++w)o[w]=b;g=y-1}}for(var x=0,k=r;x<i;++x){var C=o[x];"L"==k&&"1"==C?o[x]="L":de.test(C)&&(k=C)}for(var S=0;S<i;++S)if(ue.test(o[S])){for(var M=void 0,M=S+1;M<i&&ue.test(o[M]);++M);for(var T="L"==(S?o[S-1]:r),L=T==("L"==(M<i?o[M]:r))?T?"L":"R":r,O=S;O<M;++O)o[O]=L;S=M-1}for(var N,A=[],z=0;z<i;)if(fe.test(o[z])){var D=z;for(++z;z<i&&fe.test(o[z]);++z);A.push(new me(0,D,z))}else{var W=z,E=A.length,j="rtl"==t?1:0;for(++z;z<i&&"L"!=o[z];++z);for(var P=W;P<z;)if(he.test(o[P])){W<P&&(A.splice(E,0,new me(1,W,P)),E+=j);var F=P;for(++P;P<z&&he.test(o[P]);++P);A.splice(E,0,new me(2,F,P)),E+=j,W=P}else++P;W<z&&A.splice(E,0,new me(1,W,z))}return"ltr"==t&&(1==A[0].level&&(N=e.match(/^\s+/))&&(A[0].from=N[0].length,A.unshift(new me(0,0,N[0].length))),1==$(A).level&&(N=e.match(/\s+$/))&&($(A).to-=N[0].length,A.push(new me(0,i-N[0].length,i)))),"rtl"==t?A.reverse():A});function me(e,t,r){this.level=e,this.from=t,this.to=r}function ge(e,t){var r=e.order;return null==r&&(r=e.order=pe(e.text,t)),r}var ve=[],ye=function(e,t,r){e.addEventListener?e.addEventListener(t,r,!1):e.attachEvent?e.attachEvent("on"+t,r):(e=e._handlers||(e._handlers={}))[t]=(e[t]||ve).concat(r)};function be(e,t){return e._handlers&&e._handlers[t]||ve}function we(e,t,r){var n;e.removeEventListener?e.removeEventListener(t,r,!1):e.detachEvent?e.detachEvent("on"+t,r):!(e=(n=e._handlers)&&n[t])||-1<(r=H(e,r))&&(n[t]=e.slice(0,r).concat(e.slice(r+1)))}function xe(e,t){var r=be(e,t);if(r.length)for(var n=Array.prototype.slice.call(arguments,2),i=0;i<r.length;++i)r[i].apply(null,n)}function ke(e,t,r){return"string"==typeof t&&(t={type:t,preventDefault:function(){this.defaultPrevented=!0}}),xe(e,r||t.type,e,t),Oe(t)||t.codemirrorIgnore}function Ce(e){var t=e._handlers&&e._handlers.cursorActivity;if(t)for(var r=e.curOp.cursorActivityHandlers||(e.curOp.cursorActivityHandlers=[]),n=0;n<t.length;++n)-1==H(r,t[n])&&r.push(t[n])}function Se(e,t){return 0<be(e,t).length}function Me(e){e.prototype.on=function(e,t){ye(this,e,t)},e.prototype.off=function(e,t){we(this,e,t)}}function Te(e){e.preventDefault?e.preventDefault():e.returnValue=!1}function Le(e){e.stopPropagation?e.stopPropagation():e.cancelBubble=!0}function Oe(e){return null!=e.defaultPrevented?e.defaultPrevented:0==e.returnValue}function Ne(e){Te(e),Le(e)}function Ae(e){return e.target||e.srcElement}function ze(e){var t=e.which;return null==t&&(1&e.button?t=1:2&e.button?t=3:4&e.button&&(t=2)),m&&e.ctrlKey&&1==t&&(t=3),t}var De,We,Ee=function(){if(v&&y<9)return!1;var e=L("div");return"draggable"in e||"dragDrop"in e}();var je=3!="\n\nb".split(/\n/).length?function(e){for(var t=0,r=[],n=e.length;t<=n;){var i=e.indexOf("\n",t);-1==i&&(i=e.length);var o=e.slice(t,"\r"==e.charAt(i-1)?i-1:i),a=o.indexOf("\r");-1!=a?(r.push(o.slice(0,a)),t+=a+1):(r.push(o),t=i+1)}return r}:function(e){return e.split(/\r\n?|\n/)},Pe=window.getSelection?function(e){try{return e.selectionStart!=e.selectionEnd}catch(e){return!1}}:function(e){var t;try{t=e.ownerDocument.selection.createRange()}catch(e){}return!(!t||t.parentElement()!=e)&&0!=t.compareEndPoints("StartToEnd",t)},Fe="oncopy"in(n=L("div"))||(n.setAttribute("oncopy","return;"),"function"==typeof n.oncopy),He=null;var Ie={},Re={};function _e(e){if("string"==typeof e&&Re.hasOwnProperty(e))e=Re[e];else if(e&&"string"==typeof e.name&&Re.hasOwnProperty(e.name)){var t=Re[e.name];"string"==typeof t&&(t={name:t}),(e=Y(t,e)).name=t.name}else{if("string"==typeof e&&/^[\w\-]+\/[\w\-]+\+xml$/.test(e))return _e("application/xml");if("string"==typeof e&&/^[\w\-]+\/[\w\-]+\+json$/.test(e))return _e("application/json")}return"string"==typeof e?{name:e}:e||{name:"null"}}function Be(e,t){t=_e(t);var r=Ie[t.name];if(!r)return Be(e,"text/plain");var n=r(e,t);if(Ve.hasOwnProperty(t.name)){var i,o=Ve[t.name];for(i in o)o.hasOwnProperty(i)&&(n.hasOwnProperty(i)&&(n["_"+i]=n[i]),n[i]=o[i])}if(n.name=t.name,t.helperType&&(n.helperType=t.helperType),t.modeProps)for(var a in t.modeProps)n[a]=t.modeProps[a];return n}var Ve={};function Ue(e,t){j(t,Ve.hasOwnProperty(e)?Ve[e]:Ve[e]={})}function Ke(e,t){if(!0===t)return t;if(e.copyState)return e.copyState(t);var r,n={};for(r in t){var i=t[r];i instanceof Array&&(i=i.concat([])),n[r]=i}return n}function Ge(e,t){for(var r;e.innerMode&&(r=e.innerMode(t))&&r.mode!=e;)t=r.state,e=r.mode;return r||{mode:e,state:t}}function $e(e,t,r){return!e.startState||e.startState(t,r)}var qe=function(e,t,r){this.pos=this.start=0,this.string=e,this.tabSize=t||8,this.lastColumnPos=this.lastColumnValue=0,this.lineStart=0,this.lineOracle=r};function Xe(e,t){if((t-=e.first)<0||t>=e.size)throw new Error("There is no line "+(t+e.first)+" in the document.");for(var r=e;!r.lines;)for(var n=0;;++n){var i=r.children[n],o=i.chunkSize();if(t<o){r=i;break}t-=o}return r.lines[t]}function Ye(e,t,r){var n=[],i=t.line;return e.iter(t.line,r.line+1,function(e){e=e.text;i==r.line&&(e=e.slice(0,r.ch)),i==t.line&&(e=e.slice(t.ch)),n.push(e),++i}),n}function Ze(e,t,r){var n=[];return e.iter(t,r,function(e){n.push(e.text)}),n}function Je(e,t){var r=t-e.height;if(r)for(var n=e;n;n=n.parent)n.height+=r}function Qe(e){if(null==e.parent)return null;for(var t=e.parent,r=H(t.lines,e),n=t.parent;n;n=(t=n).parent)for(var i=0;n.children[i]!=t;++i)r+=n.children[i].chunkSize();return r+t.first}function et(e,t){var r=e.first;e:do{for(var n=0;n<e.children.length;++n){var i=e.children[n],o=i.height;if(t<o){e=i;continue e}t-=o,r+=i.chunkSize()}return r}while(!e.lines);for(var a=0;a<e.lines.length;++a){var l=e.lines[a].height;if(t<l)break;t-=l}return r+a}function tt(e,t){return t>=e.first&&t<e.first+e.size}function rt(e,t){return String(e.lineNumberFormatter(t+e.firstLineNumber))}function nt(e,t,r){if(void 0===r&&(r=null),!(this instanceof nt))return new nt(e,t,r);this.line=e,this.ch=t,this.sticky=r}function it(e,t){return e.line-t.line||e.ch-t.ch}function ot(e,t){return e.sticky==t.sticky&&0==it(e,t)}function at(e){return nt(e.line,e.ch)}function lt(e,t){return it(e,t)<0?t:e}function st(e,t){return it(e,t)<0?e:t}function ct(e,t){return Math.max(e.first,Math.min(t,e.first+e.size-1))}function ut(e,t){if(t.line<e.first)return nt(e.first,0);var r=e.first+e.size-1;return t.line>r?nt(r,Xe(e,r).text.length):(e=Xe(e,(r=t).line).text.length,null==(t=r.ch)||e<t?nt(r.line,e):t<0?nt(r.line,0):r)}function dt(e,t){for(var r=[],n=0;n<t.length;n++)r[n]=ut(e,t[n]);return r}qe.prototype.eol=function(){return this.pos>=this.string.length},qe.prototype.sol=function(){return this.pos==this.lineStart},qe.prototype.peek=function(){return this.string.charAt(this.pos)||void 0},qe.prototype.next=function(){if(this.pos<this.string.length)return this.string.charAt(this.pos++)},qe.prototype.eat=function(e){var t=this.string.charAt(this.pos),e="string"==typeof e?t==e:t&&(e.test?e.test(t):e(t));if(e)return++this.pos,t},qe.prototype.eatWhile=function(e){for(var t=this.pos;this.eat(e););return this.pos>t},qe.prototype.eatSpace=function(){for(var e=this.pos;/[\s\u00a0]/.test(this.string.charAt(this.pos));)++this.pos;return this.pos>e},qe.prototype.skipToEnd=function(){this.pos=this.string.length},qe.prototype.skipTo=function(e){e=this.string.indexOf(e,this.pos);if(-1<e)return this.pos=e,!0},qe.prototype.backUp=function(e){this.pos-=e},qe.prototype.column=function(){return this.lastColumnPos<this.start&&(this.lastColumnValue=P(this.string,this.start,this.tabSize,this.lastColumnPos,this.lastColumnValue),this.lastColumnPos=this.start),this.lastColumnValue-(this.lineStart?P(this.string,this.lineStart,this.tabSize):0)},qe.prototype.indentation=function(){return P(this.string,null,this.tabSize)-(this.lineStart?P(this.string,this.lineStart,this.tabSize):0)},qe.prototype.match=function(e,t,r){if("string"!=typeof e){var n=this.string.slice(this.pos).match(e);return n&&0<n.index?null:(n&&!1!==t&&(this.pos+=n[0].length),n)}n=function(e){return r?e.toLowerCase():e};if(n(this.string.substr(this.pos,e.length))==n(e))return!1!==t&&(this.pos+=e.length),!0},qe.prototype.current=function(){return this.string.slice(this.start,this.pos)},qe.prototype.hideFirstChars=function(e,t){this.lineStart+=e;try{return t()}finally{this.lineStart-=e}},qe.prototype.lookAhead=function(e){var t=this.lineOracle;return t&&t.lookAhead(e)},qe.prototype.baseToken=function(){var e=this.lineOracle;return e&&e.baseToken(this.pos)};var ft=function(e,t){this.state=e,this.lookAhead=t},ht=function(e,t,r,n){this.state=t,this.doc=e,this.line=r,this.maxLookAhead=n||0,this.baseTokens=null,this.baseTokenPos=1};function pt(t,r,n,e){var s=[t.state.modeGen],i={};Ct(t,r.text,t.doc.mode,n,function(e,t){return s.push(e,t)},i,e);for(var c=n.state,o=0;o<t.state.overlays.length;++o)!function(e){n.baseTokens=s;var o=t.state.overlays[e],a=1,l=0;n.state=!0,Ct(t,r.text,o.mode,n,function(e,t){for(var r=a;l<e;){var n=s[a];e<n&&s.splice(a,1,e,s[a+1],n),a+=2,l=Math.min(e,n)}if(t)if(o.opaque)s.splice(r,a-r,e,"overlay "+t),a=r+2;else for(;r<a;r+=2){var i=s[r+1];s[r+1]=(i?i+" ":"")+"overlay "+t}},i),n.state=c,n.baseTokens=null,n.baseTokenPos=1}(o);return{styles:s,classes:i.bgClass||i.textClass?i:null}}function mt(e,t,r){var n,i,o;return t.styles&&t.styles[0]==e.state.modeGen||(n=gt(e,Qe(t)),i=t.text.length>e.options.maxHighlightLength&&Ke(e.doc.mode,n.state),o=pt(e,t,n),i&&(n.state=i),t.stateAfter=n.save(!i),t.styles=o.styles,o.classes?t.styleClasses=o.classes:t.styleClasses&&(t.styleClasses=null),r===e.doc.highlightFrontier&&(e.doc.modeFrontier=Math.max(e.doc.modeFrontier,++e.doc.highlightFrontier))),t.styles}function gt(r,n,e){var t=r.doc,i=r.display;if(!t.mode.startState)return new ht(t,!0,n);var o=function(e,t,r){for(var n,i,o=e.doc,a=r?-1:t-(e.doc.mode.innerMode?1e3:100),l=t;a<l;--l){if(l<=o.first)return o.first;var s=Xe(o,l-1),c=s.stateAfter;if(c&&(!r||l+(c instanceof ft?c.lookAhead:0)<=o.modeFrontier))return l;s=P(s.text,null,e.options.tabSize);(null==i||s<n)&&(i=l-1,n=s)}return i}(r,n,e),a=o>t.first&&Xe(t,o-1).stateAfter,l=a?ht.fromSaved(t,a,o):new ht(t,$e(t.mode),o);return t.iter(o,n,function(e){vt(r,e.text,l);var t=l.line;e.stateAfter=t==n-1||t%5==0||t>=i.viewFrom&&t<i.viewTo?l.save():null,l.nextLine()}),e&&(t.modeFrontier=l.line),l}function vt(e,t,r,n){var i=e.doc.mode,o=new qe(t,e.options.tabSize,r);for(o.start=o.pos=n||0,""==t&&yt(i,r.state);!o.eol();)bt(i,o,r.state),o.start=o.pos}function yt(e,t){if(e.blankLine)return e.blankLine(t);if(e.innerMode){t=Ge(e,t);return t.mode.blankLine?t.mode.blankLine(t.state):void 0}}function bt(e,t,r,n){for(var i=0;i<10;i++){n&&(n[0]=Ge(e,r).mode);var o=e.token(t,r);if(t.pos>t.start)return o}throw new Error("Mode "+e.name+" failed to advance stream.")}ht.prototype.lookAhead=function(e){var t=this.doc.getLine(this.line+e);return null!=t&&e>this.maxLookAhead&&(this.maxLookAhead=e),t},ht.prototype.baseToken=function(e){if(!this.baseTokens)return null;for(;this.baseTokens[this.baseTokenPos]<=e;)this.baseTokenPos+=2;var t=this.baseTokens[this.baseTokenPos+1];return{type:t&&t.replace(/( |^)overlay .*/,""),size:this.baseTokens[this.baseTokenPos]-e}},ht.prototype.nextLine=function(){this.line++,0<this.maxLookAhead&&this.maxLookAhead--},ht.fromSaved=function(e,t,r){return t instanceof ft?new ht(e,Ke(e.mode,t.state),r,t.lookAhead):new ht(e,Ke(e.mode,t),r)},ht.prototype.save=function(e){e=!1!==e?Ke(this.doc.mode,this.state):this.state;return 0<this.maxLookAhead?new ft(e,this.maxLookAhead):e};var wt=function(e,t,r){this.start=e.start,this.end=e.pos,this.string=e.current(),this.type=t||null,this.state=r};function xt(e,t,r,n){var i,o,a=e.doc,l=a.mode,s=Xe(a,(t=ut(a,t)).line),c=gt(e,t.line,r),u=new qe(s.text,e.options.tabSize,c);for(n&&(o=[]);(n||u.pos<t.ch)&&!u.eol();)u.start=u.pos,i=bt(l,u,c.state),n&&o.push(new wt(u,i,Ke(a.mode,c.state)));return n?o:new wt(u,i,c.state)}function kt(e,t){if(e)for(;;){var r=e.match(/(?:^|\s+)line-(background-)?(\S+)/);if(!r)break;e=e.slice(0,r.index)+e.slice(r.index+r[0].length);var n=r[1]?"bgClass":"textClass";null==t[n]?t[n]=r[2]:new RegExp("(?:^|\\s)"+r[2]+"(?:$|\\s)").test(t[n])||(t[n]+=" "+r[2])}return e}function Ct(e,t,r,n,i,o,a){var l=r.flattenSpans;null==l&&(l=e.options.flattenSpans);var s=0,c=null,u=new qe(t,e.options.tabSize,n),d=e.options.addModeClass&&[null];for(""==t&&kt(yt(r,n.state),o);!u.eol();){var f,h=u.pos>e.options.maxHighlightLength?(l=!1,a&&vt(e,t,n,u.pos),u.pos=t.length,null):kt(bt(r,u,n.state,d),o);if(!d||(f=d[0].name)&&(h="m-"+(h?f+" "+h:f)),!l||c!=h){for(;s<u.start;)i(s=Math.min(u.start,s+5e3),c);c=h}u.start=u.pos}for(;s<u.pos;){var p=Math.min(u.pos,s+5e3);i(p,c),s=p}}var St=!1,Mt=!1;function Tt(e,t,r){this.marker=e,this.from=t,this.to=r}function Lt(e,t){if(e)for(var r=0;r<e.length;++r){var n=e[r];if(n.marker==t)return n}}function Ot(e,t){if(t.full)return null;var r=tt(e,t.from.line)&&Xe(e,t.from.line).markedSpans,n=tt(e,t.to.line)&&Xe(e,t.to.line).markedSpans;if(!r&&!n)return null;var i=t.from.ch,o=t.to.ch,e=0==it(t.from,t.to),a=function(e,t,r){var n;if(e)for(var i=0;i<e.length;++i){var o,a=e[i],l=a.marker;!(null==a.from||(l.inclusiveLeft?a.from<=t:a.from<t))&&(a.from!=t||"bookmark"!=l.type||r&&a.marker.insertLeft)||(o=null==a.to||(l.inclusiveRight?a.to>=t:a.to>t),(n=n||[]).push(new Tt(l,a.from,o?null:a.to)))}return n}(r,i,e),l=function(e,t,r){var n;if(e)for(var i=0;i<e.length;++i){var o,a=e[i],l=a.marker;!(null==a.to||(l.inclusiveRight?a.to>=t:a.to>t))&&(a.from!=t||"bookmark"!=l.type||r&&!a.marker.insertLeft)||(o=null==a.from||(l.inclusiveLeft?a.from<=t:a.from<t),(n=n||[]).push(new Tt(l,o?null:a.from-t,null==a.to?null:a.to-t)))}return n}(n,o,e),s=1==t.text.length,c=$(t.text).length+(s?i:0);if(a)for(var u=0;u<a.length;++u){var d,f=a[u];null==f.to&&((d=Lt(l,f.marker))?s&&(f.to=null==d.to?null:d.to+c):f.to=i)}if(l)for(var h=0;h<l.length;++h){var p=l[h];null!=p.to&&(p.to+=c),null==p.from?Lt(a,p.marker)||(p.from=c,s&&(a=a||[]).push(p)):(p.from+=c,s&&(a=a||[]).push(p))}a=a&&Nt(a),l&&l!=a&&(l=Nt(l));var m=[a];if(!s){var g,v=t.text.length-2;if(0<v&&a)for(var y=0;y<a.length;++y)null==a[y].to&&(g=g||[]).push(new Tt(a[y].marker,null,null));for(var b=0;b<v;++b)m.push(g);m.push(l)}return m}function Nt(e){for(var t=0;t<e.length;++t){var r=e[t];null!=r.from&&r.from==r.to&&!1!==r.marker.clearWhenEmpty&&e.splice(t--,1)}return e.length?e:null}function At(e){var t=e.markedSpans;if(t){for(var r=0;r<t.length;++r)t[r].marker.detachLine(e);e.markedSpans=null}}function zt(e,t){if(t){for(var r=0;r<t.length;++r)t[r].marker.attachLine(e);e.markedSpans=t}}function Dt(e){return e.inclusiveLeft?-1:0}function Wt(e){return e.inclusiveRight?1:0}function Et(e,t){var r=e.lines.length-t.lines.length;if(0!=r)return r;var n=e.find(),i=t.find(),r=it(n.from,i.from)||Dt(e)-Dt(t);if(r)return-r;i=it(n.to,i.to)||Wt(e)-Wt(t);return i||t.id-e.id}function jt(e,t){var r,n=Mt&&e.markedSpans;if(n)for(var i,o=0;o<n.length;++o)(i=n[o]).marker.collapsed&&null==(t?i.from:i.to)&&(!r||Et(r,i.marker)<0)&&(r=i.marker);return r}function Pt(e){return jt(e,!0)}function Ft(e){return jt(e,!1)}function Ht(e,t,r,n,i){var t=Xe(e,t),o=Mt&&t.markedSpans;if(o)for(var a=0;a<o.length;++a){var l=o[a];if(l.marker.collapsed){var s=l.marker.find(0),c=it(s.from,r)||Dt(l.marker)-Dt(i),u=it(s.to,n)||Wt(l.marker)-Wt(i);if(!(0<=c&&u<=0||c<=0&&0<=u)&&(c<=0&&(l.marker.inclusiveRight&&i.inclusiveLeft?0<=it(s.to,r):0<it(s.to,r))||0<=c&&(l.marker.inclusiveRight&&i.inclusiveLeft?it(s.from,n)<=0:it(s.from,n)<0)))return 1}}}function It(e){for(var t;t=Pt(e);)e=t.find(-1,!0).line;return e}function Rt(e,t){var r=Xe(e,t),e=It(r);return r==e?t:Qe(e)}function _t(e,t){if(t>e.lastLine())return t;var r,n=Xe(e,t);if(!Bt(e,n))return t;for(;r=Ft(n);)n=r.find(1,!0).line;return Qe(n)+1}function Bt(e,t){var r=Mt&&t.markedSpans;if(r)for(var n,i=0;i<r.length;++i)if((n=r[i]).marker.collapsed){if(null==n.from)return!0;if(!n.marker.widgetNode&&0==n.from&&n.marker.inclusiveLeft&&function e(t,r,n){if(null==n.to){var i=n.marker.find(1,!0);return e(t,i.line,Lt(i.line.markedSpans,n.marker))}if(n.marker.inclusiveRight&&n.to==r.text.length)return!0;for(var o=void 0,a=0;a<r.markedSpans.length;++a)if((o=r.markedSpans[a]).marker.collapsed&&!o.marker.widgetNode&&o.from==n.to&&(null==o.to||o.to!=n.from)&&(o.marker.inclusiveLeft||n.marker.inclusiveRight)&&e(t,r,o))return!0}(e,t,n))return!0}}function Vt(e){for(var t=0,r=(e=It(e)).parent,n=0;n<r.lines.length;++n){var i=r.lines[n];if(i==e)break;t+=i.height}for(var o=r.parent;o;o=(r=o).parent)for(var a=0;a<o.children.length;++a){var l=o.children[a];if(l==r)break;t+=l.height}return t}function Ut(e){if(0==e.height)return 0;for(var t,r=e.text.length,n=e;t=Pt(n);){var i=t.find(0,!0),n=i.from.line;r+=i.from.ch-i.to.ch}for(n=e;t=Ft(n);){var o=t.find(0,!0);r-=n.text.length-o.from.ch,r+=(n=o.to.line).text.length-o.to.ch}return r}function Kt(e){var r=e.display,e=e.doc;r.maxLine=Xe(e,e.first),r.maxLineLength=Ut(r.maxLine),r.maxLineChanged=!0,e.iter(function(e){var t=Ut(e);t>r.maxLineLength&&(r.maxLineLength=t,r.maxLine=e)})}var Gt=function(e,t,r){this.text=e,zt(this,t),this.height=r?r(this):1};Gt.prototype.lineNo=function(){return Qe(this)},Me(Gt);var $t={},qt={};function Xt(e,t){if(!e||/^\s*$/.test(e))return null;t=t.addModeClass?qt:$t;return t[e]||(t[e]=e.replace(/\S+/g,"cm-$&"))}function Yt(e,t){var r=O("span",null,null,h?"padding-right: .1px":null),n={pre:O("pre",[r],"CodeMirror-line"),content:r,col:0,pos:0,cm:e,trailingSpace:!1,splitSpaces:e.getOption("lineWrapping")};t.measure={};for(var i=0;i<=(t.rest?t.rest.length:0);i++){var o=i?t.rest[i-1]:t.line,a=void 0;n.pos=0,n.addToken=Jt,function(e){if(null!=We)return We;var t=T(e,document.createTextNode("AخA")),r=C(t,0,1).getBoundingClientRect(),t=C(t,1,2).getBoundingClientRect();return M(e),r&&r.left!=r.right&&(We=t.right-r.right<3)}(e.display.measure)&&(a=ge(o,e.doc.direction))&&(n.addToken=function(d,f){return function(e,t,r,n,i,o,a){r=r?r+" cm-force-border":"cm-force-border";for(var l=e.pos,s=l+t.length;;){for(var c=void 0,u=0;u<f.length&&!((c=f[u]).to>l&&c.from<=l);u++);if(c.to>=s)return d(e,t,r,n,i,o,a);d(e,t.slice(0,c.to-l),r,n,null,o,a),n=null,t=t.slice(c.to-l),l=c.to}}}(n.addToken,a)),n.map=[],function(e,t,r){var n=e.markedSpans,i=e.text,o=0;if(!n){for(var a=1;a<r.length;a+=2)t.addToken(t,i.slice(o,o=r[a]),Xt(r[a+1],t.cm.options));return}for(var l,s,c,u,d,f,h,p=i.length,m=0,g=1,v="",y=0;;){if(y==m){c=u=d=s="",f=h=null,y=1/0;for(var b=[],w=void 0,x=0;x<n.length;++x){var k=n[x],C=k.marker;if("bookmark"==C.type&&k.from==m&&C.widgetNode)b.push(C);else if(k.from<=m&&(null==k.to||k.to>m||C.collapsed&&k.to==m&&k.from==m)){if(null!=k.to&&k.to!=m&&y>k.to&&(y=k.to,u=""),C.className&&(c+=" "+C.className),C.css&&(s=(s?s+";":"")+C.css),C.startStyle&&k.from==m&&(d+=" "+C.startStyle),C.endStyle&&k.to==y&&(w=w||[]).push(C.endStyle,k.to),C.title&&((h=h||{}).title=C.title),C.attributes)for(var S in C.attributes)(h=h||{})[S]=C.attributes[S];C.collapsed&&(!f||Et(f.marker,C)<0)&&(f=k)}else k.from>m&&y>k.from&&(y=k.from)}if(w)for(var M=0;M<w.length;M+=2)w[M+1]==y&&(u+=" "+w[M]);if(!f||f.from==m)for(var T=0;T<b.length;++T)Qt(t,0,b[T]);if(f&&(f.from||0)==m){if(Qt(t,(null==f.to?p+1:f.to)-m,f.marker,null==f.from),null==f.to)return;f.to==m&&(f=!1)}}if(p<=m)break;for(var L=Math.min(p,y);;){if(v){var O,N=m+v.length;if(f||(O=L<N?v.slice(0,L-m):v,t.addToken(t,O,l?l+c:c,d,m+O.length==y?u:"",s,h)),L<=N){v=v.slice(L-m),m=L;break}m=N,d=""}v=i.slice(o,o=r[g++]),l=Xt(r[g++],t.cm.options)}}}(o,n,mt(e,o,t!=e.display.externalMeasured&&Qe(o))),o.styleClasses&&(o.styleClasses.bgClass&&(n.bgClass=D(o.styleClasses.bgClass,n.bgClass||"")),o.styleClasses.textClass&&(n.textClass=D(o.styleClasses.textClass,n.textClass||""))),0==n.map.length&&n.map.push(0,0,n.content.appendChild(function(e){null==De&&(t=L("span","​"),T(e,L("span",[t,document.createTextNode("x")])),0!=e.firstChild.offsetHeight&&(De=t.offsetWidth<=1&&2<t.offsetHeight&&!(v&&y<8)));var t=De?L("span","​"):L("span"," ",null,"display: inline-block; width: 1px; margin-right: -1px");return t.setAttribute("cm-text",""),t}(e.display.measure))),0==i?(t.measure.map=n.map,t.measure.cache={}):((t.measure.maps||(t.measure.maps=[])).push(n.map),(t.measure.caches||(t.measure.caches=[])).push({}))}return h&&(r=n.content.lastChild,(/\bcm-tab\b/.test(r.className)||r.querySelector&&r.querySelector(".cm-tab"))&&(n.content.className="cm-tab-wrap-hack")),xe(e,"renderLine",e,t.line,n.pre),n.pre.className&&(n.textClass=D(n.pre.className,n.textClass||"")),n}function Zt(e){var t=L("span","•","cm-invalidchar");return t.title="\\u"+e.charCodeAt(0).toString(16),t.setAttribute("aria-label",t.title),t}function Jt(e,t,r,n,i,o,a){if(t){var l,s=e.splitSpaces?function(e,t){if(1<e.length&&!/  /.test(e))return e;for(var r=t,n="",i=0;i<e.length;i++){var o=e.charAt(i);" "!=o||!r||i!=e.length-1&&32!=e.charCodeAt(i+1)||(o=" "),n+=o,r=" "==o}return n}(t,e.trailingSpace):t,c=e.cm.state.specialChars,u=!1;if(c.test(t)){l=document.createDocumentFragment();for(var d=0;;){c.lastIndex=d;var f=c.exec(t),h=f?f.index-d:t.length-d;if(h&&(p=document.createTextNode(s.slice(d,d+h)),v&&y<9?l.appendChild(L("span",[p])):l.appendChild(p),e.map.push(e.pos,e.pos+h,p),e.col+=h,e.pos+=h),!f)break;d+=1+h;var p=void 0;"\t"==f[0]?(h=(h=e.cm.options.tabSize)-e.col%h,(p=l.appendChild(L("span",G(h),"cm-tab"))).setAttribute("role","presentation"),p.setAttribute("cm-text","\t"),e.col+=h):("\r"==f[0]||"\n"==f[0]?(p=l.appendChild(L("span","\r"==f[0]?"␍":"␤","cm-invalidchar"))).setAttribute("cm-text",f[0]):((p=e.cm.options.specialCharPlaceholder(f[0])).setAttribute("cm-text",f[0]),v&&y<9?l.appendChild(L("span",[p])):l.appendChild(p)),e.col+=1),e.map.push(e.pos,e.pos+1,p),e.pos++}}else e.col+=t.length,l=document.createTextNode(s),e.map.push(e.pos,e.pos+t.length,l),v&&y<9&&(u=!0),e.pos+=t.length;if(e.trailingSpace=32==s.charCodeAt(t.length-1),r||n||i||u||o||a){r=r||"";n&&(r+=n),i&&(r+=i);var m=L("span",[l],r,o);if(a)for(var g in a)a.hasOwnProperty(g)&&"style"!=g&&"class"!=g&&m.setAttribute(g,a[g]);return e.content.appendChild(m)}e.content.appendChild(l)}}function Qt(e,t,r,n){var i=!n&&r.widgetNode;i&&e.map.push(e.pos,e.pos+t,i),!n&&e.cm.display.input.needsContentAttribute&&(i=i||e.content.appendChild(document.createElement("span"))).setAttribute("cm-marker",r.id),i&&(e.cm.display.input.setUneditable(i),e.content.appendChild(i)),e.pos+=t,e.trailingSpace=!1}function er(e,t,r){this.line=t,this.rest=function(e){for(var t,r;t=Ft(e);)e=t.find(1,!0).line,(r=r||[]).push(e);return r}(t),this.size=this.rest?Qe($(this.rest))-r+1:1,this.node=this.text=null,this.hidden=Bt(e,t)}function tr(e,t,r){for(var n=[],i=t;i<r;i=a){var o=new er(e.doc,Xe(e.doc,i),i),a=i+o.size;n.push(o)}return n}var rr=null;function nr(e,t){var r=e.ownsGroup;if(r)try{!function(e){var t=e.delayedCallbacks,r=0;do{for(;r<t.length;r++)t[r].call(null);for(var n=0;n<e.ops.length;n++){var i=e.ops[n];if(i.cursorActivityHandlers)for(;i.cursorActivityCalled<i.cursorActivityHandlers.length;)i.cursorActivityHandlers[i.cursorActivityCalled++].call(null,i.cm)}}while(r<t.length)}(r)}finally{rr=null,t(r)}}var ir=null;function or(e,t){var r=be(e,t);if(r.length){var n,i=Array.prototype.slice.call(arguments,2);rr?n=rr.delayedCallbacks:ir?n=ir:(n=ir=[],setTimeout(ar,0));for(var o=0;o<r.length;++o)!function(e){n.push(function(){return r[e].apply(null,i)})}(o)}}function ar(){var e=ir;ir=null;for(var t=0;t<e.length;++t)e[t]()}function lr(e,t,r,n){for(var i=0;i<t.changes.length;i++){var o=t.changes[i];"text"==o?function(e,t){var r=t.text.className,n=cr(e,t);t.text==t.node&&(t.node=n.pre);t.text.parentNode.replaceChild(n.pre,t.text),t.text=n.pre,n.bgClass!=t.bgClass||n.textClass!=t.textClass?(t.bgClass=n.bgClass,t.textClass=n.textClass,ur(e,t)):r&&(t.text.className=r)}(e,t):"gutter"==o?dr(e,t,r,n):"class"==o?ur(e,t):"widget"==o&&function(e,t,r){t.alignable&&(t.alignable=null);for(var n=k("CodeMirror-linewidget"),i=t.node.firstChild,o=void 0;i;i=o)o=i.nextSibling,n.test(i.className)&&t.node.removeChild(i);fr(e,t,r)}(e,t,n)}t.changes=null}function sr(e){return e.node==e.text&&(e.node=L("div",null,null,"position: relative"),e.text.parentNode&&e.text.parentNode.replaceChild(e.node,e.text),e.node.appendChild(e.text),v&&y<8&&(e.node.style.zIndex=2)),e.node}function cr(e,t){var r=e.display.externalMeasured;return r&&r.line==t.line?(e.display.externalMeasured=null,t.measure=r.measure,r.built):Yt(e,t)}function ur(e,t){var r,n;r=e,(n=(i=t).bgClass?i.bgClass+" "+(i.line.bgClass||""):i.line.bgClass)&&(n+=" CodeMirror-linebackground"),i.background?n?i.background.className=n:(i.background.parentNode.removeChild(i.background),i.background=null):n&&(e=sr(i),i.background=e.insertBefore(L("div",null,n),e.firstChild),r.display.input.setUneditable(i.background)),t.line.wrapClass?sr(t).className=t.line.wrapClass:t.node!=t.text&&(t.node.className="");var i=t.textClass?t.textClass+" "+(t.line.textClass||""):t.line.textClass;t.text.className=i||""}function dr(e,t,r,n){t.gutter&&(t.node.removeChild(t.gutter),t.gutter=null),t.gutterBackground&&(t.node.removeChild(t.gutterBackground),t.gutterBackground=null),t.line.gutterClass&&(o=sr(t),t.gutterBackground=L("div",null,"CodeMirror-gutter-background "+t.line.gutterClass,"left: "+(e.options.fixedGutter?n.fixedPos:-n.gutterTotalWidth)+"px; width: "+n.gutterTotalWidth+"px"),e.display.input.setUneditable(t.gutterBackground),o.insertBefore(t.gutterBackground,t.text));var i=t.line.gutterMarkers;if(e.options.lineNumbers||i){var o=sr(t),a=t.gutter=L("div",null,"CodeMirror-gutter-wrapper","left: "+(e.options.fixedGutter?n.fixedPos:-n.gutterTotalWidth)+"px");if(e.display.input.setUneditable(a),o.insertBefore(a,t.text),t.line.gutterClass&&(a.className+=" "+t.line.gutterClass),!e.options.lineNumbers||i&&i["CodeMirror-linenumbers"]||(t.lineNumber=a.appendChild(L("div",rt(e.options,r),"CodeMirror-linenumber CodeMirror-gutter-elt","left: "+n.gutterLeft["CodeMirror-linenumbers"]+"px; width: "+e.display.lineNumInnerWidth+"px"))),i)for(var l=0;l<e.display.gutterSpecs.length;++l){var s=e.display.gutterSpecs[l].className,c=i.hasOwnProperty(s)&&i[s];c&&a.appendChild(L("div",[c],"CodeMirror-gutter-elt","left: "+n.gutterLeft[s]+"px; width: "+n.gutterWidth[s]+"px"))}}}function fr(e,t,r){if(hr(e,t.line,t,r,!0),t.rest)for(var n=0;n<t.rest.length;n++)hr(e,t.rest[n],t,r,!1)}function hr(e,t,r,n,i){if(t.widgets)for(var o=sr(r),a=0,l=t.widgets;a<l.length;++a){var s=l[a],c=L("div",[s.node],"CodeMirror-linewidget"+(s.className?" "+s.className:""));s.handleMouseEvents||c.setAttribute("cm-ignore-events","true"),function(e,t,r,n){{e.noHScroll&&((r.alignable||(r.alignable=[])).push(t),r=n.wrapperWidth,t.style.left=n.fixedPos+"px",e.coverGutter||(r-=n.gutterTotalWidth,t.style.paddingLeft=n.gutterTotalWidth+"px"),t.style.width=r+"px")}e.coverGutter&&(t.style.zIndex=5,t.style.position="relative",e.noHScroll||(t.style.marginLeft=-n.gutterTotalWidth+"px"))}(s,c,r,n),e.display.input.setUneditable(c),i&&s.above?o.insertBefore(c,r.gutter||r.text):o.appendChild(c),or(s,"redraw")}}function pr(e){if(null!=e.height)return e.height;var t,r=e.doc.cm;return r?(N(document.body,e.node)||(t="position: relative;",e.coverGutter&&(t+="margin-left: -"+r.display.gutters.offsetWidth+"px;"),e.noHScroll&&(t+="width: "+r.display.wrapper.clientWidth+"px;"),T(r.display.measure,L("div",[e.node],null,t))),e.height=e.node.parentNode.offsetHeight):0}function mr(e,t){for(var r=Ae(t);r!=e.wrapper;r=r.parentNode)if(!r||1==r.nodeType&&"true"==r.getAttribute("cm-ignore-events")||r.parentNode==e.sizer&&r!=e.mover)return 1}function gr(e){return e.lineSpace.offsetTop}function vr(e){return e.mover.offsetHeight-e.lineSpace.offsetHeight}function yr(e){if(e.cachedPaddingH)return e.cachedPaddingH;var t=T(e.measure,L("pre","x","CodeMirror-line-like")),t=window.getComputedStyle?window.getComputedStyle(t):t.currentStyle,t={left:parseInt(t.paddingLeft),right:parseInt(t.paddingRight)};return isNaN(t.left)||isNaN(t.right)||(e.cachedPaddingH=t),t}function br(e){return I-e.display.nativeBarWidth}function wr(e){return e.display.scroller.clientWidth-br(e)-e.display.barWidth}function xr(e){return e.display.scroller.clientHeight-br(e)-e.display.barHeight}function kr(e,t,r){if(e.line==t)return{map:e.measure.map,cache:e.measure.cache};for(var n=0;n<e.rest.length;n++)if(e.rest[n]==t)return{map:e.measure.maps[n],cache:e.measure.caches[n]};for(var i=0;i<e.rest.length;i++)if(Qe(e.rest[i])>r)return{map:e.measure.maps[i],cache:e.measure.caches[i],before:!0}}function Cr(e,t,r,n){return Tr(e,Mr(e,t),r,n)}function Sr(e,t){if(t>=e.display.viewFrom&&t<e.display.viewTo)return e.display.view[Qr(e,t)];e=e.display.externalMeasured;return e&&t>=e.lineN&&t<e.lineN+e.size?e:void 0}function Mr(e,t){var r,n,i=Qe(t),o=Sr(e,i);o&&!o.text?o=null:o&&o.changes&&(lr(e,o,i,qr(e)),e.curOp.forceUpdate=!0),o||(r=e,e=Qe(n=It(n=t)),(n=r.display.externalMeasured=new er(r.doc,n,e)).lineN=e,e=n.built=Yt(r,n),n.text=e.pre,T(r.display.lineMeasure,e.pre),o=n);i=kr(o,t,i);return{line:t,view:o,rect:null,map:i.map,cache:i.cache,before:i.before,hasHeights:!1}}function Tr(e,t,r,n,i){t.before&&(r=-1);var o,a=r+(n||"");return t.cache.hasOwnProperty(a)?o=t.cache[a]:(t.rect||(t.rect=t.view.text.getBoundingClientRect()),t.hasHeights||(function(e,t,r){var n=e.options.lineWrapping,e=n&&wr(e);if(!t.measure.heights||n&&t.measure.width!=e){var i=t.measure.heights=[];if(n){t.measure.width=e;for(var o=t.text.firstChild.getClientRects(),a=0;a<o.length-1;a++){var l=o[a],s=o[a+1];2<Math.abs(l.bottom-s.bottom)&&i.push((l.bottom+s.top)/2-r.top)}}i.push(r.bottom-r.top)}}(e,t.view,t.rect),t.hasHeights=!0),(o=function(e,t,r,n){var i,o=Nr(t.map,r,n),a=o.node,l=o.start,s=o.end,c=o.collapse;if(3==a.nodeType){for(var u=0;u<4;u++){for(;l&&re(t.line.text.charAt(o.coverStart+l));)--l;for(;o.coverStart+s<o.coverEnd&&re(t.line.text.charAt(o.coverStart+s));)++s;if((i=v&&y<9&&0==l&&s==o.coverEnd-o.coverStart?a.parentNode.getBoundingClientRect():function(e,t){var r=Or;if("left"==t)for(var n=0;n<e.length&&(r=e[n]).left==r.right;n++);else for(var i=e.length-1;0<=i&&(r=e[i]).left==r.right;i--);return r}(C(a,l,s).getClientRects(),n)).left||i.right||0==l)break;s=l,--l,c="right"}v&&y<11&&(i=function(e,t){if(!window.screen||null==screen.logicalXDPI||screen.logicalXDPI==screen.deviceXDPI||!function(e){if(null!=He)return He;var e=(t=T(e,L("span","x"))).getBoundingClientRect(),t=C(t,0,1).getBoundingClientRect();return He=1<Math.abs(e.left-t.left)}(e))return t;var r=screen.logicalXDPI/screen.deviceXDPI,e=screen.logicalYDPI/screen.deviceYDPI;return{left:t.left*r,right:t.right*r,top:t.top*e,bottom:t.bottom*e}}(e.display.measure,i))}else 0<l&&(c=n="right"),i=e.options.lineWrapping&&1<(m=a.getClientRects()).length?m["right"==n?m.length-1:0]:a.getBoundingClientRect();{!(v&&y<9)||l||i&&(i.left||i.right)||(g=a.parentNode.getClientRects()[0],i=g?{left:g.left,right:g.left+$r(e.display),top:g.top,bottom:g.bottom}:Or)}for(var d=i.top-t.rect.top,r=i.bottom-t.rect.top,f=(d+r)/2,h=t.view.measure.heights,p=0;p<h.length-1&&!(f<h[p]);p++);var m=p?h[p-1]:0,g=h[p],g={left:("right"==c?i.right:i.left)-t.rect.left,right:("left"==c?i.left:i.right)-t.rect.left,top:m,bottom:g};i.left||i.right||(g.bogus=!0);e.options.singleCursorHeightPerLine||(g.rtop=d,g.rbottom=r);return g}(e,t,r,n)).bogus||(t.cache[a]=o)),{left:o.left,right:o.right,top:i?o.rtop:o.top,bottom:i?o.rbottom:o.bottom}}var Lr,Or={left:0,right:0,top:0,bottom:0};function Nr(e,t,r){for(var n,i,o,a,l,s,c=0;c<e.length;c+=3)if(l=e[c],s=e[c+1],t<l?(i=0,o=1,a="left"):t<s?o=(i=t-l)+1:(c==e.length-3||t==s&&e[c+3]>t)&&(i=(o=s-l)-1,s<=t&&(a="right")),null!=i){if(n=e[c+2],l==s&&r==(n.insertLeft?"left":"right")&&(a=r),"left"==r&&0==i)for(;c&&e[c-2]==e[c-3]&&e[c-1].insertLeft;)n=e[2+(c-=3)],a="left";if("right"==r&&i==s-l)for(;c<e.length-3&&e[c+3]==e[c+4]&&!e[c+5].insertLeft;)n=e[(c+=3)+2],a="right";break}return{node:n,start:i,end:o,collapse:a,coverStart:l,coverEnd:s}}function Ar(e){if(e.measure&&(e.measure.cache={},e.measure.heights=null,e.rest))for(var t=0;t<e.rest.length;t++)e.measure.caches[t]={}}function zr(e){e.display.externalMeasure=null,M(e.display.lineMeasure);for(var t=0;t<e.display.view.length;t++)Ar(e.display.view[t])}function Dr(e){zr(e),e.display.cachedCharWidth=e.display.cachedTextHeight=e.display.cachedPaddingH=null,e.options.lineWrapping||(e.display.maxLineChanged=!0),e.display.lineNumChars=null}function Wr(){return o&&s?-(document.body.getBoundingClientRect().left-parseInt(getComputedStyle(document.body).marginLeft)):window.pageXOffset||(document.documentElement||document.body).scrollLeft}function Er(){return o&&s?-(document.body.getBoundingClientRect().top-parseInt(getComputedStyle(document.body).marginTop)):window.pageYOffset||(document.documentElement||document.body).scrollTop}function jr(e){var t=0;if(e.widgets)for(var r=0;r<e.widgets.length;++r)e.widgets[r].above&&(t+=pr(e.widgets[r]));return t}function Pr(e,t,r,n,i){if(i||(i=jr(t),r.top+=i,r.bottom+=i),"line"==n)return r;n=n||"local";t=Vt(t);return"local"==n?t+=gr(e.display):t-=e.display.viewOffset,"page"!=n&&"window"!=n||(t+=(e=e.display.lineSpace.getBoundingClientRect()).top+("window"==n?0:Er()),n=e.left+("window"==n?0:Wr()),r.left+=n,r.right+=n),r.top+=t,r.bottom+=t,r}function Fr(e,t,r){if("div"==r)return t;var n=t.left,t=t.top;"page"==r?(n-=Wr(),t-=Er()):"local"!=r&&r||(n+=(r=e.display.sizer.getBoundingClientRect()).left,t+=r.top);e=e.display.lineSpace.getBoundingClientRect();return{left:n-e.left,top:t-e.top}}function Hr(e,t,r,n,i){return Pr(e,n=n||Xe(e.doc,t.line),Cr(e,n,t.ch,i),r)}function Ir(r,e,n,i,o,a){function l(e,t){e=Tr(r,o,e,t?"right":"left",a);return t?e.left=e.right:e.right=e.left,Pr(r,i,e,n)}i=i||Xe(r.doc,e.line),o=o||Mr(r,i);var s=ge(i,r.doc.direction),t=e.ch,c=e.sticky;if(t>=i.text.length?(t=i.text.length,c="before"):t<=0&&(t=0,c="after"),!s)return l("before"==c?t-1:t,"before"==c);function u(e,t,r){return l(r?e-1:e,1==s[t].level!=r)}var d=ae(s,t,c),e=oe,d=u(t,d,"before"==c);return null!=e&&(d.other=u(t,e,"before"!=c)),d}function Rr(e,t){var r=0;t=ut(e.doc,t),e.options.lineWrapping||(r=$r(e.display)*t.ch);t=Xe(e.doc,t.line),e=Vt(t)+gr(e.display);return{left:r,right:r,top:e,bottom:e+t.height}}function _r(e,t,r,n,i){r=nt(e,t,r);return r.xRel=i,n&&(r.outside=n),r}function Br(e,t,r){var n=e.doc;if((r+=e.display.viewOffset)<0)return _r(n.first,0,null,-1,-1);var i=et(n,r),o=n.first+n.size-1;if(o<i)return _r(n.first+n.size-1,Xe(n,o).text.length,null,1,1);t<0&&(t=0);for(var a=Xe(n,i);;){var l=function(r,e,t,n,i){i-=Vt(e);var o=Mr(r,e),a=jr(e),l=0,s=e.text.length,c=!0,u=ge(e,r.doc.direction);{u&&(h=(r.options.lineWrapping?function(e,t,r,n,i,o,a){var a=Vr(e,t,n,a),l=a.begin,s=a.end;/\s/.test(t.text.charAt(s-1))&&s--;for(var c=null,u=null,d=0;d<i.length;d++){var f,h=i[d];h.from>=s||h.to<=l||(f=1!=h.level,f=Tr(e,n,f?Math.min(s,h.to)-1:Math.max(l,h.from)).right,f=f<o?o-f+1e9:f-o,(!c||f<u)&&(c=h,u=f))}c=c||i[i.length-1];c.from<l&&(c={from:l,to:c.to,level:c.level});c.to>s&&(c={from:c.from,to:s,level:c.level});return c}:function(r,n,i,o,a,l,s){var e=ie(function(e){var t=a[e],e=1!=t.level;return Kr(Ir(r,nt(i,e?t.to:t.from,e?"before":"after"),"line",n,o),l,s,!0)},0,a.length-1),t=a[e];{var c;0<e&&(c=1!=t.level,Kr(c=Ir(r,nt(i,c?t.from:t.to,c?"after":"before"),"line",n,o),l,s,!0)&&c.top>s&&(t=a[e-1]))}return t})(r,e,t,o,u,n,i),c=1!=h.level,l=c?h.from:h.to-1,s=c?h.to:h.from-1)}var d=null,f=null,u=ie(function(e){var t=Tr(r,o,e);return t.top+=a,t.bottom+=a,Kr(t,n,i,!1)&&(t.top<=i&&t.left<=n&&(d=e,f=t),1)},l,s),h=!1;{var p,m;f?(p=n-f.left<f.right-n,u=d+((m=p==c)?0:1),m=m?"after":"before",p=p?f.left:f.right):(c||u!=s&&u!=l||u++,m=0==u||u!=e.text.length&&Tr(r,o,u-(c?1:0)).bottom+a<=i==c?"after":"before",c=Ir(r,nt(t,u,m),"line",e,o),p=c.left,h=i<c.top?-1:i>=c.bottom?1:0)}return u=ne(e.text,u,1),_r(t,u,m,h,n-p)}(e,a,i,t,r),s=function(e,t){var r,n=Mt&&e.markedSpans;if(n)for(var i=0;i<n.length;++i){var o=n[i];o.marker.collapsed&&(null==o.from||o.from<t)&&(null==o.to||o.to>t)&&(!r||Et(r,o.marker)<0)&&(r=o.marker)}return r}(a,l.ch+(0<l.xRel||0<l.outside?1:0));if(!s)return l;s=s.find(1);if(s.line==i)return s;a=Xe(n,i=s.line)}}function Vr(t,e,r,n){n-=jr(e);var i=e.text.length,e=ie(function(e){return Tr(t,r,e-1).bottom<=n},i,0);return{begin:e,end:i=ie(function(e){return Tr(t,r,e).top>n},e,i)}}function Ur(e,t,r,n){return Vr(e,t,r=r||Mr(e,t),Pr(e,t,Tr(e,r,n),"line").top)}function Kr(e,t,r,n){return!(e.bottom<=r)&&(e.top>r||(n?e.left:e.right)>t)}function Gr(e){if(null!=e.cachedTextHeight)return e.cachedTextHeight;if(null==Lr){Lr=L("pre",null,"CodeMirror-line-like");for(var t=0;t<49;++t)Lr.appendChild(document.createTextNode("x")),Lr.appendChild(L("br"));Lr.appendChild(document.createTextNode("x"))}T(e.measure,Lr);var r=Lr.offsetHeight/50;return 3<r&&(e.cachedTextHeight=r),M(e.measure),r||1}function $r(e){if(null!=e.cachedCharWidth)return e.cachedCharWidth;var t=L("span","xxxxxxxxxx"),r=L("pre",[t],"CodeMirror-line-like");T(e.measure,r);t=t.getBoundingClientRect(),t=(t.right-t.left)/10;return 2<t&&(e.cachedCharWidth=t),t||10}function qr(e){for(var t=e.display,r={},n={},i=t.gutters.clientLeft,o=t.gutters.firstChild,a=0;o;o=o.nextSibling,++a){var l=e.display.gutterSpecs[a].className;r[l]=o.offsetLeft+o.clientLeft+i,n[l]=o.clientWidth}return{fixedPos:Xr(t),gutterTotalWidth:t.gutters.offsetWidth,gutterLeft:r,gutterWidth:n,wrapperWidth:t.wrapper.clientWidth}}function Xr(e){return e.scroller.getBoundingClientRect().left-e.sizer.getBoundingClientRect().left}function Yr(n){var i=Gr(n.display),o=n.options.lineWrapping,a=o&&Math.max(5,n.display.scroller.clientWidth/$r(n.display)-3);return function(e){if(Bt(n.doc,e))return 0;var t=0;if(e.widgets)for(var r=0;r<e.widgets.length;r++)e.widgets[r].height&&(t+=e.widgets[r].height);return o?t+(Math.ceil(e.text.length/a)||1)*i:t+i}}function Zr(e){var t=e.doc,r=Yr(e);t.iter(function(e){var t=r(e);t!=e.height&&Je(e,t)})}function Jr(e,t,r,n){var i=e.display;if(!r&&"true"==Ae(t).getAttribute("cm-not-content"))return null;var o,a,l=i.lineSpace.getBoundingClientRect();try{o=t.clientX-l.left,a=t.clientY-l.top}catch(e){return null}var s,i=Br(e,o,a);return n&&0<i.xRel&&(s=Xe(e.doc,i.line).text).length==i.ch&&(s=P(s,s.length,e.options.tabSize)-s.length,i=nt(i.line,Math.max(0,Math.round((o-yr(e.display).left)/$r(e.display))-s))),i}function Qr(e,t){if(t>=e.display.viewTo)return null;if((t-=e.display.viewFrom)<0)return null;for(var r=e.display.view,n=0;n<r.length;n++)if((t-=r[n].size)<0)return n}function en(e,t,r,n){null==t&&(t=e.doc.first),null==r&&(r=e.doc.first+e.doc.size),n=n||0;var i,o,a=e.display;n&&r<a.viewTo&&(null==a.updateLineNumbers||a.updateLineNumbers>t)&&(a.updateLineNumbers=t),e.curOp.viewChanged=!0,t>=a.viewTo?Mt&&Rt(e.doc,t)<a.viewTo&&rn(e):r<=a.viewFrom?Mt&&_t(e.doc,r+n)>a.viewFrom?rn(e):(a.viewFrom+=n,a.viewTo+=n):t<=a.viewFrom&&r>=a.viewTo?rn(e):t<=a.viewFrom?(i=nn(e,r,r+n,1))?(a.view=a.view.slice(i.index),a.viewFrom=i.lineN,a.viewTo+=n):rn(e):r>=a.viewTo?(o=nn(e,t,t,-1))?(a.view=a.view.slice(0,o.index),a.viewTo=o.lineN):rn(e):(i=nn(e,t,t,-1),o=nn(e,r,r+n,1),i&&o?(a.view=a.view.slice(0,i.index).concat(tr(e,i.lineN,o.lineN)).concat(a.view.slice(o.index)),a.viewTo+=n):rn(e));e=a.externalMeasured;e&&(r<e.lineN?e.lineN+=n:t<e.lineN+e.size&&(a.externalMeasured=null))}function tn(e,t,r){e.curOp.viewChanged=!0;var n=e.display,i=e.display.externalMeasured;i&&t>=i.lineN&&t<i.lineN+i.size&&(n.externalMeasured=null),t<n.viewFrom||t>=n.viewTo||(null==(t=n.view[Qr(e,t)]).node||-1==H(t=t.changes||(t.changes=[]),r)&&t.push(r))}function rn(e){e.display.viewFrom=e.display.viewTo=e.doc.first,e.display.view=[],e.display.viewOffset=0}function nn(e,t,r,n){var i,o=Qr(e,t),a=e.display.view;if(!Mt||r==e.doc.first+e.doc.size)return{index:o,lineN:r};for(var l=e.display.viewFrom,s=0;s<o;s++)l+=a[s].size;if(l!=t){if(0<n){if(o==a.length-1)return null;i=l+a[o].size-t,o++}else i=l-t;t+=i,r+=i}for(;Rt(e.doc,r)!=r;){if(o==(n<0?0:a.length-1))return null;r+=n*a[o-(n<0?1:0)].size,o+=n}return{index:o,lineN:r}}function on(e){for(var t=e.display.view,r=0,n=0;n<t.length;n++){var i=t[n];i.hidden||i.node&&!i.changes||++r}return r}function an(e){e.display.input.showSelection(e.display.input.prepareSelection())}function ln(e,t){void 0===t&&(t=!0);for(var r,n,i=e.doc,o={},a=o.cursors=document.createDocumentFragment(),l=o.selection=document.createDocumentFragment(),s=0;s<i.sel.ranges.length;s++){!t&&s==i.sel.primIndex||((r=i.sel.ranges[s]).from().line>=e.display.viewTo||r.to().line<e.display.viewFrom||(((n=r.empty())||e.options.showCursorWhenSelecting)&&sn(e,r.head,a),n||function(i,e,t){var r=i.display,o=i.doc,a=document.createDocumentFragment(),n=yr(i.display),C=n.left,S=Math.max(r.sizerWidth,wr(i)-r.sizer.offsetLeft)-n.right,M="ltr"==o.direction;function T(e,t,r,n){t<0&&(t=0),t=Math.round(t),n=Math.round(n),a.appendChild(L("div",null,"CodeMirror-selected","position: absolute; left: "+e+"px;\n                             top: "+t+"px; width: "+(null==r?S-e:r)+"px;\n                             height: "+(n-t)+"px"))}function l(r,m,g){var v,y,n=Xe(o,r),b=n.text.length;function w(e,t){return Hr(i,nt(r,e),"div",n,t)}function x(e,t,r){e=Ur(i,n,null,e),t="ltr"==t==("after"==r)?"left":"right";return w("after"==r?e.begin:e.end-(/\s/.test(n.text.charAt(e.end-1))?2:1),t)[t]}var k=ge(n,o.direction);return function(e,t,r,n){if(!e)return n(t,r,"ltr",0);for(var i=!1,o=0;o<e.length;++o){var a=e[o];(a.from<r&&a.to>t||t==r&&a.to==t)&&(n(Math.max(a.from,t),Math.min(a.to,r),1==a.level?"rtl":"ltr",o),i=!0)}i||n(t,r,"ltr")}(k,m||0,null==g?b:g,function(e,t,r,n){var i,o,a,l,s="ltr"==r,c=w(e,s?"left":"right"),u=w(t-1,s?"right":"left"),d=null==m&&0==e,f=null==g&&t==b,h=0==n,p=!k||n==k.length-1;u.top-c.top<=3?(i=(M?f:d)&&p,n=(M?d:f)&&h?C:(s?c:u).left,i=i?S:(s?u:c).right,T(n,c.top,i-n,c.bottom)):(r=s?(o=M&&d&&h?C:c.left,a=M?S:x(e,r,"before"),l=M?C:x(t,r,"after"),M&&f&&p?S:u.right):(o=M?x(e,r,"before"):C,a=!M&&d&&h?S:c.right,l=!M&&f&&p?C:u.left,M?x(t,r,"after"):S),T(o,c.top,a-o,c.bottom),c.bottom<u.top&&T(C,c.bottom,null,u.top),T(l,u.top,r-l,u.bottom)),(!v||cn(c,v)<0)&&(v=c),cn(u,v)<0&&(v=u),(!y||cn(c,y)<0)&&(y=c),cn(u,y)<0&&(y=u)}),{start:v,end:y}}var s=e.from(),r=e.to();{s.line==r.line?l(s.line,s.ch,r.ch):(n=Xe(o,s.line),e=Xe(o,r.line),e=It(n)==It(e),n=l(s.line,s.ch,e?n.text.length+1:null).end,r=l(r.line,e?0:null,r.ch).start,e&&(n.top<r.top-2?(T(n.right,n.top,null,n.bottom),T(C,r.top,r.left,r.bottom)):T(n.right,n.top,r.left-n.right,n.bottom)),n.bottom<r.top&&T(C,n.bottom,null,r.top))}t.appendChild(a)}(e,r,l)))}return o}function sn(e,t,r){var n=Ir(e,t,"div",null,null,!e.options.singleCursorHeightPerLine),t=r.appendChild(L("div"," ","CodeMirror-cursor"));t.style.left=n.left+"px",t.style.top=n.top+"px",t.style.height=Math.max(0,n.bottom-n.top)*e.options.cursorHeight+"px",n.other&&((r=r.appendChild(L("div"," ","CodeMirror-cursor CodeMirror-secondarycursor"))).style.display="",r.style.left=n.other.left+"px",r.style.top=n.other.top+"px",r.style.height=.85*(n.other.bottom-n.other.top)+"px")}function cn(e,t){return e.top-t.top||e.left-t.left}function un(e){var t,r;e.state.focused&&(t=e.display,clearInterval(t.blinker),r=!0,t.cursorDiv.style.visibility="",0<e.options.cursorBlinkRate?t.blinker=setInterval(function(){e.hasFocus()||pn(e),t.cursorDiv.style.visibility=(r=!r)?"":"hidden"},e.options.cursorBlinkRate):e.options.cursorBlinkRate<0&&(t.cursorDiv.style.visibility="hidden"))}function dn(e){e.state.focused||(e.display.input.focus(),hn(e))}function fn(e){e.state.delayingBlurEvent=!0,setTimeout(function(){e.state.delayingBlurEvent&&(e.state.delayingBlurEvent=!1,pn(e))},100)}function hn(e,t){e.state.delayingBlurEvent&&(e.state.delayingBlurEvent=!1),"nocursor"!=e.options.readOnly&&(e.state.focused||(xe(e,"focus",e,t),e.state.focused=!0,z(e.display.wrapper,"CodeMirror-focused"),e.curOp||e.display.selForContextMenu==e.doc.sel||(e.display.input.reset(),h&&setTimeout(function(){return e.display.input.reset(!0)},20)),e.display.input.receivedFocus()),un(e))}function pn(e,t){e.state.delayingBlurEvent||(e.state.focused&&(xe(e,"blur",e,t),e.state.focused=!1,S(e.display.wrapper,"CodeMirror-focused")),clearInterval(e.display.blinker),setTimeout(function(){e.state.focused||(e.display.shift=!1)},150))}function mn(e){for(var t=e.display,r=t.lineDiv.offsetTop,n=0;n<t.view.length;n++){var i,o=t.view[n],a=e.options.lineWrapping,l=void 0,s=0;if(!o.hidden){v&&y<8?(l=(i=o.node.offsetTop+o.node.offsetHeight)-r,r=i):(l=(c=o.node.getBoundingClientRect()).bottom-c.top,!a&&o.text.firstChild&&(s=o.text.firstChild.getBoundingClientRect().right-c.left-1));var c=o.line.height-l;if((.005<c||c<-.005)&&(Je(o.line,l),gn(o.line),o.rest))for(var u=0;u<o.rest.length;u++)gn(o.rest[u]);s>e.display.sizerWidth&&((s=Math.ceil(s/$r(e.display)))>e.display.maxLineLength&&(e.display.maxLineLength=s,e.display.maxLine=o.line,e.display.maxLineChanged=!0))}}}function gn(e){if(e.widgets)for(var t=0;t<e.widgets.length;++t){var r=e.widgets[t],n=r.node.parentNode;n&&(r.height=n.offsetHeight)}}function vn(e,t,r){var n=r&&null!=r.top?Math.max(0,r.top):e.scroller.scrollTop,n=Math.floor(n-gr(e)),i=r&&null!=r.bottom?r.bottom:n+e.wrapper.clientHeight,o=et(t,n),n=et(t,i);return r&&r.ensure&&(i=r.ensure.from.line,r=r.ensure.to.line,i<o?n=et(t,Vt(Xe(t,o=i))+e.wrapper.clientHeight):Math.min(r,t.lastLine())>=n&&(o=et(t,Vt(Xe(t,r))-e.wrapper.clientHeight),n=r)),{from:o,to:Math.max(n,o+1)}}function yn(e,t){var r=e.display,n=Gr(e.display);t.top<0&&(t.top=0);var i=(e.curOp&&null!=e.curOp.scrollTop?e.curOp:r.scroller).scrollTop,o=xr(e),a={};t.bottom-t.top>o&&(t.bottom=t.top+o);var l=e.doc.height+vr(r),s=t.top<n,n=t.bottom>l-n;t.top<i?a.scrollTop=s?0:t.top:t.bottom>i+o&&((c=Math.min(t.top,(n?l:t.bottom)-o))!=i&&(a.scrollTop=c));var c=(e.curOp&&null!=e.curOp.scrollLeft?e.curOp:r.scroller).scrollLeft,e=wr(e)-(e.options.fixedGutter?r.gutters.offsetWidth:0),r=t.right-t.left>e;return r&&(t.right=t.left+e),t.left<10?a.scrollLeft=0:t.left<c?a.scrollLeft=Math.max(0,t.left-(r?0:10)):t.right>e+c-3&&(a.scrollLeft=t.right+(r?0:10)-e),a}function bn(e,t){null!=t&&(kn(e),e.curOp.scrollTop=(null==e.curOp.scrollTop?e.doc:e.curOp).scrollTop+t)}function wn(e){kn(e);var t=e.getCursor();e.curOp.scrollToPos={from:t,to:t,margin:e.options.cursorScrollMargin}}function xn(e,t,r){null==t&&null==r||kn(e),null!=t&&(e.curOp.scrollLeft=t),null!=r&&(e.curOp.scrollTop=r)}function kn(e){var t=e.curOp.scrollToPos;t&&(e.curOp.scrollToPos=null,Cn(e,Rr(e,t.from),Rr(e,t.to),t.margin))}function Cn(e,t,r,n){n=yn(e,{left:Math.min(t.left,r.left),top:Math.min(t.top,r.top)-n,right:Math.max(t.right,r.right),bottom:Math.max(t.bottom,r.bottom)+n});xn(e,n.scrollLeft,n.scrollTop)}function Sn(e,t){Math.abs(e.doc.scrollTop-t)<2||(f||Un(e,{top:t}),Mn(e,t,!0),f&&Un(e),In(e,100))}function Mn(e,t,r){t=Math.max(0,Math.min(e.display.scroller.scrollHeight-e.display.scroller.clientHeight,t)),e.display.scroller.scrollTop==t&&!r||(e.doc.scrollTop=t,e.display.scrollbars.setScrollTop(t),e.display.scroller.scrollTop!=t&&(e.display.scroller.scrollTop=t))}function Tn(e,t,r,n){t=Math.max(0,Math.min(t,e.display.scroller.scrollWidth-e.display.scroller.clientWidth)),(r?t==e.doc.scrollLeft:Math.abs(e.doc.scrollLeft-t)<2)&&!n||(e.doc.scrollLeft=t,$n(e),e.display.scroller.scrollLeft!=t&&(e.display.scroller.scrollLeft=t),e.display.scrollbars.setScrollLeft(t))}function Ln(e){var t=e.display,r=t.gutters.offsetWidth,n=Math.round(e.doc.height+vr(e.display));return{clientHeight:t.scroller.clientHeight,viewHeight:t.wrapper.clientHeight,scrollWidth:t.scroller.scrollWidth,clientWidth:t.scroller.clientWidth,viewWidth:t.wrapper.clientWidth,barLeft:e.options.fixedGutter?r:0,docHeight:n,scrollHeight:n+br(e)+t.barHeight,nativeBarWidth:t.nativeBarWidth,gutterWidth:r}}e=function(e,t,r){this.cm=r;var n=this.vert=L("div",[L("div",null,null,"min-width: 1px")],"CodeMirror-vscrollbar"),i=this.horiz=L("div",[L("div",null,null,"height: 100%; min-height: 1px")],"CodeMirror-hscrollbar");n.tabIndex=i.tabIndex=-1,e(n),e(i),ye(n,"scroll",function(){n.clientHeight&&t(n.scrollTop,"vertical")}),ye(i,"scroll",function(){i.clientWidth&&t(i.scrollLeft,"horizontal")}),this.checkedZeroWidth=!1,v&&y<8&&(this.horiz.style.minHeight=this.vert.style.minWidth="18px")};e.prototype.update=function(e){var t,r=e.scrollWidth>e.clientWidth+1,n=e.scrollHeight>e.clientHeight+1,i=e.nativeBarWidth;return n?(this.vert.style.display="block",this.vert.style.bottom=r?i+"px":"0",t=e.viewHeight-(r?i:0),this.vert.firstChild.style.height=Math.max(0,e.scrollHeight-e.clientHeight+t)+"px"):(this.vert.style.display="",this.vert.firstChild.style.height="0"),r?(this.horiz.style.display="block",this.horiz.style.right=n?i+"px":"0",this.horiz.style.left=e.barLeft+"px",t=e.viewWidth-e.barLeft-(n?i:0),this.horiz.firstChild.style.width=Math.max(0,e.scrollWidth-e.clientWidth+t)+"px"):(this.horiz.style.display="",this.horiz.firstChild.style.width="0"),!this.checkedZeroWidth&&0<e.clientHeight&&(0==i&&this.zeroWidthHack(),this.checkedZeroWidth=!0),{right:n?i:0,bottom:r?i:0}},e.prototype.setScrollLeft=function(e){this.horiz.scrollLeft!=e&&(this.horiz.scrollLeft=e),this.disableHoriz&&this.enableZeroWidthBar(this.horiz,this.disableHoriz,"horiz")},e.prototype.setScrollTop=function(e){this.vert.scrollTop!=e&&(this.vert.scrollTop=e),this.disableVert&&this.enableZeroWidthBar(this.vert,this.disableVert,"vert")},e.prototype.zeroWidthHack=function(){var e=m&&!a?"12px":"18px";this.horiz.style.height=this.vert.style.width=e,this.horiz.style.pointerEvents=this.vert.style.pointerEvents="none",this.disableHoriz=new F,this.disableVert=new F},e.prototype.enableZeroWidthBar=function(r,n,i){r.style.pointerEvents="auto",n.set(1e3,function e(){var t=r.getBoundingClientRect();("vert"==i?document.elementFromPoint(t.right-1,(t.top+t.bottom)/2):document.elementFromPoint((t.right+t.left)/2,t.bottom-1))!=r?r.style.pointerEvents="none":n.set(1e3,e)})},e.prototype.clear=function(){var e=this.horiz.parentNode;e.removeChild(this.horiz),e.removeChild(this.vert)};n=function(){};function On(e,t){t=t||Ln(e);var r=e.display.barWidth,n=e.display.barHeight;Nn(e,t);for(var i=0;i<4&&r!=e.display.barWidth||n!=e.display.barHeight;i++)r!=e.display.barWidth&&e.options.lineWrapping&&mn(e),Nn(e,Ln(e)),r=e.display.barWidth,n=e.display.barHeight}function Nn(e,t){var r=e.display,n=r.scrollbars.update(t);r.sizer.style.paddingRight=(r.barWidth=n.right)+"px",r.sizer.style.paddingBottom=(r.barHeight=n.bottom)+"px",r.heightForcer.style.borderBottom=n.bottom+"px solid transparent",n.right&&n.bottom?(r.scrollbarFiller.style.display="block",r.scrollbarFiller.style.height=n.bottom+"px",r.scrollbarFiller.style.width=n.right+"px"):r.scrollbarFiller.style.display="",n.bottom&&e.options.coverGutterNextToScrollbar&&e.options.fixedGutter?(r.gutterFiller.style.display="block",r.gutterFiller.style.height=n.bottom+"px",r.gutterFiller.style.width=t.gutterWidth+"px"):r.gutterFiller.style.display=""}n.prototype.update=function(){return{bottom:0,right:0}},n.prototype.setScrollLeft=function(){},n.prototype.setScrollTop=function(){},n.prototype.clear=function(){};var An={native:e,null:n};function zn(r){r.display.scrollbars&&(r.display.scrollbars.clear(),r.display.scrollbars.addClass&&S(r.display.wrapper,r.display.scrollbars.addClass)),r.display.scrollbars=new An[r.options.scrollbarStyle](function(e){r.display.wrapper.insertBefore(e,r.display.scrollbarFiller),ye(e,"mousedown",function(){r.state.focused&&setTimeout(function(){return r.display.input.focus()},0)}),e.setAttribute("cm-not-content","true")},function(e,t){("horizontal"==t?Tn:Sn)(r,e)},r),r.display.scrollbars.addClass&&z(r.display.wrapper,r.display.scrollbars.addClass)}var Dn=0;function Wn(e){e.curOp={cm:e,viewChanged:!1,startHeight:e.doc.height,forceUpdate:!1,updateInput:0,typing:!1,changeObjs:null,cursorActivityHandlers:null,cursorActivityCalled:0,selectionChanged:!1,updateMaxLine:!1,scrollLeft:null,scrollTop:null,scrollToPos:null,focus:!1,id:++Dn},e=e.curOp,rr?rr.ops.push(e):e.ownsGroup=rr={ops:[e],delayedCallbacks:[]}}function En(e){e=e.curOp;e&&nr(e,function(e){for(var t=0;t<e.ops.length;t++)e.ops[t].cm.curOp=null;!function(e){for(var t=e.ops,r=0;r<t.length;r++)!function(e){var t=e.cm,r=t.display;(function(e){var t=e.display;!t.scrollbarsClipped&&t.scroller.offsetWidth&&(t.nativeBarWidth=t.scroller.offsetWidth-t.scroller.clientWidth,t.heightForcer.style.height=br(e)+"px",t.sizer.style.marginBottom=-t.nativeBarWidth+"px",t.sizer.style.borderRightWidth=br(e)+"px",t.scrollbarsClipped=!0)})(t),e.updateMaxLine&&Kt(t);e.mustUpdate=e.viewChanged||e.forceUpdate||null!=e.scrollTop||e.scrollToPos&&(e.scrollToPos.from.line<r.viewFrom||e.scrollToPos.to.line>=r.viewTo)||r.maxLineChanged&&t.options.lineWrapping,e.update=e.mustUpdate&&new _n(t,e.mustUpdate&&{top:e.scrollTop,ensure:e.scrollToPos},e.forceUpdate)}(t[r]);for(var n=0;n<t.length;n++)!function(e){e.updatedDisplay=e.mustUpdate&&Bn(e.cm,e.update)}(t[n]);for(var i=0;i<t.length;i++)!function(e){var t=e.cm,r=t.display;e.updatedDisplay&&mn(t);e.barMeasure=Ln(t),r.maxLineChanged&&!t.options.lineWrapping&&(e.adjustWidthTo=Cr(t,r.maxLine,r.maxLine.text.length).left+3,t.display.sizerWidth=e.adjustWidthTo,e.barMeasure.scrollWidth=Math.max(r.scroller.clientWidth,r.sizer.offsetLeft+e.adjustWidthTo+br(t)+t.display.barWidth),e.maxScrollLeft=Math.max(0,r.sizer.offsetLeft+e.adjustWidthTo-wr(t)));(e.updatedDisplay||e.selectionChanged)&&(e.preparedSelection=r.input.prepareSelection())}(t[i]);for(var o=0;o<t.length;o++)!function(e){var t=e.cm;null!=e.adjustWidthTo&&(t.display.sizer.style.minWidth=e.adjustWidthTo+"px",e.maxScrollLeft<t.doc.scrollLeft&&Tn(t,Math.min(t.display.scroller.scrollLeft,e.maxScrollLeft),!0),t.display.maxLineChanged=!1);var r=e.focus&&e.focus==A();e.preparedSelection&&t.display.input.showSelection(e.preparedSelection,r);!e.updatedDisplay&&e.startHeight==t.doc.height||On(t,e.barMeasure);e.updatedDisplay&&Gn(t,e.barMeasure);e.selectionChanged&&un(t);t.state.focused&&e.updateInput&&t.display.input.reset(e.typing);r&&dn(e.cm)}(t[o]);for(var a=0;a<t.length;a++)!function(e){var t=e.cm,r=t.display,n=t.doc;e.updatedDisplay&&Vn(t,e.update);null==r.wheelStartX||null==e.scrollTop&&null==e.scrollLeft&&!e.scrollToPos||(r.wheelStartX=r.wheelStartY=null);null!=e.scrollTop&&Mn(t,e.scrollTop,e.forceScroll);null!=e.scrollLeft&&Tn(t,e.scrollLeft,!0,!0);{var i;e.scrollToPos&&(i=function(e,t,r,n){null==n&&(n=0),e.options.lineWrapping||t!=r||(r="before"==(t=t.ch?nt(t.line,"before"==t.sticky?t.ch-1:t.ch,"after"):t).sticky?nt(t.line,t.ch+1,"before"):t);for(var i=0;i<5;i++){var o,a=!1,l=Ir(e,t),s=r&&r!=t?Ir(e,r):l,c=yn(e,o={left:Math.min(l.left,s.left),top:Math.min(l.top,s.top)-n,right:Math.max(l.left,s.left),bottom:Math.max(l.bottom,s.bottom)+n}),l=e.doc.scrollTop,s=e.doc.scrollLeft;if(null!=c.scrollTop&&(Sn(e,c.scrollTop),1<Math.abs(e.doc.scrollTop-l)&&(a=!0)),null!=c.scrollLeft&&(Tn(e,c.scrollLeft),1<Math.abs(e.doc.scrollLeft-s)&&(a=!0)),!a)break}return o}(t,ut(n,e.scrollToPos.from),ut(n,e.scrollToPos.to),e.scrollToPos.margin),function(e,t){var r,n,i;ke(e,"scrollCursorIntoView")||(n=(r=e.display).sizer.getBoundingClientRect(),i=null,t.top+n.top<0?i=!0:t.bottom+n.top>(window.innerHeight||document.documentElement.clientHeight)&&(i=!1),null==i||c||(t=L("div","​",null,"position: absolute;\n                         top: "+(t.top-r.viewOffset-gr(e.display))+"px;\n                         height: "+(t.bottom-t.top+br(e)+r.barHeight)+"px;\n                         left: "+t.left+"px; width: "+Math.max(2,t.right-t.left)+"px;"),e.display.lineSpace.appendChild(t),t.scrollIntoView(i),e.display.lineSpace.removeChild(t)))}(t,i))}var o=e.maybeHiddenMarkers,a=e.maybeUnhiddenMarkers;if(o)for(var l=0;l<o.length;++l)o[l].lines.length||xe(o[l],"hide");if(a)for(var s=0;s<a.length;++s)a[s].lines.length&&xe(a[s],"unhide");r.wrapper.offsetHeight&&(n.scrollTop=t.display.scroller.scrollTop);e.changeObjs&&xe(t,"changes",t,e.changeObjs);e.update&&e.update.finish()}(t[a])}(e)})}function jn(e,t){if(e.curOp)return t();Wn(e);try{return t()}finally{En(e)}}function Pn(e,t){return function(){if(e.curOp)return t.apply(e,arguments);Wn(e);try{return t.apply(e,arguments)}finally{En(e)}}}function Fn(e){return function(){if(this.curOp)return e.apply(this,arguments);Wn(this);try{return e.apply(this,arguments)}finally{En(this)}}}function Hn(t){return function(){var e=this.cm;if(!e||e.curOp)return t.apply(this,arguments);Wn(e);try{return t.apply(this,arguments)}finally{En(e)}}}function In(e,t){e.doc.highlightFrontier<e.display.viewTo&&e.state.highlight.set(t,E(Rn,e))}function Rn(a){var l,s,c,u=a.doc;u.highlightFrontier>=a.display.viewTo||(l=+new Date+a.options.workTime,s=gt(a,u.highlightFrontier),c=[],u.iter(s.line,Math.min(u.first+u.size,a.display.viewTo+500),function(e){if(s.line>=a.display.viewFrom){var t=e.styles,r=e.text.length>a.options.maxHighlightLength?Ke(u.mode,s.state):null,n=pt(a,e,s,!0);r&&(s.state=r),e.styles=n.styles;r=e.styleClasses,n=n.classes;n?e.styleClasses=n:r&&(e.styleClasses=null);for(var i=!t||t.length!=e.styles.length||r!=n&&(!r||!n||r.bgClass!=n.bgClass||r.textClass!=n.textClass),o=0;!i&&o<t.length;++o)i=t[o]!=e.styles[o];i&&c.push(s.line),e.stateAfter=s.save(),s.nextLine()}else e.text.length<=a.options.maxHighlightLength&&vt(a,e.text,s),e.stateAfter=s.line%5==0?s.save():null,s.nextLine();if(+new Date>l)return In(a,a.options.workDelay),!0}),u.highlightFrontier=s.line,u.modeFrontier=Math.max(u.modeFrontier,s.line),c.length&&jn(a,function(){for(var e=0;e<c.length;e++)tn(a,c[e],"text")}))}var _n=function(e,t,r){var n=e.display;this.viewport=t,this.visible=vn(n,e.doc,t),this.editorIsHidden=!n.wrapper.offsetWidth,this.wrapperHeight=n.wrapper.clientHeight,this.wrapperWidth=n.wrapper.clientWidth,this.oldDisplayWidth=wr(e),this.force=r,this.dims=qr(e),this.events=[]};function Bn(e,t){var r=e.display,n=e.doc;if(t.editorIsHidden)return rn(e),!1;if(!t.force&&t.visible.from>=r.viewFrom&&t.visible.to<=r.viewTo&&(null==r.updateLineNumbers||r.updateLineNumbers>=r.viewTo)&&r.renderedView==r.view&&0==on(e))return!1;qn(e)&&(rn(e),t.dims=qr(e));var i=n.first+n.size,o=Math.max(t.visible.from-e.options.viewportMargin,n.first),a=Math.min(i,t.visible.to+e.options.viewportMargin);r.viewFrom<o&&o-r.viewFrom<20&&(o=Math.max(n.first,r.viewFrom)),r.viewTo>a&&r.viewTo-a<20&&(a=Math.min(i,r.viewTo)),Mt&&(o=Rt(e.doc,o),a=_t(e.doc,a));var l=o!=r.viewFrom||a!=r.viewTo||r.lastWrapHeight!=t.wrapperHeight||r.lastWrapWidth!=t.wrapperWidth;n=o,i=a,0==(a=(o=e).display).view.length||n>=a.viewTo||i<=a.viewFrom?(a.view=tr(o,n,i),a.viewFrom=n):(a.viewFrom>n?a.view=tr(o,n,a.viewFrom).concat(a.view):a.viewFrom<n&&(a.view=a.view.slice(Qr(o,n))),a.viewFrom=n,a.viewTo<i?a.view=a.view.concat(tr(o,a.viewTo,i)):a.viewTo>i&&(a.view=a.view.slice(0,Qr(o,i)))),a.viewTo=i,r.viewOffset=Vt(Xe(e.doc,r.viewFrom)),e.display.mover.style.top=r.viewOffset+"px";o=on(e);if(!l&&0==o&&!t.force&&r.renderedView==r.view&&(null==r.updateLineNumbers||r.updateLineNumbers>=r.viewTo))return!1;a=function(e){if(e.hasFocus())return null;var t=A();if(!t||!N(e.display.lineDiv,t))return null;var r={activeElt:t};return!window.getSelection||(t=window.getSelection()).anchorNode&&t.extend&&N(e.display.lineDiv,t.anchorNode)&&(r.anchorNode=t.anchorNode,r.anchorOffset=t.anchorOffset,r.focusNode=t.focusNode,r.focusOffset=t.focusOffset),r}(e);return 4<o&&(r.lineDiv.style.display="none"),function(r,e,t){var n=r.display,i=r.options.lineNumbers,o=n.lineDiv,a=o.firstChild;function l(e){var t=e.nextSibling;return h&&m&&r.display.currentWheelTarget==e?e.style.display="none":e.parentNode.removeChild(e),t}for(var s=n.view,c=n.viewFrom,u=0;u<s.length;u++){var d=s[u];if(!d.hidden)if(d.node&&d.node.parentNode==o){for(;a!=d.node;)a=l(a);var f=i&&null!=e&&e<=c&&d.lineNumber;d.changes&&(-1<H(d.changes,"gutter")&&(f=!1),lr(r,d,c,t)),f&&(M(d.lineNumber),d.lineNumber.appendChild(document.createTextNode(rt(r.options,c)))),a=d.node.nextSibling}else{f=function(e,t,r,n){var i=cr(e,t);return t.text=t.node=i.pre,i.bgClass&&(t.bgClass=i.bgClass),i.textClass&&(t.textClass=i.textClass),ur(e,t),dr(e,t,r,n),fr(e,t,n),t.node}(r,d,c,t);o.insertBefore(f,a)}c+=d.size}for(;a;)a=l(a)}(e,r.updateLineNumbers,t.dims),4<o&&(r.lineDiv.style.display=""),r.renderedView=r.view,(i=a)&&i.activeElt&&i.activeElt!=A()&&(i.activeElt.focus(),!/^(INPUT|TEXTAREA)$/.test(i.activeElt.nodeName)&&i.anchorNode&&N(document.body,i.anchorNode)&&N(document.body,i.focusNode)&&(o=window.getSelection(),(a=document.createRange()).setEnd(i.anchorNode,i.anchorOffset),a.collapse(!1),o.removeAllRanges(),o.addRange(a),o.extend(i.focusNode,i.focusOffset))),M(r.cursorDiv),M(r.selectionDiv),r.gutters.style.height=r.sizer.style.minHeight=0,l&&(r.lastWrapHeight=t.wrapperHeight,r.lastWrapWidth=t.wrapperWidth,In(e,400)),!(r.updateLineNumbers=null)}function Vn(e,t){for(var r=t.viewport,n=!0;;n=!1){if(n&&e.options.lineWrapping&&t.oldDisplayWidth!=wr(e))n&&(t.visible=vn(e.display,e.doc,r));else if(r&&null!=r.top&&(r={top:Math.min(e.doc.height+vr(e.display)-xr(e),r.top)}),t.visible=vn(e.display,e.doc,r),t.visible.from>=e.display.viewFrom&&t.visible.to<=e.display.viewTo)break;if(!Bn(e,t))break;mn(e);var i=Ln(e);an(e),On(e,i),Gn(e,i),t.force=!1}t.signal(e,"update",e),e.display.viewFrom==e.display.reportedViewFrom&&e.display.viewTo==e.display.reportedViewTo||(t.signal(e,"viewportChange",e,e.display.viewFrom,e.display.viewTo),e.display.reportedViewFrom=e.display.viewFrom,e.display.reportedViewTo=e.display.viewTo)}function Un(e,t){var r=new _n(e,t);Bn(e,r)&&(mn(e),Vn(e,r),t=Ln(e),an(e),On(e,t),Gn(e,t),r.finish())}function Kn(e){var t=e.gutters.offsetWidth;e.sizer.style.marginLeft=t+"px"}function Gn(e,t){e.display.sizer.style.minHeight=t.docHeight+"px",e.display.heightForcer.style.top=t.docHeight+"px",e.display.gutters.style.height=t.docHeight+e.display.barHeight+br(e)+"px"}function $n(e){var t=e.display,r=t.view;if(t.alignWidgets||t.gutters.firstChild&&e.options.fixedGutter){for(var n=Xr(t)-t.scroller.scrollLeft+e.doc.scrollLeft,i=t.gutters.offsetWidth,o=n+"px",a=0;a<r.length;a++)if(!r[a].hidden){e.options.fixedGutter&&(r[a].gutter&&(r[a].gutter.style.left=o),r[a].gutterBackground&&(r[a].gutterBackground.style.left=o));var l=r[a].alignable;if(l)for(var s=0;s<l.length;s++)l[s].style.left=o}e.options.fixedGutter&&(t.gutters.style.left=n+i+"px")}}function qn(e){if(e.options.lineNumbers){var t=e.doc,r=rt(e.options,t.first+t.size-1),n=e.display;if(r.length!=n.lineNumChars){var i=n.measure.appendChild(L("div",[L("div",r)],"CodeMirror-linenumber CodeMirror-gutter-elt")),t=i.firstChild.offsetWidth,i=i.offsetWidth-t;return n.lineGutter.style.width="",n.lineNumInnerWidth=Math.max(t,n.lineGutter.offsetWidth-i)+1,n.lineNumWidth=n.lineNumInnerWidth+i,n.lineNumChars=n.lineNumInnerWidth?r.length:-1,n.lineGutter.style.width=n.lineNumWidth+"px",Kn(e.display),1}}}function Xn(e,t){for(var r=[],n=!1,i=0;i<e.length;i++){var o=e[i],a=null;if("string"!=typeof o&&(a=o.style,o=o.className),"CodeMirror-linenumbers"==o){if(!t)continue;n=!0}r.push({className:o,style:a})}return t&&!n&&r.push({className:"CodeMirror-linenumbers",style:null}),r}function Yn(e){var t=e.gutters,r=e.gutterSpecs;M(t),e.lineGutter=null;for(var n=0;n<r.length;++n){var i=r[n],o=i.className,a=i.style,i=t.appendChild(L("div",null,"CodeMirror-gutter "+o));a&&(i.style.cssText=a),"CodeMirror-linenumbers"==o&&((e.lineGutter=i).style.width=(e.lineNumWidth||1)+"px")}t.style.display=r.length?"":"none",Kn(e)}function Zn(e){Yn(e.display),en(e),$n(e)}function Jn(e,t,r,n){var i=this;this.input=r,i.scrollbarFiller=L("div",null,"CodeMirror-scrollbar-filler"),i.scrollbarFiller.setAttribute("cm-not-content","true"),i.gutterFiller=L("div",null,"CodeMirror-gutter-filler"),i.gutterFiller.setAttribute("cm-not-content","true"),i.lineDiv=O("div",null,"CodeMirror-code"),i.selectionDiv=L("div",null,null,"position: relative; z-index: 1"),i.cursorDiv=L("div",null,"CodeMirror-cursors"),i.measure=L("div",null,"CodeMirror-measure"),i.lineMeasure=L("div",null,"CodeMirror-measure"),i.lineSpace=O("div",[i.measure,i.lineMeasure,i.selectionDiv,i.cursorDiv,i.lineDiv],null,"position: relative; outline: none");var o=O("div",[i.lineSpace],"CodeMirror-lines");i.mover=L("div",[o],null,"position: relative"),i.sizer=L("div",[i.mover],"CodeMirror-sizer"),i.sizerWidth=null,i.heightForcer=L("div",null,null,"position: absolute; height: "+I+"px; width: 1px;"),i.gutters=L("div",null,"CodeMirror-gutters"),i.lineGutter=null,i.scroller=L("div",[i.sizer,i.heightForcer,i.gutters],"CodeMirror-scroll"),i.scroller.setAttribute("tabIndex","-1"),i.wrapper=L("div",[i.scrollbarFiller,i.gutterFiller,i.scroller],"CodeMirror"),v&&y<8&&(i.gutters.style.zIndex=-1,i.scroller.style.paddingRight=0),h||f&&d||(i.scroller.draggable=!0),e&&(e.appendChild?e.appendChild(i.wrapper):e(i.wrapper)),i.viewFrom=i.viewTo=t.first,i.reportedViewFrom=i.reportedViewTo=t.first,i.view=[],i.renderedView=null,i.externalMeasured=null,i.viewOffset=0,i.lastWrapHeight=i.lastWrapWidth=0,i.updateLineNumbers=null,i.nativeBarWidth=i.barHeight=i.barWidth=0,i.scrollbarsClipped=!1,i.lineNumWidth=i.lineNumInnerWidth=i.lineNumChars=null,i.alignWidgets=!1,i.cachedCharWidth=i.cachedTextHeight=i.cachedPaddingH=null,i.maxLine=null,i.maxLineLength=0,i.maxLineChanged=!1,i.wheelDX=i.wheelDY=i.wheelStartX=i.wheelStartY=null,i.shift=!1,i.selForContextMenu=null,i.activeTouch=null,i.gutterSpecs=Xn(n.gutters,n.lineNumbers),Yn(i),r.init(i)}_n.prototype.signal=function(e,t){Se(e,t)&&this.events.push(arguments)},_n.prototype.finish=function(){for(var e=0;e<this.events.length;e++)xe.apply(null,this.events[e])};var Qn=0,ei=null;function ti(e){var t=e.wheelDeltaX,r=e.wheelDeltaY;return null==t&&e.detail&&e.axis==e.HORIZONTAL_AXIS&&(t=e.detail),null==r&&e.detail&&e.axis==e.VERTICAL_AXIS?r=e.detail:null==r&&(r=e.wheelDelta),{x:t,y:r}}function ri(e){e=ti(e);return e.x*=ei,e.y*=ei,e}function ni(e,t){var r=ti(t),n=r.x,i=r.y,o=e.display,a=o.scroller,l=a.scrollWidth>a.clientWidth,s=a.scrollHeight>a.clientHeight;if(n&&l||i&&s){if(i&&m&&h)e:for(var c=t.target,u=o.view;c!=a;c=c.parentNode)for(var d=0;d<u.length;d++)if(u[d].node==c){e.display.currentWheelTarget=c;break e}if(n&&!f&&!p&&null!=ei)return i&&s&&Sn(e,Math.max(0,a.scrollTop+i*ei)),Tn(e,Math.max(0,a.scrollLeft+n*ei)),(!i||i&&s)&&Te(t),void(o.wheelStartX=null);i&&null!=ei&&(r=i*ei,s=(l=e.doc.scrollTop)+o.wrapper.clientHeight,r<0?l=Math.max(0,l+r-50):s=Math.min(e.doc.height,s+r+50),Un(e,{top:l,bottom:s})),Qn<20&&(null==o.wheelStartX?(o.wheelStartX=a.scrollLeft,o.wheelStartY=a.scrollTop,o.wheelDX=n,o.wheelDY=i,setTimeout(function(){var e,t;null!=o.wheelStartX&&(t=a.scrollLeft-o.wheelStartX,t=(e=a.scrollTop-o.wheelStartY)&&o.wheelDY&&e/o.wheelDY||t&&o.wheelDX&&t/o.wheelDX,o.wheelStartX=o.wheelStartY=null,t&&(ei=(ei*Qn+t)/(Qn+1),++Qn))},200)):(o.wheelDX+=n,o.wheelDY+=i))}}v?ei=-.53:f?ei=15:o?ei=-.7:u&&(ei=-1/3);var ii=function(e,t){this.ranges=e,this.primIndex=t};ii.prototype.primary=function(){return this.ranges[this.primIndex]},ii.prototype.equals=function(e){if(e==this)return!0;if(e.primIndex!=this.primIndex||e.ranges.length!=this.ranges.length)return!1;for(var t=0;t<this.ranges.length;t++){var r=this.ranges[t],n=e.ranges[t];if(!ot(r.anchor,n.anchor)||!ot(r.head,n.head))return!1}return!0},ii.prototype.deepCopy=function(){for(var e=[],t=0;t<this.ranges.length;t++)e[t]=new oi(at(this.ranges[t].anchor),at(this.ranges[t].head));return new ii(e,this.primIndex)},ii.prototype.somethingSelected=function(){for(var e=0;e<this.ranges.length;e++)if(!this.ranges[e].empty())return!0;return!1},ii.prototype.contains=function(e,t){t=t||e;for(var r=0;r<this.ranges.length;r++){var n=this.ranges[r];if(0<=it(t,n.from())&&it(e,n.to())<=0)return r}return-1};var oi=function(e,t){this.anchor=e,this.head=t};function ai(e,t,r){var n=e&&e.options.selectionsMayTouch,e=t[r];t.sort(function(e,t){return it(e.from(),t.from())}),r=H(t,e);for(var i=1;i<t.length;i++){var o,a=t[i],l=t[i-1],s=it(l.to(),a.from());(n&&!a.empty()?0<s:0<=s)&&(o=st(l.from(),a.from()),s=lt(l.to(),a.to()),l=l.empty()?a.from()==a.head:l.from()==l.head,i<=r&&--r,t.splice(--i,2,new oi(l?s:o,l?o:s)))}return new ii(t,r)}function li(e,t){return new ii([new oi(e,t||e)],0)}function si(e){return e.text?nt(e.from.line+e.text.length-1,$(e.text).length+(1==e.text.length?e.from.ch:0)):e.to}function ci(e,t){if(it(e,t.from)<0)return e;if(it(e,t.to)<=0)return si(t);var r=e.line+t.text.length-(t.to.line-t.from.line)-1,n=e.ch;return e.line==t.to.line&&(n+=si(t).ch-t.to.ch),nt(r,n)}function ui(e,t){for(var r=[],n=0;n<e.sel.ranges.length;n++){var i=e.sel.ranges[n];r.push(new oi(ci(i.anchor,t),ci(i.head,t)))}return ai(e.cm,r,e.sel.primIndex)}function di(e,t,r){return e.line==t.line?nt(r.line,e.ch-t.ch+r.ch):nt(r.line+(e.line-t.line),e.ch)}function fi(e){e.doc.mode=Be(e.options,e.doc.modeOption),hi(e)}function hi(e){e.doc.iter(function(e){e.stateAfter&&(e.stateAfter=null),e.styles&&(e.styles=null)}),e.doc.modeFrontier=e.doc.highlightFrontier=e.doc.first,In(e,100),e.state.modeGen++,e.curOp&&en(e)}function pi(e,t){return 0==t.from.ch&&0==t.to.ch&&""==$(t.text)&&(!e.cm||e.cm.options.wholeLineUpdateBefore)}function mi(e,o,t,a){function i(e){return t?t[e]:null}function r(e,t,r){var n,i;n=t,i=r,t=a,(r=e).text=n,r.stateAfter&&(r.stateAfter=null),r.styles&&(r.styles=null),null!=r.order&&(r.order=null),At(r),zt(r,i),(t=t?t(r):1)!=r.height&&Je(r,t),or(e,"change",e,o)}function n(e,t){for(var r=[],n=e;n<t;++n)r.push(new Gt(u[n],i(n),a));return r}var l,s=o.from,c=o.to,u=o.text,d=Xe(e,s.line),f=Xe(e,c.line),h=$(u),p=i(u.length-1),m=c.line-s.line;o.full?(e.insert(0,n(0,u.length)),e.remove(u.length,e.size-u.length)):pi(e,o)?(l=n(0,u.length-1),r(f,f.text,p),m&&e.remove(s.line,m),l.length&&e.insert(s.line,l)):d==f?1==u.length?r(d,d.text.slice(0,s.ch)+h+d.text.slice(c.ch),p):((l=n(1,u.length-1)).push(new Gt(h+d.text.slice(c.ch),p,a)),r(d,d.text.slice(0,s.ch)+u[0],i(0)),e.insert(s.line+1,l)):1==u.length?(r(d,d.text.slice(0,s.ch)+u[0]+f.text.slice(c.ch),i(0)),e.remove(s.line+1,m)):(r(d,d.text.slice(0,s.ch)+u[0],i(0)),r(f,h+f.text.slice(c.ch),p),p=n(1,u.length-1),1<m&&e.remove(s.line+1,m-1),e.insert(s.line+1,p)),or(e,"change",e,o)}function gi(e,l,s){!function e(t,r,n){if(t.linked)for(var i=0;i<t.linked.length;++i){var o,a=t.linked[i];a.doc!=r&&(o=n&&a.sharedHist,s&&!o||(l(a.doc,o),e(a.doc,t,o)))}}(e,null,!0)}function vi(e,t){if(t.cm)throw new Error("This document is already in use.");Zr((e.doc=t).cm=e),fi(e),yi(e),e.options.lineWrapping||Kt(e),e.options.mode=t.modeOption,en(e)}function yi(e){("rtl"==e.doc.direction?z:S)(e.display.lineDiv,"CodeMirror-rtl")}function bi(e){this.done=[],this.undone=[],this.undoDepth=1/0,this.lastModTime=this.lastSelTime=0,this.lastOp=this.lastSelOp=null,this.lastOrigin=this.lastSelOrigin=null,this.generation=this.maxGeneration=e||1}function wi(e,t){var r={from:at(t.from),to:si(t),text:Ye(e,t.from,t.to)};return Mi(e,r,t.from.line,t.to.line+1),gi(e,function(e){return Mi(e,r,t.from.line,t.to.line+1),0},!0),r}function xi(e){for(;e.length;){if(!$(e).ranges)break;e.pop()}}function ki(e,t,r,n){var i=e.history;i.undone.length=0;var o,a,l=+new Date;if((i.lastOp==n||i.lastOrigin==t.origin&&t.origin&&("+"==t.origin.charAt(0)&&i.lastModTime>l-(e.cm?e.cm.options.historyEventDelay:500)||"*"==t.origin.charAt(0)))&&(o=(s=i).lastOp==n?(xi(s.done),$(s.done)):s.done.length&&!$(s.done).ranges?$(s.done):1<s.done.length&&!s.done[s.done.length-2].ranges?(s.done.pop(),$(s.done)):void 0))a=$(o.changes),0==it(t.from,t.to)&&0==it(t.from,a.to)?a.to=si(t):o.changes.push(wi(e,t));else{var s=$(i.done);for(s&&s.ranges||Si(e.sel,i.done),o={changes:[wi(e,t)],generation:i.generation},i.done.push(o);i.done.length>i.undoDepth;)i.done.shift(),i.done[0].ranges||i.done.shift()}i.done.push(r),i.generation=++i.maxGeneration,i.lastModTime=i.lastSelTime=l,i.lastOp=i.lastSelOp=n,i.lastOrigin=i.lastSelOrigin=t.origin,a||xe(e,"historyAdded")}function Ci(e,t,r,n){var i,o,a,l=e.history,s=n&&n.origin;r==l.lastSelOp||s&&l.lastSelOrigin==s&&(l.lastModTime==l.lastSelTime&&l.lastOrigin==s||(i=e,o=s,a=$(l.done),e=t,"*"==(o=o.charAt(0))||"+"==o&&a.ranges.length==e.ranges.length&&a.somethingSelected()==e.somethingSelected()&&new Date-i.history.lastSelTime<=(i.cm?i.cm.options.historyEventDelay:500)))?l.done[l.done.length-1]=t:Si(t,l.done),l.lastSelTime=+new Date,l.lastSelOrigin=s,l.lastSelOp=r,n&&!1!==n.clearRedo&&xi(l.undone)}function Si(e,t){var r=$(t);r&&r.ranges&&r.equals(e)||t.push(e)}function Mi(t,r,e,n){var i=r["spans_"+t.id],o=0;t.iter(Math.max(t.first,e),Math.min(t.first+t.size,n),function(e){e.markedSpans&&((i=i||(r["spans_"+t.id]={}))[o]=e.markedSpans),++o})}function Ti(e,t){var r=t["spans_"+e.id];if(!r)return null;for(var n=[],i=0;i<t.text.length;++i)n.push(function(e){if(!e)return null;for(var t,r=0;r<e.length;++r)e[r].marker.explicitlyCleared?t=t||e.slice(0,r):t&&t.push(e[r]);return t?t.length?t:null:e}(r[i]));return n}function Li(e,t){var r=Ti(e,t),n=Ot(e,t);if(!r)return n;if(!n)return r;for(var i=0;i<r.length;++i){var o=r[i],a=n[i];if(o&&a)e:for(var l=0;l<a.length;++l){for(var s=a[l],c=0;c<o.length;++c)if(o[c].marker==s.marker)continue e;o.push(s)}else a&&(r[i]=a)}return r}function Oi(e,t,r){for(var n=[],i=0;i<e.length;++i){var o=e[i];if(o.ranges)n.push(r?ii.prototype.deepCopy.call(o):o);else{var a=o.changes,l=[];n.push({changes:l});for(var s=0;s<a.length;++s){var c,u=a[s];if(l.push({from:u.from,to:u.to,text:u.text}),t)for(var d in u)(c=d.match(/^spans_(\d+)$/))&&-1<H(t,Number(c[1]))&&($(l)[d]=u[d],delete u[d])}}}return n}function Ni(e,t,r,n){if(n){n=e.anchor;return r&&((e=it(t,n)<0)!=it(r,n)<0?(n=t,t=r):e!=it(t,r)<0&&(t=r)),new oi(n,t)}return new oi(r||t,t)}function Ai(e,t,r,n,i){null==i&&(i=e.cm&&(e.cm.display.shift||e.extend)),ji(e,new ii([Ni(e.sel.primary(),t,r,i)],0),n)}function zi(e,t,r){for(var n=[],i=e.cm&&(e.cm.display.shift||e.extend),o=0;o<e.sel.ranges.length;o++)n[o]=Ni(e.sel.ranges[o],t[o],null,i);ji(e,ai(e.cm,n,e.sel.primIndex),r)}function Di(e,t,r,n){var i=e.sel.ranges.slice(0);i[t]=r,ji(e,ai(e.cm,i,e.sel.primIndex),n)}function Wi(e,t,r,n){ji(e,li(t,r),n)}function Ei(e,t,r){var n=e.history.done,i=$(n);i&&i.ranges?Pi(e,n[n.length-1]=t,r):ji(e,t,r)}function ji(e,t,r){Pi(e,t,r),Ci(e,e.sel,e.cm?e.cm.curOp.id:NaN,r)}function Pi(e,t,r){var n,i;(Se(e,"beforeSelectionChange")||e.cm&&Se(e.cm,"beforeSelectionChange"))&&(n=e,i=r,i={ranges:(o=t).ranges,update:function(e){this.ranges=[];for(var t=0;t<e.length;t++)this.ranges[t]=new oi(ut(n,e[t].anchor),ut(n,e[t].head))},origin:i&&i.origin},xe(n,"beforeSelectionChange",n,i),n.cm&&xe(n.cm,"beforeSelectionChange",n.cm,i),t=i.ranges!=o.ranges?ai(n.cm,i.ranges,i.ranges.length-1):o);var o=r&&r.bias||(it(t.primary().head,e.sel.primary().head)<0?-1:1);Fi(e,Ii(e,t,o,!0)),r&&!1===r.scroll||!e.cm||wn(e.cm)}function Fi(e,t){t.equals(e.sel)||(e.sel=t,e.cm&&(e.cm.curOp.updateInput=1,e.cm.curOp.selectionChanged=!0,Ce(e.cm)),or(e,"cursorActivity",e))}function Hi(e){Fi(e,Ii(e,e.sel,null,!1))}function Ii(e,t,r,n){for(var i,o=0;o<t.ranges.length;o++){var a=t.ranges[o],l=t.ranges.length==e.sel.ranges.length&&e.sel.ranges[o],s=_i(e,a.anchor,l&&l.anchor,r,n),l=_i(e,a.head,l&&l.head,r,n);!i&&s==a.anchor&&l==a.head||((i=i||t.ranges.slice(0,o))[o]=new oi(s,l))}return i?ai(e.cm,i,t.primIndex):t}function Ri(e,t,r,n,i){var o=Xe(e,t.line);if(o.markedSpans)for(var a=0;a<o.markedSpans.length;++a){var l=o.markedSpans[a],s=l.marker,c="selectLeft"in s?!s.selectLeft:s.inclusiveLeft,u="selectRight"in s?!s.selectRight:s.inclusiveRight;if((null==l.from||(c?l.from<=t.ch:l.from<t.ch))&&(null==l.to||(u?l.to>=t.ch:l.to>t.ch))){if(i&&(xe(s,"beforeCursorEnter"),s.explicitlyCleared)){if(o.markedSpans){--a;continue}break}if(s.atomic){if(r){var d=s.find(n<0?1:-1),l=void 0;if((n<0?u:c)&&(d=Bi(e,d,-n,d&&d.line==t.line?o:null)),d&&d.line==t.line&&(l=it(d,r))&&(n<0?l<0:0<l))return Ri(e,d,t,n,i)}s=s.find(n<0?-1:1);return(n<0?c:u)&&(s=Bi(e,s,n,s.line==t.line?o:null)),s?Ri(e,s,t,n,i):null}}}return t}function _i(e,t,r,n,i){n=n||1,n=Ri(e,t,r,n,i)||!i&&Ri(e,t,r,n,!0)||Ri(e,t,r,-n,i)||!i&&Ri(e,t,r,-n,!0);return n||(e.cantEdit=!0,nt(e.first,0))}function Bi(e,t,r,n){return r<0&&0==t.ch?t.line>e.first?ut(e,nt(t.line-1)):null:0<r&&t.ch==(n||Xe(e,t.line)).text.length?t.line<e.first+e.size-1?nt(t.line+1,0):null:new nt(t.line,t.ch+r)}function Vi(e){e.setSelection(nt(e.firstLine(),0),nt(e.lastLine()),_)}function Ui(i,e,t){var o={canceled:!1,from:e.from,to:e.to,text:e.text,origin:e.origin,cancel:function(){return o.canceled=!0}};return t&&(o.update=function(e,t,r,n){e&&(o.from=ut(i,e)),t&&(o.to=ut(i,t)),r&&(o.text=r),void 0!==n&&(o.origin=n)}),xe(i,"beforeChange",i,o),i.cm&&xe(i.cm,"beforeChange",i.cm,o),o.canceled?(i.cm&&(i.cm.curOp.updateInput=2),null):{from:o.from,to:o.to,text:o.text,origin:o.origin}}function Ki(e,t,r){if(e.cm){if(!e.cm.curOp)return Pn(e.cm,Ki)(e,t,r);if(e.cm.state.suppressEdits)return}if(!(Se(e,"beforeChange")||e.cm&&Se(e.cm,"beforeChange"))||(t=Ui(e,t,!0))){var n=St&&!r&&function(e,t,r){var n=null;if(e.iter(t.line,r.line+1,function(e){if(e.markedSpans)for(var t=0;t<e.markedSpans.length;++t){var r=e.markedSpans[t].marker;!r.readOnly||n&&-1!=H(n,r)||(n=n||[]).push(r)}}),!n)return null;for(var i=[{from:t,to:r}],o=0;o<n.length;++o)for(var a=n[o],l=a.find(0),s=0;s<i.length;++s){var c,u,d,f=i[s];it(f.to,l.from)<0||0<it(f.from,l.to)||(c=[s,1],u=it(f.from,l.from),d=it(f.to,l.to),(u<0||!a.inclusiveLeft&&!u)&&c.push({from:f.from,to:l.from}),(0<d||!a.inclusiveRight&&!d)&&c.push({from:l.to,to:f.to}),i.splice.apply(i,c),s+=c.length-3)}return i}(e,t.from,t.to);if(n)for(var i=n.length-1;0<=i;--i)Gi(e,{from:n[i].from,to:n[i].to,text:i?[""]:t.text,origin:t.origin});else Gi(e,t)}}function Gi(e,r){var t,n;1==r.text.length&&""==r.text[0]&&0==it(r.from,r.to)||(t=ui(e,r),ki(e,r,t,e.cm?e.cm.curOp.id:NaN),Xi(e,r,t,Ot(e,r)),n=[],gi(e,function(e,t){t||-1!=H(n,e.history)||(Qi(e.history,r),n.push(e.history)),Xi(e,r,null,Ot(e,r))}))}function $i(i,o,e){var t=i.cm&&i.cm.state.suppressEdits;if(!t||e){for(var a,r=i.history,n=i.sel,l="undo"==o?r.done:r.undone,s="undo"==o?r.undone:r.done,c=0;c<l.length&&(a=l[c],e?!a.ranges||a.equals(i.sel):a.ranges);c++);if(c!=l.length){for(r.lastOrigin=r.lastSelOrigin=null;;){if(!(a=l.pop()).ranges){if(t)return void l.push(a);break}if(Si(a,s),e&&!a.equals(i.sel))return void ji(i,a,{clearRedo:!1});n=a}var u=[];Si(n,s),s.push({changes:u,generation:r.generation}),r.generation=a.generation||++r.maxGeneration;for(var d=Se(i,"beforeChange")||i.cm&&Se(i.cm,"beforeChange"),f=a.changes.length-1;0<=f;--f){var h=function(e){var r=a.changes[e];if(r.origin=o,d&&!Ui(i,r,!1))return l.length=0,{};u.push(wi(i,r));var t=e?ui(i,r):$(l);Xi(i,r,t,Li(i,r)),!e&&i.cm&&i.cm.scrollIntoView({from:r.from,to:si(r)});var n=[];gi(i,function(e,t){t||-1!=H(n,e.history)||(Qi(e.history,r),n.push(e.history)),Xi(e,r,null,Li(e,r))})}(f);if(h)return h.v}}}}function qi(e,t){if(0!=t&&(e.first+=t,e.sel=new ii(q(e.sel.ranges,function(e){return new oi(nt(e.anchor.line+t,e.anchor.ch),nt(e.head.line+t,e.head.ch))}),e.sel.primIndex),e.cm)){en(e.cm,e.first,e.first-t,t);for(var r=e.cm.display,n=r.viewFrom;n<r.viewTo;n++)tn(e.cm,n,"gutter")}}function Xi(e,t,r,n){if(e.cm&&!e.cm.curOp)return Pn(e.cm,Xi)(e,t,r,n);var i;t.to.line<e.first?qi(e,t.text.length-1-(t.to.line-t.from.line)):t.from.line>e.lastLine()||(t.from.line<e.first&&(qi(e,i=t.text.length-1-(e.first-t.from.line)),t={from:nt(e.first,0),to:nt(t.to.line+i,t.to.ch),text:[$(t.text)],origin:t.origin}),i=e.lastLine(),t.to.line>i&&(t={from:t.from,to:nt(i,Xe(e,i).text.length),text:[t.text[0]],origin:t.origin}),t.removed=Ye(e,t.from,t.to),r=r||ui(e,t),e.cm?function(e,t,r){var n=e.doc,i=e.display,o=t.from,a=t.to,l=!1,s=o.line;e.options.lineWrapping||(s=Qe(It(Xe(n,o.line))),n.iter(s,a.line+1,function(e){if(e==i.maxLine)return l=!0}));-1<n.sel.contains(t.from,t.to)&&Ce(e);mi(n,t,r,Yr(e)),e.options.lineWrapping||(n.iter(s,o.line+t.text.length,function(e){var t=Ut(e);t>i.maxLineLength&&(i.maxLine=e,i.maxLineLength=t,i.maxLineChanged=!0,l=!1)}),l&&(e.curOp.updateMaxLine=!0));(function(e,t){if(e.modeFrontier=Math.min(e.modeFrontier,t),!(e.highlightFrontier<t-10)){for(var r=e.first,n=t-1;r<n;n--){var i=Xe(e,n).stateAfter;if(i&&(!(i instanceof ft)||n+i.lookAhead<t)){r=n+1;break}}e.highlightFrontier=Math.min(e.highlightFrontier,r)}})(n,o.line),In(e,400);s=t.text.length-(a.line-o.line)-1;t.full?en(e):o.line!=a.line||1!=t.text.length||pi(e.doc,t)?en(e,o.line,a.line+1,s):tn(e,o.line,"text");n=Se(e,"changes"),s=Se(e,"change");{(s||n)&&(t={from:o,to:a,text:t.text,removed:t.removed,origin:t.origin},s&&or(e,"change",e,t),n&&(e.curOp.changeObjs||(e.curOp.changeObjs=[])).push(t))}e.display.selForContextMenu=null}(e.cm,t,n):mi(e,t,n),Pi(e,r,_),e.cantEdit&&_i(e,nt(e.firstLine(),0))&&(e.cantEdit=!1))}function Yi(e,t,r,n,i){var o;it(n=n||r,r)<0&&(r=(o=[n,r])[0],n=o[1]),"string"==typeof t&&(t=e.splitLines(t)),Ki(e,{from:r,to:n,text:t,origin:i})}function Zi(e,t,r,n){r<e.line?e.line+=n:t<e.line&&(e.line=t,e.ch=0)}function Ji(e,t,r,n){for(var i=0;i<e.length;++i){var o=e[i],a=!0;if(o.ranges){o.copied||((o=e[i]=o.deepCopy()).copied=!0);for(var l=0;l<o.ranges.length;l++)Zi(o.ranges[l].anchor,t,r,n),Zi(o.ranges[l].head,t,r,n)}else{for(var s=0;s<o.changes.length;++s){var c=o.changes[s];if(r<c.from.line)c.from=nt(c.from.line+n,c.from.ch),c.to=nt(c.to.line+n,c.to.ch);else if(t<=c.to.line){a=!1;break}}a||(e.splice(0,i+1),i=0)}}}function Qi(e,t){var r=t.from.line,n=t.to.line,t=t.text.length-(n-r)-1;Ji(e.done,r,n,t),Ji(e.undone,r,n,t)}function eo(e,t,r,n){var i=t,o=t;return"number"==typeof t?o=Xe(e,ct(e,t)):i=Qe(t),null==i?null:(n(o,i)&&e.cm&&tn(e.cm,i,r),o)}function to(e){this.lines=e,this.parent=null;for(var t=0,r=0;r<e.length;++r)e[r].parent=this,t+=e[r].height;this.height=t}function ro(e){this.children=e;for(var t=0,r=0,n=0;n<e.length;++n){var i=e[n];t+=i.chunkSize(),r+=i.height,i.parent=this}this.size=t,this.height=r,this.parent=null}oi.prototype.from=function(){return st(this.anchor,this.head)},oi.prototype.to=function(){return lt(this.anchor,this.head)},oi.prototype.empty=function(){return this.head.line==this.anchor.line&&this.head.ch==this.anchor.ch},to.prototype={chunkSize:function(){return this.lines.length},removeInner:function(e,t){for(var r,n=e,i=e+t;n<i;++n){var o=this.lines[n];this.height-=o.height,(r=o).parent=null,At(r),or(o,"delete")}this.lines.splice(e,t)},collapse:function(e){e.push.apply(e,this.lines)},insertInner:function(e,t,r){this.height+=r,this.lines=this.lines.slice(0,e).concat(t).concat(this.lines.slice(e));for(var n=0;n<t.length;++n)t[n].parent=this},iterN:function(e,t,r){for(var n=e+t;e<n;++e)if(r(this.lines[e]))return!0}},ro.prototype={chunkSize:function(){return this.size},removeInner:function(e,t){this.size-=t;for(var r,n=0;n<this.children.length;++n){var i=this.children[n],o=i.chunkSize();if(e<o){var a=Math.min(t,o-e),l=i.height;if(i.removeInner(e,a),this.height-=l-i.height,o==a&&(this.children.splice(n--,1),i.parent=null),0==(t-=a))break;e=0}else e-=o}this.size-t<25&&(1<this.children.length||!(this.children[0]instanceof to))&&(r=[],this.collapse(r),this.children=[new to(r)],this.children[0].parent=this)},collapse:function(e){for(var t=0;t<this.children.length;++t)this.children[t].collapse(e)},insertInner:function(e,t,r){this.size+=t.length,this.height+=r;for(var n=0;n<this.children.length;++n){var i=this.children[n],o=i.chunkSize();if(e<=o){if(i.insertInner(e,t,r),i.lines&&50<i.lines.length){for(var a=i.lines.length%25+25,l=a;l<i.lines.length;){var s=new to(i.lines.slice(l,l+=25));i.height-=s.height,this.children.splice(++n,0,s),s.parent=this}i.lines=i.lines.slice(0,a),this.maybeSpill()}break}e-=o}},maybeSpill:function(){if(!(this.children.length<=10)){var e=this;do{var t,r=new ro(e.children.splice(e.children.length-5,5));e.parent?(e.size-=r.size,e.height-=r.height,t=H(e.parent.children,e),e.parent.children.splice(t+1,0,r)):(((t=new ro(e.children)).parent=e).children=[t,r],e=t),r.parent=e.parent}while(10<e.children.length);e.parent.maybeSpill()}},iterN:function(e,t,r){for(var n=0;n<this.children.length;++n){var i=this.children[n],o=i.chunkSize();if(e<o){var a=Math.min(t,o-e);if(i.iterN(e,a,r))return!0;if(0==(t-=a))break;e=0}else e-=o}}};function no(e,t,r){if(r)for(var n in r)r.hasOwnProperty(n)&&(this[n]=r[n]);this.doc=e,this.node=t}function io(e,t,r){Vt(t)<(e.curOp&&e.curOp.scrollTop||e.doc.scrollTop)&&bn(e,r)}no.prototype.clear=function(){var e=this.doc.cm,t=this.line.widgets,r=this.line,n=Qe(r);if(null!=n&&t){for(var i=0;i<t.length;++i)t[i]==this&&t.splice(i--,1);t.length||(r.widgets=null);var o=pr(this);Je(r,Math.max(0,r.height-o)),e&&(jn(e,function(){io(e,r,-o),tn(e,n,"widget")}),or(e,"lineWidgetCleared",e,this,n))}},no.prototype.changed=function(){var e=this,t=this.height,r=this.doc.cm,n=this.line;this.height=null;var i=pr(this)-t;i&&(Bt(this.doc,n)||Je(n,n.height+i),r&&jn(r,function(){r.curOp.forceUpdate=!0,io(r,n,i),or(r,"lineWidgetChanged",r,e,Qe(n))}))},Me(no);var oo=0,ao=function(e,t){this.lines=[],this.type=t,this.doc=e,this.id=++oo};function lo(t,r,n,e,i){if(e&&e.shared)return function(e,r,n,i,o){(i=j(i)).shared=!1;var a=[lo(e,r,n,i,o)],l=a[0],s=i.widgetNode;return gi(e,function(e){s&&(i.widgetNode=s.cloneNode(!0)),a.push(lo(e,ut(e,r),ut(e,n),i,o));for(var t=0;t<e.linked.length;++t)if(e.linked[t].isParent)return;l=$(a)}),new so(a,l)}(t,r,n,e,i);if(t.cm&&!t.cm.curOp)return Pn(t.cm,lo)(t,r,n,e,i);var o=new ao(t,i),i=it(r,n);if(e&&j(e,o,!1),0<i||0==i&&!1!==o.clearWhenEmpty)return o;if(o.replacedWith&&(o.collapsed=!0,o.widgetNode=O("span",[o.replacedWith],"CodeMirror-widget"),e.handleMouseEvents||o.widgetNode.setAttribute("cm-ignore-events","true"),e.insertLeft&&(o.widgetNode.insertLeft=!0)),o.collapsed){if(Ht(t,r.line,r,n,o)||r.line!=n.line&&Ht(t,n.line,r,n,o))throw new Error("Inserting collapsed marker partially overlapping an existing one");Mt=!0}o.addToHistory&&ki(t,{from:r,to:n,origin:"markText"},t.sel,NaN);var a,l=r.line,s=t.cm;if(t.iter(l,n.line+1,function(e){var t;s&&o.collapsed&&!s.options.lineWrapping&&It(e)==s.display.maxLine&&(a=!0),o.collapsed&&l!=r.line&&Je(e,0),t=e,e=new Tt(o,l==r.line?r.ch:null,l==n.line?n.ch:null),t.markedSpans=t.markedSpans?t.markedSpans.concat([e]):[e],e.marker.attachLine(t),++l}),o.collapsed&&t.iter(r.line,n.line+1,function(e){Bt(t,e)&&Je(e,0)}),o.clearOnEnter&&ye(o,"beforeCursorEnter",function(){return o.clear()}),o.readOnly&&(St=!0,(t.history.done.length||t.history.undone.length)&&t.clearHistory()),o.collapsed&&(o.id=++oo,o.atomic=!0),s){if(a&&(s.curOp.updateMaxLine=!0),o.collapsed)en(s,r.line,n.line+1);else if(o.className||o.startStyle||o.endStyle||o.css||o.attributes||o.title)for(var c=r.line;c<=n.line;c++)tn(s,c,"text");o.atomic&&Hi(s.doc),or(s,"markerAdded",s,o)}return o}ao.prototype.clear=function(){if(!this.explicitlyCleared){var e,t=this.doc.cm,r=t&&!t.curOp;r&&Wn(t),!Se(this,"clear")||(e=this.find())&&or(this,"clear",e.from,e.to);for(var n=null,i=null,o=0;o<this.lines.length;++o){var a=this.lines[o],l=Lt(a.markedSpans,this);t&&!this.collapsed?tn(t,Qe(a),"text"):t&&(null!=l.to&&(i=Qe(a)),null!=l.from&&(n=Qe(a))),a.markedSpans=function(e,t){for(var r,n=0;n<e.length;++n)e[n]!=t&&(r=r||[]).push(e[n]);return r}(a.markedSpans,l),null==l.from&&this.collapsed&&!Bt(this.doc,a)&&t&&Je(a,Gr(t.display))}if(t&&this.collapsed&&!t.options.lineWrapping)for(var s=0;s<this.lines.length;++s){var c=It(this.lines[s]),u=Ut(c);u>t.display.maxLineLength&&(t.display.maxLine=c,t.display.maxLineLength=u,t.display.maxLineChanged=!0)}null!=n&&t&&this.collapsed&&en(t,n,i+1),this.lines.length=0,this.explicitlyCleared=!0,this.atomic&&this.doc.cantEdit&&(this.doc.cantEdit=!1,t&&Hi(t.doc)),t&&or(t,"markerCleared",t,this,n,i),r&&En(t),this.parent&&this.parent.clear()}},ao.prototype.find=function(e,t){var r,n;null==e&&"bookmark"==this.type&&(e=1);for(var i=0;i<this.lines.length;++i){var o=this.lines[i],a=Lt(o.markedSpans,this);if(null!=a.from&&(r=nt(t?o:Qe(o),a.from),-1==e))return r;if(null!=a.to&&(n=nt(t?o:Qe(o),a.to),1==e))return n}return r&&{from:r,to:n}},ao.prototype.changed=function(){var r=this,n=this.find(-1,!0),i=this,o=this.doc.cm;n&&o&&jn(o,function(){var e=n.line,t=Qe(n.line),t=Sr(o,t);t&&(Ar(t),o.curOp.selectionChanged=o.curOp.forceUpdate=!0),o.curOp.updateMaxLine=!0,Bt(i.doc,e)||null==i.height||(t=i.height,i.height=null,(t=pr(i)-t)&&Je(e,e.height+t)),or(o,"markerChanged",o,r)})},ao.prototype.attachLine=function(e){var t;!this.lines.length&&this.doc.cm&&((t=this.doc.cm.curOp).maybeHiddenMarkers&&-1!=H(t.maybeHiddenMarkers,this)||(t.maybeUnhiddenMarkers||(t.maybeUnhiddenMarkers=[])).push(this)),this.lines.push(e)},ao.prototype.detachLine=function(e){this.lines.splice(H(this.lines,e),1),!this.lines.length&&this.doc.cm&&((e=this.doc.cm.curOp).maybeHiddenMarkers||(e.maybeHiddenMarkers=[])).push(this)},Me(ao);var so=function(e,t){this.markers=e,this.primary=t;for(var r=0;r<e.length;++r)e[r].parent=this};function co(e){return e.findMarks(nt(e.first,0),e.clipPos(nt(e.lastLine())),function(e){return e.parent})}so.prototype.clear=function(){if(!this.explicitlyCleared){this.explicitlyCleared=!0;for(var e=0;e<this.markers.length;++e)this.markers[e].clear();or(this,"clear")}},so.prototype.find=function(e,t){return this.primary.find(e,t)},Me(so);var uo=0,fo=function e(t,r,n,i,o){if(!(this instanceof e))return new e(t,r,n,i,o);null==n&&(n=0),ro.call(this,[new to([new Gt("",null)])]),this.first=n,this.scrollTop=this.scrollLeft=0,this.cantEdit=!1,this.cleanGeneration=1;n=nt(this.modeFrontier=this.highlightFrontier=n,0);this.sel=li(n),this.history=new bi(null),this.id=++uo,this.modeOption=r,this.lineSep=i,this.direction="rtl"==o?"rtl":"ltr",this.extend=!1,"string"==typeof t&&(t=this.splitLines(t)),mi(this,{from:n,to:n,text:t}),ji(this,li(n),_)};fo.prototype=Y(ro.prototype,{constructor:fo,iter:function(e,t,r){r?this.iterN(e-this.first,t-e,r):this.iterN(this.first,this.first+this.size,e)},insert:function(e,t){for(var r=0,n=0;n<t.length;++n)r+=t[n].height;this.insertInner(e-this.first,t,r)},remove:function(e,t){this.removeInner(e-this.first,t)},getValue:function(e){var t=Ze(this,this.first,this.first+this.size);return!1===e?t:t.join(e||this.lineSeparator())},setValue:Hn(function(e){var t=nt(this.first,0),r=this.first+this.size-1;Ki(this,{from:t,to:nt(r,Xe(this,r).text.length),text:this.splitLines(e),origin:"setValue",full:!0},!0),this.cm&&xn(this.cm,0,0),ji(this,li(t),_)}),replaceRange:function(e,t,r,n){Yi(this,e,t=ut(this,t),r=r?ut(this,r):t,n)},getRange:function(e,t,r){t=Ye(this,ut(this,e),ut(this,t));return!1===r?t:t.join(r||this.lineSeparator())},getLine:function(e){e=this.getLineHandle(e);return e&&e.text},getLineHandle:function(e){if(tt(this,e))return Xe(this,e)},getLineNumber:Qe,getLineHandleVisualStart:function(e){return"number"==typeof e&&(e=Xe(this,e)),It(e)},lineCount:function(){return this.size},firstLine:function(){return this.first},lastLine:function(){return this.first+this.size-1},clipPos:function(e){return ut(this,e)},getCursor:function(e){var t=this.sel.primary(),t=null==e||"head"==e?t.head:"anchor"==e?t.anchor:"end"==e||"to"==e||!1===e?t.to():t.from();return t},listSelections:function(){return this.sel.ranges},somethingSelected:function(){return this.sel.somethingSelected()},setCursor:Hn(function(e,t,r){Wi(this,ut(this,"number"==typeof e?nt(e,t||0):e),null,r)}),setSelection:Hn(function(e,t,r){Wi(this,ut(this,e),ut(this,t||e),r)}),extendSelection:Hn(function(e,t,r){Ai(this,ut(this,e),t&&ut(this,t),r)}),extendSelections:Hn(function(e,t){zi(this,dt(this,e),t)}),extendSelectionsBy:Hn(function(e,t){zi(this,dt(this,q(this.sel.ranges,e)),t)}),setSelections:Hn(function(e,t,r){if(e.length){for(var n=[],i=0;i<e.length;i++)n[i]=new oi(ut(this,e[i].anchor),ut(this,e[i].head));null==t&&(t=Math.min(e.length-1,this.sel.primIndex)),ji(this,ai(this.cm,n,t),r)}}),addSelection:Hn(function(e,t,r){var n=this.sel.ranges.slice(0);n.push(new oi(ut(this,e),ut(this,t||e))),ji(this,ai(this.cm,n,n.length-1),r)}),getSelection:function(e){for(var t=this.sel.ranges,r=0;r<t.length;r++)var n=Ye(this,t[r].from(),t[r].to()),i=i?i.concat(n):n;return!1===e?i:i.join(e||this.lineSeparator())},getSelections:function(e){for(var t=[],r=this.sel.ranges,n=0;n<r.length;n++){var i=Ye(this,r[n].from(),r[n].to());!1!==e&&(i=i.join(e||this.lineSeparator())),t[n]=i}return t},replaceSelection:function(e,t,r){for(var n=[],i=0;i<this.sel.ranges.length;i++)n[i]=e;this.replaceSelections(n,t,r||"+input")},replaceSelections:Hn(function(e,t,r){for(var n=[],i=this.sel,o=0;o<i.ranges.length;o++){var a=i.ranges[o];n[o]={from:a.from(),to:a.to(),text:this.splitLines(e[o]),origin:r}}for(var t=t&&"end"!=t&&function(e,t,r){for(var n=[],i=c=nt(e.first,0),o=0;o<t.length;o++){var a=t[o],l=di(a.from,c,i),s=di(si(a),c,i),c=a.to,i=s;"around"==r?(a=it((a=e.sel.ranges[o]).head,a.anchor)<0,n[o]=new oi(a?s:l,a?l:s)):n[o]=new oi(l,l)}return new ii(n,e.sel.primIndex)}(this,n,t),l=n.length-1;0<=l;l--)Ki(this,n[l]);t?Ei(this,t):this.cm&&wn(this.cm)}),undo:Hn(function(){$i(this,"undo")}),redo:Hn(function(){$i(this,"redo")}),undoSelection:Hn(function(){$i(this,"undo",!0)}),redoSelection:Hn(function(){$i(this,"redo",!0)}),setExtending:function(e){this.extend=e},getExtending:function(){return this.extend},historySize:function(){for(var e=this.history,t=0,r=0,n=0;n<e.done.length;n++)e.done[n].ranges||++t;for(var i=0;i<e.undone.length;i++)e.undone[i].ranges||++r;return{undo:t,redo:r}},clearHistory:function(){var t=this;this.history=new bi(this.history.maxGeneration),gi(this,function(e){return e.history=t.history},!0)},markClean:function(){this.cleanGeneration=this.changeGeneration(!0)},changeGeneration:function(e){return e&&(this.history.lastOp=this.history.lastSelOp=this.history.lastOrigin=null),this.history.generation},isClean:function(e){return this.history.generation==(e||this.cleanGeneration)},getHistory:function(){return{done:Oi(this.history.done),undone:Oi(this.history.undone)}},setHistory:function(e){var t=this.history=new bi(this.history.maxGeneration);t.done=Oi(e.done.slice(0),null,!0),t.undone=Oi(e.undone.slice(0),null,!0)},setGutterMarker:Hn(function(e,r,n){return eo(this,e,"gutter",function(e){var t=e.gutterMarkers||(e.gutterMarkers={});return!(t[r]=n)&&ee(t)&&(e.gutterMarkers=null),1})}),clearGutter:Hn(function(t){var r=this;this.iter(function(e){e.gutterMarkers&&e.gutterMarkers[t]&&eo(r,e,"gutter",function(){return e.gutterMarkers[t]=null,ee(e.gutterMarkers)&&(e.gutterMarkers=null),1})})}),lineInfo:function(e){var t;if("number"==typeof e){if(!tt(this,e))return null;if(!(e=Xe(this,t=e)))return null}else if(null==(t=Qe(e)))return null;return{line:t,handle:e,text:e.text,gutterMarkers:e.gutterMarkers,textClass:e.textClass,bgClass:e.bgClass,wrapClass:e.wrapClass,widgets:e.widgets}},addLineClass:Hn(function(e,r,n){return eo(this,e,"gutter"==r?"gutter":"class",function(e){var t="text"==r?"textClass":"background"==r?"bgClass":"gutter"==r?"gutterClass":"wrapClass";if(e[t]){if(k(n).test(e[t]))return;e[t]+=" "+n}else e[t]=n;return 1})}),removeLineClass:Hn(function(e,o,a){return eo(this,e,"gutter"==o?"gutter":"class",function(e){var t="text"==o?"textClass":"background"==o?"bgClass":"gutter"==o?"gutterClass":"wrapClass",r=e[t];if(r){if(null==a)e[t]=null;else{var n=r.match(k(a));if(!n)return;var i=n.index+n[0].length;e[t]=r.slice(0,n.index)+(n.index&&i!=r.length?" ":"")+r.slice(i)||null}return 1}})}),addLineWidget:Hn(function(e,t,r){return e=e,i=new no(n=this,t,r),(o=n.cm)&&i.noHScroll&&(o.display.alignWidgets=!0),eo(n,e,"widget",function(e){var t=e.widgets||(e.widgets=[]);return null==i.insertAt?t.push(i):t.splice(Math.min(t.length-1,Math.max(0,i.insertAt)),0,i),i.line=e,o&&!Bt(n,e)&&(t=Vt(e)<n.scrollTop,Je(e,e.height+pr(i)),t&&bn(o,i.height),o.curOp.forceUpdate=!0),1}),o&&or(o,"lineWidgetAdded",o,i,"number"==typeof e?e:Qe(e)),i;var n,i,o}),removeLineWidget:function(e){e.clear()},markText:function(e,t,r){return lo(this,ut(this,e),ut(this,t),r,r&&r.type||"range")},setBookmark:function(e,t){t={replacedWith:t&&(null==t.nodeType?t.widget:t),insertLeft:t&&t.insertLeft,clearWhenEmpty:!1,shared:t&&t.shared,handleMouseEvents:t&&t.handleMouseEvents};return lo(this,e=ut(this,e),e,t,"bookmark")},findMarksAt:function(e){var t=[],r=Xe(this,(e=ut(this,e)).line).markedSpans;if(r)for(var n=0;n<r.length;++n){var i=r[n];(null==i.from||i.from<=e.ch)&&(null==i.to||i.to>=e.ch)&&t.push(i.marker.parent||i.marker)}return t},findMarks:function(i,o,a){i=ut(this,i),o=ut(this,o);var l=[],s=i.line;return this.iter(i.line,o.line+1,function(e){var t=e.markedSpans;if(t)for(var r=0;r<t.length;r++){var n=t[r];null!=n.to&&s==i.line&&i.ch>=n.to||null==n.from&&s!=i.line||null!=n.from&&s==o.line&&n.from>=o.ch||a&&!a(n.marker)||l.push(n.marker.parent||n.marker)}++s}),l},getAllMarks:function(){var n=[];return this.iter(function(e){var t=e.markedSpans;if(t)for(var r=0;r<t.length;++r)null!=t[r].from&&n.push(t[r].marker)}),n},posFromIndex:function(t){var r,n=this.first,i=this.lineSeparator().length;return this.iter(function(e){e=e.text.length+i;if(t<e)return r=t,!0;t-=e,++n}),ut(this,nt(n,r))},indexFromPos:function(e){var t=(e=ut(this,e)).ch;if(e.line<this.first||e.ch<0)return 0;var r=this.lineSeparator().length;return this.iter(this.first,e.line,function(e){t+=e.text.length+r}),t},copy:function(e){var t=new fo(Ze(this,this.first,this.first+this.size),this.modeOption,this.first,this.lineSep,this.direction);return t.scrollTop=this.scrollTop,t.scrollLeft=this.scrollLeft,t.sel=this.sel,t.extend=!1,e&&(t.history.undoDepth=this.history.undoDepth,t.setHistory(this.getHistory())),t},linkedDoc:function(e){e=e||{};var t=this.first,r=this.first+this.size;null!=e.from&&e.from>t&&(t=e.from),null!=e.to&&e.to<r&&(r=e.to);t=new fo(Ze(this,t,r),e.mode||this.modeOption,t,this.lineSep,this.direction);return e.sharedHist&&(t.history=this.history),(this.linked||(this.linked=[])).push({doc:t,sharedHist:e.sharedHist}),t.linked=[{doc:this,isParent:!0,sharedHist:e.sharedHist}],function(e,t){for(var r=0;r<t.length;r++){var n=t[r],i=n.find(),o=e.clipPos(i.from),i=e.clipPos(i.to);it(o,i)&&(i=lo(e,o,i,n.primary,n.primary.type),n.markers.push(i),i.parent=n)}}(t,co(this)),t},unlinkDoc:function(e){if(e instanceof ca&&(e=e.doc),this.linked)for(var t=0;t<this.linked.length;++t){if(this.linked[t].doc==e){this.linked.splice(t,1),e.unlinkDoc(this),function(o){for(var e=0;e<o.length;e++)!function(e){var t=o[e],r=[t.primary.doc];gi(t.primary.doc,function(e){return r.push(e)});for(var n=0;n<t.markers.length;n++){var i=t.markers[n];-1==H(r,i.doc)&&(i.parent=null,t.markers.splice(n--,1))}}(e)}(co(this));break}}var r;e.history==this.history&&(r=[e.id],gi(e,function(e){return r.push(e.id)},!0),e.history=new bi(null),e.history.done=Oi(this.history.done,r),e.history.undone=Oi(this.history.undone,r))},iterLinkedDocs:function(e){gi(this,e)},getMode:function(){return this.mode},getEditor:function(){return this.cm},splitLines:function(e){return this.lineSep?e.split(this.lineSep):je(e)},lineSeparator:function(){return this.lineSep||"\n"},setDirection:Hn(function(e){var t;"rtl"!=e&&(e="ltr"),e!=this.direction&&(this.direction=e,this.iter(function(e){return e.order=null}),this.cm&&jn(t=this.cm,function(){yi(t),en(t)}))})}),fo.prototype.eachLine=fo.prototype.iter;var ho=0;function po(e){var n=this;if(mo(n),!ke(n,e)&&!mr(n.display,e)){Te(e),v&&(ho=+new Date);var t=Jr(n,e,!0),r=e.dataTransfer.files;if(t&&!n.isReadOnly())if(r&&r.length&&window.FileReader&&window.File)for(var i=r.length,o=Array(i),a=0,l=function(){++a==i&&Pn(n,function(){var e={from:t=ut(n.doc,t),to:t,text:n.doc.splitLines(o.filter(function(e){return null!=e}).join(n.doc.lineSeparator())),origin:"paste"};Ki(n.doc,e),Ei(n.doc,li(ut(n.doc,t),ut(n.doc,si(e))))})()},s=0;s<r.length;s++)!function(e,t){var r;n.options.allowDropFileTypes&&-1==H(n.options.allowDropFileTypes,e.type)?l():((r=new FileReader).onerror=l,r.onload=function(){var e=r.result;/[\x00-\x08\x0e-\x1f]{2}/.test(e)||(o[t]=e),l()},r.readAsText(e))}(r[s],s);else{if(n.state.draggingText&&-1<n.doc.sel.contains(t))return n.state.draggingText(e),void setTimeout(function(){return n.display.input.focus()},20);try{var c,u=e.dataTransfer.getData("Text");if(u){if(n.state.draggingText&&!n.state.draggingText.copy&&(c=n.listSelections()),Pi(n.doc,li(t,t)),c)for(var d=0;d<c.length;++d)Yi(n.doc,"",c[d].anchor,c[d].head,"drag");n.replaceSelection(u,"around","paste"),n.display.input.focus()}}catch(e){}}}}function mo(e){e.display.dragCursor&&(e.display.lineSpace.removeChild(e.display.dragCursor),e.display.dragCursor=null)}function go(t){if(document.getElementsByClassName){for(var e=document.getElementsByClassName("CodeMirror"),r=[],n=0;n<e.length;n++){var i=e[n].CodeMirror;i&&r.push(i)}r.length&&r[0].operation(function(){for(var e=0;e<r.length;e++)t(r[e])})}}var vo=!1;function yo(){var e;vo||(ye(window,"resize",function(){null==e&&(e=setTimeout(function(){e=null,go(bo)},100))}),ye(window,"blur",function(){return go(pn)}),vo=!0)}function bo(e){var t=e.display;t.cachedCharWidth=t.cachedTextHeight=t.cachedPaddingH=null,t.scrollbarsClipped=!1,e.setSize()}for(var wo={3:"Pause",8:"Backspace",9:"Tab",13:"Enter",16:"Shift",17:"Ctrl",18:"Alt",19:"Pause",20:"CapsLock",27:"Esc",32:"Space",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"Left",38:"Up",39:"Right",40:"Down",44:"PrintScrn",45:"Insert",46:"Delete",59:";",61:"=",91:"Mod",92:"Mod",93:"Mod",106:"*",107:"=",109:"-",110:".",111:"/",145:"ScrollLock",173:"-",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'",224:"Mod",63232:"Up",63233:"Down",63234:"Left",63235:"Right",63272:"Delete",63273:"Home",63275:"End",63276:"PageUp",63277:"PageDown",63302:"Insert"},xo=0;xo<10;xo++)wo[xo+48]=wo[xo+96]=String(xo);for(var ko=65;ko<=90;ko++)wo[ko]=String.fromCharCode(ko);for(var Co=1;Co<=12;Co++)wo[Co+111]=wo[Co+63235]="F"+Co;var So={};function Mo(e){var t,r,n,i,o=e.split(/-(?!$)/);e=o[o.length-1];for(var a=0;a<o.length-1;a++){var l=o[a];if(/^(cmd|meta|m)$/i.test(l))i=!0;else if(/^a(lt)?$/i.test(l))t=!0;else if(/^(c|ctrl|control)$/i.test(l))r=!0;else{if(!/^s(hift)?$/i.test(l))throw new Error("Unrecognized modifier name: "+l);n=!0}}return t&&(e="Alt-"+e),r&&(e="Ctrl-"+e),i&&(e="Cmd-"+e),n&&(e="Shift-"+e),e}function To(e){var t,r,n={};for(t in e)if(e.hasOwnProperty(t)){var i=e[t];if(!/^(name|fallthrough|(de|at)tach)$/.test(t))if("..."!=i){for(var o=q(t.split(" "),Mo),a=0;a<o.length;a++){var l=void 0,s=void 0,l=a==o.length-1?(s=o.join(" "),i):(s=o.slice(0,a+1).join(" "),"..."),c=n[s];if(c){if(c!=l)throw new Error("Inconsistent bindings for "+s)}else n[s]=l}delete e[t]}else delete e[t]}for(r in n)e[r]=n[r];return e}function Lo(e,t,r,n){var i=(t=zo(t)).call?t.call(e,n):t[e];if(!1===i)return"nothing";if("..."===i)return"multi";if(null!=i&&r(i))return"handled";if(t.fallthrough){if("[object Array]"!=Object.prototype.toString.call(t.fallthrough))return Lo(e,t.fallthrough,r,n);for(var o=0;o<t.fallthrough.length;o++){var a=Lo(e,t.fallthrough[o],r,n);if(a)return a}}}function Oo(e){e="string"==typeof e?e:wo[e.keyCode];return"Ctrl"==e||"Alt"==e||"Shift"==e||"Mod"==e}function No(e,t,r){var n=e;return t.altKey&&"Alt"!=n&&(e="Alt-"+e),(w?t.metaKey:t.ctrlKey)&&"Ctrl"!=n&&(e="Ctrl-"+e),(w?t.ctrlKey:t.metaKey)&&"Mod"!=n&&(e="Cmd-"+e),!r&&t.shiftKey&&"Shift"!=n&&(e="Shift-"+e),e}function Ao(e,t){if(p&&34==e.keyCode&&e.char)return!1;var r=wo[e.keyCode];return null!=r&&!e.altGraphKey&&(3==e.keyCode&&e.code&&(r=e.code),No(r,e,t))}function zo(e){return"string"==typeof e?So[e]:e}function Do(t,e){for(var r=t.doc.sel.ranges,n=[],i=0;i<r.length;i++){for(var o=e(r[i]);n.length&&it(o.from,$(n).to)<=0;){var a=n.pop();if(it(a.from,o.from)<0){o.from=a.from;break}}n.push(o)}jn(t,function(){for(var e=n.length-1;0<=e;e--)Yi(t.doc,"",n[e].from,n[e].to,"+delete");wn(t)})}function Wo(e,t,r){r=ne(e.text,t+r,r);return r<0||r>e.text.length?null:r}function Eo(e,t,r){e=Wo(e,t.ch,r);return null==e?null:new nt(t.line,e,r<0?"after":"before")}function jo(e,t,r,n,i){if(e){"rtl"==t.doc.direction&&(i=-i);var o=ge(r,t.doc.direction);if(o){var a,l,s,e=i<0?$(o):o[0],o=i<0==(1==e.level)?"after":"before";return 0<e.level||"rtl"==t.doc.direction?(a=Mr(t,r),l=i<0?r.text.length-1:0,s=Tr(t,a,l).top,l=ie(function(e){return Tr(t,a,e).top==s},i<0==(1==e.level)?e.from:e.to-1,l),"before"==o&&(l=Wo(r,l,1))):l=i<0?e.to:e.from,new nt(n,l,o)}}return new nt(n,i<0?r.text.length:0,i<0?"before":"after")}function Po(t,r,l,e){var s=ge(r,t.doc.direction);if(!s)return Eo(r,l,e);l.ch>=r.text.length?(l.ch=r.text.length,l.sticky="before"):l.ch<=0&&(l.ch=0,l.sticky="after");var n=ae(s,l.ch,l.sticky),i=s[n];if("ltr"==t.doc.direction&&i.level%2==0&&(0<e?i.to>l.ch:i.from<l.ch))return Eo(r,l,e);function c(e,t){return Wo(r,e instanceof nt?e.ch:e,t)}function o(e){return t.options.lineWrapping?(a=a||Mr(t,r),Ur(t,r,a,e)):{begin:0,end:r.text.length}}var a,u=o("before"==l.sticky?c(l,-1):l.ch);if("rtl"==t.doc.direction||1==i.level){var d=1==i.level==e<0,f=c(l,d?1:-1);if(null!=f&&(d?f<=i.to&&f<=u.end:f>=i.from&&f>=u.begin)){var h=d?"before":"after";return new nt(l.line,f,h)}}h=function(e,t,r){for(var n=function(e,t){return t?new nt(l.line,c(e,1),"before"):new nt(l.line,e,"after")};0<=e&&e<s.length;e+=t){var i=s[e],o=0<t==(1!=i.level),a=o?r.begin:c(r.end,-1);if(i.from<=a&&a<i.to)return n(a,o);if(a=o?i.from:c(i.to,-1),r.begin<=a&&a<r.end)return n(a,o)}},n=h(n+e,e,u);if(n)return n;u=0<e?u.end:c(u.begin,-1);return null==u||0<e&&u==r.text.length||!(n=h(0<e?0:s.length-1,e,o(u)))?null:n}So.basic={Left:"goCharLeft",Right:"goCharRight",Up:"goLineUp",Down:"goLineDown",End:"goLineEnd",Home:"goLineStartSmart",PageUp:"goPageUp",PageDown:"goPageDown",Delete:"delCharAfter",Backspace:"delCharBefore","Shift-Backspace":"delCharBefore",Tab:"defaultTab","Shift-Tab":"indentAuto",Enter:"newlineAndIndent",Insert:"toggleOverwrite",Esc:"singleSelection"},So.pcDefault={"Ctrl-A":"selectAll","Ctrl-D":"deleteLine","Ctrl-Z":"undo","Shift-Ctrl-Z":"redo","Ctrl-Y":"redo","Ctrl-Home":"goDocStart","Ctrl-End":"goDocEnd","Ctrl-Up":"goLineUp","Ctrl-Down":"goLineDown","Ctrl-Left":"goGroupLeft","Ctrl-Right":"goGroupRight","Alt-Left":"goLineStart","Alt-Right":"goLineEnd","Ctrl-Backspace":"delGroupBefore","Ctrl-Delete":"delGroupAfter","Ctrl-S":"save","Ctrl-F":"find","Ctrl-G":"findNext","Shift-Ctrl-G":"findPrev","Shift-Ctrl-F":"replace","Shift-Ctrl-R":"replaceAll","Ctrl-[":"indentLess","Ctrl-]":"indentMore","Ctrl-U":"undoSelection","Shift-Ctrl-U":"redoSelection","Alt-U":"redoSelection",fallthrough:"basic"},So.emacsy={"Ctrl-F":"goCharRight","Ctrl-B":"goCharLeft","Ctrl-P":"goLineUp","Ctrl-N":"goLineDown","Alt-F":"goWordRight","Alt-B":"goWordLeft","Ctrl-A":"goLineStart","Ctrl-E":"goLineEnd","Ctrl-V":"goPageDown","Shift-Ctrl-V":"goPageUp","Ctrl-D":"delCharAfter","Ctrl-H":"delCharBefore","Alt-D":"delWordAfter","Alt-Backspace":"delWordBefore","Ctrl-K":"killLine","Ctrl-T":"transposeChars","Ctrl-O":"openLine"},So.macDefault={"Cmd-A":"selectAll","Cmd-D":"deleteLine","Cmd-Z":"undo","Shift-Cmd-Z":"redo","Cmd-Y":"redo","Cmd-Home":"goDocStart","Cmd-Up":"goDocStart","Cmd-End":"goDocEnd","Cmd-Down":"goDocEnd","Alt-Left":"goGroupLeft","Alt-Right":"goGroupRight","Cmd-Left":"goLineLeft","Cmd-Right":"goLineRight","Alt-Backspace":"delGroupBefore","Ctrl-Alt-Backspace":"delGroupAfter","Alt-Delete":"delGroupAfter","Cmd-S":"save","Cmd-F":"find","Cmd-G":"findNext","Shift-Cmd-G":"findPrev","Cmd-Alt-F":"replace","Shift-Cmd-Alt-F":"replaceAll","Cmd-[":"indentLess","Cmd-]":"indentMore","Cmd-Backspace":"delWrappedLineLeft","Cmd-Delete":"delWrappedLineRight","Cmd-U":"undoSelection","Shift-Cmd-U":"redoSelection","Ctrl-Up":"goDocStart","Ctrl-Down":"goDocEnd",fallthrough:["basic","emacsy"]},So.default=m?So.macDefault:So.pcDefault;var Fo={selectAll:Vi,singleSelection:function(e){return e.setSelection(e.getCursor("anchor"),e.getCursor("head"),_)},killLine:function(r){return Do(r,function(e){if(e.empty()){var t=Xe(r.doc,e.head.line).text.length;return e.head.ch==t&&e.head.line<r.lastLine()?{from:e.head,to:nt(e.head.line+1,0)}:{from:e.head,to:nt(e.head.line,t)}}return{from:e.from(),to:e.to()}})},deleteLine:function(t){return Do(t,function(e){return{from:nt(e.from().line,0),to:ut(t.doc,nt(e.to().line+1,0))}})},delLineLeft:function(e){return Do(e,function(e){return{from:nt(e.from().line,0),to:e.from()}})},delWrappedLineLeft:function(r){return Do(r,function(e){var t=r.charCoords(e.head,"div").top+5;return{from:r.coordsChar({left:0,top:t},"div"),to:e.from()}})},delWrappedLineRight:function(r){return Do(r,function(e){var t=r.charCoords(e.head,"div").top+5,t=r.coordsChar({left:r.display.lineDiv.offsetWidth+100,top:t},"div");return{from:e.from(),to:t}})},undo:function(e){return e.undo()},redo:function(e){return e.redo()},undoSelection:function(e){return e.undoSelection()},redoSelection:function(e){return e.redoSelection()},goDocStart:function(e){return e.extendSelection(nt(e.firstLine(),0))},goDocEnd:function(e){return e.extendSelection(nt(e.lastLine()))},goLineStart:function(t){return t.extendSelectionsBy(function(e){return Ho(t,e.head.line)},{origin:"+move",bias:1})},goLineStartSmart:function(t){return t.extendSelectionsBy(function(e){return Io(t,e.head)},{origin:"+move",bias:1})},goLineEnd:function(t){return t.extendSelectionsBy(function(e){return function(e,t){var r=Xe(e.doc,t),n=function(e){for(var t;t=Ft(e);)e=t.find(1,!0).line;return e}(r);n!=r&&(t=Qe(n));return jo(!0,e,r,t,-1)}(t,e.head.line)},{origin:"+move",bias:-1})},goLineRight:function(t){return t.extendSelectionsBy(function(e){e=t.cursorCoords(e.head,"div").top+5;return t.coordsChar({left:t.display.lineDiv.offsetWidth+100,top:e},"div")},V)},goLineLeft:function(t){return t.extendSelectionsBy(function(e){e=t.cursorCoords(e.head,"div").top+5;return t.coordsChar({left:0,top:e},"div")},V)},goLineLeftSmart:function(r){return r.extendSelectionsBy(function(e){var t=r.cursorCoords(e.head,"div").top+5,t=r.coordsChar({left:0,top:t},"div");return t.ch<r.getLine(t.line).search(/\S/)?Io(r,e.head):t},V)},goLineUp:function(e){return e.moveV(-1,"line")},goLineDown:function(e){return e.moveV(1,"line")},goPageUp:function(e){return e.moveV(-1,"page")},goPageDown:function(e){return e.moveV(1,"page")},goCharLeft:function(e){return e.moveH(-1,"char")},goCharRight:function(e){return e.moveH(1,"char")},goColumnLeft:function(e){return e.moveH(-1,"column")},goColumnRight:function(e){return e.moveH(1,"column")},goWordLeft:function(e){return e.moveH(-1,"word")},goGroupRight:function(e){return e.moveH(1,"group")},goGroupLeft:function(e){return e.moveH(-1,"group")},goWordRight:function(e){return e.moveH(1,"word")},delCharBefore:function(e){return e.deleteH(-1,"codepoint")},delCharAfter:function(e){return e.deleteH(1,"char")},delWordBefore:function(e){return e.deleteH(-1,"word")},delWordAfter:function(e){return e.deleteH(1,"word")},delGroupBefore:function(e){return e.deleteH(-1,"group")},delGroupAfter:function(e){return e.deleteH(1,"group")},indentAuto:function(e){return e.indentSelection("smart")},indentMore:function(e){return e.indentSelection("add")},indentLess:function(e){return e.indentSelection("subtract")},insertTab:function(e){return e.replaceSelection("\t")},insertSoftTab:function(e){for(var t=[],r=e.listSelections(),n=e.options.tabSize,i=0;i<r.length;i++){var o=r[i].from(),o=P(e.getLine(o.line),o.ch,n);t.push(G(n-o%n))}e.replaceSelections(t)},defaultTab:function(e){e.somethingSelected()?e.indentSelection("add"):e.execCommand("insertTab")},transposeChars:function(a){return jn(a,function(){for(var e,t,r,n=a.listSelections(),i=[],o=0;o<n.length;o++){n[o].empty()&&(e=n[o].head,(t=Xe(a.doc,e.line).text)&&(e.ch==t.length&&(e=new nt(e.line,e.ch-1)),0<e.ch?(e=new nt(e.line,e.ch+1),a.replaceRange(t.charAt(e.ch-1)+t.charAt(e.ch-2),nt(e.line,e.ch-2),e,"+transpose")):e.line>a.doc.first&&((r=Xe(a.doc,e.line-1).text)&&(e=new nt(e.line,1),a.replaceRange(t.charAt(0)+a.doc.lineSeparator()+r.charAt(r.length-1),nt(e.line-1,r.length-1),e,"+transpose")))),i.push(new oi(e,e)))}a.setSelections(i)})},newlineAndIndent:function(n){return jn(n,function(){for(var e=n.listSelections(),t=e.length-1;0<=t;t--)n.replaceRange(n.doc.lineSeparator(),e[t].anchor,e[t].head,"+input");e=n.listSelections();for(var r=0;r<e.length;r++)n.indentLine(e[r].from().line,null,!0);wn(n)})},openLine:function(e){return e.replaceSelection("\n","start")},toggleOverwrite:function(e){return e.toggleOverwrite()}};function Ho(e,t){var r=Xe(e.doc,t),n=It(r);return n!=r&&(t=Qe(n)),jo(!0,e,n,t,1)}function Io(e,t){var r=Ho(e,t.line),n=Xe(e.doc,r.line),e=ge(n,e.doc.direction);if(e&&0!=e[0].level)return r;n=Math.max(r.ch,n.text.search(/\S/)),t=t.line==r.line&&t.ch<=n&&t.ch;return nt(r.line,t?0:n,r.sticky)}function Ro(e,t,r){if("string"==typeof t&&!(t=Fo[t]))return!1;e.display.input.ensurePolled();var n=e.display.shift,i=!1;try{e.isReadOnly()&&(e.state.suppressEdits=!0),r&&(e.display.shift=!1),i=t(e)!=R}finally{e.display.shift=n,e.state.suppressEdits=!1}return i}var _o=new F;function Bo(e,t,r,n){var i=e.state.keySeq;if(i){if(Oo(t))return"handled";if(/\'$/.test(t)?e.state.keySeq=null:_o.set(50,function(){e.state.keySeq==i&&(e.state.keySeq=null,e.display.input.reset())}),Vo(e,i+" "+t,r,n))return!0}return Vo(e,t,r,n)}function Vo(e,t,r,n){n=function(e,t,r){for(var n=0;n<e.state.keyMaps.length;n++){var i=Lo(t,e.state.keyMaps[n],r,e);if(i)return i}return e.options.extraKeys&&Lo(t,e.options.extraKeys,r,e)||Lo(t,e.options.keyMap,r,e)}(e,t,n);return"multi"==n&&(e.state.keySeq=t),"handled"==n&&or(e,"keyHandled",e,t,r),"handled"!=n&&"multi"!=n||(Te(r),un(e)),!!n}function Uo(t,e){var r=Ao(e,!0);return!!r&&(e.shiftKey&&!t.state.keySeq?Bo(t,"Shift-"+r,e,function(e){return Ro(t,e,!0)})||Bo(t,r,e,function(e){if("string"==typeof e?/^go[A-Z]/.test(e):e.motion)return Ro(t,e)}):Bo(t,r,e,function(e){return Ro(t,e)}))}var Ko=null;function Go(e){var t,r,n,i=this;function o(e){18!=e.keyCode&&e.altKey||(S(n,"CodeMirror-crosshair"),we(document,"keyup",o),we(document,"mouseover",o))}e.target&&e.target!=i.display.input.getField()||(i.curOp.focus=A(),ke(i,e)||(v&&y<11&&27==e.keyCode&&(e.returnValue=!1),t=e.keyCode,i.display.shift=16==t||e.shiftKey,r=Uo(i,e),p&&(Ko=r?t:null,!r&&88==t&&!Fe&&(m?e.metaKey:e.ctrlKey)&&i.replaceSelection("",null,"cut")),f&&!m&&!r&&46==t&&e.shiftKey&&!e.ctrlKey&&document.execCommand&&document.execCommand("cut"),18!=t||/\bCodeMirror-crosshair\b/.test(i.display.lineDiv.className)||(z(n=i.display.lineDiv,"CodeMirror-crosshair"),ye(document,"keyup",o),ye(document,"mouseover",o))))}function $o(e){16==e.keyCode&&(this.doc.sel.shift=!1),ke(this,e)}function qo(e){var t=this;if(!(e.target&&e.target!=t.display.input.getField()||mr(t.display,e)||ke(t,e)||e.ctrlKey&&!e.altKey||m&&e.metaKey)){var r,n=e.keyCode,i=e.charCode;if(p&&n==Ko)return Ko=null,void Te(e);p&&(!e.which||e.which<10)&&Uo(t,e)||"\b"!=(i=String.fromCharCode(null==i?n:i))&&(Bo(r=t,"'"+i+"'",e,function(e){return Ro(r,e,!0)})||t.display.input.onKeyPress(e))}}var Xo,Yo,Zo=function(e,t,r){this.time=e,this.pos=t,this.button=r};function Jo(e){var t,r,n,i,o,a=this,l=a.display;ke(a,e)||l.activeTouch&&l.input.supportsTouch()||(l.input.ensurePolled(),l.shift=e.shiftKey,mr(l,e)?h||(l.scroller.draggable=!1,setTimeout(function(){return l.scroller.draggable=!0},100)):ta(a,e)||(t=Jr(a,e),r=ze(e),i=t?(n=t,i=r,o=+new Date,Yo&&Yo.compare(o,n,i)?(Xo=Yo=null,"triple"):Xo&&Xo.compare(o,n,i)?(Yo=new Zo(o,n,i),Xo=null,"double"):(Xo=new Zo(o,n,i),Yo=null,"single")):"single",window.focus(),1==r&&a.state.selectingText&&a.state.selectingText(e),t&&function(r,e,n,t,i){var o="Click";"double"==t?o="Double"+o:"triple"==t&&(o="Triple"+o);return Bo(r,No(o=(1==e?"Left":2==e?"Middle":"Right")+o,i),i,function(e){if("string"==typeof e&&(e=Fo[e]),!e)return!1;var t=!1;try{r.isReadOnly()&&(r.state.suppressEdits=!0),t=e(r,n)!=R}finally{r.state.suppressEdits=!1}return t})}(a,r,t,i,e)||(1==r?t?function(e,t,r,n){v?setTimeout(E(dn,e),0):e.curOp.focus=A();var i,o=function(e,t,r){var n=e.getOption("configureMouse"),i=n?n(e,t,r):{};{null==i.unit&&(n=g?r.shiftKey&&r.metaKey:r.altKey,i.unit=n?"rectangle":"single"==t?"char":"double"==t?"word":"line")}null!=i.extend&&!e.doc.extend||(i.extend=e.doc.extend||r.shiftKey);null==i.addNew&&(i.addNew=m?r.metaKey:r.ctrlKey);null==i.moveOnDrag&&(i.moveOnDrag=!(m?r.altKey:r.ctrlKey));return i}(e,r,n),a=e.doc.sel;(e.options.dragDrop&&Ee&&!e.isReadOnly()&&"single"==r&&-1<(i=a.contains(t))&&(it((i=a.ranges[i]).from(),t)<0||0<t.xRel)&&(0<it(i.to(),t)||t.xRel<0)?function(t,r,n,i){var o=t.display,a=!1,l=Pn(t,function(e){h&&(o.scroller.draggable=!1),t.state.draggingText=!1,we(o.wrapper.ownerDocument,"mouseup",l),we(o.wrapper.ownerDocument,"mousemove",s),we(o.scroller,"dragstart",c),we(o.scroller,"drop",l),a||(Te(e),i.addNew||Ai(t.doc,n,null,null,i.extend),h&&!u||v&&9==y?setTimeout(function(){o.wrapper.ownerDocument.body.focus({preventScroll:!0}),o.input.focus()},20):o.input.focus())}),s=function(e){a=a||10<=Math.abs(r.clientX-e.clientX)+Math.abs(r.clientY-e.clientY)},c=function(){return a=!0};h&&(o.scroller.draggable=!0);(t.state.draggingText=l).copy=!i.moveOnDrag,o.scroller.dragDrop&&o.scroller.dragDrop();ye(o.wrapper.ownerDocument,"mouseup",l),ye(o.wrapper.ownerDocument,"mousemove",s),ye(o.scroller,"dragstart",c),ye(o.scroller,"drop",l),fn(t),setTimeout(function(){return o.input.focus()},20)}:function(f,e,h,p){var a=f.display,m=f.doc;Te(e);var g,v,y=m.sel,t=y.ranges;p.addNew&&!p.extend?(v=m.sel.contains(h),g=-1<v?t[v]:new oi(h,h)):(g=m.sel.primary(),v=m.sel.primIndex);{"rectangle"==p.unit?(p.addNew||(g=new oi(h,h)),h=Jr(f,e,!0,!0),v=-1):(e=Qo(f,h,p.unit),g=p.extend?Ni(g,e.anchor,e.head,p.extend):e)}p.addNew?-1==v?(v=t.length,ji(m,ai(f,t.concat([g]),v),{scroll:!1,origin:"*mouse"})):1<t.length&&t[v].empty()&&"char"==p.unit&&!p.extend?(ji(m,ai(f,t.slice(0,v).concat(t.slice(v+1)),0),{scroll:!1,origin:"*mouse"}),y=m.sel):Di(m,v,g,B):(ji(m,new ii([g],v=0),B),y=m.sel);var b=h;function l(e){if(0!=it(b,e))if(b=e,"rectangle"==p.unit){for(var t=[],r=f.options.tabSize,n=P(Xe(m,h.line).text,h.ch,r),i=P(Xe(m,e.line).text,e.ch,r),o=Math.min(n,i),a=Math.max(n,i),l=Math.min(h.line,e.line),s=Math.min(f.lastLine(),Math.max(h.line,e.line));l<=s;l++){var c=Xe(m,l).text,u=U(c,o,r);o==a?t.push(new oi(nt(l,u),nt(l,u))):c.length>u&&t.push(new oi(nt(l,u),nt(l,U(c,a,r))))}t.length||t.push(new oi(h,h)),ji(m,ai(f,y.ranges.slice(0,v).concat(t),v),{origin:"*mouse",scroll:!1}),f.scrollIntoView(e)}else{var d,n=g,i=Qo(f,e,p.unit),e=n.anchor,e=0<it(i.anchor,e)?(d=i.head,st(n.from(),i.anchor)):(d=i.anchor,lt(n.to(),i.head)),i=y.ranges.slice(0);i[v]=function(e,t){var r=t.anchor,n=t.head,i=Xe(e.doc,r.line);if(0==it(r,n)&&r.sticky==n.sticky)return t;var o=ge(i);if(!o)return t;var a=ae(o,r.ch,r.sticky),l=o[a];if(l.from!=r.ch&&l.to!=r.ch)return t;i=a+(l.from==r.ch==(1!=l.level)?0:1);if(0==i||i==o.length)return t;{s=n.line!=r.line?0<(n.line-r.line)*("ltr"==e.doc.direction?1:-1):(e=ae(o,n.ch,n.sticky),s=e-a||(n.ch-r.ch)*(1==l.level?-1:1),e==i-1||e==i?s<0:0<s)}var i=o[i+(s?-1:0)],s=s==(1==i.level),i=s?i.from:i.to,s=s?"after":"before";return r.ch==i&&r.sticky==s?t:new oi(new nt(r.line,i,s),n)}(f,new oi(ut(m,e),d)),ji(m,ai(f,i,v),B)}}var s=a.wrapper.getBoundingClientRect(),c=0;function r(e){f.state.selectingText=!1,c=1/0,e&&(Te(e),a.input.focus()),we(a.wrapper.ownerDocument,"mousemove",n),we(a.wrapper.ownerDocument,"mouseup",i),m.history.lastSelOrigin=null}var n=Pn(f,function(e){(0!==e.buttons&&ze(e)?function e(t){var r,n,i=++c,o=Jr(f,t,!0,"rectangle"==p.unit);o&&(0!=it(o,b)?(f.curOp.focus=A(),l(o),r=vn(a,m),(o.line>=r.to||o.line<r.from)&&setTimeout(Pn(f,function(){c==i&&e(t)}),150)):(n=t.clientY<s.top?-20:t.clientY>s.bottom?20:0)&&setTimeout(Pn(f,function(){c==i&&(a.scroller.scrollTop+=n,e(t))}),50))}:r)(e)}),i=Pn(f,r);f.state.selectingText=i,ye(a.wrapper.ownerDocument,"mousemove",n),ye(a.wrapper.ownerDocument,"mouseup",i)})(e,n,t,o)}(a,t,i,e):Ae(e)==l.scroller&&Te(e):2==r?(t&&Ai(a.doc,t),setTimeout(function(){return l.input.focus()},20)):3==r&&(x?a.display.input.onContextMenu(e):fn(a)))))}function Qo(e,t,r){if("char"==r)return new oi(t,t);if("word"==r)return e.findWordAt(t);if("line"==r)return new oi(nt(t.line,0),ut(e.doc,nt(t.line+1,0)));t=r(e,t);return new oi(t.from,t.to)}function ea(e,t,r,n){var i,o;if(t.touches)i=t.touches[0].clientX,o=t.touches[0].clientY;else try{i=t.clientX,o=t.clientY}catch(e){return!1}if(i>=Math.floor(e.display.gutters.getBoundingClientRect().right))return!1;n&&Te(t);var a=e.display,n=a.lineDiv.getBoundingClientRect();if(o>n.bottom||!Se(e,r))return Oe(t);o-=n.top-a.viewOffset;for(var l=0;l<e.display.gutterSpecs.length;++l){var s=a.gutters.childNodes[l];if(s&&s.getBoundingClientRect().right>=i)return xe(e,r,e,et(e.doc,o),e.display.gutterSpecs[l].className,t),Oe(t)}}function ta(e,t){return ea(e,t,"gutterClick",!0)}function ra(e,t){var r,n;mr(e.display,t)||(n=t,Se(r=e,"gutterContextMenu")&&ea(r,n,"gutterContextMenu",!1))||ke(e,t,"contextmenu")||x||e.display.input.onContextMenu(t)}function na(e){e.display.wrapper.className=e.display.wrapper.className.replace(/\s*cm-s-\S+/g,"")+e.options.theme.replace(/(^|\s)\s*/g," cm-s-"),Dr(e)}Zo.prototype.compare=function(e,t,r){return this.time+400>e&&0==it(t,this.pos)&&r==this.button};var ia={toString:function(){return"CodeMirror.Init"}},oa={},aa={};function la(e,t,r){!t!=!(r&&r!=ia)&&(r=e.display.dragFunctions,(t=t?ye:we)(e.display.scroller,"dragstart",r.start),t(e.display.scroller,"dragenter",r.enter),t(e.display.scroller,"dragover",r.over),t(e.display.scroller,"dragleave",r.leave),t(e.display.scroller,"drop",r.drop))}function sa(e){e.options.lineWrapping?(z(e.display.wrapper,"CodeMirror-wrap"),e.display.sizer.style.minWidth="",e.display.sizerWidth=null):(S(e.display.wrapper,"CodeMirror-wrap"),Kt(e)),Zr(e),en(e),Dr(e),setTimeout(function(){return On(e)},100)}function ca(e,t){var r=this;if(!(this instanceof ca))return new ca(e,t);this.options=t=t?j(t):{},j(oa,t,!1);var n=t.value;"string"==typeof n?n=new fo(n,t.mode,null,t.lineSeparator,t.direction):t.mode&&(n.modeOption=t.mode),this.doc=n;var i,o=new ca.inputStyles[t.inputStyle](this),o=this.display=new Jn(e,n,o,t);for(i in na(o.wrapper.CodeMirror=this),t.lineWrapping&&(this.display.wrapper.className+=" CodeMirror-wrap"),zn(this),this.state={keyMaps:[],overlays:[],modeGen:0,overwrite:!1,delayingBlurEvent:!1,focused:!1,suppressEdits:!1,pasteIncoming:-1,cutIncoming:-1,selectingText:!1,draggingText:!1,highlight:new F,keySeq:null,specialChars:null},t.autofocus&&!d&&o.input.focus(),v&&y<11&&setTimeout(function(){return r.display.input.reset(!0)},20),function(n){var i=n.display;ye(i.scroller,"mousedown",Pn(n,Jo)),ye(i.scroller,"dblclick",v&&y<11?Pn(n,function(e){var t;ke(n,e)||(!(t=Jr(n,e))||ta(n,e)||mr(n.display,e)||(Te(e),t=n.findWordAt(t),Ai(n.doc,t.anchor,t.head)))}):function(e){return ke(n,e)||Te(e)});ye(i.scroller,"contextmenu",function(e){return ra(n,e)}),ye(i.input.getField(),"contextmenu",function(e){i.scroller.contains(e.target)||ra(n,e)});var r,o={end:0};function a(){i.activeTouch&&(r=setTimeout(function(){return i.activeTouch=null},1e3),(o=i.activeTouch).end=+new Date)}function l(e,t){if(null==t.left)return 1;var r=t.left-e.left,e=t.top-e.top;return 400<r*r+e*e}ye(i.scroller,"touchstart",function(e){var t;ke(n,e)||function(e){if(1==e.touches.length){e=e.touches[0];return e.radiusX<=1&&e.radiusY<=1}}(e)||ta(n,e)||(i.input.ensurePolled(),clearTimeout(r),t=+new Date,i.activeTouch={start:t,moved:!1,prev:t-o.end<=300?o:null},1==e.touches.length&&(i.activeTouch.left=e.touches[0].pageX,i.activeTouch.top=e.touches[0].pageY))}),ye(i.scroller,"touchmove",function(){i.activeTouch&&(i.activeTouch.moved=!0)}),ye(i.scroller,"touchend",function(e){var t,r=i.activeTouch;r&&!mr(i,e)&&null!=r.left&&!r.moved&&new Date-r.start<300&&(t=n.coordsChar(i.activeTouch,"page"),t=!r.prev||l(r,r.prev)?new oi(t,t):!r.prev.prev||l(r,r.prev.prev)?n.findWordAt(t):new oi(nt(t.line,0),ut(n.doc,nt(t.line+1,0))),n.setSelection(t.anchor,t.head),n.focus(),Te(e)),a()}),ye(i.scroller,"touchcancel",a),ye(i.scroller,"scroll",function(){i.scroller.clientHeight&&(Sn(n,i.scroller.scrollTop),Tn(n,i.scroller.scrollLeft,!0),xe(n,"scroll",n))}),ye(i.scroller,"mousewheel",function(e){return ni(n,e)}),ye(i.scroller,"DOMMouseScroll",function(e){return ni(n,e)}),ye(i.wrapper,"scroll",function(){return i.wrapper.scrollTop=i.wrapper.scrollLeft=0}),i.dragFunctions={enter:function(e){ke(n,e)||Ne(e)},over:function(e){var t,r;ke(n,e)||((r=Jr(t=n,r=e))&&(sn(t,r,r=document.createDocumentFragment()),t.display.dragCursor||(t.display.dragCursor=L("div",null,"CodeMirror-cursors CodeMirror-dragcursors"),t.display.lineSpace.insertBefore(t.display.dragCursor,t.display.cursorDiv)),T(t.display.dragCursor,r)),Ne(e))},start:function(e){return t=n,r=e,void(v&&(!t.state.draggingText||+new Date-ho<100)?Ne(r):ke(t,r)||mr(t.display,r)||(r.dataTransfer.setData("Text",t.getSelection()),r.dataTransfer.effectAllowed="copyMove",r.dataTransfer.setDragImage&&!u&&((e=L("img",null,null,"position: fixed; left: 0; top: 0;")).src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",p&&(e.width=e.height=1,t.display.wrapper.appendChild(e),e._top=e.offsetTop),r.dataTransfer.setDragImage(e,0,0),p&&e.parentNode.removeChild(e))));var t,r},drop:Pn(n,po),leave:function(e){ke(n,e)||mo(n)}};var e=i.input.getField();ye(e,"keyup",function(e){return $o.call(n,e)}),ye(e,"keydown",Pn(n,Go)),ye(e,"keypress",Pn(n,qo)),ye(e,"focus",function(e){return hn(n,e)}),ye(e,"blur",function(e){return pn(n,e)})}(this),yo(),Wn(this),this.curOp.forceUpdate=!0,vi(this,n),t.autofocus&&!d||this.hasFocus()?setTimeout(function(){r.hasFocus()&&!r.state.focused&&hn(r)},20):pn(this),aa)aa.hasOwnProperty(i)&&aa[i](this,t[i],ia);qn(this),t.finishInit&&t.finishInit(this);for(var a=0;a<ua.length;++a)ua[a](this);En(this),h&&t.lineWrapping&&"optimizelegibility"==getComputedStyle(o.lineDiv).textRendering&&(o.lineDiv.style.textRendering="auto")}ca.defaults=oa,ca.optionHandlers=aa;var ua=[];function da(e,t,r,n){var i,o=e.doc;null==r&&(r="add"),"smart"==r&&(o.mode.indent?i=gt(e,t).state:r="prev");var a=e.options.tabSize,l=Xe(o,t),s=P(l.text,null,a);l.stateAfter&&(l.stateAfter=null);var c,u=l.text.match(/^\s*/)[0];if(n||/\S/.test(l.text)){if("smart"==r&&((c=o.mode.indent(i,l.text.slice(u.length),l.text))==R||150<c)){if(!n)return;r="prev"}}else c=0,r="not";"prev"==r?c=t>o.first?P(Xe(o,t-1).text,null,a):0:"add"==r?c=s+e.options.indentUnit:"subtract"==r?c=s-e.options.indentUnit:"number"==typeof r&&(c=s+r),c=Math.max(0,c);var d="",f=0;if(e.options.indentWithTabs)for(var h=Math.floor(c/a);h;--h)f+=a,d+="\t";if(f<c&&(d+=G(c-f)),d!=u)return Yi(o,d,nt(t,0),nt(t,u.length),"+input"),!(l.stateAfter=null);for(var p=0;p<o.sel.ranges.length;p++){var m=o.sel.ranges[p];if(m.head.line==t&&m.head.ch<u.length){m=nt(t,u.length);Di(o,p,new oi(m,m));break}}}ca.defineInitHook=function(e){return ua.push(e)};var fa=null;function ha(e){fa=e}function pa(e,t,r,n,i){var o=e.doc;e.display.shift=!1,n=n||o.sel;var a=+new Date-200,l="paste"==i||e.state.pasteIncoming>a,s=je(t),c=null;if(l&&1<n.ranges.length)if(fa&&fa.text.join("\n")==t){if(n.ranges.length%fa.text.length==0){c=[];for(var u=0;u<fa.text.length;u++)c.push(o.splitLines(fa.text[u]))}}else s.length==n.ranges.length&&e.options.pasteLinesPerSelection&&(c=q(s,function(e){return[e]}));for(var d=e.curOp.updateInput,f=n.ranges.length-1;0<=f;f--){var h=n.ranges[f],p=h.from(),m=h.to();h.empty()&&(r&&0<r?p=nt(p.line,p.ch-r):e.state.overwrite&&!l?m=nt(m.line,Math.min(Xe(o,m.line).text.length,m.ch+$(s).length)):l&&fa&&fa.lineWise&&fa.text.join("\n")==s.join("\n")&&(p=m=nt(p.line,0)));m={from:p,to:m,text:c?c[f%c.length]:s,origin:i||(l?"paste":e.state.cutIncoming>a?"cut":"+input")};Ki(e.doc,m),or(e,"inputRead",e,m)}t&&!l&&ga(e,t),wn(e),e.curOp.updateInput<2&&(e.curOp.updateInput=d),e.curOp.typing=!0,e.state.pasteIncoming=e.state.cutIncoming=-1}function ma(e,t){var r=e.clipboardData&&e.clipboardData.getData("Text");return r&&(e.preventDefault(),t.isReadOnly()||t.options.disableInput||jn(t,function(){return pa(t,r,0,null,"paste")}),1)}function ga(e,t){if(e.options.electricChars&&e.options.smartIndent)for(var r=e.doc.sel,n=r.ranges.length-1;0<=n;n--){var i=r.ranges[n];if(!(100<i.head.ch||n&&r.ranges[n-1].head.line==i.head.line)){var o=e.getModeAt(i.head),a=!1;if(o.electricChars){for(var l=0;l<o.electricChars.length;l++)if(-1<t.indexOf(o.electricChars.charAt(l))){a=da(e,i.head.line,"smart");break}}else o.electricInput&&o.electricInput.test(Xe(e.doc,i.head.line).text.slice(0,i.head.ch))&&(a=da(e,i.head.line,"smart"));a&&or(e,"electricInput",e,i.head.line)}}}function va(e){for(var t=[],r=[],n=0;n<e.doc.sel.ranges.length;n++){var i=e.doc.sel.ranges[n].head.line,i={anchor:nt(i,0),head:nt(i+1,0)};r.push(i),t.push(e.getRange(i.anchor,i.head))}return{text:t,ranges:r}}function ya(e,t,r,n){e.setAttribute("autocorrect",r?"":"off"),e.setAttribute("autocapitalize",n?"":"off"),e.setAttribute("spellcheck",!!t)}function ba(){var e=L("textarea",null,null,"position: absolute; bottom: -1em; padding: 0; width: 1px; height: 1em; outline: none"),t=L("div",[e],null,"overflow: hidden; position: relative; width: 3px; height: 0px;");return h?e.style.width="1000px":e.setAttribute("wrap","off"),l&&(e.style.border="1px solid black"),ya(e),t}function wa(n,i,o,a,l){var e=i,t=o,s=Xe(n,i.line),c=l&&"rtl"==n.direction?-o:o;function r(e){var t,r;if(null==(t="codepoint"==a?(t=s.text.charCodeAt(i.ch+(0<a?0:-1)),isNaN(t)?null:new nt(i.line,Math.max(0,Math.min(s.text.length,i.ch+o*(55296<=t&&t<56320?2:1))),-o)):l?Po(n.cm,s,i,o):Eo(s,i,o))){if(e||(r=i.line+c)<n.first||r>=n.first+n.size||(i=new nt(r,i.ch,i.sticky),!(s=Xe(n,r))))return;i=jo(l,n.cm,s,i.line,c)}else i=t;return 1}if("char"==a||"codepoint"==a)r();else if("column"==a)r(!0);else if("word"==a||"group"==a)for(var u=null,d="group"==a,f=n.cm&&n.cm.getHelper(i,"wordChars"),h=!0;!(o<0)||r(!h);h=!1){var p=s.text.charAt(i.ch)||"\n",p=Q(p,f)?"w":d&&"\n"==p?"n":!d||/\s/.test(p)?null:"p";if(!d||h||p||(p="s"),u&&u!=p){o<0&&(o=1,r(),i.sticky="after");break}if(p&&(u=p),0<o&&!r(!h))break}t=_i(n,i,e,t,!0);return ot(e,t)&&(t.hitSide=!0),t}function xa(e,t,r,n){var i,o,a,l=e.doc,s=t.left;for("page"==n?(i=Math.min(e.display.wrapper.clientHeight,window.innerHeight||document.documentElement.clientHeight),i=Math.max(i-.5*Gr(e.display),3),o=(0<r?t.bottom:t.top)+r*i):"line"==n&&(o=0<r?t.bottom+3:t.top-3);(a=Br(e,s,o)).outside;){if(r<0?o<=0:o>=l.height){a.hitSide=!0;break}o+=5*r}return a}e=function(e){this.cm=e,this.lastAnchorNode=this.lastAnchorOffset=this.lastFocusNode=this.lastFocusOffset=null,this.polling=new F,this.composing=null,this.gracePeriod=!1,this.readDOMTimeout=null};function ka(e,t){var r=Sr(e,t.line);if(!r||r.hidden)return null;var n=Xe(e.doc,t.line),r=kr(r,n,t.line),n=ge(n,e.doc.direction),e="left";n&&(e=ae(n,t.ch)%2?"right":"left");e=Nr(r.map,t.ch,e);return e.offset="right"==e.collapse?e.end:e.start,e}function Ca(e,t){return t&&(e.bad=!0),e}function Sa(e,t,r){var n;if(t==e.display.lineDiv){if(!(n=e.display.lineDiv.childNodes[r]))return Ca(e.clipPos(nt(e.display.viewTo-1)),!0);t=null,r=0}else for(n=t;;n=n.parentNode){if(!n||n==e.display.lineDiv)return null;if(n.parentNode&&n.parentNode==e.display.lineDiv)break}for(var i=0;i<e.display.view.length;i++){var o=e.display.view[i];if(o.node==n)return function(c,e,t){var r=c.text.firstChild,n=!1;if(!e||!N(r,e))return Ca(nt(Qe(c.line),0),!0);if(e==r&&(n=!0,e=r.childNodes[t],t=0,!e)){var i=c.rest?$(c.rest):c.line;return Ca(nt(Qe(i),i.text.length),n)}var i=3==e.nodeType?e:null,o=e;i||1!=e.childNodes.length||3!=e.firstChild.nodeType||(i=e.firstChild,t=t&&i.nodeValue.length);for(;o.parentNode!=r;)o=o.parentNode;var u=c.measure,d=u.maps;function a(e,t,r){for(var n=-1;n<(d?d.length:0);n++)for(var i=n<0?u.map:d[n],o=0;o<i.length;o+=3){var a=i[o+2];if(a==e||a==t){var l=Qe(n<0?c.line:c.rest[n]),s=i[o]+r;return(r<0||a!=e)&&(s=i[o+(r?1:0)]),nt(l,s)}}}var l=a(i,o,t);if(l)return Ca(l,n);for(var s=o.nextSibling,f=i?i.nodeValue.length-t:0;s;s=s.nextSibling){if(l=a(s,s.firstChild,0))return Ca(nt(l.line,l.ch-f),n);f+=s.textContent.length}for(var h=o.previousSibling,p=t;h;h=h.previousSibling){if(l=a(h,h.firstChild,-1))return Ca(nt(l.line,l.ch+p),n);p+=h.textContent.length}}(o,t,r)}}e.prototype.init=function(e){var t=this,o=this,a=o.cm,l=o.div=e.lineDiv;function s(e){for(var t=e.target;t;t=t.parentNode){if(t==l)return 1;if(/\bCodeMirror-(?:line)?widget\b/.test(t.className))break}}function r(e){if(s(e)&&!ke(a,e)){if(a.somethingSelected())ha({lineWise:!1,text:a.getSelections()}),"cut"==e.type&&a.replaceSelection("",null,"cut");else{if(!a.options.lineWiseCopyCut)return;var t=va(a);ha({lineWise:!0,text:t.text}),"cut"==e.type&&a.operation(function(){a.setSelections(t.ranges,0,_),a.replaceSelection("",null,"cut")})}if(e.clipboardData){e.clipboardData.clearData();var r=fa.text.join("\n");if(e.clipboardData.setData("Text",r),e.clipboardData.getData("Text")==r)return void e.preventDefault()}var n=ba(),e=n.firstChild;a.display.lineSpace.insertBefore(n,a.display.lineSpace.firstChild),e.value=fa.text.join("\n");var i=document.activeElement;W(e),setTimeout(function(){a.display.lineSpace.removeChild(n),i.focus(),i==l&&o.showPrimarySelection()},50)}}ya(l,a.options.spellcheck,a.options.autocorrect,a.options.autocapitalize),ye(l,"paste",function(e){!s(e)||ke(a,e)||ma(e,a)||y<=11&&setTimeout(Pn(a,function(){return t.updateFromDOM()}),20)}),ye(l,"compositionstart",function(e){t.composing={data:e.data,done:!1}}),ye(l,"compositionupdate",function(e){t.composing||(t.composing={data:e.data,done:!1})}),ye(l,"compositionend",function(e){t.composing&&(e.data!=t.composing.data&&t.readFromDOMSoon(),t.composing.done=!0)}),ye(l,"touchstart",function(){return o.forceCompositionEnd()}),ye(l,"input",function(){t.composing||t.readFromDOMSoon()}),ye(l,"copy",r),ye(l,"cut",r)},e.prototype.screenReaderLabelChanged=function(e){e?this.div.setAttribute("aria-label",e):this.div.removeAttribute("aria-label")},e.prototype.prepareSelection=function(){var e=ln(this.cm,!1);return e.focus=document.activeElement==this.div,e},e.prototype.showSelection=function(e,t){e&&this.cm.display.view.length&&((e.focus||t)&&this.showPrimarySelection(),this.showMultipleSelections(e))},e.prototype.getSelection=function(){return this.cm.display.wrapper.ownerDocument.getSelection()},e.prototype.showPrimarySelection=function(){var e=this.getSelection(),t=this.cm,r=t.doc.sel.primary(),n=r.from(),i=r.to();if(t.display.viewTo==t.display.viewFrom||n.line>=t.display.viewTo||i.line<t.display.viewFrom)e.removeAllRanges();else{var o=Sa(t,e.anchorNode,e.anchorOffset),r=Sa(t,e.focusNode,e.focusOffset);if(!o||o.bad||!r||r.bad||0!=it(st(o,r),n)||0!=it(lt(o,r),i)){var r=t.display.view,a=n.line>=t.display.viewFrom&&ka(t,n)||{node:r[0].measure.map[2],offset:0},l=i.line<t.display.viewTo&&ka(t,i);if(l||(l={node:(c=(c=r[r.length-1].measure).maps?c.maps[c.maps.length-1]:c.map)[c.length-1],offset:c[c.length-2]-c[c.length-3]}),a&&l){var s,c=e.rangeCount&&e.getRangeAt(0);try{s=C(a.node,a.offset,l.offset,l.node)}catch(e){}s&&(!f&&t.state.focused?(e.collapse(a.node,a.offset),s.collapsed||(e.removeAllRanges(),e.addRange(s))):(e.removeAllRanges(),e.addRange(s)),c&&null==e.anchorNode?e.addRange(c):f&&this.startGracePeriod()),this.rememberSelection()}else e.removeAllRanges()}}},e.prototype.startGracePeriod=function(){var e=this;clearTimeout(this.gracePeriod),this.gracePeriod=setTimeout(function(){e.gracePeriod=!1,e.selectionChanged()&&e.cm.operation(function(){return e.cm.curOp.selectionChanged=!0})},20)},e.prototype.showMultipleSelections=function(e){T(this.cm.display.cursorDiv,e.cursors),T(this.cm.display.selectionDiv,e.selection)},e.prototype.rememberSelection=function(){var e=this.getSelection();this.lastAnchorNode=e.anchorNode,this.lastAnchorOffset=e.anchorOffset,this.lastFocusNode=e.focusNode,this.lastFocusOffset=e.focusOffset},e.prototype.selectionInEditor=function(){var e=this.getSelection();if(!e.rangeCount)return!1;e=e.getRangeAt(0).commonAncestorContainer;return N(this.div,e)},e.prototype.focus=function(){"nocursor"!=this.cm.options.readOnly&&(this.selectionInEditor()&&document.activeElement==this.div||this.showSelection(this.prepareSelection(),!0),this.div.focus())},e.prototype.blur=function(){this.div.blur()},e.prototype.getField=function(){return this.div},e.prototype.supportsTouch=function(){return!0},e.prototype.receivedFocus=function(){var t=this;this.selectionInEditor()?this.pollSelection():jn(this.cm,function(){return t.cm.curOp.selectionChanged=!0}),this.polling.set(this.cm.options.pollInterval,function e(){t.cm.state.focused&&(t.pollSelection(),t.polling.set(t.cm.options.pollInterval,e))})},e.prototype.selectionChanged=function(){var e=this.getSelection();return e.anchorNode!=this.lastAnchorNode||e.anchorOffset!=this.lastAnchorOffset||e.focusNode!=this.lastFocusNode||e.focusOffset!=this.lastFocusOffset},e.prototype.pollSelection=function(){if(null==this.readDOMTimeout&&!this.gracePeriod&&this.selectionChanged()){var e,t,r=this.getSelection(),n=this.cm;if(s&&o&&this.cm.display.gutterSpecs.length&&function(e){for(var t=e;t;t=t.parentNode)if(/CodeMirror-gutter-wrapper/.test(t.className))return!0;return!1}(r.anchorNode))return this.cm.triggerOnKeyDown({type:"keydown",keyCode:8,preventDefault:Math.abs}),this.blur(),void this.focus();this.composing||(this.rememberSelection(),e=Sa(n,r.anchorNode,r.anchorOffset),t=Sa(n,r.focusNode,r.focusOffset),e&&t&&jn(n,function(){ji(n.doc,li(e,t),_),(e.bad||t.bad)&&(n.curOp.selectionChanged=!0)}))}},e.prototype.pollContent=function(){null!=this.readDOMTimeout&&(clearTimeout(this.readDOMTimeout),this.readDOMTimeout=null);var e,t=this.cm,r=t.display,n=t.doc.sel.primary(),i=n.from(),n=n.to();if(0==i.ch&&i.line>t.firstLine()&&(i=nt(i.line-1,Xe(t.doc,i.line-1).length)),n.ch==Xe(t.doc,n.line).text.length&&n.line<t.lastLine()&&(n=nt(n.line+1,0)),i.line<r.viewFrom||n.line>r.viewTo-1)return!1;g=i.line==r.viewFrom||0==(g=Qr(t,i.line))?(e=Qe(r.view[0].line),r.view[0].node):(e=Qe(r.view[g].line),r.view[g-1].node.nextSibling);var o,n=Qr(t,n.line),n=n==r.view.length-1?(o=r.viewTo-1,r.lineDiv.lastChild):(o=Qe(r.view[n+1].line)-1,r.view[n+1].node.previousSibling);if(!g)return!1;for(var a=t.doc.splitLines(function(a,e,t,l,s){var r="",c=!1,u=a.doc.lineSeparator(),d=!1;function f(){c&&(r+=u,d&&(r+=u),c=d=!1)}function h(e){e&&(f(),r+=e)}for(;!function e(t){if(1==t.nodeType){var r=t.getAttribute("cm-text");if(r)return void h(r);if(r=t.getAttribute("cm-marker"))return void((r=a.findMarks(nt(l,0),nt(s+1,0),(o=+r,function(e){return e.id==o}))).length&&(n=r[0].find(0))&&h(Ye(a.doc,n.from,n.to).join(u)));if("false"==t.getAttribute("contenteditable"))return;var n=/^(pre|div|p|li|table|br)$/i.test(t.nodeName);if(!/^br$/i.test(t.nodeName)&&0==t.textContent.length)return;n&&f();for(var i=0;i<t.childNodes.length;i++)e(t.childNodes[i]);/^(pre|p)$/i.test(t.nodeName)&&(d=!0),n&&(c=!0)}else 3==t.nodeType&&h(t.nodeValue.replace(/\u200b/g,"").replace(/\u00a0/g," "));var o}(e),e!=t;)e=e.nextSibling,d=!1;return r}(t,g,n,e,o)),l=Ye(t.doc,nt(e,0),nt(o,Xe(t.doc,o).text.length));1<a.length&&1<l.length;)if($(a)==$(l))a.pop(),l.pop(),o--;else{if(a[0]!=l[0])break;a.shift(),l.shift(),e++}for(var s=0,c=0,u=a[0],d=l[0],f=Math.min(u.length,d.length);s<f&&u.charCodeAt(s)==d.charCodeAt(s);)++s;for(var h=$(a),p=$(l),m=Math.min(h.length-(1==a.length?s:0),p.length-(1==l.length?s:0));c<m&&h.charCodeAt(h.length-c-1)==p.charCodeAt(p.length-c-1);)++c;if(1==a.length&&1==l.length&&e==i.line)for(;s&&s>i.ch&&h.charCodeAt(h.length-c-1)==p.charCodeAt(p.length-c-1);)s--,c++;a[a.length-1]=h.slice(0,h.length-c).replace(/^\u200b+/,""),a[0]=a[0].slice(s).replace(/\u200b+$/,"");var g=nt(e,s),n=nt(o,l.length?$(l).length-c:0);return 1<a.length||a[0]||it(g,n)?(Yi(t.doc,a,g,n,"+input"),!0):void 0},e.prototype.ensurePolled=function(){this.forceCompositionEnd()},e.prototype.reset=function(){this.forceCompositionEnd()},e.prototype.forceCompositionEnd=function(){this.composing&&(clearTimeout(this.readDOMTimeout),this.composing=null,this.updateFromDOM(),this.div.blur(),this.div.focus())},e.prototype.readFromDOMSoon=function(){var e=this;null==this.readDOMTimeout&&(this.readDOMTimeout=setTimeout(function(){if(e.readDOMTimeout=null,e.composing){if(!e.composing.done)return;e.composing=null}e.updateFromDOM()},80))},e.prototype.updateFromDOM=function(){var e=this;!this.cm.isReadOnly()&&this.pollContent()||jn(this.cm,function(){return en(e.cm)})},e.prototype.setUneditable=function(e){e.contentEditable="false"},e.prototype.onKeyPress=function(e){0==e.charCode||this.composing||(e.preventDefault(),this.cm.isReadOnly()||Pn(this.cm,pa)(this.cm,String.fromCharCode(null==e.charCode?e.keyCode:e.charCode),0))},e.prototype.readOnlyChanged=function(e){this.div.contentEditable=String("nocursor"!=e)},e.prototype.onContextMenu=function(){},e.prototype.resetPosition=function(){},e.prototype.needsContentAttribute=!0;var Ma,Ta,La,Oa,Na,n=function(e){this.cm=e,this.prevInput="",this.pollingFast=!1,this.polling=new F,this.hasSelection=!1,this.composing=null};function Aa(e,t,n,r){Ma.defaults[e]=t,n&&(Ta[e]=r?function(e,t,r){r!=ia&&n(e,t,r)}:n)}n.prototype.init=function(r){var e=this,n=this,i=this.cm;this.createField(r);var o=this.textarea;function t(e){if(!ke(i,e)){if(i.somethingSelected())ha({lineWise:!1,text:i.getSelections()});else{if(!i.options.lineWiseCopyCut)return;var t=va(i);ha({lineWise:!0,text:t.text}),"cut"==e.type?i.setSelections(t.ranges,null,_):(n.prevInput="",o.value=t.text.join("\n"),W(o))}"cut"==e.type&&(i.state.cutIncoming=+new Date)}}r.wrapper.insertBefore(this.wrapper,r.wrapper.firstChild),l&&(o.style.width="0px"),ye(o,"input",function(){v&&9<=y&&e.hasSelection&&(e.hasSelection=null),n.poll()}),ye(o,"paste",function(e){ke(i,e)||ma(e,i)||(i.state.pasteIncoming=+new Date,n.fastPoll())}),ye(o,"cut",t),ye(o,"copy",t),ye(r.scroller,"paste",function(e){if(!mr(r,e)&&!ke(i,e)){if(!o.dispatchEvent)return i.state.pasteIncoming=+new Date,void n.focus();var t=new Event("paste");t.clipboardData=e.clipboardData,o.dispatchEvent(t)}}),ye(r.lineSpace,"selectstart",function(e){mr(r,e)||Te(e)}),ye(o,"compositionstart",function(){var e=i.getCursor("from");n.composing&&n.composing.range.clear(),n.composing={start:e,range:i.markText(e,i.getCursor("to"),{className:"CodeMirror-composing"})}}),ye(o,"compositionend",function(){n.composing&&(n.poll(),n.composing.range.clear(),n.composing=null)})},n.prototype.createField=function(e){this.wrapper=ba(),this.textarea=this.wrapper.firstChild},n.prototype.screenReaderLabelChanged=function(e){e?this.textarea.setAttribute("aria-label",e):this.textarea.removeAttribute("aria-label")},n.prototype.prepareSelection=function(){var e,t=this.cm,r=t.display,n=t.doc,i=ln(t);return t.options.moveInputWithCursor&&(e=Ir(t,n.sel.primary().head,"div"),t=r.wrapper.getBoundingClientRect(),n=r.lineDiv.getBoundingClientRect(),i.teTop=Math.max(0,Math.min(r.wrapper.clientHeight-10,e.top+n.top-t.top)),i.teLeft=Math.max(0,Math.min(r.wrapper.clientWidth-10,e.left+n.left-t.left))),i},n.prototype.showSelection=function(e){var t=this.cm.display;T(t.cursorDiv,e.cursors),T(t.selectionDiv,e.selection),null!=e.teTop&&(this.wrapper.style.top=e.teTop+"px",this.wrapper.style.left=e.teLeft+"px")},n.prototype.reset=function(e){var t,r;this.contextMenuPending||this.composing||((t=this.cm).somethingSelected()?(this.prevInput="",r=t.getSelection(),this.textarea.value=r,t.state.focused&&W(this.textarea),v&&9<=y&&(this.hasSelection=r)):e||(this.prevInput=this.textarea.value="",v&&9<=y&&(this.hasSelection=null)))},n.prototype.getField=function(){return this.textarea},n.prototype.supportsTouch=function(){return!1},n.prototype.focus=function(){if("nocursor"!=this.cm.options.readOnly&&(!d||A()!=this.textarea))try{this.textarea.focus()}catch(e){}},n.prototype.blur=function(){this.textarea.blur()},n.prototype.resetPosition=function(){this.wrapper.style.top=this.wrapper.style.left=0},n.prototype.receivedFocus=function(){this.slowPoll()},n.prototype.slowPoll=function(){var e=this;this.pollingFast||this.polling.set(this.cm.options.pollInterval,function(){e.poll(),e.cm.state.focused&&e.slowPoll()})},n.prototype.fastPoll=function(){var t=!1,r=this;r.pollingFast=!0,r.polling.set(20,function e(){r.poll()||t?(r.pollingFast=!1,r.slowPoll()):(t=!0,r.polling.set(60,e))})},n.prototype.poll=function(){var e=this,t=this.cm,r=this.textarea,n=this.prevInput;if(this.contextMenuPending||!t.state.focused||Pe(r)&&!n&&!this.composing||t.isReadOnly()||t.options.disableInput||t.state.keySeq)return!1;var i=r.value;if(i==n&&!t.somethingSelected())return!1;if(v&&9<=y&&this.hasSelection===i||m&&/[\uf700-\uf7ff]/.test(i))return t.display.input.reset(),!1;if(t.doc.sel==t.display.selForContextMenu){var o=i.charCodeAt(0);if(8203!=o||n||(n="​"),8666==o)return this.reset(),this.cm.execCommand("undo")}for(var a=0,l=Math.min(n.length,i.length);a<l&&n.charCodeAt(a)==i.charCodeAt(a);)++a;return jn(t,function(){pa(t,i.slice(a),n.length-a,null,e.composing?"*compose":null),1e3<i.length||-1<i.indexOf("\n")?r.value=e.prevInput="":e.prevInput=i,e.composing&&(e.composing.range.clear(),e.composing.range=t.markText(e.composing.start,t.getCursor("to"),{className:"CodeMirror-composing"}))}),!0},n.prototype.ensurePolled=function(){this.pollingFast&&this.poll()&&(this.pollingFast=!1)},n.prototype.onKeyPress=function(){v&&9<=y&&(this.hasSelection=null),this.fastPoll()},n.prototype.onContextMenu=function(e){var r=this,n=r.cm,i=n.display,o=r.textarea;r.contextMenuPending&&r.contextMenuPending();var a,l,t,s=Jr(n,e),c=i.scroller.scrollTop;function u(){var e,t;null!=o.selectionStart&&(t="​"+((e=n.somethingSelected())?o.value:""),o.value="⇚",o.value=t,r.prevInput=e?"":"​",o.selectionStart=1,o.selectionEnd=t.length,i.selForContextMenu=n.doc.sel)}function d(){var t,e;r.contextMenuPending==d&&(r.contextMenuPending=!1,r.wrapper.style.cssText=l,o.style.cssText=a,v&&y<9&&i.scrollbars.setScrollTop(i.scroller.scrollTop=c),null!=o.selectionStart&&((!v||v&&y<9)&&u(),t=0,e=function e(){i.selForContextMenu==n.doc.sel&&0==o.selectionStart&&0<o.selectionEnd&&"​"==r.prevInput?Pn(n,Vi)(n):t++<10?i.detectingSelectAll=setTimeout(e,500):(i.selForContextMenu=null,i.input.reset())},i.detectingSelectAll=setTimeout(e,200)))}s&&!p&&(n.options.resetSelectionOnContextMenu&&-1==n.doc.sel.contains(s)&&Pn(n,ji)(n.doc,li(s),_),a=o.style.cssText,l=r.wrapper.style.cssText,s=r.wrapper.offsetParent.getBoundingClientRect(),r.wrapper.style.cssText="position: static",o.style.cssText="position: absolute; width: 30px; height: 30px;\n      top: "+(e.clientY-s.top-5)+"px; left: "+(e.clientX-s.left-5)+"px;\n      z-index: 1000; background: "+(v?"rgba(255, 255, 255, .05)":"transparent")+";\n      outline: none; border-width: 0; outline: none; overflow: hidden; opacity: .05; filter: alpha(opacity=5);",h&&(t=window.scrollY),i.input.focus(),h&&window.scrollTo(null,t),i.input.reset(),n.somethingSelected()||(o.value=r.prevInput=" "),r.contextMenuPending=d,i.selForContextMenu=n.doc.sel,clearTimeout(i.detectingSelectAll),v&&9<=y&&u(),x?(Ne(e),ye(window,"mouseup",function e(){we(window,"mouseup",e),setTimeout(d,20)})):setTimeout(d,50))},n.prototype.readOnlyChanged=function(e){e||this.reset(),this.textarea.disabled="nocursor"==e,this.textarea.readOnly=!!e},n.prototype.setUneditable=function(){},n.prototype.needsContentAttribute=!1,Ta=(Ma=ca).optionHandlers,Ma.defineOption=Aa,Ma.Init=ia,Aa("value","",function(e,t){return e.setValue(t)},!0),Aa("mode",null,function(e,t){e.doc.modeOption=t,fi(e)},!0),Aa("indentUnit",2,fi,!0),Aa("indentWithTabs",!1),Aa("smartIndent",!0),Aa("tabSize",4,function(e){hi(e),Dr(e),en(e)},!0),Aa("lineSeparator",null,function(e,n){if(e.doc.lineSep=n){var i=[],o=e.doc.first;e.doc.iter(function(e){for(var t=0;;){var r=e.text.indexOf(n,t);if(-1==r)break;t=r+n.length,i.push(nt(o,r))}o++});for(var t=i.length-1;0<=t;t--)Yi(e.doc,n,i[t],nt(i[t].line,i[t].ch+n.length))}}),Aa("specialChars",/[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b-\u200c\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g,function(e,t,r){e.state.specialChars=new RegExp(t.source+(t.test("\t")?"":"|\t"),"g"),r!=ia&&e.refresh()}),Aa("specialCharPlaceholder",Zt,function(e){return e.refresh()},!0),Aa("electricChars",!0),Aa("inputStyle",d?"contenteditable":"textarea",function(){throw new Error("inputStyle can not (yet) be changed in a running editor")},!0),Aa("spellcheck",!1,function(e,t){return e.getInputField().spellcheck=t},!0),Aa("autocorrect",!1,function(e,t){return e.getInputField().autocorrect=t},!0),Aa("autocapitalize",!1,function(e,t){return e.getInputField().autocapitalize=t},!0),Aa("rtlMoveVisually",!b),Aa("wholeLineUpdateBefore",!0),Aa("theme","default",function(e){na(e),Zn(e)},!0),Aa("keyMap","default",function(e,t,r){t=zo(t),r=r!=ia&&zo(r);r&&r.detach&&r.detach(e,t),t.attach&&t.attach(e,r||null)}),Aa("extraKeys",null),Aa("configureMouse",null),Aa("lineWrapping",!1,sa,!0),Aa("gutters",[],function(e,t){e.display.gutterSpecs=Xn(t,e.options.lineNumbers),Zn(e)},!0),Aa("fixedGutter",!0,function(e,t){e.display.gutters.style.left=t?Xr(e.display)+"px":"0",e.refresh()},!0),Aa("coverGutterNextToScrollbar",!1,function(e){return On(e)},!0),Aa("scrollbarStyle","native",function(e){zn(e),On(e),e.display.scrollbars.setScrollTop(e.doc.scrollTop),e.display.scrollbars.setScrollLeft(e.doc.scrollLeft)},!0),Aa("lineNumbers",!1,function(e,t){e.display.gutterSpecs=Xn(e.options.gutters,t),Zn(e)},!0),Aa("firstLineNumber",1,Zn,!0),Aa("lineNumberFormatter",function(e){return e},Zn,!0),Aa("showCursorWhenSelecting",!1,an,!0),Aa("resetSelectionOnContextMenu",!0),Aa("lineWiseCopyCut",!0),Aa("pasteLinesPerSelection",!0),Aa("selectionsMayTouch",!1),Aa("readOnly",!1,function(e,t){"nocursor"==t&&(pn(e),e.display.input.blur()),e.display.input.readOnlyChanged(t)}),Aa("screenReaderLabel",null,function(e,t){t=""===t?null:t,e.display.input.screenReaderLabelChanged(t)}),Aa("disableInput",!1,function(e,t){t||e.display.input.reset()},!0),Aa("dragDrop",!0,la),Aa("allowDropFileTypes",null),Aa("cursorBlinkRate",530),Aa("cursorScrollMargin",0),Aa("cursorHeight",1,an,!0),Aa("singleCursorHeightPerLine",!0,an,!0),Aa("workTime",100),Aa("workDelay",100),Aa("flattenSpans",!0,hi,!0),Aa("addModeClass",!1,hi,!0),Aa("pollInterval",100),Aa("undoDepth",200,function(e,t){return e.doc.history.undoDepth=t}),Aa("historyEventDelay",1250),Aa("viewportMargin",10,function(e){return e.refresh()},!0),Aa("maxHighlightLength",1e4,hi,!0),Aa("moveInputWithCursor",!0,function(e,t){t||e.display.input.resetPosition()}),Aa("tabindex",null,function(e,t){return e.display.input.getField().tabIndex=t||""}),Aa("autofocus",null),Aa("direction","ltr",function(e,t){return e.doc.setDirection(t)},!0),Aa("phrases",null),Oa=(La=ca).optionHandlers,Na=La.helpers={},La.prototype={constructor:La,focus:function(){window.focus(),this.display.input.focus()},setOption:function(e,t){var r=this.options,n=r[e];r[e]==t&&"mode"!=e||(r[e]=t,Oa.hasOwnProperty(e)&&Pn(this,Oa[e])(this,t,n),xe(this,"optionChange",this,e))},getOption:function(e){return this.options[e]},getDoc:function(){return this.doc},addKeyMap:function(e,t){this.state.keyMaps[t?"push":"unshift"](zo(e))},removeKeyMap:function(e){for(var t=this.state.keyMaps,r=0;r<t.length;++r)if(t[r]==e||t[r].name==e)return t.splice(r,1),!0},addOverlay:Fn(function(e,t){var r=e.token?e:La.getMode(this.options,e);if(r.startState)throw new Error("Overlays may not be stateful.");!function(e,t,r){for(var n=0,i=r(t);n<e.length&&r(e[n])<=i;)n++;e.splice(n,0,t)}(this.state.overlays,{mode:r,modeSpec:e,opaque:t&&t.opaque,priority:t&&t.priority||0},function(e){return e.priority}),this.state.modeGen++,en(this)}),removeOverlay:Fn(function(e){for(var t=this.state.overlays,r=0;r<t.length;++r){var n=t[r].modeSpec;if(n==e||"string"==typeof e&&n.name==e)return t.splice(r,1),this.state.modeGen++,void en(this)}}),indentLine:Fn(function(e,t,r){"string"!=typeof t&&"number"!=typeof t&&(t=null==t?this.options.smartIndent?"smart":"prev":t?"add":"subtract"),tt(this.doc,e)&&da(this,e,t,r)}),indentSelection:Fn(function(e){for(var t=this.doc.sel.ranges,r=-1,n=0;n<t.length;n++){var i=t[n];if(i.empty())i.head.line>r&&(da(this,i.head.line,e,!0),r=i.head.line,n==this.doc.sel.primIndex&&wn(this));else{for(var o=i.from(),a=i.to(),i=Math.max(r,o.line),r=Math.min(this.lastLine(),a.line-(a.ch?0:1))+1,l=i;l<r;++l)da(this,l,e);i=this.doc.sel.ranges;0==o.ch&&t.length==i.length&&0<i[n].from().ch&&Di(this.doc,n,new oi(o,i[n].to()),_)}}}),getTokenAt:function(e,t){return xt(this,e,t)},getLineTokens:function(e,t){return xt(this,nt(e),t,!0)},getTokenTypeAt:function(e){e=ut(this.doc,e);var t,r=mt(this,Xe(this.doc,e.line)),n=0,i=(r.length-1)/2,o=e.ch;if(0==o)t=r[2];else for(;;){var a=n+i>>1;if((a?r[2*a-1]:0)>=o)i=a;else{if(!(r[2*a+1]<o)){t=r[2*a+2];break}n=1+a}}e=t?t.indexOf("overlay "):-1;return e<0?t:0==e?null:t.slice(0,e-1)},getModeAt:function(e){var t=this.doc.mode;return t.innerMode?La.innerMode(t,this.getTokenAt(e).state).mode:t},getHelper:function(e,t){return this.getHelpers(e,t)[0]},getHelpers:function(e,t){var r=[];if(!Na.hasOwnProperty(t))return r;var n=Na[t],i=this.getModeAt(e);if("string"==typeof i[t])n[i[t]]&&r.push(n[i[t]]);else if(i[t])for(var o=0;o<i[t].length;o++){var a=n[i[t][o]];a&&r.push(a)}else i.helperType&&n[i.helperType]?r.push(n[i.helperType]):n[i.name]&&r.push(n[i.name]);for(var l=0;l<n._global.length;l++){var s=n._global[l];s.pred(i,this)&&-1==H(r,s.val)&&r.push(s.val)}return r},getStateAfter:function(e,t){var r=this.doc;return gt(this,(e=ct(r,null==e?r.first+r.size-1:e))+1,t).state},cursorCoords:function(e,t){var r=this.doc.sel.primary(),r=null==e?r.head:"object"==(void 0===e?"undefined":Ea(e))?ut(this.doc,e):e?r.from():r.to();return Ir(this,r,t||"page")},charCoords:function(e,t){return Hr(this,ut(this.doc,e),t||"page")},coordsChar:function(e,t){return Br(this,(e=Fr(this,e,t||"page")).left,e.top)},lineAtHeight:function(e,t){return e=Fr(this,{top:e,left:0},t||"page").top,et(this.doc,e+this.display.viewOffset)},heightAtLine:function(e,t,r){var n,i=!1,e="number"==typeof e?(n=this.doc.first+this.doc.size-1,e<this.doc.first?e=this.doc.first:n<e&&(e=n,i=!0),Xe(this.doc,e)):e;return Pr(this,e,{top:0,left:0},t||"page",r||i).top+(i?this.doc.height-Vt(e):0)},defaultTextHeight:function(){return Gr(this.display)},defaultCharWidth:function(){return $r(this.display)},getViewport:function(){return{from:this.display.viewFrom,to:this.display.viewTo}},addWidget:function(e,t,r,n,i){var o,a,l=this.display,s=(e=Ir(this,ut(this.doc,e))).bottom,c=e.left;t.style.position="absolute",t.setAttribute("cm-ignore-events","true"),this.display.input.setUneditable(t),l.sizer.appendChild(t),"over"==n?s=e.top:"above"!=n&&"near"!=n||(o=Math.max(l.wrapper.clientHeight,this.doc.height),a=Math.max(l.sizer.clientWidth,l.lineSpace.clientWidth),("above"==n||e.bottom+t.offsetHeight>o)&&e.top>t.offsetHeight?s=e.top-t.offsetHeight:e.bottom+t.offsetHeight<=o&&(s=e.bottom),c+t.offsetWidth>a&&(c=a-t.offsetWidth)),t.style.top=s+"px",t.style.left=t.style.right="","right"==i?(c=l.sizer.clientWidth-t.offsetWidth,t.style.right="0px"):("left"==i?c=0:"middle"==i&&(c=(l.sizer.clientWidth-t.offsetWidth)/2),t.style.left=c+"px"),r&&(r=this,t={left:c,top:s,right:c+t.offsetWidth,bottom:s+t.offsetHeight},null!=(t=yn(r,t)).scrollTop&&Sn(r,t.scrollTop),null!=t.scrollLeft&&Tn(r,t.scrollLeft))},triggerOnKeyDown:Fn(Go),triggerOnKeyPress:Fn(qo),triggerOnKeyUp:$o,triggerOnMouseDown:Fn(Jo),execCommand:function(e){if(Fo.hasOwnProperty(e))return Fo[e].call(null,this)},triggerElectric:Fn(function(e){ga(this,e)}),findPosH:function(e,t,r,n){var i=1;t<0&&(i=-1,t=-t);for(var o=ut(this.doc,e),a=0;a<t&&!(o=wa(this.doc,o,i,r,n)).hitSide;++a);return o},moveH:Fn(function(t,r){var n=this;this.extendSelectionsBy(function(e){return n.display.shift||n.doc.extend||e.empty()?wa(n.doc,e.head,t,r,n.options.rtlMoveVisually):t<0?e.from():e.to()},V)}),deleteH:Fn(function(r,n){var e=this.doc.sel,i=this.doc;e.somethingSelected()?i.replaceSelection("",null,"+delete"):Do(this,function(e){var t=wa(i,e.head,r,n,!1);return r<0?{from:t,to:e.head}:{from:e.head,to:t}})}),findPosV:function(e,t,r,n){var i=1,o=n;t<0&&(i=-1,t=-t);for(var a=ut(this.doc,e),l=0;l<t;++l){var s=Ir(this,a,"div");if(null==o?o=s.left:s.left=o,(a=xa(this,s,i,r)).hitSide)break}return a},moveV:Fn(function(n,i){var o=this,a=this.doc,l=[],s=!this.display.shift&&!a.extend&&a.sel.somethingSelected();if(a.extendSelectionsBy(function(e){if(s)return n<0?e.from():e.to();var t=Ir(o,e.head,"div");null!=e.goalColumn&&(t.left=e.goalColumn),l.push(t.left);var r=xa(o,t,n,i);return"page"==i&&e==a.sel.primary()&&bn(o,Hr(o,r,"div").top-t.top),r},V),l.length)for(var e=0;e<a.sel.ranges.length;e++)a.sel.ranges[e].goalColumn=l[e]}),findWordAt:function(e){var t=Xe(this.doc,e.line).text,r=e.ch,n=e.ch;if(t){var i=this.getHelper(e,"wordChars");"before"!=e.sticky&&n!=t.length||!r?++n:--r;for(var o=t.charAt(r),a=Q(o,i)?function(e){return Q(e,i)}:/\s/.test(o)?function(e){return/\s/.test(e)}:function(e){return!/\s/.test(e)&&!Q(e)};0<r&&a(t.charAt(r-1));)--r;for(;n<t.length&&a(t.charAt(n));)++n}return new oi(nt(e.line,r),nt(e.line,n))},toggleOverwrite:function(e){null!=e&&e==this.state.overwrite||(((this.state.overwrite=!this.state.overwrite)?z:S)(this.display.cursorDiv,"CodeMirror-overwrite"),xe(this,"overwriteToggle",this,this.state.overwrite))},hasFocus:function(){return this.display.input.getField()==A()},isReadOnly:function(){return!(!this.options.readOnly&&!this.doc.cantEdit)},scrollTo:Fn(function(e,t){xn(this,e,t)}),getScrollInfo:function(){var e=this.display.scroller;return{left:e.scrollLeft,top:e.scrollTop,height:e.scrollHeight-br(this)-this.display.barHeight,width:e.scrollWidth-br(this)-this.display.barWidth,clientHeight:xr(this),clientWidth:wr(this)}},scrollIntoView:Fn(function(e,t){var r;null==e?(e={from:this.doc.sel.primary().head,to:null},null==t&&(t=this.options.cursorScrollMargin)):"number"==typeof e?e={from:nt(e,0),to:null}:null==e.from&&(e={from:e,to:null}),e.to||(e.to=e.from),e.margin=t||0,null!=e.from.line?(r=e,kn(t=this),t.curOp.scrollToPos=r):Cn(this,e.from,e.to,e.margin)}),setSize:Fn(function(e,t){function r(e){return"number"==typeof e||/^\d+$/.test(String(e))?e+"px":e}var n=this;null!=e&&(this.display.wrapper.style.width=r(e)),null!=t&&(this.display.wrapper.style.height=r(t)),this.options.lineWrapping&&zr(this);var i=this.display.viewFrom;this.doc.iter(i,this.display.viewTo,function(e){if(e.widgets)for(var t=0;t<e.widgets.length;t++)if(e.widgets[t].noHScroll){tn(n,i,"widget");break}++i}),this.curOp.forceUpdate=!0,xe(this,"refresh",this)}),operation:function(e){return jn(this,e)},startOperation:function(){return Wn(this)},endOperation:function(){return En(this)},refresh:Fn(function(){var e=this.display.cachedTextHeight;en(this),this.curOp.forceUpdate=!0,Dr(this),xn(this,this.doc.scrollLeft,this.doc.scrollTop),Kn(this.display),(null==e||.5<Math.abs(e-Gr(this.display))||this.options.lineWrapping)&&Zr(this),xe(this,"refresh",this)}),swapDoc:Fn(function(e){var t=this.doc;return t.cm=null,this.state.selectingText&&this.state.selectingText(),vi(this,e),Dr(this),this.display.input.reset(),xn(this,e.scrollLeft,e.scrollTop),this.curOp.forceScroll=!0,or(this,"swapDoc",this,t),t}),phrase:function(e){var t=this.options.phrases;return t&&Object.prototype.hasOwnProperty.call(t,e)?t[e]:e},getInputField:function(){return this.display.input.getField()},getWrapperElement:function(){return this.display.wrapper},getScrollerElement:function(){return this.display.scroller},getGutterElement:function(){return this.display.gutters}},Me(La),La.registerHelper=function(e,t,r){Na.hasOwnProperty(e)||(Na[e]=La[e]={_global:[]}),Na[e][t]=r},La.registerGlobalHelper=function(e,t,r,n){La.registerHelper(e,t,n),Na[e]._global.push({pred:r,val:n})};var za,Da,Wa="iter insert remove copy getEditor constructor".split(" ");for(za in fo.prototype)fo.prototype.hasOwnProperty(za)&&H(Wa,za)<0&&(ca.prototype[za]=function(e){return function(){return e.apply(this.doc,arguments)}}(fo.prototype[za]));return Me(fo),ca.inputStyles={textarea:n,contenteditable:e},ca.defineMode=function(e){ca.defaults.mode||"null"==e||(ca.defaults.mode=e),function(e,t){2<arguments.length&&(t.dependencies=Array.prototype.slice.call(arguments,2)),Ie[e]=t}.apply(this,arguments)},ca.defineMIME=function(e,t){Re[e]=t},ca.defineMode("null",function(){return{token:function(e){return e.skipToEnd()}}}),ca.defineMIME("text/plain","null"),ca.defineExtension=function(e,t){ca.prototype[e]=t},ca.defineDocExtension=function(e,t){fo.prototype[e]=t},ca.fromTextArea=function(t,r){var e;function n(){t.value=l.getValue()}if((r=r?j(r):{}).value=t.value,!r.tabindex&&t.tabIndex&&(r.tabindex=t.tabIndex),!r.placeholder&&t.placeholder&&(r.placeholder=t.placeholder),null==r.autofocus&&(e=A(),r.autofocus=e==t||null!=t.getAttribute("autofocus")&&e==document.body),t.form&&(ye(t.form,"submit",n),!r.leaveSubmitMethodAlone)){var i=t.form,o=i.submit;try{var a=i.submit=function(){n(),i.submit=o,i.submit(),i.submit=a}}catch(e){}}r.finishInit=function(e){e.save=n,e.getTextArea=function(){return t},e.toTextArea=function(){e.toTextArea=isNaN,n(),t.parentNode.removeChild(e.getWrapperElement()),t.style.display="",t.form&&(we(t.form,"submit",n),r.leaveSubmitMethodAlone||"function"!=typeof t.form.submit||(t.form.submit=o))}},t.style.display="none";var l=ca(function(e){return t.parentNode.insertBefore(e,t.nextSibling)},r);return l},(Da=ca).off=we,Da.on=ye,Da.wheelEventPixels=ri,Da.Doc=fo,Da.splitLines=je,Da.countColumn=P,Da.findColumn=U,Da.isWordChar=J,Da.Pass=R,Da.signal=xe,Da.Line=Gt,Da.changeEnd=si,Da.scrollbarModel=An,Da.Pos=nt,Da.cmpPos=it,Da.modes=Ie,Da.mimeModes=Re,Da.resolveMode=_e,Da.getMode=Be,Da.modeExtensions=Ve,Da.extendMode=Ue,Da.copyState=Ke,Da.startState=$e,Da.innerMode=Ge,Da.commands=Fo,Da.keyMap=So,Da.keyName=Ao,Da.isModifierKey=Oo,Da.lookupKey=Lo,Da.normalizeKeyMap=To,Da.StringStream=qe,Da.SharedTextMarker=so,Da.TextMarker=ao,Da.LineWidget=no,Da.e_preventDefault=Te,Da.e_stopPropagation=Le,Da.e_stop=Ne,Da.addClass=z,Da.contains=N,Da.rmClass=S,Da.keyNames=wo,ca.version="5.58.1",ca},"object"===Ea(t)&&void 0!==e?e.exports=n():void 0===(n="function"==typeof(n=n)?n.call(t,r,t,e):n)||(e.exports=n)},"./node_modules/codemirror/mode/css/css.js":function(e,n,i){"use strict";(function(e){var t,r,A="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};r=function(N){function e(e){for(var t={},r=0;r<e.length;++r)t[e[r].toLowerCase()]=!0;return t}N.defineMode("css",function(e,t){var r=t.inline;t.propertyKeywords||(t=N.resolveMode("text/css"));var o,n,i=e.indentUnit,a=t.tokenHooks,l=t.documentTypes||{},s=t.mediaTypes||{},c=t.mediaFeatures||{},u=t.mediaValueKeywords||{},d=t.propertyKeywords||{},f=t.nonStandardPropertyKeywords||{},h=t.fontProperties||{},p=t.counterDescriptors||{},m=t.colorKeywords||{},g=t.valueKeywords||{},v=t.allowNested,e=t.lineComment,y=!0===t.supportsAtComponent;function b(e,t){return o=t,e}function w(i){return function(e,t){for(var r,n=!1;null!=(r=e.next());){if(r==i&&!n){")"==i&&e.backUp(1);break}n=!n&&"\\"==r}return r!=i&&(n||")"==i)||(t.tokenize=null),o="string"}}function x(e,t){return e.next(),e.match(/\s*[\"\')]/,!1)?t.tokenize=null:t.tokenize=w(")"),o="(",null}function k(e,t,r){this.type=e,this.indent=t,this.prev=r}function C(e,t,r,n){return e.context=new k(r,t.indentation()+(!1===n?0:i),e.context),r}function S(e){return e.context.prev&&(e.context=e.context.prev),e.context.type}function M(e,t,r){return O[r.context.type](e,t,r)}function T(e,t,r,n){for(var i=n||1;0<i;i--)r.context=r.context.prev;return M(e,t,r)}function L(e){e=e.current().toLowerCase();n=g.hasOwnProperty(e)?"atom":m.hasOwnProperty(e)?"keyword":"variable"}var O={top:function(e,t,r){if("{"==e)return C(r,t,"block");if("}"==e&&r.context.prev)return S(r);if(y&&/@component/i.test(e))return C(r,t,"atComponentBlock");if(/^@(-moz-)?document$/i.test(e))return C(r,t,"documentTypes");if(/^@(media|supports|(-moz-)?document|import)$/i.test(e))return C(r,t,"atBlock");if(/^@(font-face|counter-style)/i.test(e))return r.stateArg=e,"restricted_atBlock_before";if(/^@(-(moz|ms|o|webkit)-)?keyframes$/i.test(e))return"keyframes";if(e&&"@"==e.charAt(0))return C(r,t,"at");if("hash"==e)n="builtin";else if("word"==e)n="tag";else{if("variable-definition"==e)return"maybeprop";if("interpolation"==e)return C(r,t,"interpolation");if(":"==e)return"pseudo";if(v&&"("==e)return C(r,t,"parens")}return r.context.type},block:function(e,t,r){if("word"!=e)return"meta"==e?"block":v||"hash"!=e&&"qualifier"!=e?O.top(e,t,r):(n="error","block");r=t.current().toLowerCase();return d.hasOwnProperty(r)?(n="property","maybeprop"):f.hasOwnProperty(r)?(n="string-2","maybeprop"):v?(n=t.match(/^\s*:(?:\s|$)/,!1)?"property":"tag","block"):(n+=" error","maybeprop")},maybeprop:function(e,t,r){return":"==e?C(r,t,"prop"):M(e,t,r)},prop:function(e,t,r){if(";"==e)return S(r);if("{"==e&&v)return C(r,t,"propBlock");if("}"==e||"{"==e)return T(e,t,r);if("("==e)return C(r,t,"parens");if("hash"!=e||/^#([0-9a-fA-f]{3,4}|[0-9a-fA-f]{6}|[0-9a-fA-f]{8})$/.test(t.current())){if("word"==e)L(t);else if("interpolation"==e)return C(r,t,"interpolation")}else n+=" error";return"prop"},propBlock:function(e,t,r){return"}"==e?S(r):"word"==e?(n="property","maybeprop"):r.context.type},parens:function(e,t,r){return"{"==e||"}"==e?T(e,t,r):")"==e?S(r):"("==e?C(r,t,"parens"):"interpolation"==e?C(r,t,"interpolation"):("word"==e&&L(t),"parens")},pseudo:function(e,t,r){return"meta"==e?"pseudo":"word"==e?(n="variable-3",r.context.type):M(e,t,r)},documentTypes:function(e,t,r){return"word"==e&&l.hasOwnProperty(t.current())?(n="tag",r.context.type):O.atBlock(e,t,r)},atBlock:function(e,t,r){return"("==e?C(r,t,"atBlock_parens"):"}"==e||";"==e?T(e,t,r):"{"==e?S(r)&&C(r,t,v?"block":"top"):"interpolation"==e?C(r,t,"interpolation"):("word"==e&&(t=t.current().toLowerCase(),n="only"==t||"not"==t||"and"==t||"or"==t?"keyword":s.hasOwnProperty(t)?"attribute":c.hasOwnProperty(t)?"property":u.hasOwnProperty(t)?"keyword":d.hasOwnProperty(t)?"property":f.hasOwnProperty(t)?"string-2":g.hasOwnProperty(t)?"atom":m.hasOwnProperty(t)?"keyword":"error"),r.context.type)},atComponentBlock:function(e,t,r){return"}"==e?T(e,t,r):"{"==e?S(r)&&C(r,t,v?"block":"top",!1):("word"==e&&(n="error"),r.context.type)},atBlock_parens:function(e,t,r){return")"==e?S(r):"{"==e||"}"==e?T(e,t,r,2):O.atBlock(e,t,r)},restricted_atBlock_before:function(e,t,r){return"{"==e?C(r,t,"restricted_atBlock"):"word"==e&&"@counter-style"==r.stateArg?(n="variable","restricted_atBlock_before"):M(e,t,r)},restricted_atBlock:function(e,t,r){return"}"==e?(r.stateArg=null,S(r)):"word"==e?(n="@font-face"==r.stateArg&&!h.hasOwnProperty(t.current().toLowerCase())||"@counter-style"==r.stateArg&&!p.hasOwnProperty(t.current().toLowerCase())?"error":"property","maybeprop"):"restricted_atBlock"},keyframes:function(e,t,r){return"word"==e?(n="variable","keyframes"):"{"==e?C(r,t,"top"):M(e,t,r)},at:function(e,t,r){return";"==e?S(r):"{"==e||"}"==e?T(e,t,r):("word"==e?n="tag":"hash"==e&&(n="builtin"),"at")},interpolation:function(e,t,r){return"}"==e?S(r):"{"==e||";"==e?T(e,t,r):("word"==e?n="variable":"variable"!=e&&"("!=e&&")"!=e&&(n="error"),"interpolation")}};return{startState:function(e){return{tokenize:null,state:r?"block":"top",stateArg:null,context:new k(r?"block":"top",e||0,null)}},token:function(e,t){if(!t.tokenize&&e.eatSpace())return null;var r=(t.tokenize||function(e,t){var r=e.next();if(a[r]){var n=a[r](e,t);if(!1!==n)return n}return"@"==r?(e.eatWhile(/[\w\\\-]/),b("def",e.current())):"="==r||("~"==r||"|"==r)&&e.eat("=")?(o="compare",null):'"'==r||"'"==r?(t.tokenize=w(r),t.tokenize(e,t)):"#"==r?(e.eatWhile(/[\w\\\-]/),o="hash","atom"):"!"==r?(e.match(/^\s*\w*/),o="important","keyword"):/\d/.test(r)||"."==r&&e.eat(/\d/)?(e.eatWhile(/[\w.%]/),o="unit","number"):"-"!==r?/[,+>*\/]/.test(r)?(o="select-op",null):"."==r&&e.match(/^-?[_a-z][_a-z0-9-]*/i)?o="qualifier":/[:;{}\[\]\(\)]/.test(r)?b(null,r):e.match(/[\w-.]+(?=\()/)?(/^(url(-prefix)?|domain|regexp)$/.test(e.current().toLowerCase())&&(t.tokenize=x),o="variable","variable callee"):/[\w\\\-]/.test(r)?(e.eatWhile(/[\w\\\-]/),o="word","property"):o=null:/[\d.]/.test(e.peek())?(e.eatWhile(/[\w.%]/),o="unit","number"):e.match(/^-[\w\\\-]*/)?(e.eatWhile(/[\w\\\-]/),o=e.match(/^\s*:/,!1)?"variable-definition":"variable","variable-2"):e.match(/^\w+-/)?o="meta":void 0})(e,t);return r&&"object"==(void 0===r?"undefined":A(r))&&(o=r[1],r=r[0]),n=r,"comment"!=o&&(t.state=O[t.state](o,e,t)),n},indent:function(e,t){var e=e.context,t=t&&t.charAt(0),r=e.indent;return"prop"!=e.type||"}"!=t&&")"!=t||(e=e.prev),e.prev&&("}"!=t||"block"!=e.type&&"top"!=e.type&&"interpolation"!=e.type&&"restricted_atBlock"!=e.type?(")"!=t||"parens"!=e.type&&"atBlock_parens"!=e.type)&&("{"!=t||"at"!=e.type&&"atBlock"!=e.type)||(r=Math.max(0,e.indent-i)):r=(e=e.prev).indent),r},electricChars:"}",blockCommentStart:"/*",blockCommentEnd:"*/",blockCommentContinue:" * ",lineComment:e,fold:"brace"}});var t=["domain","regexp","url","url-prefix"],r=e(t),n=["all","aural","braille","handheld","print","projection","screen","tty","tv","embossed"],i=e(n),o=["width","min-width","max-width","height","min-height","max-height","device-width","min-device-width","max-device-width","device-height","min-device-height","max-device-height","aspect-ratio","min-aspect-ratio","max-aspect-ratio","device-aspect-ratio","min-device-aspect-ratio","max-device-aspect-ratio","color","min-color","max-color","color-index","min-color-index","max-color-index","monochrome","min-monochrome","max-monochrome","resolution","min-resolution","max-resolution","scan","grid","orientation","device-pixel-ratio","min-device-pixel-ratio","max-device-pixel-ratio","pointer","any-pointer","hover","any-hover","prefers-color-scheme"],a=e(o),l=["landscape","portrait","none","coarse","fine","on-demand","hover","interlace","progressive","dark","light"],s=e(l),c=["align-content","align-items","align-self","alignment-adjust","alignment-baseline","all","anchor-point","animation","animation-delay","animation-direction","animation-duration","animation-fill-mode","animation-iteration-count","animation-name","animation-play-state","animation-timing-function","appearance","azimuth","backdrop-filter","backface-visibility","background","background-attachment","background-blend-mode","background-clip","background-color","background-image","background-origin","background-position","background-position-x","background-position-y","background-repeat","background-size","baseline-shift","binding","bleed","block-size","bookmark-label","bookmark-level","bookmark-state","bookmark-target","border","border-bottom","border-bottom-color","border-bottom-left-radius","border-bottom-right-radius","border-bottom-style","border-bottom-width","border-collapse","border-color","border-image","border-image-outset","border-image-repeat","border-image-slice","border-image-source","border-image-width","border-left","border-left-color","border-left-style","border-left-width","border-radius","border-right","border-right-color","border-right-style","border-right-width","border-spacing","border-style","border-top","border-top-color","border-top-left-radius","border-top-right-radius","border-top-style","border-top-width","border-width","bottom","box-decoration-break","box-shadow","box-sizing","break-after","break-before","break-inside","caption-side","caret-color","clear","clip","color","color-profile","column-count","column-fill","column-gap","column-rule","column-rule-color","column-rule-style","column-rule-width","column-span","column-width","columns","contain","content","counter-increment","counter-reset","crop","cue","cue-after","cue-before","cursor","direction","display","dominant-baseline","drop-initial-after-adjust","drop-initial-after-align","drop-initial-before-adjust","drop-initial-before-align","drop-initial-size","drop-initial-value","elevation","empty-cells","fit","fit-position","flex","flex-basis","flex-direction","flex-flow","flex-grow","flex-shrink","flex-wrap","float","float-offset","flow-from","flow-into","font","font-family","font-feature-settings","font-kerning","font-language-override","font-optical-sizing","font-size","font-size-adjust","font-stretch","font-style","font-synthesis","font-variant","font-variant-alternates","font-variant-caps","font-variant-east-asian","font-variant-ligatures","font-variant-numeric","font-variant-position","font-variation-settings","font-weight","gap","grid","grid-area","grid-auto-columns","grid-auto-flow","grid-auto-rows","grid-column","grid-column-end","grid-column-gap","grid-column-start","grid-gap","grid-row","grid-row-end","grid-row-gap","grid-row-start","grid-template","grid-template-areas","grid-template-columns","grid-template-rows","hanging-punctuation","height","hyphens","icon","image-orientation","image-rendering","image-resolution","inline-box-align","inset","inset-block","inset-block-end","inset-block-start","inset-inline","inset-inline-end","inset-inline-start","isolation","justify-content","justify-items","justify-self","left","letter-spacing","line-break","line-height","line-height-step","line-stacking","line-stacking-ruby","line-stacking-shift","line-stacking-strategy","list-style","list-style-image","list-style-position","list-style-type","margin","margin-bottom","margin-left","margin-right","margin-top","marks","marquee-direction","marquee-loop","marquee-play-count","marquee-speed","marquee-style","mask-clip","mask-composite","mask-image","mask-mode","mask-origin","mask-position","mask-repeat","mask-size","mask-type","max-block-size","max-height","max-inline-size","max-width","min-block-size","min-height","min-inline-size","min-width","mix-blend-mode","move-to","nav-down","nav-index","nav-left","nav-right","nav-up","object-fit","object-position","offset","offset-anchor","offset-distance","offset-path","offset-position","offset-rotate","opacity","order","orphans","outline","outline-color","outline-offset","outline-style","outline-width","overflow","overflow-style","overflow-wrap","overflow-x","overflow-y","padding","padding-bottom","padding-left","padding-right","padding-top","page","page-break-after","page-break-before","page-break-inside","page-policy","pause","pause-after","pause-before","perspective","perspective-origin","pitch","pitch-range","place-content","place-items","place-self","play-during","position","presentation-level","punctuation-trim","quotes","region-break-after","region-break-before","region-break-inside","region-fragment","rendering-intent","resize","rest","rest-after","rest-before","richness","right","rotate","rotation","rotation-point","row-gap","ruby-align","ruby-overhang","ruby-position","ruby-span","scale","scroll-behavior","scroll-margin","scroll-margin-block","scroll-margin-block-end","scroll-margin-block-start","scroll-margin-bottom","scroll-margin-inline","scroll-margin-inline-end","scroll-margin-inline-start","scroll-margin-left","scroll-margin-right","scroll-margin-top","scroll-padding","scroll-padding-block","scroll-padding-block-end","scroll-padding-block-start","scroll-padding-bottom","scroll-padding-inline","scroll-padding-inline-end","scroll-padding-inline-start","scroll-padding-left","scroll-padding-right","scroll-padding-top","scroll-snap-align","scroll-snap-type","shape-image-threshold","shape-inside","shape-margin","shape-outside","size","speak","speak-as","speak-header","speak-numeral","speak-punctuation","speech-rate","stress","string-set","tab-size","table-layout","target","target-name","target-new","target-position","text-align","text-align-last","text-combine-upright","text-decoration","text-decoration-color","text-decoration-line","text-decoration-skip","text-decoration-skip-ink","text-decoration-style","text-emphasis","text-emphasis-color","text-emphasis-position","text-emphasis-style","text-height","text-indent","text-justify","text-orientation","text-outline","text-overflow","text-rendering","text-shadow","text-size-adjust","text-space-collapse","text-transform","text-underline-position","text-wrap","top","touch-action","transform","transform-origin","transform-style","transition","transition-delay","transition-duration","transition-property","transition-timing-function","translate","unicode-bidi","user-select","vertical-align","visibility","voice-balance","voice-duration","voice-family","voice-pitch","voice-range","voice-rate","voice-stress","voice-volume","volume","white-space","widows","width","will-change","word-break","word-spacing","word-wrap","writing-mode","z-index","clip-path","clip-rule","mask","enable-background","filter","flood-color","flood-opacity","lighting-color","stop-color","stop-opacity","pointer-events","color-interpolation","color-interpolation-filters","color-rendering","fill","fill-opacity","fill-rule","image-rendering","marker","marker-end","marker-mid","marker-start","paint-order","shape-rendering","stroke","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke-width","text-rendering","baseline-shift","dominant-baseline","glyph-orientation-horizontal","glyph-orientation-vertical","text-anchor","writing-mode"],u=e(c),d=["border-block","border-block-color","border-block-end","border-block-end-color","border-block-end-style","border-block-end-width","border-block-start","border-block-start-color","border-block-start-style","border-block-start-width","border-block-style","border-block-width","border-inline","border-inline-color","border-inline-end","border-inline-end-color","border-inline-end-style","border-inline-end-width","border-inline-start","border-inline-start-color","border-inline-start-style","border-inline-start-width","border-inline-style","border-inline-width","margin-block","margin-block-end","margin-block-start","margin-inline","margin-inline-end","margin-inline-start","padding-block","padding-block-end","padding-block-start","padding-inline","padding-inline-end","padding-inline-start","scroll-snap-stop","scrollbar-3d-light-color","scrollbar-arrow-color","scrollbar-base-color","scrollbar-dark-shadow-color","scrollbar-face-color","scrollbar-highlight-color","scrollbar-shadow-color","scrollbar-track-color","searchfield-cancel-button","searchfield-decoration","searchfield-results-button","searchfield-results-decoration","shape-inside","zoom"],f=e(d),h=e(["font-display","font-family","src","unicode-range","font-variant","font-feature-settings","font-stretch","font-weight","font-style"]),p=e(["additive-symbols","fallback","negative","pad","prefix","range","speak-as","suffix","symbols","system"]),m=["aliceblue","antiquewhite","aqua","aquamarine","azure","beige","bisque","black","blanchedalmond","blue","blueviolet","brown","burlywood","cadetblue","chartreuse","chocolate","coral","cornflowerblue","cornsilk","crimson","cyan","darkblue","darkcyan","darkgoldenrod","darkgray","darkgreen","darkkhaki","darkmagenta","darkolivegreen","darkorange","darkorchid","darkred","darksalmon","darkseagreen","darkslateblue","darkslategray","darkturquoise","darkviolet","deeppink","deepskyblue","dimgray","dodgerblue","firebrick","floralwhite","forestgreen","fuchsia","gainsboro","ghostwhite","gold","goldenrod","gray","grey","green","greenyellow","honeydew","hotpink","indianred","indigo","ivory","khaki","lavender","lavenderblush","lawngreen","lemonchiffon","lightblue","lightcoral","lightcyan","lightgoldenrodyellow","lightgray","lightgreen","lightpink","lightsalmon","lightseagreen","lightskyblue","lightslategray","lightsteelblue","lightyellow","lime","limegreen","linen","magenta","maroon","mediumaquamarine","mediumblue","mediumorchid","mediumpurple","mediumseagreen","mediumslateblue","mediumspringgreen","mediumturquoise","mediumvioletred","midnightblue","mintcream","mistyrose","moccasin","navajowhite","navy","oldlace","olive","olivedrab","orange","orangered","orchid","palegoldenrod","palegreen","paleturquoise","palevioletred","papayawhip","peachpuff","peru","pink","plum","powderblue","purple","rebeccapurple","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke","yellow","yellowgreen"],g=e(m),v=["above","absolute","activeborder","additive","activecaption","afar","after-white-space","ahead","alias","all","all-scroll","alphabetic","alternate","always","amharic","amharic-abegede","antialiased","appworkspace","arabic-indic","armenian","asterisks","attr","auto","auto-flow","avoid","avoid-column","avoid-page","avoid-region","axis-pan","background","backwards","baseline","below","bidi-override","binary","bengali","blink","block","block-axis","bold","bolder","border","border-box","both","bottom","break","break-all","break-word","bullets","button","button-bevel","buttonface","buttonhighlight","buttonshadow","buttontext","calc","cambodian","capitalize","caps-lock-indicator","caption","captiontext","caret","cell","center","checkbox","circle","cjk-decimal","cjk-earthly-branch","cjk-heavenly-stem","cjk-ideographic","clear","clip","close-quote","col-resize","collapse","color","color-burn","color-dodge","column","column-reverse","compact","condensed","contain","content","contents","content-box","context-menu","continuous","copy","counter","counters","cover","crop","cross","crosshair","currentcolor","cursive","cyclic","darken","dashed","decimal","decimal-leading-zero","default","default-button","dense","destination-atop","destination-in","destination-out","destination-over","devanagari","difference","disc","discard","disclosure-closed","disclosure-open","document","dot-dash","dot-dot-dash","dotted","double","down","e-resize","ease","ease-in","ease-in-out","ease-out","element","ellipse","ellipsis","embed","end","ethiopic","ethiopic-abegede","ethiopic-abegede-am-et","ethiopic-abegede-gez","ethiopic-abegede-ti-er","ethiopic-abegede-ti-et","ethiopic-halehame-aa-er","ethiopic-halehame-aa-et","ethiopic-halehame-am-et","ethiopic-halehame-gez","ethiopic-halehame-om-et","ethiopic-halehame-sid-et","ethiopic-halehame-so-et","ethiopic-halehame-ti-er","ethiopic-halehame-ti-et","ethiopic-halehame-tig","ethiopic-numeric","ew-resize","exclusion","expanded","extends","extra-condensed","extra-expanded","fantasy","fast","fill","fill-box","fixed","flat","flex","flex-end","flex-start","footnotes","forwards","from","geometricPrecision","georgian","graytext","grid","groove","gujarati","gurmukhi","hand","hangul","hangul-consonant","hard-light","hebrew","help","hidden","hide","higher","highlight","highlighttext","hiragana","hiragana-iroha","horizontal","hsl","hsla","hue","icon","ignore","inactiveborder","inactivecaption","inactivecaptiontext","infinite","infobackground","infotext","inherit","initial","inline","inline-axis","inline-block","inline-flex","inline-grid","inline-table","inset","inside","intrinsic","invert","italic","japanese-formal","japanese-informal","justify","kannada","katakana","katakana-iroha","keep-all","khmer","korean-hangul-formal","korean-hanja-formal","korean-hanja-informal","landscape","lao","large","larger","left","level","lighter","lighten","line-through","linear","linear-gradient","lines","list-item","listbox","listitem","local","logical","loud","lower","lower-alpha","lower-armenian","lower-greek","lower-hexadecimal","lower-latin","lower-norwegian","lower-roman","lowercase","ltr","luminosity","malayalam","manipulation","match","matrix","matrix3d","media-controls-background","media-current-time-display","media-fullscreen-button","media-mute-button","media-play-button","media-return-to-realtime-button","media-rewind-button","media-seek-back-button","media-seek-forward-button","media-slider","media-sliderthumb","media-time-remaining-display","media-volume-slider","media-volume-slider-container","media-volume-sliderthumb","medium","menu","menulist","menulist-button","menulist-text","menulist-textfield","menutext","message-box","middle","min-intrinsic","mix","mongolian","monospace","move","multiple","multiple_mask_images","multiply","myanmar","n-resize","narrower","ne-resize","nesw-resize","no-close-quote","no-drop","no-open-quote","no-repeat","none","normal","not-allowed","nowrap","ns-resize","numbers","numeric","nw-resize","nwse-resize","oblique","octal","opacity","open-quote","optimizeLegibility","optimizeSpeed","oriya","oromo","outset","outside","outside-shape","overlay","overline","padding","padding-box","painted","page","paused","persian","perspective","pinch-zoom","plus-darker","plus-lighter","pointer","polygon","portrait","pre","pre-line","pre-wrap","preserve-3d","progress","push-button","radial-gradient","radio","read-only","read-write","read-write-plaintext-only","rectangle","region","relative","repeat","repeating-linear-gradient","repeating-radial-gradient","repeat-x","repeat-y","reset","reverse","rgb","rgba","ridge","right","rotate","rotate3d","rotateX","rotateY","rotateZ","round","row","row-resize","row-reverse","rtl","run-in","running","s-resize","sans-serif","saturation","scale","scale3d","scaleX","scaleY","scaleZ","screen","scroll","scrollbar","scroll-position","se-resize","searchfield","searchfield-cancel-button","searchfield-decoration","searchfield-results-button","searchfield-results-decoration","self-start","self-end","semi-condensed","semi-expanded","separate","serif","show","sidama","simp-chinese-formal","simp-chinese-informal","single","skew","skewX","skewY","skip-white-space","slide","slider-horizontal","slider-vertical","sliderthumb-horizontal","sliderthumb-vertical","slow","small","small-caps","small-caption","smaller","soft-light","solid","somali","source-atop","source-in","source-out","source-over","space","space-around","space-between","space-evenly","spell-out","square","square-button","start","static","status-bar","stretch","stroke","stroke-box","sub","subpixel-antialiased","svg_masks","super","sw-resize","symbolic","symbols","system-ui","table","table-caption","table-cell","table-column","table-column-group","table-footer-group","table-header-group","table-row","table-row-group","tamil","telugu","text","text-bottom","text-top","textarea","textfield","thai","thick","thin","threeddarkshadow","threedface","threedhighlight","threedlightshadow","threedshadow","tibetan","tigre","tigrinya-er","tigrinya-er-abegede","tigrinya-et","tigrinya-et-abegede","to","top","trad-chinese-formal","trad-chinese-informal","transform","translate","translate3d","translateX","translateY","translateZ","transparent","ultra-condensed","ultra-expanded","underline","unidirectional-pan","unset","up","upper-alpha","upper-armenian","upper-greek","upper-hexadecimal","upper-latin","upper-norwegian","upper-roman","uppercase","urdu","url","var","vertical","vertical-text","view-box","visible","visibleFill","visiblePainted","visibleStroke","visual","w-resize","wait","wave","wider","window","windowframe","windowtext","words","wrap","wrap-reverse","x-large","x-small","xor","xx-large","xx-small"],y=e(v),v=t.concat(n).concat(o).concat(l).concat(c).concat(d).concat(m).concat(v);function b(e,t){for(var r,n=!1;null!=(r=e.next());){if(n&&"/"==r){t.tokenize=null;break}n="*"==r}return["comment","comment"]}N.registerHelper("hintWords","css",v),N.defineMIME("text/css",{documentTypes:r,mediaTypes:i,mediaFeatures:a,mediaValueKeywords:s,propertyKeywords:u,nonStandardPropertyKeywords:f,fontProperties:h,counterDescriptors:p,colorKeywords:g,valueKeywords:y,tokenHooks:{"/":function(e,t){return!!e.eat("*")&&(t.tokenize=b)(e,t)}},name:"css"}),N.defineMIME("text/x-scss",{mediaTypes:i,mediaFeatures:a,mediaValueKeywords:s,propertyKeywords:u,nonStandardPropertyKeywords:f,colorKeywords:g,valueKeywords:y,fontProperties:h,allowNested:!0,lineComment:"//",tokenHooks:{"/":function(e,t){return e.eat("/")?(e.skipToEnd(),["comment","comment"]):e.eat("*")?(t.tokenize=b)(e,t):["operator","operator"]},":":function(e){return!!e.match(/\s*\{/,!1)&&[null,null]},$:function(e){return e.match(/^[\w-]+/),e.match(/^\s*:/,!1)?["variable-2","variable-definition"]:["variable-2","variable"]},"#":function(e){return!!e.eat("{")&&[null,"interpolation"]}},name:"css",helperType:"scss"}),N.defineMIME("text/x-less",{mediaTypes:i,mediaFeatures:a,mediaValueKeywords:s,propertyKeywords:u,nonStandardPropertyKeywords:f,colorKeywords:g,valueKeywords:y,fontProperties:h,allowNested:!0,lineComment:"//",tokenHooks:{"/":function(e,t){return e.eat("/")?(e.skipToEnd(),["comment","comment"]):e.eat("*")?(t.tokenize=b)(e,t):["operator","operator"]},"@":function(e){return e.eat("{")?[null,"interpolation"]:!e.match(/^(charset|document|font-face|import|(-(moz|ms|o|webkit)-)?keyframes|media|namespace|page|supports)\b/i,!1)&&(e.eatWhile(/[\w\\\-]/),e.match(/^\s*:/,!1)?["variable-2","variable-definition"]:["variable-2","variable"])},"&":function(){return["atom","atom"]}},name:"css",helperType:"less"}),N.defineMIME("text/x-gss",{documentTypes:r,mediaTypes:i,mediaFeatures:a,propertyKeywords:u,nonStandardPropertyKeywords:f,fontProperties:h,counterDescriptors:p,colorKeywords:g,valueKeywords:y,supportsAtComponent:!0,tokenHooks:{"/":function(e,t){return!!e.eat("*")&&(t.tokenize=b)(e,t)}},name:"css",helperType:"gss"})},"object"==A(n)&&"object"==A(e)?r(i("./node_modules/codemirror/lib/codemirror.js")):(t=[i("./node_modules/codemirror/lib/codemirror.js")],void 0===(r="function"==typeof(r=r)?r.apply(n,t):r)||(e.exports=r))}).call(this,i("./node_modules/webpack/buildin/module.js")(e))},"./node_modules/codemirror/mode/htmlmixed/htmlmixed.js":function(e,n,i){"use strict";(function(e){var t,r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t=function(d){var i={script:[["lang",/(javascript|babel)/i,"javascript"],["type",/^(?:text|application)\/(?:x-)?(?:java|ecma)script$|^module$|^$/i,"javascript"],["type",/./,"text/plain"],[null,null,"javascript"]],style:[["lang",/^css$/i,"css"],["type",/^(text\/)?(x-)?(stylesheet|css)$/i,"css"],["type",/./,"text/plain"],[null,null,"css"]]};var r={};function f(e,t){t=e.match(r[t=t]||(r[t]=new RegExp("\\s+"+t+"\\s*=\\s*('|\")?([^'\"]+)('|\")?\\s*")));return t?/^\s*(.*?)\s*$/.exec(t[2])[1]:""}function h(e,t){return new RegExp((t?"^":"")+"</s*"+e+"s*>","i")}function o(e,t){for(var r in e)for(var n=t[r]||(t[r]=[]),i=e[r],o=i.length-1;0<=o;o--)n.unshift(i[o])}d.defineMode("htmlmixed",function(l,e){var s=d.getMode(l,{name:"xml",htmlMode:!0,multilineTagIndentFactor:e.multilineTagIndentFactor,multilineTagIndentPastTag:e.multilineTagIndentPastTag}),c={},t=e&&e.tags,r=e&&e.scriptTypes;if(o(i,c),t&&o(t,c),r)for(var n=r.length-1;0<=n;n--)c.script.unshift(["type",r[n].matches,r[n].mode]);function u(e,t){var r,o,a,n=s.token(e,t.htmlState),i=/\btag\b/.test(n);return i&&!/[<>\s\/]/.test(e.current())&&(r=t.htmlState.tagName&&t.htmlState.tagName.toLowerCase())&&c.hasOwnProperty(r)?t.inTag=r+" ":t.inTag&&i&&/>$/.test(e.current())?(r=/^([\S]+) (.*)/.exec(t.inTag),t.inTag=null,i=">"==e.current()&&function(e,t){for(var r=0;r<e.length;r++){var n=e[r];if(!n[0]||n[1].test(f(t,n[0])))return n[2]}}(c[r[1]],r[2]),i=d.getMode(l,i),o=h(r[1],!0),a=h(r[1],!1),t.token=function(e,t){return e.match(o,!1)?(t.token=u,t.localState=t.localMode=null):(r=e,n=a,i=t.localMode.token(e,t.localState),e=r.current(),-1<(t=e.search(n))?r.backUp(e.length-t):e.match(/<\/?$/)&&(r.backUp(e.length),r.match(n,!1)||r.match(e)),i);var r,n,i},t.localMode=i,t.localState=d.startState(i,s.indent(t.htmlState,"",""))):t.inTag&&(t.inTag+=e.current(),e.eol()&&(t.inTag+=" ")),n}return{startState:function(){return{token:u,inTag:null,localMode:null,localState:null,htmlState:d.startState(s)}},copyState:function(e){var t;return e.localState&&(t=d.copyState(e.localMode,e.localState)),{token:e.token,inTag:e.inTag,localMode:e.localMode,localState:t,htmlState:d.copyState(s,e.htmlState)}},token:function(e,t){return t.token(e,t)},indent:function(e,t,r){return!e.localMode||/^\s*<\//.test(t)?s.indent(e.htmlState,t,r):e.localMode.indent?e.localMode.indent(e.localState,t,r):d.Pass},innerMode:function(e){return{state:e.localState||e.htmlState,mode:e.localMode||s}}}},"xml","javascript","css"),d.defineMIME("text/html","htmlmixed")},"object"==r(n)&&"object"==r(e)?t(i("./node_modules/codemirror/lib/codemirror.js"),i("./node_modules/codemirror/mode/xml/xml.js"),i("./node_modules/codemirror/mode/javascript/javascript.js"),i("./node_modules/codemirror/mode/css/css.js")):(r=[i("./node_modules/codemirror/lib/codemirror.js"),i("./node_modules/codemirror/mode/xml/xml.js"),i("./node_modules/codemirror/mode/javascript/javascript.js"),i("./node_modules/codemirror/mode/css/css.js")],void 0===(t="function"==typeof(t=t)?t.apply(n,r):t)||(e.exports=t))}).call(this,i("./node_modules/webpack/buildin/module.js")(e))},"./node_modules/codemirror/mode/javascript/javascript.js":function(e,n,i){"use strict";(function(e){var t,r,et="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};r=function(Qe){Qe.defineMode("javascript",function(e,u){var t,r,n,i,d=e.indentUnit,f=u.statementIndent,o=u.jsonld,a=u.json||o,c=u.typescript,h=u.wordCharacters||/[\w$\xa1-\uffff]/,l=(t=s("keyword a"),r=s("keyword b"),n=s("keyword c"),i=s("keyword d"),e=s("operator"),{if:s("if"),while:t,with:t,else:r,do:r,try:r,finally:r,return:i,break:i,continue:i,new:s("new"),delete:n,void:n,throw:n,debugger:s("debugger"),var:s("var"),const:s("var"),let:s("var"),function:s("function"),catch:s("catch"),for:s("for"),switch:s("switch"),case:s("case"),default:s("default"),in:e,typeof:e,instanceof:e,true:e={type:"atom",style:"atom"},false:e,null:e,undefined:e,NaN:e,Infinity:e,this:s("this"),class:s("class"),super:s("atom"),yield:n,export:s("export"),import:s("import"),extends:n,await:n});function s(e){return{type:e,style:"keyword"}}var p,m,g=/[+\-*&%=<>!?|~^@]/,v=/^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/;function y(e,t,r){return p=e,m=r,t}function b(e,t){var i,r=e.next();if('"'==r||"'"==r)return t.tokenize=(i=r,function(e,t){var r,n=!1;if(o&&"@"==e.peek()&&e.match(v))return t.tokenize=b,y("jsonld-keyword","meta");for(;null!=(r=e.next())&&(r!=i||n);)n=!n&&"\\"==r;return n||(t.tokenize=b),y("string","string")}),t.tokenize(e,t);if("."==r&&e.match(/^\d[\d_]*(?:[eE][+\-]?[\d_]+)?/))return y("number","number");if("."==r&&e.match(".."))return y("spread","meta");if(/[\[\]{}\(\),;\:\.]/.test(r))return y(r);if("="==r&&e.eat(">"))return y("=>","operator");if("0"==r&&e.match(/^(?:x[\dA-Fa-f_]+|o[0-7_]+|b[01_]+)n?/))return y("number","number");if(/\d/.test(r))return e.match(/^[\d_]*(?:n|(?:\.[\d_]*)?(?:[eE][+\-]?[\d_]+)?)?/),y("number","number");if("/"==r)return e.eat("*")?(t.tokenize=w)(e,t):e.eat("/")?(e.skipToEnd(),y("comment","comment")):Je(e,t,1)?(function(e){for(var t,r=!1,n=!1;null!=(t=e.next());){if(!r){if("/"==t&&!n)return;"["==t?n=!0:n&&"]"==t&&(n=!1)}r=!r&&"\\"==t}}(e),e.match(/^\b(([gimyus])(?![gimyus]*\2))+\b/),y("regexp","string-2")):(e.eat("="),y("operator","operator",e.current()));if("`"==r)return(t.tokenize=x)(e,t);if("#"==r&&"!"==e.peek())return e.skipToEnd(),y("meta","meta");if("#"==r&&e.eatWhile(h))return y("variable","property");if("<"==r&&e.match("!--")||"-"==r&&e.match("->")&&!/\S/.test(e.string.slice(0,e.start)))return e.skipToEnd(),y("comment","comment");if(g.test(r))return">"==r&&t.lexical&&">"==t.lexical.type||(e.eat("=")?"!"!=r&&"="!=r||e.eat("="):/[<>*+\-|&?]/.test(r)&&(e.eat(r),">"==r&&e.eat(r))),"?"==r&&e.eat(".")?y("."):y("operator","operator",e.current());if(h.test(r)){e.eatWhile(h);r=e.current();if("."!=t.lastType){if(l.propertyIsEnumerable(r)){t=l[r];return y(t.type,t.style,r)}if("async"==r&&e.match(/^(\s|\/\*.*?\*\/)*[\[\(\w]/,!1))return y("async","keyword",r)}return y("variable","variable",r)}}function w(e,t){for(var r,n=!1;r=e.next();){if("/"==r&&n){t.tokenize=b;break}n="*"==r}return y("comment","comment")}function x(e,t){for(var r,n=!1;null!=(r=e.next());){if(!n&&("`"==r||"$"==r&&e.eat("{"))){t.tokenize=b;break}n=!n&&"\\"==r}return y("quasi","string-2",e.current())}var k="([{}])";function C(e,t){t.fatArrowAt&&(t.fatArrowAt=null);var r,n=e.string.indexOf("=>",e.start);if(!(n<0)){!c||(r=/:\s*(?:\w+(?:<[^>]*>|\[\])?|\{[^}]*\})\s*$/.exec(e.string.slice(e.start,n)))&&(n=r.index);for(var i=0,o=!1,a=n-1;0<=a;--a){var l=e.string.charAt(a),s=k.indexOf(l);if(0<=s&&s<3){if(!i){++a;break}if(0==--i){"("==l&&(o=!0);break}}else if(3<=s&&s<6)++i;else if(h.test(l))o=!0;else if(/["'\/`]/.test(l))for(;;--a){if(0==a)return;if(e.string.charAt(a-1)==l&&"\\"!=e.string.charAt(a-2)){a--;break}}else if(o&&!i){++a;break}}o&&!i&&(t.fatArrowAt=a)}}var S={atom:!0,number:!0,variable:!0,string:!0,regexp:!0,this:!0,"jsonld-keyword":!0};function M(e,t,r,n,i,o){this.indented=e,this.column=t,this.type=r,this.prev=i,this.info=o,null!=n&&(this.align=n)}function T(e,t,r,n,i){var o=e.cc;for(L.state=e,L.stream=i,L.marked=null,L.cc=o,L.style=t,e.lexical.hasOwnProperty("align")||(e.lexical.align=!0);;){if((o.length?o.pop():a?U:B)(r,n)){for(;o.length&&o[o.length-1].lex;)o.pop()();return L.marked?L.marked:"variable"==r&&function(e,t){for(var r=e.localVars;r;r=r.next)if(r.name==t)return 1;for(var n=e.context;n;n=n.prev)for(r=n.vars;r;r=r.next)if(r.name==t)return 1}(e,n)?"variable-2":t}}}var L={state:null,column:null,marked:null,cc:null};function O(){for(var e=arguments.length-1;0<=e;e--)L.cc.push(arguments[e])}function N(){return O.apply(null,arguments),!0}function A(e,t){for(var r=t;r;r=r.next)if(r.name==e)return 1}function z(e){var t=L.state;if(L.marked="def",t.context)if("var"==t.lexical.info&&t.context&&t.context.block){var r=function e(t,r){{if(r){if(r.block){var n=e(t,r.prev);return n?n==r.prev?r:new W(n,r.vars,!0):null}return A(t,r.vars)?r:new W(r.prev,new E(t,r.vars),!1)}return null}}(e,t.context);if(null!=r)return void(t.context=r)}else if(!A(e,t.localVars))return void(t.localVars=new E(e,t.localVars));u.globalVars&&!A(e,t.globalVars)&&(t.globalVars=new E(e,t.globalVars))}function D(e){return"public"==e||"private"==e||"protected"==e||"abstract"==e||"readonly"==e}function W(e,t,r){this.prev=e,this.vars=t,this.block=r}function E(e,t){this.name=e,this.next=t}var j=new E("this",new E("arguments",null));function P(){L.state.context=new W(L.state.context,L.state.localVars,!1),L.state.localVars=j}function F(){L.state.context=new W(L.state.context,L.state.localVars,!0),L.state.localVars=null}function H(){L.state.localVars=L.state.context.vars,L.state.context=L.state.context.prev}function I(n,i){function e(){var e=L.state,t=e.indented;if("stat"==e.lexical.type)t=e.lexical.indented;else for(var r=e.lexical;r&&")"==r.type&&r.align;r=r.prev)t=r.indented;e.lexical=new M(t,L.stream.column(),n,null,e.lexical,i)}return e.lex=!0,e}function R(){var e=L.state;e.lexical.prev&&(")"==e.lexical.type&&(e.indented=e.lexical.indented),e.lexical=e.lexical.prev)}function _(r){return function e(t){return t==r?N():";"==r||"}"==t||")"==t||"]"==t?O():N(e)}}function B(e,t){return"var"==e?N(I("vardef",t),Ce,_(";"),R):"keyword a"==e?N(I("form"),G,B,R):"keyword b"==e?N(I("form"),B,R):"keyword d"==e?L.stream.match(/^\s*$/,!1)?N():N(I("stat"),q,_(";"),R):"debugger"==e?N(_(";")):"{"==e?N(I("}"),F,ue,R,H):";"==e?N():"if"==e?("else"==L.state.lexical.info&&L.state.cc[L.state.cc.length-1]==R&&L.state.cc.pop()(),N(I("form"),G,B,R,Ne)):"function"==e?N(We):"for"==e?N(I("form"),Ae,B,R):"class"==e||c&&"interface"==t?(L.marked="keyword",N(I("form","class"==e?e:t),He,R)):"variable"==e?c&&"declare"==t?(L.marked="keyword",N(B)):c&&("module"==t||"enum"==t||"type"==t)&&L.stream.match(/^\s*\w/,!1)?(L.marked="keyword","enum"==t?N(Ye):"type"==t?N(je,_("operator"),me,_(";")):N(I("form"),Se,_("{"),I("}"),ue,R,R)):c&&"namespace"==t?(L.marked="keyword",N(I("form"),U,B,R)):c&&"abstract"==t?(L.marked="keyword",N(B)):N(I("stat"),ne):"switch"==e?N(I("form"),G,_("{"),I("}","switch"),F,ue,R,R,H):"case"==e?N(U,_(":")):"default"==e?N(_(":")):"catch"==e?N(I("form"),P,V,B,R,H):"export"==e?N(I("stat"),Be,R):"import"==e?N(I("stat"),Ue,R):"async"==e?N(B):"@"==t?N(U,B):O(I("stat"),U,_(";"),R)}function V(e){if("("==e)return N(Pe,_(")"))}function U(e,t){return $(e,t,!1)}function K(e,t){return $(e,t,!0)}function G(e){return"("!=e?O():N(I(")"),q,_(")"),R)}function $(e,t,r){if(L.state.fatArrowAt==L.stream.start){var n=r?ee:Q;if("("==e)return N(P,I(")"),se(Pe,")"),R,_("=>"),n,H);if("variable"==e)return O(P,Se,_("=>"),n,H)}var i,n=r?Y:X;return S.hasOwnProperty(e)?N(n):"function"==e?N(We,n):"class"==e||c&&"interface"==t?(L.marked="keyword",N(I("form"),Fe,R)):"keyword c"==e||"async"==e?N(r?K:U):"("==e?N(I(")"),q,_(")"),R,n):"operator"==e||"spread"==e?N(r?K:U):"["==e?N(I("]"),Xe,R,n):"{"==e?ce(oe,"}",null,n):"quasi"==e?O(Z,n):"new"==e?N((i=r,function(e){return"."==e?N(i?re:te):"variable"==e&&c?N(we,i?Y:X):O(i?K:U)})):"import"==e?N(U):N()}function q(e){return e.match(/[;\}\)\],]/)?O():O(U)}function X(e,t){return","==e?N(q):Y(e,t,!1)}function Y(e,t,r){var n=0==r?X:Y,i=0==r?U:K;return"=>"==e?N(P,r?ee:Q,H):"operator"==e?/\+\+|--/.test(t)||c&&"!"==t?N(n):c&&"<"==t&&L.stream.match(/^([^<>]|<[^<>]*>)*>\s*\(/,!1)?N(I(">"),se(me,">"),R,n):"?"==t?N(U,_(":"),i):N(i):"quasi"==e?O(Z,n):";"!=e?"("==e?ce(K,")","call",n):"."==e?N(ie,n):"["==e?N(I("]"),q,_("]"),R,n):c&&"as"==t?(L.marked="keyword",N(me,n)):"regexp"==e?(L.state.lastType=L.marked="operator",L.stream.backUp(L.stream.pos-L.stream.start-1),N(i)):void 0:void 0}function Z(e,t){return"quasi"!=e?O():"${"!=t.slice(t.length-2)?N(Z):N(U,J)}function J(e){if("}"==e)return L.marked="string-2",L.state.tokenize=x,N(Z)}function Q(e){return C(L.stream,L.state),O("{"==e?B:U)}function ee(e){return C(L.stream,L.state),O("{"==e?B:K)}function te(e,t){if("target"==t)return L.marked="keyword",N(X)}function re(e,t){if("target"==t)return L.marked="keyword",N(Y)}function ne(e){return":"==e?N(R,B):O(X,_(";"),R)}function ie(e){if("variable"==e)return L.marked="property",N()}function oe(e,t){if("async"==e)return L.marked="property",N(oe);if("variable"==e||"keyword"==L.style){return(L.marked="property","get"==t||"set"==t)?N(ae):(c&&L.state.fatArrowAt==L.stream.start&&(r=L.stream.match(/^\s*:\s*/,!1))&&(L.state.fatArrowAt=L.stream.pos+r[0].length),N(le));var r}else{if("number"==e||"string"==e)return L.marked=o?"property":L.style+" property",N(le);if("jsonld-keyword"==e)return N(le);if(c&&D(t))return L.marked="keyword",N(oe);if("["==e)return N(U,de,_("]"),le);if("spread"==e)return N(K,le);if("*"==t)return L.marked="keyword",N(oe);if(":"==e)return O(le)}}function ae(e){return"variable"!=e?O(le):(L.marked="property",N(We))}function le(e){return":"==e?N(K):"("==e?O(We):void 0}function se(n,i,o){function a(e,t){if(o?-1<o.indexOf(e):","==e){var r=L.state.lexical;return"call"==r.info&&(r.pos=(r.pos||0)+1),N(function(e,t){return e==i||t==i?O():O(n)},a)}return e==i||t==i?N():o&&-1<o.indexOf(";")?O(n):N(_(i))}return function(e,t){return e==i||t==i?N():O(n,a)}}function ce(e,t,r){for(var n=3;n<arguments.length;n++)L.cc.push(arguments[n]);return N(I(t,r),se(e,t),R)}function ue(e){return"}"==e?N():O(B,ue)}function de(e,t){if(c){if(":"==e)return N(me);if("?"==t)return N(de)}}function fe(e,t){if(c&&(":"==e||"in"==t))return N(me)}function he(e){if(c&&":"==e)return L.stream.match(/^\s*\w+\s+is\b/,!1)?N(U,pe,me):N(me)}function pe(e,t){if("is"==t)return L.marked="keyword",N()}function me(e,t){return"keyof"==t||"typeof"==t||"infer"==t?(L.marked="keyword",N("typeof"==t?K:me)):"variable"==e||"void"==t?(L.marked="type",N(be)):"|"==t||"&"==t?N(me):"string"==e||"number"==e||"atom"==e?N(be):"["==e?N(I("]"),se(me,"]",","),R,be):"{"==e?N(I("}"),se(ve,"}",",;"),R,be):"("==e?N(se(ye,")"),ge,be):"<"==e?N(se(me,">"),me):void 0}function ge(e){if("=>"==e)return N(me)}function ve(e,t){return"variable"==e||"keyword"==L.style?(L.marked="property",N(ve)):"?"==t||"number"==e||"string"==e?N(ve):":"==e?N(me):"["==e?N(_("variable"),fe,_("]"),ve):"("==e?O(Ee,ve):void 0}function ye(e,t){return"variable"==e&&L.stream.match(/^\s*[?:]/,!1)||"?"==t?N(ye):":"==e?N(me):"spread"==e?N(ye):O(me)}function be(e,t){return"<"==t?N(I(">"),se(me,">"),R,be):"|"==t||"."==e||"&"==t?N(me):"["==e?N(me,_("]"),be):"extends"==t||"implements"==t?(L.marked="keyword",N(me)):"?"==t?N(me,_(":"),me):void 0}function we(e,t){if("<"==t)return N(I(">"),se(me,">"),R,be)}function xe(){return O(me,ke)}function ke(e,t){if("="==t)return N(me)}function Ce(e,t){return"enum"==t?(L.marked="keyword",N(Ye)):O(Se,de,Le,Oe)}function Se(e,t){return c&&D(t)?(L.marked="keyword",N(Se)):"variable"==e?(z(t),N()):"spread"==e?N(Se):"["==e?ce(Te,"]"):"{"==e?ce(Me,"}"):void 0}function Me(e,t){return"variable"!=e||L.stream.match(/^\s*:/,!1)?("variable"==e&&(L.marked="property"),"spread"==e?N(Se):"}"==e?O():"["==e?N(U,_("]"),_(":"),Me):N(_(":"),Se,Le)):(z(t),N(Le))}function Te(){return O(Se,Le)}function Le(e,t){if("="==t)return N(K)}function Oe(e){if(","==e)return N(Ce)}function Ne(e,t){if("keyword b"==e&&"else"==t)return N(I("form","else"),B,R)}function Ae(e,t){return"await"==t?N(Ae):"("==e?N(I(")"),ze,R):void 0}function ze(e){return"var"==e?N(Ce,De):("variable"==e?N:O)(De)}function De(e,t){return")"==e?N():";"==e?N(De):"in"==t||"of"==t?(L.marked="keyword",N(U,De)):O(U,De)}function We(e,t){return"*"==t?(L.marked="keyword",N(We)):"variable"==e?(z(t),N(We)):"("==e?N(P,I(")"),se(Pe,")"),R,he,B,H):c&&"<"==t?N(I(">"),se(xe,">"),R,We):void 0}function Ee(e,t){return"*"==t?(L.marked="keyword",N(Ee)):"variable"==e?(z(t),N(Ee)):"("==e?N(P,I(")"),se(Pe,")"),R,he,H):c&&"<"==t?N(I(">"),se(xe,">"),R,Ee):void 0}function je(e,t){return"keyword"==e||"variable"==e?(L.marked="type",N(je)):"<"==t?N(I(">"),se(xe,">"),R):void 0}function Pe(e,t){return"@"==t&&N(U,Pe),"spread"==e?N(Pe):c&&D(t)?(L.marked="keyword",N(Pe)):c&&"this"==e?N(de,Le):O(Se,de,Le)}function Fe(e,t){return("variable"==e?He:Ie)(e,t)}function He(e,t){if("variable"==e)return z(t),N(Ie)}function Ie(e,t){return"<"==t?N(I(">"),se(xe,">"),R,Ie):"extends"==t||"implements"==t||c&&","==e?("implements"==t&&(L.marked="keyword"),N(c?me:U,Ie)):"{"==e?N(I("}"),Re,R):void 0}function Re(e,t){return"async"==e||"variable"==e&&("static"==t||"get"==t||"set"==t||c&&D(t))&&L.stream.match(/^\s+[\w$\xa1-\uffff]/,!1)?(L.marked="keyword",N(Re)):"variable"==e||"keyword"==L.style?(L.marked="property",N(_e,Re)):"number"==e||"string"==e?N(_e,Re):"["==e?N(U,de,_("]"),_e,Re):"*"==t?(L.marked="keyword",N(Re)):c&&"("==e?O(Ee,Re):";"==e||","==e?N(Re):"}"==e?N():"@"==t?N(U,Re):void 0}function _e(e,t){if("?"==t)return N(_e);if(":"==e)return N(me,Le);if("="==t)return N(K);t=L.state.lexical.prev;return O(t&&"interface"==t.info?Ee:We)}function Be(e,t){return"*"==t?(L.marked="keyword",N(qe,_(";"))):"default"==t?(L.marked="keyword",N(U,_(";"))):"{"==e?N(se(Ve,"}"),qe,_(";")):O(B)}function Ve(e,t){return"as"==t?(L.marked="keyword",N(_("variable"))):"variable"==e?O(K,Ve):void 0}function Ue(e){return"string"==e?N():"("==e?O(U):O(Ke,Ge,qe)}function Ke(e,t){return"{"==e?ce(Ke,"}"):("variable"==e&&z(t),"*"==t&&(L.marked="keyword"),N($e))}function Ge(e){if(","==e)return N(Ke,Ge)}function $e(e,t){if("as"==t)return L.marked="keyword",N(Ke)}function qe(e,t){if("from"==t)return L.marked="keyword",N(U)}function Xe(e){return"]"==e?N():O(se(K,"]"))}function Ye(){return O(I("form"),Se,_("{"),I("}"),se(Ze,"}"),R,R)}function Ze(){return O(Se,Le)}function Je(e,t,r){return t.tokenize==b&&/^(?:operator|sof|keyword [bcd]|case|new|export|default|spread|[\[{}\(,;:]|=>)$/.test(t.lastType)||"quasi"==t.lastType&&/\{\s*$/.test(e.string.slice(0,e.pos-(r||0)))}return R.lex=H.lex=!0,{startState:function(e){e={tokenize:b,lastType:"sof",cc:[],lexical:new M((e||0)-d,0,"block",!1),localVars:u.localVars,context:u.localVars&&new W(null,null,!1),indented:e||0};return u.globalVars&&"object"==et(u.globalVars)&&(e.globalVars=u.globalVars),e},token:function(e,t){if(e.sol()&&(t.lexical.hasOwnProperty("align")||(t.lexical.align=!1),t.indented=e.indentation(),C(e,t)),t.tokenize!=w&&e.eatSpace())return null;var r=t.tokenize(e,t);return"comment"==p?r:(t.lastType="operator"!=p||"++"!=m&&"--"!=m?p:"incdec",T(t,r,p,m,e))},indent:function(e,t){if(e.tokenize==w)return Qe.Pass;if(e.tokenize!=b)return 0;var r,n=t&&t.charAt(0),i=e.lexical;if(!/^\s*else\b/.test(t))for(var o=e.cc.length-1;0<=o;--o){var a=e.cc[o];if(a==R)i=i.prev;else if(a!=Ne)break}for(;("stat"==i.type||"form"==i.type)&&("}"==n||(r=e.cc[e.cc.length-1])&&(r==X||r==Y)&&!/^[,\.=+\-*:?[\(]/.test(t));)i=i.prev;f&&")"==i.type&&"stat"==i.prev.type&&(i=i.prev);var l,s=i.type,c=n==s;return"vardef"==s?i.indented+("operator"==e.lastType||","==e.lastType?i.info.length+1:0):"form"==s&&"{"==n?i.indented:"form"==s?i.indented+d:"stat"==s?i.indented+(l=t,"operator"==(s=e).lastType||","==s.lastType||g.test(l.charAt(0))||/[,.]/.test(l.charAt(0))?f||d:0):"switch"!=i.info||c||0==u.doubleIndentSwitch?i.align?i.column+(c?0:1):i.indented+(c?0:d):i.indented+(/^(?:case|default)\b/.test(t)?d:2*d)},electricInput:/^\s*(?:case .*?:|default:|\{|\})$/,blockCommentStart:a?null:"/*",blockCommentEnd:a?null:"*/",blockCommentContinue:a?null:" * ",lineComment:a?null:"//",fold:"brace",closeBrackets:"()[]{}''\"\"``",helperType:a?"json":"javascript",jsonldMode:o,jsonMode:a,expressionAllowed:Je,skipExpression:function(e){var t=e.cc[e.cc.length-1];t!=U&&t!=K||e.cc.pop()}}}),Qe.registerHelper("wordChars","javascript",/[\w$]/),Qe.defineMIME("text/javascript","javascript"),Qe.defineMIME("text/ecmascript","javascript"),Qe.defineMIME("application/javascript","javascript"),Qe.defineMIME("application/x-javascript","javascript"),Qe.defineMIME("application/ecmascript","javascript"),Qe.defineMIME("application/json",{name:"javascript",json:!0}),Qe.defineMIME("application/x-json",{name:"javascript",json:!0}),Qe.defineMIME("application/ld+json",{name:"javascript",jsonld:!0}),Qe.defineMIME("text/typescript",{name:"javascript",typescript:!0}),Qe.defineMIME("application/typescript",{name:"javascript",typescript:!0})},"object"==et(n)&&"object"==et(e)?r(i("./node_modules/codemirror/lib/codemirror.js")):(t=[i("./node_modules/codemirror/lib/codemirror.js")],void 0===(r="function"==typeof(r=r)?r.apply(n,t):r)||(e.exports=r))}).call(this,i("./node_modules/webpack/buildin/module.js")(e))},"./node_modules/codemirror/mode/xml/xml.js":function(e,n,i){"use strict";(function(e){var t,r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t=function(C){var S={autoSelfClosers:{area:!0,base:!0,br:!0,col:!0,command:!0,embed:!0,frame:!0,hr:!0,img:!0,input:!0,keygen:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0,menuitem:!0},implicitlyClosed:{dd:!0,li:!0,optgroup:!0,option:!0,p:!0,rp:!0,rt:!0,tbody:!0,td:!0,tfoot:!0,th:!0,tr:!0},contextGrabbers:{dd:{dd:!0,dt:!0},dt:{dd:!0,dt:!0},li:{li:!0},option:{option:!0,optgroup:!0},optgroup:{optgroup:!0},p:{address:!0,article:!0,aside:!0,blockquote:!0,dir:!0,div:!0,dl:!0,fieldset:!0,footer:!0,form:!0,h1:!0,h2:!0,h3:!0,h4:!0,h5:!0,h6:!0,header:!0,hgroup:!0,hr:!0,menu:!0,nav:!0,ol:!0,p:!0,pre:!0,section:!0,table:!0,ul:!0},rp:{rp:!0,rt:!0},rt:{rp:!0,rt:!0},tbody:{tbody:!0,tfoot:!0},td:{td:!0,th:!0},tfoot:{tbody:!0},th:{td:!0,th:!0},thead:{tbody:!0,tfoot:!0},tr:{tr:!0}},doNotIndent:{pre:!0},allowUnquoted:!0,allowMissing:!0,caseFold:!0},M={autoSelfClosers:{},implicitlyClosed:{},contextGrabbers:{},doNotIndent:{},allowUnquoted:!1,allowMissing:!1,allowMissingTagName:!1,caseFold:!1};C.defineMode("xml",function(e,t){var r,o,a,l=e.indentUnit,s={},n=t.htmlMode?S:M;for(r in n)s[r]=n[r];for(r in t)s[r]=t[r];function c(t,r){function e(e){return(r.tokenize=e)(t,r)}var n=t.next();if("<"==n)return t.eat("!")?t.eat("[")?t.match("CDATA[")?e(i("atom","]]>")):null:t.match("--")?e(i("comment","--\x3e")):t.match("DOCTYPE",!0,!0)?(t.eatWhile(/[\w\._\-]/),e(function n(i){return function(e,t){for(var r;null!=(r=e.next());){if("<"==r)return t.tokenize=n(i+1),t.tokenize(e,t);if(">"==r){if(1!=i)return t.tokenize=n(i-1),t.tokenize(e,t);t.tokenize=c;break}}return"meta"}}(1))):null:t.eat("?")?(t.eatWhile(/[\w\._\-]/),r.tokenize=i("meta","?>"),"meta"):(o=t.eat("/")?"closeTag":"openTag",r.tokenize=u,"tag bracket");if("&"!=n)return t.eatWhile(/[^&<]/),null;n=t.eat("#")?t.eat("x")?t.eatWhile(/[a-fA-F\d]/)&&t.eat(";"):t.eatWhile(/[\d]/)&&t.eat(";"):t.eatWhile(/[\w\.\-:]/)&&t.eat(";");return n?"atom":"error"}function u(e,t){var r=e.next();if(">"==r||"/"==r&&e.eat(">"))return t.tokenize=c,o=">"==r?"endTag":"selfcloseTag","tag bracket";if("="==r)return o="equals",null;if("<"!=r)return/[\'\"]/.test(r)?(t.tokenize=(n=r,i.isInAttribute=!0,i),t.stringStartCol=e.column(),t.tokenize(e,t)):(e.match(/^[^\s\u00a0=<>\"\']*[^\s\u00a0=<>\"\'\/]/),"word");t.tokenize=c,t.state=p,t.tagName=t.tagStart=null;var n,t=t.tokenize(e,t);return t?t+" tag error":"tag error";function i(e,t){for(;!e.eol();)if(e.next()==n){t.tokenize=u;break}return"string"}}function i(r,n){return function(e,t){for(;!e.eol();){if(e.match(n)){t.tokenize=c;break}e.next()}return r}}function d(e,t,r){this.prev=e.context,this.tagName=t,this.indent=e.indented,this.startOfLine=r,(s.doNotIndent.hasOwnProperty(t)||e.context&&e.context.noIndent)&&(this.noIndent=!0)}function f(e){e.context&&(e.context=e.context.prev)}function h(e,t){for(var r;;){if(!e.context)return;if(r=e.context.tagName,!s.contextGrabbers.hasOwnProperty(r)||!s.contextGrabbers[r].hasOwnProperty(t))return;f(e)}}function p(e,t,r){return"openTag"==e?(r.tagStart=t.column(),m):"closeTag"==e?g:p}function m(e,t,r){return"word"==e?(r.tagName=t.current(),a="tag",b):s.allowMissingTagName&&"endTag"==e?(a="tag bracket",b(e,0,r)):(a="error",m)}function g(e,t,r){if("word"!=e)return s.allowMissingTagName&&"endTag"==e?(a="tag bracket",v(e,0,r)):(a="error",y);t=t.current();return r.context&&r.context.tagName!=t&&s.implicitlyClosed.hasOwnProperty(r.context.tagName)&&f(r),r.context&&r.context.tagName==t||!1===s.matchClosing?(a="tag",v):(a="tag error",y)}function v(e,t,r){return"endTag"!=e?(a="error",v):(f(r),p)}function y(e,t,r){return a="error",v(e,0,r)}function b(e,t,r){if("word"==e)return a="attribute",w;if("endTag"!=e&&"selfcloseTag"!=e)return a="error",b;var n=r.tagName,i=r.tagStart;return r.tagName=r.tagStart=null,"selfcloseTag"==e||s.autoSelfClosers.hasOwnProperty(n)?h(r,n):(h(r,n),r.context=new d(r,n,i==r.indented)),p}function w(e,t,r){return"equals"==e?x:(s.allowMissing||(a="error"),b(e,0,r))}function x(e,t,r){return"string"==e?k:"word"==e&&s.allowUnquoted?(a="string",b):(a="error",b(e,0,r))}function k(e,t,r){return"string"==e?k:b(e,0,r)}return c.isInText=!0,{startState:function(e){var t={tokenize:c,state:p,indented:e||0,tagName:null,tagStart:null,context:null};return null!=e&&(t.baseIndent=e),t},token:function(e,t){if(!t.tagName&&e.sol()&&(t.indented=e.indentation()),e.eatSpace())return null;o=null;var r=t.tokenize(e,t);return(r||o)&&"comment"!=r&&(a=null,t.state=t.state(o||r,e,t),a&&(r="error"==a?r+" error":a)),r},indent:function(e,t,r){var n=e.context;if(e.tokenize.isInAttribute)return e.tagStart==e.indented?e.stringStartCol+1:e.indented+l;if(n&&n.noIndent)return C.Pass;if(e.tokenize!=u&&e.tokenize!=c)return r?r.match(/^(\s*)/)[0].length:0;if(e.tagName)return!1!==s.multilineTagIndentPastTag?e.tagStart+e.tagName.length+2:e.tagStart+l*(s.multilineTagIndentFactor||1);if(s.alignCDATA&&/<!\[CDATA\[/.test(t))return 0;var i=t&&/^<(\/)?([\w_:\.-]*)/.exec(t);if(i&&i[1])for(;n;){if(n.tagName==i[2]){n=n.prev;break}if(!s.implicitlyClosed.hasOwnProperty(n.tagName))break;n=n.prev}else if(i)for(;n;){var o=s.contextGrabbers[n.tagName];if(!o||!o.hasOwnProperty(i[2]))break;n=n.prev}for(;n&&n.prev&&!n.startOfLine;)n=n.prev;return n?n.indent+l:e.baseIndent||0},electricInput:/<\/[\s\w:]+>$/,blockCommentStart:"\x3c!--",blockCommentEnd:"--\x3e",configuration:s.htmlMode?"html":"xml",helperType:s.htmlMode?"html":"xml",skipAttribute:function(e){e.state==x&&(e.state=b)},xmlCurrentTag:function(e){return e.tagName?{name:e.tagName,close:"closeTag"==e.type}:null},xmlCurrentContext:function(e){for(var t=[],r=e.context;r;r=r.prev)r.tagName&&t.push(r.tagName);return t.reverse()}}}),C.defineMIME("text/xml","xml"),C.defineMIME("application/xml","xml"),C.mimeModes.hasOwnProperty("text/html")||C.defineMIME("text/html",{name:"xml",htmlMode:!0})},"object"==r(n)&&"object"==r(e)?t(i("./node_modules/codemirror/lib/codemirror.js")):(r=[i("./node_modules/codemirror/lib/codemirror.js")],void 0===(t="function"==typeof(t=t)?t.apply(n,r):t)||(e.exports=t))}).call(this,i("./node_modules/webpack/buildin/module.js")(e))},"./node_modules/codemirror/theme/base16-light.css":function(e,t,r){var n=r("./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/theme/base16-light.css");"string"==typeof n&&(n=[[e.i,n,""]]);var i={hmr:!0,transform:void 0,insertInto:void 0};r("./node_modules/editron/node_modules/style-loader/lib/addStyles.js")(n,i);n.locals&&(e.exports=n.locals)},"./node_modules/editron/editors/AbstractValueEditor.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./editors/AbstractValueEditor.js")},"./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/lib/codemirror.css":function(e,t,r){(e.exports=r("./node_modules/editron/node_modules/css-loader/dist/runtime/api.js")(!1)).push([e.i,"/* BASICS */\n\n.CodeMirror {\n  /* Set height, width, borders, and global font properties here */\n  font-family: monospace;\n  height: 300px;\n  color: black;\n  direction: ltr;\n}\n\n/* PADDING */\n\n.CodeMirror-lines {\n  padding: 4px 0; /* Vertical padding around content */\n}\n.CodeMirror pre.CodeMirror-line,\n.CodeMirror pre.CodeMirror-line-like {\n  padding: 0 4px; /* Horizontal padding of content */\n}\n\n.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {\n  background-color: white; /* The little square between H and V scrollbars */\n}\n\n/* GUTTER */\n\n.CodeMirror-gutters {\n  border-right: 1px solid #ddd;\n  background-color: #f7f7f7;\n  white-space: nowrap;\n}\n.CodeMirror-linenumbers {}\n.CodeMirror-linenumber {\n  padding: 0 3px 0 5px;\n  min-width: 20px;\n  text-align: right;\n  color: #999;\n  white-space: nowrap;\n}\n\n.CodeMirror-guttermarker { color: black; }\n.CodeMirror-guttermarker-subtle { color: #999; }\n\n/* CURSOR */\n\n.CodeMirror-cursor {\n  border-left: 1px solid black;\n  border-right: none;\n  width: 0;\n}\n/* Shown when moving in bi-directional text */\n.CodeMirror div.CodeMirror-secondarycursor {\n  border-left: 1px solid silver;\n}\n.cm-fat-cursor .CodeMirror-cursor {\n  width: auto;\n  border: 0 !important;\n  background: #7e7;\n}\n.cm-fat-cursor div.CodeMirror-cursors {\n  z-index: 1;\n}\n.cm-fat-cursor-mark {\n  background-color: rgba(20, 255, 20, 0.5);\n  -webkit-animation: blink 1.06s steps(1) infinite;\n  -moz-animation: blink 1.06s steps(1) infinite;\n  animation: blink 1.06s steps(1) infinite;\n}\n.cm-animate-fat-cursor {\n  width: auto;\n  border: 0;\n  -webkit-animation: blink 1.06s steps(1) infinite;\n  -moz-animation: blink 1.06s steps(1) infinite;\n  animation: blink 1.06s steps(1) infinite;\n  background-color: #7e7;\n}\n@-moz-keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n@-webkit-keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n@keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n\n/* Can style cursor different in overwrite (non-insert) mode */\n.CodeMirror-overwrite .CodeMirror-cursor {}\n\n.cm-tab { display: inline-block; text-decoration: inherit; }\n\n.CodeMirror-rulers {\n  position: absolute;\n  left: 0; right: 0; top: -50px; bottom: 0;\n  overflow: hidden;\n}\n.CodeMirror-ruler {\n  border-left: 1px solid #ccc;\n  top: 0; bottom: 0;\n  position: absolute;\n}\n\n/* DEFAULT THEME */\n\n.cm-s-default .cm-header {color: blue;}\n.cm-s-default .cm-quote {color: #090;}\n.cm-negative {color: #d44;}\n.cm-positive {color: #292;}\n.cm-header, .cm-strong {font-weight: bold;}\n.cm-em {font-style: italic;}\n.cm-link {text-decoration: underline;}\n.cm-strikethrough {text-decoration: line-through;}\n\n.cm-s-default .cm-keyword {color: #708;}\n.cm-s-default .cm-atom {color: #219;}\n.cm-s-default .cm-number {color: #164;}\n.cm-s-default .cm-def {color: #00f;}\n.cm-s-default .cm-variable,\n.cm-s-default .cm-punctuation,\n.cm-s-default .cm-property,\n.cm-s-default .cm-operator {}\n.cm-s-default .cm-variable-2 {color: #05a;}\n.cm-s-default .cm-variable-3, .cm-s-default .cm-type {color: #085;}\n.cm-s-default .cm-comment {color: #a50;}\n.cm-s-default .cm-string {color: #a11;}\n.cm-s-default .cm-string-2 {color: #f50;}\n.cm-s-default .cm-meta {color: #555;}\n.cm-s-default .cm-qualifier {color: #555;}\n.cm-s-default .cm-builtin {color: #30a;}\n.cm-s-default .cm-bracket {color: #997;}\n.cm-s-default .cm-tag {color: #170;}\n.cm-s-default .cm-attribute {color: #00c;}\n.cm-s-default .cm-hr {color: #999;}\n.cm-s-default .cm-link {color: #00c;}\n\n.cm-s-default .cm-error {color: #f00;}\n.cm-invalidchar {color: #f00;}\n\n.CodeMirror-composing { border-bottom: 2px solid; }\n\n/* Default styles for common addons */\n\ndiv.CodeMirror span.CodeMirror-matchingbracket {color: #0b0;}\ndiv.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}\n.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }\n.CodeMirror-activeline-background {background: #e8f2ff;}\n\n/* STOP */\n\n/* The rest of this file contains styles related to the mechanics of\n   the editor. You probably shouldn't touch them. */\n\n.CodeMirror {\n  position: relative;\n  overflow: hidden;\n  background: white;\n}\n\n.CodeMirror-scroll {\n  overflow: scroll !important; /* Things will break if this is overridden */\n  /* 50px is the magic margin used to hide the element's real scrollbars */\n  /* See overflow: hidden in .CodeMirror */\n  margin-bottom: -50px; margin-right: -50px;\n  padding-bottom: 50px;\n  height: 100%;\n  outline: none; /* Prevent dragging from highlighting the element */\n  position: relative;\n}\n.CodeMirror-sizer {\n  position: relative;\n  border-right: 50px solid transparent;\n}\n\n/* The fake, visible scrollbars. Used to force redraw during scrolling\n   before actual scrolling happens, thus preventing shaking and\n   flickering artifacts. */\n.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {\n  position: absolute;\n  z-index: 6;\n  display: none;\n  outline: none;\n}\n.CodeMirror-vscrollbar {\n  right: 0; top: 0;\n  overflow-x: hidden;\n  overflow-y: scroll;\n}\n.CodeMirror-hscrollbar {\n  bottom: 0; left: 0;\n  overflow-y: hidden;\n  overflow-x: scroll;\n}\n.CodeMirror-scrollbar-filler {\n  right: 0; bottom: 0;\n}\n.CodeMirror-gutter-filler {\n  left: 0; bottom: 0;\n}\n\n.CodeMirror-gutters {\n  position: absolute; left: 0; top: 0;\n  min-height: 100%;\n  z-index: 3;\n}\n.CodeMirror-gutter {\n  white-space: normal;\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n  margin-bottom: -50px;\n}\n.CodeMirror-gutter-wrapper {\n  position: absolute;\n  z-index: 4;\n  background: none !important;\n  border: none !important;\n}\n.CodeMirror-gutter-background {\n  position: absolute;\n  top: 0; bottom: 0;\n  z-index: 4;\n}\n.CodeMirror-gutter-elt {\n  position: absolute;\n  cursor: default;\n  z-index: 4;\n}\n.CodeMirror-gutter-wrapper ::selection { background-color: transparent }\n.CodeMirror-gutter-wrapper ::-moz-selection { background-color: transparent }\n\n.CodeMirror-lines {\n  cursor: text;\n  min-height: 1px; /* prevents collapsing before first draw */\n}\n.CodeMirror pre.CodeMirror-line,\n.CodeMirror pre.CodeMirror-line-like {\n  /* Reset some styles that the rest of the page might have set */\n  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;\n  border-width: 0;\n  background: transparent;\n  font-family: inherit;\n  font-size: inherit;\n  margin: 0;\n  white-space: pre;\n  word-wrap: normal;\n  line-height: inherit;\n  color: inherit;\n  z-index: 2;\n  position: relative;\n  overflow: visible;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-font-variant-ligatures: contextual;\n  font-variant-ligatures: contextual;\n}\n.CodeMirror-wrap pre.CodeMirror-line,\n.CodeMirror-wrap pre.CodeMirror-line-like {\n  word-wrap: break-word;\n  white-space: pre-wrap;\n  word-break: normal;\n}\n\n.CodeMirror-linebackground {\n  position: absolute;\n  left: 0; right: 0; top: 0; bottom: 0;\n  z-index: 0;\n}\n\n.CodeMirror-linewidget {\n  position: relative;\n  z-index: 2;\n  padding: 0.1px; /* Force widget margins to stay inside of the container */\n}\n\n.CodeMirror-widget {}\n\n.CodeMirror-rtl pre { direction: rtl; }\n\n.CodeMirror-code {\n  outline: none;\n}\n\n/* Force content-box sizing for the elements where we expect it */\n.CodeMirror-scroll,\n.CodeMirror-sizer,\n.CodeMirror-gutter,\n.CodeMirror-gutters,\n.CodeMirror-linenumber {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.CodeMirror-measure {\n  position: absolute;\n  width: 100%;\n  height: 0;\n  overflow: hidden;\n  visibility: hidden;\n}\n\n.CodeMirror-cursor {\n  position: absolute;\n  pointer-events: none;\n}\n.CodeMirror-measure pre { position: static; }\n\ndiv.CodeMirror-cursors {\n  visibility: hidden;\n  position: relative;\n  z-index: 3;\n}\ndiv.CodeMirror-dragcursors {\n  visibility: visible;\n}\n\n.CodeMirror-focused div.CodeMirror-cursors {\n  visibility: visible;\n}\n\n.CodeMirror-selected { background: #d9d9d9; }\n.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }\n.CodeMirror-crosshair { cursor: crosshair; }\n.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }\n.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }\n\n.cm-searching {\n  background-color: #ffa;\n  background-color: rgba(255, 255, 0, .4);\n}\n\n/* Used to force a border model for a node */\n.cm-force-border { padding-right: .1px; }\n\n@media print {\n  /* Hide the cursor when printing */\n  .CodeMirror div.CodeMirror-cursors {\n    visibility: hidden;\n  }\n}\n\n/* See issue #2901 */\n.cm-tab-wrap-hack:after { content: ''; }\n\n/* Help users use markselection to safely style text background */\nspan.CodeMirror-selectedtext { background: none; }\n",""])},"./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/theme/base16-light.css":function(e,t,r){(e.exports=r("./node_modules/editron/node_modules/css-loader/dist/runtime/api.js")(!1)).push([e.i,"/*\n\n    Name:       Base16 Default Light\n    Author:     Chris Kempson (http://chriskempson.com)\n\n    CodeMirror template by Jan T. Sott (https://github.com/idleberg/base16-codemirror)\n    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)\n\n*/\n\n.cm-s-base16-light.CodeMirror { background: #f5f5f5; color: #202020; }\n.cm-s-base16-light div.CodeMirror-selected { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-line::selection, .cm-s-base16-light .CodeMirror-line > span::selection, .cm-s-base16-light .CodeMirror-line > span > span::selection { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-line::-moz-selection, .cm-s-base16-light .CodeMirror-line > span::-moz-selection, .cm-s-base16-light .CodeMirror-line > span > span::-moz-selection { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-gutters { background: #f5f5f5; border-right: 0px; }\n.cm-s-base16-light .CodeMirror-guttermarker { color: #ac4142; }\n.cm-s-base16-light .CodeMirror-guttermarker-subtle { color: #b0b0b0; }\n.cm-s-base16-light .CodeMirror-linenumber { color: #b0b0b0; }\n.cm-s-base16-light .CodeMirror-cursor { border-left: 1px solid #505050; }\n\n.cm-s-base16-light span.cm-comment { color: #8f5536; }\n.cm-s-base16-light span.cm-atom { color: #aa759f; }\n.cm-s-base16-light span.cm-number { color: #aa759f; }\n\n.cm-s-base16-light span.cm-property, .cm-s-base16-light span.cm-attribute { color: #90a959; }\n.cm-s-base16-light span.cm-keyword { color: #ac4142; }\n.cm-s-base16-light span.cm-string { color: #f4bf75; }\n\n.cm-s-base16-light span.cm-variable { color: #90a959; }\n.cm-s-base16-light span.cm-variable-2 { color: #6a9fb5; }\n.cm-s-base16-light span.cm-def { color: #d28445; }\n.cm-s-base16-light span.cm-bracket { color: #202020; }\n.cm-s-base16-light span.cm-tag { color: #ac4142; }\n.cm-s-base16-light span.cm-link { color: #aa759f; }\n.cm-s-base16-light span.cm-error { background: #ac4142; color: #505050; }\n\n.cm-s-base16-light .CodeMirror-activeline-background { background: #DDDCDC; }\n.cm-s-base16-light .CodeMirror-matchingbracket { color: #f5f5f5 !important; background-color: #6A9FB5 !important}\n",""])},"./node_modules/editron/node_modules/css-loader/dist/runtime/api.js":function(e,t,r){"use strict";e.exports=function(r){var a=[];return a.toString=function(){return this.map(function(e){var t=function(e,t){var r=e[1]||"",n=e[3];if(!n)return r;if(t&&"function"==typeof btoa){e=function(e){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(e))))+" */"}(n),t=n.sources.map(function(e){return"/*# sourceURL="+n.sourceRoot+e+" */"});return[r].concat(t).concat([e]).join("\n")}return[r].join("\n")}(e,r);return e[2]?"@media "+e[2]+"{"+t+"}":t}).join("")},a.i=function(e,t){"string"==typeof e&&(e=[[null,e,""]]);for(var r={},n=0;n<this.length;n++){var i=this[n][0];null!=i&&(r[i]=!0)}for(n=0;n<e.length;n++){var o=e[n];null!=o[0]&&r[o[0]]||(t&&!o[2]?o[2]=t:t&&(o[2]="("+o[2]+") and ("+t+")"),a.push(o))}},a}},"./node_modules/editron/node_modules/gson-pointer/index.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./node_modules/gson-pointer/index.js")},"./node_modules/editron/node_modules/mithril-material-forms/components/errors/index.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./node_modules/mithril-material-forms/components/errors/index.js")},"./node_modules/editron/node_modules/mithril-material-forms/components/label/index.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./node_modules/mithril-material-forms/components/label/index.js")},"./node_modules/editron/node_modules/style-loader/lib/addStyles.js":function(e,t,n){var r,i,o,s={},c=(r=function(){return window&&document&&document.all&&!window.atob},function(){return void 0===i&&(i=r.apply(this,arguments)),i}),a=(o={},function(e,t){if("function"==typeof e)return e();if(void 0===o[e]){var r=function(e,t){return(t||document).querySelector(e)}.call(this,e,t);if(window.HTMLIFrameElement&&r instanceof window.HTMLIFrameElement)try{r=r.contentDocument.head}catch(e){r=null}o[e]=r}return o[e]}),l=null,u=0,d=[],f=n("./node_modules/editron/node_modules/style-loader/lib/urls.js");function h(e,t){for(var r=0;r<e.length;r++){var n=e[r],i=s[n.id];if(i){i.refs++;for(var o=0;o<i.parts.length;o++)i.parts[o](n.parts[o]);for(;o<n.parts.length;o++)i.parts.push(b(n.parts[o],t))}else{for(var a=[],o=0;o<n.parts.length;o++)a.push(b(n.parts[o],t));s[n.id]={id:n.id,refs:1,parts:a}}}}function p(e,t){for(var r=[],n={},i=0;i<e.length;i++){var o=e[i],a=t.base?o[0]+t.base:o[0],o={css:o[1],media:o[2],sourceMap:o[3]};n[a]?n[a].parts.push(o):r.push(n[a]={id:a,parts:[o]})}return r}function m(e,t){var r=a(e.insertInto);if(!r)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var n=d[d.length-1];if("top"===e.insertAt)n?n.nextSibling?r.insertBefore(t,n.nextSibling):r.appendChild(t):r.insertBefore(t,r.firstChild),d.push(t);else if("bottom"===e.insertAt)r.appendChild(t);else{if("object"!=typeof e.insertAt||!e.insertAt.before)throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");e=a(e.insertAt.before,r);r.insertBefore(t,e)}}function g(e){null!==e.parentNode&&(e.parentNode.removeChild(e),0<=(e=d.indexOf(e))&&d.splice(e,1))}function v(e){var t,r=document.createElement("style");return void 0===e.attrs.type&&(e.attrs.type="text/css"),void 0!==e.attrs.nonce||(t=function(){0;return n.nc}())&&(e.attrs.nonce=t),y(r,e.attrs),m(e,r),r}function y(t,r){Object.keys(r).forEach(function(e){t.setAttribute(e,r[e])})}function b(t,e){var r,n,i,o,a;if(e.transform&&t.css){if(!(o="function"==typeof e.transform?e.transform(t.css):e.transform.default(t.css)))return function(){};t.css=o}return i=e.singleton?(a=u++,r=l=l||v(e),n=k.bind(null,r,a,!1),k.bind(null,r,a,!0)):t.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(o=e,a=document.createElement("link"),void 0===o.attrs.type&&(o.attrs.type="text/css"),o.attrs.rel="stylesheet",y(a,o.attrs),m(o,a),n=function(e,t,r){var n=r.css,i=r.sourceMap,r=void 0===t.convertToAbsoluteUrls&&i;(t.convertToAbsoluteUrls||r)&&(n=f(n));i&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */");i=new Blob([n],{type:"text/css"}),n=e.href;e.href=URL.createObjectURL(i),n&&URL.revokeObjectURL(n)}.bind(null,r=a,e),function(){g(r),r.href&&URL.revokeObjectURL(r.href)}):(r=v(e),n=function(e,t){var r=t.css,t=t.media;t&&e.setAttribute("media",t);if(e.styleSheet)e.styleSheet.cssText=r;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}.bind(null,r),function(){g(r)}),n(t),function(e){if(e){if(e.css===t.css&&e.media===t.media&&e.sourceMap===t.sourceMap)return;n(t=e)}else i()}}e.exports=function(e,a){(a=a||{}).attrs="object"==typeof a.attrs?a.attrs:{},a.singleton||"boolean"==typeof a.singleton||(a.singleton=c()),a.insertInto||(a.insertInto="head"),a.insertAt||(a.insertAt="bottom");var l=p(e,a);return h(l,a),function(e){for(var t=[],r=0;r<l.length;r++){var n=l[r];(i=s[n.id]).refs--,t.push(i)}e&&h(p(e,a),a);for(var i,r=0;r<t.length;r++){if(0===(i=t[r]).refs){for(var o=0;o<i.parts.length;o++)i.parts[o]();delete s[i.id]}}}};var w,x=(w=[],function(e,t){return w[e]=t,w.filter(Boolean).join("\n")});function k(e,t,r,n){r=r?"":n.css;e.styleSheet?e.styleSheet.cssText=x(t,r):(n=document.createTextNode(r),(r=e.childNodes)[t]&&e.removeChild(r[t]),r.length?e.insertBefore(n,r[t]):e.appendChild(n))}},"./node_modules/editron/node_modules/style-loader/lib/urls.js":function(e,t,r){"use strict";e.exports=function(e){var t="undefined"!=typeof window&&window.location;if(!t)throw new Error("fixUrls requires window.location");if(!e||"string"!=typeof e)return e;var r=t.protocol+"//"+t.host,n=r+t.pathname.replace(/\/[^\/]*$/,"/");return e.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(e,t){t=t.trim().replace(/^"(.*)"$/,function(e,t){return t}).replace(/^'(.*)'$/,function(e,t){return t});return/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(t)?e:(t=0===t.indexOf("//")?t:0===t.indexOf("/")?r+t:n+t.replace(/^\.\//,""),"url("+JSON.stringify(t)+")")})}},"./node_modules/editron/plugin/index.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./plugin/index.js")},"./node_modules/editron/services/OverlayService.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./services/OverlayService.js")},"./node_modules/editron/utils/i18n.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./utils/i18n.js")},"./node_modules/editron/utils/isNodeContext.js":function(e,t,r){e.exports=r("dll-reference editronModules")("./utils/isNodeContext.js")},"./node_modules/webpack/buildin/module.js":function(e,t,r){"use strict";e.exports=function(e){return e.webpackPolyfill||(e.deprecate=function(){},e.paths=[],e.children||(e.children=[]),Object.defineProperty(e,"loaded",{enumerable:!0,get:function(){return e.l}}),Object.defineProperty(e,"id",{enumerable:!0,get:function(){return e.i}}),e.webpackPolyfill=1),e}},"./wysiwygeditor/HTMLView.js":function(e,t,r){"use strict";var n=r("mithril"),i=r("./node_modules/codemirror/lib/codemirror.js");r("./node_modules/editron/utils/isNodeContext.js")()?i={fromTextArea:function(){return{on:Function.prototype,setValue:Function.prototype,getValue:Function.prototype,toTextArea:Function.prototype}}}:(r("./node_modules/codemirror/lib/codemirror.css"),r("./node_modules/codemirror/mode/htmlmixed/htmlmixed.js"),r("./node_modules/codemirror/theme/base16-light.css")),e.exports={initEditor:function(e,t,r){var n=this;this.htmlEditor=i.fromTextArea(e,{mode:"htmlmixed",theme:"base16-light",lineWrapping:!0}),this.htmlEditor.on("blur",function(){return r(n.htmlEditor.getValue())})},onremove:function(){this.htmlEditor.toTextArea()},view:function(t){var r=this;return n(".editron-html-overlay",{style:"min-width: 540px;"},n("textarea",{oninit:function(){},oncreate:function(e){return r.initEditor(e.dom,t.attrs.value,t.attrs.onchange)}},t.attrs.value))}}},"./wysiwygeditor/View.js":function(e,t,r){"use strict";var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r,n=arguments[t];for(r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},n=r("mithril"),o=r("./node_modules/editron/node_modules/mithril-material-forms/components/label/index.js"),a=r("./node_modules/editron/node_modules/mithril-material-forms/components/errors/index.js"),l=r("./wysiwygeditor/isEmptyHTML.js"),s=r("./node_modules/editron/utils/i18n.js").translate,c=r("./node_modules/editron/utils/isNodeContext.js"),u=void 0;c()?((u=function(){}).prototype.subscribe=Function.prototype,u.prototype.getContent=Function.prototype,u.prototype.setContent=Function.prototype,u.prototype.destroy=Function.prototype):u=window.MediumEditor;var d=r("./wysiwygeditor/HTMLView.js"),f=r("./node_modules/editron/services/OverlayService.js"),r={hasFocus:!1,previousValue:null,createEditor:function(e,t){var r=this,n={placeholder:{text:"",hideOnClick:!0},targetBlank:!0,anchor:{placeholderText:"Linkziel eingeben"},paste:{forcePlainText:!0,cleanPastedHTML:!0,cleanTags:["meta"],cleanAttrs:["class","style","dir","role"],unwrapTags:[],cleanReplacements:[[/ä/g,"ä"],[/Ä/g,"Ä"],[/ö/g,"ö"],[/Ö/g,"Ö"],[/ü/g,"ü"],[/Ü/g,"Ü"]]},toolbar:{buttons:["h2","h3",{name:"bold",contentDefault:"<b>B</b>"},{name:"italic",contentDefault:"i"},{name:"quote",contentDefault:"„ Zitat"},{name:"anchor",contentDefault:"Link"},"removeFormat"]},disableDoubleReturn:!0};n.toolbar=i(n.toolbar,t.mediumEditorOptions),this.editor=new u(e,n),null==this.editor.getContent&&(this.editor.getContent=function(){return r.editor.elements[0].innerHTML}),this.editor.subscribe("blur",function(){var e=r.editor.getContent(),e=l(e)?"":e;r.blur(e),t.onblur(e)}),this.editor.subscribe("focus",function(){r.focus(),t.onfocus()}),e.focus=function(){try{r.editor.elements[0].dispatchEvent(new Event("focus"))}catch(e){}}},destroyEditor:function(){this.editor.destroy()},showHTMLMarkup:function(t){var r=this,e=document.createElement("div");f.open(e,{ok:!0,save:!1,onAbort:function(){return n.render(e,n("i"))}}),n.render(e,n(d,{value:this.editor.getContent(),onchange:function(e){r.blur(e),t.onblur(e)}}))},setValue:function(e){this.editor&&this.editor.setContent(e)},focus:function(){this.hasFocus=!0,this.$element.classList.remove("hasNoFocus"),this.$element.classList.add("hasFocus")},blur:function(e){this.hasFocus=!1,this.$element.classList.remove("hasFocus"),this.$element.classList.add("hasNoFocus"),this.updateClasses(e)},updateClasses:function(e){e=l(e);this.$element.classList.remove(e?"isNotEmpty":"isEmpty"),this.$element.classList.add(e?"isEmpty":"isNotEmpty")},onupdate:function(e){this.shouldAbort(e.attrs.value)||this.setValue(e.attrs.value)},oncreate:function(e){this.$element=e.dom},shouldAbort:function(e){return!(!this.hasFocus||e!==this.previousValue)||(this.previousValue=e,!1)},view:function(e){var t=this,r=i({id:null,title:"",value:"",errors:[],mediumEditorOptions:{},description:"",placeholder:"",onblur:Function.prototype,onfocus:Function.prototype},e.attrs);return n(".editron-wysiwig-editor.mmf-form",{class:"hasNoFocus "+(0<r.errors.length?"has-error":"no-error")+" "+(l(r.value)?"isEmpty":"isNotEmpty")},n(".editron-wysiwig-editor__actions",n(".editron-container__controls.editron-container__controls--child",n("i.mmf-icon",{title:s("editor:wysiwyg:edithtml:tooltip"),onclick:function(){return t.showHTMLMarkup(r)}},"code"))),n(o,r),n("textarea",{rows:1,id:r.id,value:r.value,oncreate:function(e){return t.createEditor(e.dom,r)},onbeforeremove:function(){return t.destroyEditor()}}),n(a,r),n(".mmf-meta",r.description))}};e.exports=r},"./wysiwygeditor/htmlValidator.js":function(e,t,r){"use strict";var n="p|h[1-6]|[ou]l|pre|address|blockquote|dl|div|fieldset|form|hr|noscript|table",i=new RegExp("^[\n ]*(<("+n+")[^>]*>.*</("+n+")>)?[\n ]*$");function o(e){return!("string"==typeof e&&0<e.length&&!1===i.test(e))}e.exports={type:"string",format:"html",validate:function(e,t,r,n){if("string"===t.type&&"html"===t.format)return!1===o(r)?{type:"error",severity:"warning",name:"MissingBlockElementWarning",code:"MissingBlockElementWarning".replace(/([a-z])([A-Z])/g,"$1-$2").toLowerCase(),message:"The contents should be wrapped in a html block element.",data:{value:r,pointer:n}}:void 0},isWrappedInBlock:o}},"./wysiwygeditor/index.js":function(e,t,r){"use strict";var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r,n=arguments[t];for(r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},n=function(e,t,r){return t&&o(e.prototype,t),r&&o(e,r),e};function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var a=r("mithril"),l=r("./node_modules/editron/node_modules/gson-pointer/index.js"),s=r("./wysiwygeditor/View.js"),r=r("./node_modules/editron/editors/AbstractValueEditor.js"),n=(function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(c,r),n(c,null,[{key:"editorOf",value:function(e,t){e=t.schema().get(e);return"string"===e.type&&"html"===e.format}}]),n(c,[{key:"render",value:function(){a.render(this.$element,a(s,this.viewModel))}}]),c);function c(t,r,e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,c),e=i({editorValueType:"html",viewModel:{onblur:function(e){n.setValue(e),r.location().blur(t)}}},e);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(c.__proto__||Object.getPrototypeOf(c)).call(this,t,r,e));return n.viewModel.mediumEditorOptions=l.get(n.viewModel,"#/schema/options/mediumEditor")||{},n.render(),n}e.exports=n},"./wysiwygeditor/isEmptyHTML.js":function(e,t,r){"use strict";e.exports=function(e){return null==e||"string"!=typeof e||0===(e=e.replace(/<[^>]+>/g,"").replace(/[^A-Za-z0-9]/g,"")).length}},0:function(e,t,r){r("./editron-wysiwyg-editor.js"),e.exports=r("./editron-wysiwyg-editor.scss")},"dll-reference editronModules":function(e,t){e.exports=editronModules},mithril:function(e,t){e.exports=m}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./editron-wysiwyg-editor.js":
+/*!***********************************!*\
+  !*** ./editron-wysiwyg-editor.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const plugin = __webpack_require__(/*! editron/plugin */ "./node_modules/editron/plugin/index.js");
+
+
+plugin.editor(__webpack_require__(/*! ./wysiwygeditor */ "./wysiwygeditor/index.js"));
+plugin.validator("format", "html", __webpack_require__(/*! ./wysiwygeditor/htmlValidator */ "./wysiwygeditor/htmlValidator.js").validate);
+
+
+/***/ }),
+
+/***/ "./editron-wysiwyg-editor.scss":
+/*!*************************************!*\
+  !*** ./editron-wysiwyg-editor.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "editron-wysiwyg-editor.css";
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/lib/codemirror.css":
+/*!****************************************************!*\
+  !*** ./node_modules/codemirror/lib/codemirror.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../editron/node_modules/css-loader/dist/cjs.js!./codemirror.css */ "./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/lib/codemirror.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../editron/node_modules/style-loader/lib/addStyles.js */ "./node_modules/editron/node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/lib/codemirror.js":
+/*!***************************************************!*\
+  !*** ./node_modules/codemirror/lib/codemirror.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: https://codemirror.net/LICENSE
+
+// This is CodeMirror (https://codemirror.net), a code editor
+// implemented in JavaScript on top of the browser's DOM.
+//
+// You can find some technical background for some of the code below
+// at http://marijnhaverbeke.nl/blog/#cm-internals .
+
+(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+}(this, (function () { 'use strict';
+
+  // Kludges for bugs and behavior differences that can't be feature
+  // detected are enabled based on userAgent etc sniffing.
+  var userAgent = navigator.userAgent;
+  var platform = navigator.platform;
+
+  var gecko = /gecko\/\d/i.test(userAgent);
+  var ie_upto10 = /MSIE \d/.test(userAgent);
+  var ie_11up = /Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(userAgent);
+  var edge = /Edge\/(\d+)/.exec(userAgent);
+  var ie = ie_upto10 || ie_11up || edge;
+  var ie_version = ie && (ie_upto10 ? document.documentMode || 6 : +(edge || ie_11up)[1]);
+  var webkit = !edge && /WebKit\//.test(userAgent);
+  var qtwebkit = webkit && /Qt\/\d+\.\d+/.test(userAgent);
+  var chrome = !edge && /Chrome\//.test(userAgent);
+  var presto = /Opera\//.test(userAgent);
+  var safari = /Apple Computer/.test(navigator.vendor);
+  var mac_geMountainLion = /Mac OS X 1\d\D([8-9]|\d\d)\D/.test(userAgent);
+  var phantom = /PhantomJS/.test(userAgent);
+
+  var ios = !edge && /AppleWebKit/.test(userAgent) && /Mobile\/\w+/.test(userAgent);
+  var android = /Android/.test(userAgent);
+  // This is woefully incomplete. Suggestions for alternative methods welcome.
+  var mobile = ios || android || /webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(userAgent);
+  var mac = ios || /Mac/.test(platform);
+  var chromeOS = /\bCrOS\b/.test(userAgent);
+  var windows = /win/i.test(platform);
+
+  var presto_version = presto && userAgent.match(/Version\/(\d*\.\d*)/);
+  if (presto_version) { presto_version = Number(presto_version[1]); }
+  if (presto_version && presto_version >= 15) { presto = false; webkit = true; }
+  // Some browsers use the wrong event properties to signal cmd/ctrl on OS X
+  var flipCtrlCmd = mac && (qtwebkit || presto && (presto_version == null || presto_version < 12.11));
+  var captureRightClick = gecko || (ie && ie_version >= 9);
+
+  function classTest(cls) { return new RegExp("(^|\\s)" + cls + "(?:$|\\s)\\s*") }
+
+  var rmClass = function(node, cls) {
+    var current = node.className;
+    var match = classTest(cls).exec(current);
+    if (match) {
+      var after = current.slice(match.index + match[0].length);
+      node.className = current.slice(0, match.index) + (after ? match[1] + after : "");
+    }
+  };
+
+  function removeChildren(e) {
+    for (var count = e.childNodes.length; count > 0; --count)
+      { e.removeChild(e.firstChild); }
+    return e
+  }
+
+  function removeChildrenAndAdd(parent, e) {
+    return removeChildren(parent).appendChild(e)
+  }
+
+  function elt(tag, content, className, style) {
+    var e = document.createElement(tag);
+    if (className) { e.className = className; }
+    if (style) { e.style.cssText = style; }
+    if (typeof content == "string") { e.appendChild(document.createTextNode(content)); }
+    else if (content) { for (var i = 0; i < content.length; ++i) { e.appendChild(content[i]); } }
+    return e
+  }
+  // wrapper for elt, which removes the elt from the accessibility tree
+  function eltP(tag, content, className, style) {
+    var e = elt(tag, content, className, style);
+    e.setAttribute("role", "presentation");
+    return e
+  }
+
+  var range;
+  if (document.createRange) { range = function(node, start, end, endNode) {
+    var r = document.createRange();
+    r.setEnd(endNode || node, end);
+    r.setStart(node, start);
+    return r
+  }; }
+  else { range = function(node, start, end) {
+    var r = document.body.createTextRange();
+    try { r.moveToElementText(node.parentNode); }
+    catch(e) { return r }
+    r.collapse(true);
+    r.moveEnd("character", end);
+    r.moveStart("character", start);
+    return r
+  }; }
+
+  function contains(parent, child) {
+    if (child.nodeType == 3) // Android browser always returns false when child is a textnode
+      { child = child.parentNode; }
+    if (parent.contains)
+      { return parent.contains(child) }
+    do {
+      if (child.nodeType == 11) { child = child.host; }
+      if (child == parent) { return true }
+    } while (child = child.parentNode)
+  }
+
+  function activeElt() {
+    // IE and Edge may throw an "Unspecified Error" when accessing document.activeElement.
+    // IE < 10 will throw when accessed while the page is loading or in an iframe.
+    // IE > 9 and Edge will throw when accessed in an iframe if document.body is unavailable.
+    var activeElement;
+    try {
+      activeElement = document.activeElement;
+    } catch(e) {
+      activeElement = document.body || null;
+    }
+    while (activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement)
+      { activeElement = activeElement.shadowRoot.activeElement; }
+    return activeElement
+  }
+
+  function addClass(node, cls) {
+    var current = node.className;
+    if (!classTest(cls).test(current)) { node.className += (current ? " " : "") + cls; }
+  }
+  function joinClasses(a, b) {
+    var as = a.split(" ");
+    for (var i = 0; i < as.length; i++)
+      { if (as[i] && !classTest(as[i]).test(b)) { b += " " + as[i]; } }
+    return b
+  }
+
+  var selectInput = function(node) { node.select(); };
+  if (ios) // Mobile Safari apparently has a bug where select() is broken.
+    { selectInput = function(node) { node.selectionStart = 0; node.selectionEnd = node.value.length; }; }
+  else if (ie) // Suppress mysterious IE10 errors
+    { selectInput = function(node) { try { node.select(); } catch(_e) {} }; }
+
+  function bind(f) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function(){return f.apply(null, args)}
+  }
+
+  function copyObj(obj, target, overwrite) {
+    if (!target) { target = {}; }
+    for (var prop in obj)
+      { if (obj.hasOwnProperty(prop) && (overwrite !== false || !target.hasOwnProperty(prop)))
+        { target[prop] = obj[prop]; } }
+    return target
+  }
+
+  // Counts the column offset in a string, taking tabs into account.
+  // Used mostly to find indentation.
+  function countColumn(string, end, tabSize, startIndex, startValue) {
+    if (end == null) {
+      end = string.search(/[^\s\u00a0]/);
+      if (end == -1) { end = string.length; }
+    }
+    for (var i = startIndex || 0, n = startValue || 0;;) {
+      var nextTab = string.indexOf("\t", i);
+      if (nextTab < 0 || nextTab >= end)
+        { return n + (end - i) }
+      n += nextTab - i;
+      n += tabSize - (n % tabSize);
+      i = nextTab + 1;
+    }
+  }
+
+  var Delayed = function() {
+    this.id = null;
+    this.f = null;
+    this.time = 0;
+    this.handler = bind(this.onTimeout, this);
+  };
+  Delayed.prototype.onTimeout = function (self) {
+    self.id = 0;
+    if (self.time <= +new Date) {
+      self.f();
+    } else {
+      setTimeout(self.handler, self.time - +new Date);
+    }
+  };
+  Delayed.prototype.set = function (ms, f) {
+    this.f = f;
+    var time = +new Date + ms;
+    if (!this.id || time < this.time) {
+      clearTimeout(this.id);
+      this.id = setTimeout(this.handler, ms);
+      this.time = time;
+    }
+  };
+
+  function indexOf(array, elt) {
+    for (var i = 0; i < array.length; ++i)
+      { if (array[i] == elt) { return i } }
+    return -1
+  }
+
+  // Number of pixels added to scroller and sizer to hide scrollbar
+  var scrollerGap = 50;
+
+  // Returned or thrown by various protocols to signal 'I'm not
+  // handling this'.
+  var Pass = {toString: function(){return "CodeMirror.Pass"}};
+
+  // Reused option objects for setSelection & friends
+  var sel_dontScroll = {scroll: false}, sel_mouse = {origin: "*mouse"}, sel_move = {origin: "+move"};
+
+  // The inverse of countColumn -- find the offset that corresponds to
+  // a particular column.
+  function findColumn(string, goal, tabSize) {
+    for (var pos = 0, col = 0;;) {
+      var nextTab = string.indexOf("\t", pos);
+      if (nextTab == -1) { nextTab = string.length; }
+      var skipped = nextTab - pos;
+      if (nextTab == string.length || col + skipped >= goal)
+        { return pos + Math.min(skipped, goal - col) }
+      col += nextTab - pos;
+      col += tabSize - (col % tabSize);
+      pos = nextTab + 1;
+      if (col >= goal) { return pos }
+    }
+  }
+
+  var spaceStrs = [""];
+  function spaceStr(n) {
+    while (spaceStrs.length <= n)
+      { spaceStrs.push(lst(spaceStrs) + " "); }
+    return spaceStrs[n]
+  }
+
+  function lst(arr) { return arr[arr.length-1] }
+
+  function map(array, f) {
+    var out = [];
+    for (var i = 0; i < array.length; i++) { out[i] = f(array[i], i); }
+    return out
+  }
+
+  function insertSorted(array, value, score) {
+    var pos = 0, priority = score(value);
+    while (pos < array.length && score(array[pos]) <= priority) { pos++; }
+    array.splice(pos, 0, value);
+  }
+
+  function nothing() {}
+
+  function createObj(base, props) {
+    var inst;
+    if (Object.create) {
+      inst = Object.create(base);
+    } else {
+      nothing.prototype = base;
+      inst = new nothing();
+    }
+    if (props) { copyObj(props, inst); }
+    return inst
+  }
+
+  var nonASCIISingleCaseWordChar = /[\u00df\u0587\u0590-\u05f4\u0600-\u06ff\u3040-\u309f\u30a0-\u30ff\u3400-\u4db5\u4e00-\u9fcc\uac00-\ud7af]/;
+  function isWordCharBasic(ch) {
+    return /\w/.test(ch) || ch > "\x80" &&
+      (ch.toUpperCase() != ch.toLowerCase() || nonASCIISingleCaseWordChar.test(ch))
+  }
+  function isWordChar(ch, helper) {
+    if (!helper) { return isWordCharBasic(ch) }
+    if (helper.source.indexOf("\\w") > -1 && isWordCharBasic(ch)) { return true }
+    return helper.test(ch)
+  }
+
+  function isEmpty(obj) {
+    for (var n in obj) { if (obj.hasOwnProperty(n) && obj[n]) { return false } }
+    return true
+  }
+
+  // Extending unicode characters. A series of a non-extending char +
+  // any number of extending chars is treated as a single unit as far
+  // as editing and measuring is concerned. This is not fully correct,
+  // since some scripts/fonts/browsers also treat other configurations
+  // of code points as a group.
+  var extendingChars = /[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u065e\u0670\u06d6-\u06dc\u06de-\u06e4\u06e7\u06e8\u06ea-\u06ed\u0711\u0730-\u074a\u07a6-\u07b0\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0900-\u0902\u093c\u0941-\u0948\u094d\u0951-\u0955\u0962\u0963\u0981\u09bc\u09be\u09c1-\u09c4\u09cd\u09d7\u09e2\u09e3\u0a01\u0a02\u0a3c\u0a41\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a70\u0a71\u0a75\u0a81\u0a82\u0abc\u0ac1-\u0ac5\u0ac7\u0ac8\u0acd\u0ae2\u0ae3\u0b01\u0b3c\u0b3e\u0b3f\u0b41-\u0b44\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b82\u0bbe\u0bc0\u0bcd\u0bd7\u0c3e-\u0c40\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0cbc\u0cbf\u0cc2\u0cc6\u0ccc\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0d3e\u0d41-\u0d44\u0d4d\u0d57\u0d62\u0d63\u0dca\u0dcf\u0dd2-\u0dd4\u0dd6\u0ddf\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0f18\u0f19\u0f35\u0f37\u0f39\u0f71-\u0f7e\u0f80-\u0f84\u0f86\u0f87\u0f90-\u0f97\u0f99-\u0fbc\u0fc6\u102d-\u1030\u1032-\u1037\u1039\u103a\u103d\u103e\u1058\u1059\u105e-\u1060\u1071-\u1074\u1082\u1085\u1086\u108d\u109d\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b7-\u17bd\u17c6\u17c9-\u17d3\u17dd\u180b-\u180d\u18a9\u1920-\u1922\u1927\u1928\u1932\u1939-\u193b\u1a17\u1a18\u1a56\u1a58-\u1a5e\u1a60\u1a62\u1a65-\u1a6c\u1a73-\u1a7c\u1a7f\u1b00-\u1b03\u1b34\u1b36-\u1b3a\u1b3c\u1b42\u1b6b-\u1b73\u1b80\u1b81\u1ba2-\u1ba5\u1ba8\u1ba9\u1c2c-\u1c33\u1c36\u1c37\u1cd0-\u1cd2\u1cd4-\u1ce0\u1ce2-\u1ce8\u1ced\u1dc0-\u1de6\u1dfd-\u1dff\u200c\u200d\u20d0-\u20f0\u2cef-\u2cf1\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua66f-\ua672\ua67c\ua67d\ua6f0\ua6f1\ua802\ua806\ua80b\ua825\ua826\ua8c4\ua8e0-\ua8f1\ua926-\ua92d\ua947-\ua951\ua980-\ua982\ua9b3\ua9b6-\ua9b9\ua9bc\uaa29-\uaa2e\uaa31\uaa32\uaa35\uaa36\uaa43\uaa4c\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uabe5\uabe8\uabed\udc00-\udfff\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\uff9e\uff9f]/;
+  function isExtendingChar(ch) { return ch.charCodeAt(0) >= 768 && extendingChars.test(ch) }
+
+  // Returns a number from the range [`0`; `str.length`] unless `pos` is outside that range.
+  function skipExtendingChars(str, pos, dir) {
+    while ((dir < 0 ? pos > 0 : pos < str.length) && isExtendingChar(str.charAt(pos))) { pos += dir; }
+    return pos
+  }
+
+  // Returns the value from the range [`from`; `to`] that satisfies
+  // `pred` and is closest to `from`. Assumes that at least `to`
+  // satisfies `pred`. Supports `from` being greater than `to`.
+  function findFirst(pred, from, to) {
+    // At any point we are certain `to` satisfies `pred`, don't know
+    // whether `from` does.
+    var dir = from > to ? -1 : 1;
+    for (;;) {
+      if (from == to) { return from }
+      var midF = (from + to) / 2, mid = dir < 0 ? Math.ceil(midF) : Math.floor(midF);
+      if (mid == from) { return pred(mid) ? from : to }
+      if (pred(mid)) { to = mid; }
+      else { from = mid + dir; }
+    }
+  }
+
+  // BIDI HELPERS
+
+  function iterateBidiSections(order, from, to, f) {
+    if (!order) { return f(from, to, "ltr", 0) }
+    var found = false;
+    for (var i = 0; i < order.length; ++i) {
+      var part = order[i];
+      if (part.from < to && part.to > from || from == to && part.to == from) {
+        f(Math.max(part.from, from), Math.min(part.to, to), part.level == 1 ? "rtl" : "ltr", i);
+        found = true;
+      }
+    }
+    if (!found) { f(from, to, "ltr"); }
+  }
+
+  var bidiOther = null;
+  function getBidiPartAt(order, ch, sticky) {
+    var found;
+    bidiOther = null;
+    for (var i = 0; i < order.length; ++i) {
+      var cur = order[i];
+      if (cur.from < ch && cur.to > ch) { return i }
+      if (cur.to == ch) {
+        if (cur.from != cur.to && sticky == "before") { found = i; }
+        else { bidiOther = i; }
+      }
+      if (cur.from == ch) {
+        if (cur.from != cur.to && sticky != "before") { found = i; }
+        else { bidiOther = i; }
+      }
+    }
+    return found != null ? found : bidiOther
+  }
+
+  // Bidirectional ordering algorithm
+  // See http://unicode.org/reports/tr9/tr9-13.html for the algorithm
+  // that this (partially) implements.
+
+  // One-char codes used for character types:
+  // L (L):   Left-to-Right
+  // R (R):   Right-to-Left
+  // r (AL):  Right-to-Left Arabic
+  // 1 (EN):  European Number
+  // + (ES):  European Number Separator
+  // % (ET):  European Number Terminator
+  // n (AN):  Arabic Number
+  // , (CS):  Common Number Separator
+  // m (NSM): Non-Spacing Mark
+  // b (BN):  Boundary Neutral
+  // s (B):   Paragraph Separator
+  // t (S):   Segment Separator
+  // w (WS):  Whitespace
+  // N (ON):  Other Neutrals
+
+  // Returns null if characters are ordered as they appear
+  // (left-to-right), or an array of sections ({from, to, level}
+  // objects) in the order in which they occur visually.
+  var bidiOrdering = (function() {
+    // Character types for codepoints 0 to 0xff
+    var lowTypes = "bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN";
+    // Character types for codepoints 0x600 to 0x6f9
+    var arabicTypes = "nnnnnnNNr%%r,rNNmmmmmmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111";
+    function charType(code) {
+      if (code <= 0xf7) { return lowTypes.charAt(code) }
+      else if (0x590 <= code && code <= 0x5f4) { return "R" }
+      else if (0x600 <= code && code <= 0x6f9) { return arabicTypes.charAt(code - 0x600) }
+      else if (0x6ee <= code && code <= 0x8ac) { return "r" }
+      else if (0x2000 <= code && code <= 0x200b) { return "w" }
+      else if (code == 0x200c) { return "b" }
+      else { return "L" }
+    }
+
+    var bidiRE = /[\u0590-\u05f4\u0600-\u06ff\u0700-\u08ac]/;
+    var isNeutral = /[stwN]/, isStrong = /[LRr]/, countsAsLeft = /[Lb1n]/, countsAsNum = /[1n]/;
+
+    function BidiSpan(level, from, to) {
+      this.level = level;
+      this.from = from; this.to = to;
+    }
+
+    return function(str, direction) {
+      var outerType = direction == "ltr" ? "L" : "R";
+
+      if (str.length == 0 || direction == "ltr" && !bidiRE.test(str)) { return false }
+      var len = str.length, types = [];
+      for (var i = 0; i < len; ++i)
+        { types.push(charType(str.charCodeAt(i))); }
+
+      // W1. Examine each non-spacing mark (NSM) in the level run, and
+      // change the type of the NSM to the type of the previous
+      // character. If the NSM is at the start of the level run, it will
+      // get the type of sor.
+      for (var i$1 = 0, prev = outerType; i$1 < len; ++i$1) {
+        var type = types[i$1];
+        if (type == "m") { types[i$1] = prev; }
+        else { prev = type; }
+      }
+
+      // W2. Search backwards from each instance of a European number
+      // until the first strong type (R, L, AL, or sor) is found. If an
+      // AL is found, change the type of the European number to Arabic
+      // number.
+      // W3. Change all ALs to R.
+      for (var i$2 = 0, cur = outerType; i$2 < len; ++i$2) {
+        var type$1 = types[i$2];
+        if (type$1 == "1" && cur == "r") { types[i$2] = "n"; }
+        else if (isStrong.test(type$1)) { cur = type$1; if (type$1 == "r") { types[i$2] = "R"; } }
+      }
+
+      // W4. A single European separator between two European numbers
+      // changes to a European number. A single common separator between
+      // two numbers of the same type changes to that type.
+      for (var i$3 = 1, prev$1 = types[0]; i$3 < len - 1; ++i$3) {
+        var type$2 = types[i$3];
+        if (type$2 == "+" && prev$1 == "1" && types[i$3+1] == "1") { types[i$3] = "1"; }
+        else if (type$2 == "," && prev$1 == types[i$3+1] &&
+                 (prev$1 == "1" || prev$1 == "n")) { types[i$3] = prev$1; }
+        prev$1 = type$2;
+      }
+
+      // W5. A sequence of European terminators adjacent to European
+      // numbers changes to all European numbers.
+      // W6. Otherwise, separators and terminators change to Other
+      // Neutral.
+      for (var i$4 = 0; i$4 < len; ++i$4) {
+        var type$3 = types[i$4];
+        if (type$3 == ",") { types[i$4] = "N"; }
+        else if (type$3 == "%") {
+          var end = (void 0);
+          for (end = i$4 + 1; end < len && types[end] == "%"; ++end) {}
+          var replace = (i$4 && types[i$4-1] == "!") || (end < len && types[end] == "1") ? "1" : "N";
+          for (var j = i$4; j < end; ++j) { types[j] = replace; }
+          i$4 = end - 1;
+        }
+      }
+
+      // W7. Search backwards from each instance of a European number
+      // until the first strong type (R, L, or sor) is found. If an L is
+      // found, then change the type of the European number to L.
+      for (var i$5 = 0, cur$1 = outerType; i$5 < len; ++i$5) {
+        var type$4 = types[i$5];
+        if (cur$1 == "L" && type$4 == "1") { types[i$5] = "L"; }
+        else if (isStrong.test(type$4)) { cur$1 = type$4; }
+      }
+
+      // N1. A sequence of neutrals takes the direction of the
+      // surrounding strong text if the text on both sides has the same
+      // direction. European and Arabic numbers act as if they were R in
+      // terms of their influence on neutrals. Start-of-level-run (sor)
+      // and end-of-level-run (eor) are used at level run boundaries.
+      // N2. Any remaining neutrals take the embedding direction.
+      for (var i$6 = 0; i$6 < len; ++i$6) {
+        if (isNeutral.test(types[i$6])) {
+          var end$1 = (void 0);
+          for (end$1 = i$6 + 1; end$1 < len && isNeutral.test(types[end$1]); ++end$1) {}
+          var before = (i$6 ? types[i$6-1] : outerType) == "L";
+          var after = (end$1 < len ? types[end$1] : outerType) == "L";
+          var replace$1 = before == after ? (before ? "L" : "R") : outerType;
+          for (var j$1 = i$6; j$1 < end$1; ++j$1) { types[j$1] = replace$1; }
+          i$6 = end$1 - 1;
+        }
+      }
+
+      // Here we depart from the documented algorithm, in order to avoid
+      // building up an actual levels array. Since there are only three
+      // levels (0, 1, 2) in an implementation that doesn't take
+      // explicit embedding into account, we can build up the order on
+      // the fly, without following the level-based algorithm.
+      var order = [], m;
+      for (var i$7 = 0; i$7 < len;) {
+        if (countsAsLeft.test(types[i$7])) {
+          var start = i$7;
+          for (++i$7; i$7 < len && countsAsLeft.test(types[i$7]); ++i$7) {}
+          order.push(new BidiSpan(0, start, i$7));
+        } else {
+          var pos = i$7, at = order.length, isRTL = direction == "rtl" ? 1 : 0;
+          for (++i$7; i$7 < len && types[i$7] != "L"; ++i$7) {}
+          for (var j$2 = pos; j$2 < i$7;) {
+            if (countsAsNum.test(types[j$2])) {
+              if (pos < j$2) { order.splice(at, 0, new BidiSpan(1, pos, j$2)); at += isRTL; }
+              var nstart = j$2;
+              for (++j$2; j$2 < i$7 && countsAsNum.test(types[j$2]); ++j$2) {}
+              order.splice(at, 0, new BidiSpan(2, nstart, j$2));
+              at += isRTL;
+              pos = j$2;
+            } else { ++j$2; }
+          }
+          if (pos < i$7) { order.splice(at, 0, new BidiSpan(1, pos, i$7)); }
+        }
+      }
+      if (direction == "ltr") {
+        if (order[0].level == 1 && (m = str.match(/^\s+/))) {
+          order[0].from = m[0].length;
+          order.unshift(new BidiSpan(0, 0, m[0].length));
+        }
+        if (lst(order).level == 1 && (m = str.match(/\s+$/))) {
+          lst(order).to -= m[0].length;
+          order.push(new BidiSpan(0, len - m[0].length, len));
+        }
+      }
+
+      return direction == "rtl" ? order.reverse() : order
+    }
+  })();
+
+  // Get the bidi ordering for the given line (and cache it). Returns
+  // false for lines that are fully left-to-right, and an array of
+  // BidiSpan objects otherwise.
+  function getOrder(line, direction) {
+    var order = line.order;
+    if (order == null) { order = line.order = bidiOrdering(line.text, direction); }
+    return order
+  }
+
+  // EVENT HANDLING
+
+  // Lightweight event framework. on/off also work on DOM nodes,
+  // registering native DOM handlers.
+
+  var noHandlers = [];
+
+  var on = function(emitter, type, f) {
+    if (emitter.addEventListener) {
+      emitter.addEventListener(type, f, false);
+    } else if (emitter.attachEvent) {
+      emitter.attachEvent("on" + type, f);
+    } else {
+      var map = emitter._handlers || (emitter._handlers = {});
+      map[type] = (map[type] || noHandlers).concat(f);
+    }
+  };
+
+  function getHandlers(emitter, type) {
+    return emitter._handlers && emitter._handlers[type] || noHandlers
+  }
+
+  function off(emitter, type, f) {
+    if (emitter.removeEventListener) {
+      emitter.removeEventListener(type, f, false);
+    } else if (emitter.detachEvent) {
+      emitter.detachEvent("on" + type, f);
+    } else {
+      var map = emitter._handlers, arr = map && map[type];
+      if (arr) {
+        var index = indexOf(arr, f);
+        if (index > -1)
+          { map[type] = arr.slice(0, index).concat(arr.slice(index + 1)); }
+      }
+    }
+  }
+
+  function signal(emitter, type /*, values...*/) {
+    var handlers = getHandlers(emitter, type);
+    if (!handlers.length) { return }
+    var args = Array.prototype.slice.call(arguments, 2);
+    for (var i = 0; i < handlers.length; ++i) { handlers[i].apply(null, args); }
+  }
+
+  // The DOM events that CodeMirror handles can be overridden by
+  // registering a (non-DOM) handler on the editor for the event name,
+  // and preventDefault-ing the event in that handler.
+  function signalDOMEvent(cm, e, override) {
+    if (typeof e == "string")
+      { e = {type: e, preventDefault: function() { this.defaultPrevented = true; }}; }
+    signal(cm, override || e.type, cm, e);
+    return e_defaultPrevented(e) || e.codemirrorIgnore
+  }
+
+  function signalCursorActivity(cm) {
+    var arr = cm._handlers && cm._handlers.cursorActivity;
+    if (!arr) { return }
+    var set = cm.curOp.cursorActivityHandlers || (cm.curOp.cursorActivityHandlers = []);
+    for (var i = 0; i < arr.length; ++i) { if (indexOf(set, arr[i]) == -1)
+      { set.push(arr[i]); } }
+  }
+
+  function hasHandler(emitter, type) {
+    return getHandlers(emitter, type).length > 0
+  }
+
+  // Add on and off methods to a constructor's prototype, to make
+  // registering events on such objects more convenient.
+  function eventMixin(ctor) {
+    ctor.prototype.on = function(type, f) {on(this, type, f);};
+    ctor.prototype.off = function(type, f) {off(this, type, f);};
+  }
+
+  // Due to the fact that we still support jurassic IE versions, some
+  // compatibility wrappers are needed.
+
+  function e_preventDefault(e) {
+    if (e.preventDefault) { e.preventDefault(); }
+    else { e.returnValue = false; }
+  }
+  function e_stopPropagation(e) {
+    if (e.stopPropagation) { e.stopPropagation(); }
+    else { e.cancelBubble = true; }
+  }
+  function e_defaultPrevented(e) {
+    return e.defaultPrevented != null ? e.defaultPrevented : e.returnValue == false
+  }
+  function e_stop(e) {e_preventDefault(e); e_stopPropagation(e);}
+
+  function e_target(e) {return e.target || e.srcElement}
+  function e_button(e) {
+    var b = e.which;
+    if (b == null) {
+      if (e.button & 1) { b = 1; }
+      else if (e.button & 2) { b = 3; }
+      else if (e.button & 4) { b = 2; }
+    }
+    if (mac && e.ctrlKey && b == 1) { b = 3; }
+    return b
+  }
+
+  // Detect drag-and-drop
+  var dragAndDrop = function() {
+    // There is *some* kind of drag-and-drop support in IE6-8, but I
+    // couldn't get it to work yet.
+    if (ie && ie_version < 9) { return false }
+    var div = elt('div');
+    return "draggable" in div || "dragDrop" in div
+  }();
+
+  var zwspSupported;
+  function zeroWidthElement(measure) {
+    if (zwspSupported == null) {
+      var test = elt("span", "\u200b");
+      removeChildrenAndAdd(measure, elt("span", [test, document.createTextNode("x")]));
+      if (measure.firstChild.offsetHeight != 0)
+        { zwspSupported = test.offsetWidth <= 1 && test.offsetHeight > 2 && !(ie && ie_version < 8); }
+    }
+    var node = zwspSupported ? elt("span", "\u200b") :
+      elt("span", "\u00a0", null, "display: inline-block; width: 1px; margin-right: -1px");
+    node.setAttribute("cm-text", "");
+    return node
+  }
+
+  // Feature-detect IE's crummy client rect reporting for bidi text
+  var badBidiRects;
+  function hasBadBidiRects(measure) {
+    if (badBidiRects != null) { return badBidiRects }
+    var txt = removeChildrenAndAdd(measure, document.createTextNode("A\u062eA"));
+    var r0 = range(txt, 0, 1).getBoundingClientRect();
+    var r1 = range(txt, 1, 2).getBoundingClientRect();
+    removeChildren(measure);
+    if (!r0 || r0.left == r0.right) { return false } // Safari returns null in some cases (#2780)
+    return badBidiRects = (r1.right - r0.right < 3)
+  }
+
+  // See if "".split is the broken IE version, if so, provide an
+  // alternative way to split lines.
+  var splitLinesAuto = "\n\nb".split(/\n/).length != 3 ? function (string) {
+    var pos = 0, result = [], l = string.length;
+    while (pos <= l) {
+      var nl = string.indexOf("\n", pos);
+      if (nl == -1) { nl = string.length; }
+      var line = string.slice(pos, string.charAt(nl - 1) == "\r" ? nl - 1 : nl);
+      var rt = line.indexOf("\r");
+      if (rt != -1) {
+        result.push(line.slice(0, rt));
+        pos += rt + 1;
+      } else {
+        result.push(line);
+        pos = nl + 1;
+      }
+    }
+    return result
+  } : function (string) { return string.split(/\r\n?|\n/); };
+
+  var hasSelection = window.getSelection ? function (te) {
+    try { return te.selectionStart != te.selectionEnd }
+    catch(e) { return false }
+  } : function (te) {
+    var range;
+    try {range = te.ownerDocument.selection.createRange();}
+    catch(e) {}
+    if (!range || range.parentElement() != te) { return false }
+    return range.compareEndPoints("StartToEnd", range) != 0
+  };
+
+  var hasCopyEvent = (function () {
+    var e = elt("div");
+    if ("oncopy" in e) { return true }
+    e.setAttribute("oncopy", "return;");
+    return typeof e.oncopy == "function"
+  })();
+
+  var badZoomedRects = null;
+  function hasBadZoomedRects(measure) {
+    if (badZoomedRects != null) { return badZoomedRects }
+    var node = removeChildrenAndAdd(measure, elt("span", "x"));
+    var normal = node.getBoundingClientRect();
+    var fromRange = range(node, 0, 1).getBoundingClientRect();
+    return badZoomedRects = Math.abs(normal.left - fromRange.left) > 1
+  }
+
+  // Known modes, by name and by MIME
+  var modes = {}, mimeModes = {};
+
+  // Extra arguments are stored as the mode's dependencies, which is
+  // used by (legacy) mechanisms like loadmode.js to automatically
+  // load a mode. (Preferred mechanism is the require/define calls.)
+  function defineMode(name, mode) {
+    if (arguments.length > 2)
+      { mode.dependencies = Array.prototype.slice.call(arguments, 2); }
+    modes[name] = mode;
+  }
+
+  function defineMIME(mime, spec) {
+    mimeModes[mime] = spec;
+  }
+
+  // Given a MIME type, a {name, ...options} config object, or a name
+  // string, return a mode config object.
+  function resolveMode(spec) {
+    if (typeof spec == "string" && mimeModes.hasOwnProperty(spec)) {
+      spec = mimeModes[spec];
+    } else if (spec && typeof spec.name == "string" && mimeModes.hasOwnProperty(spec.name)) {
+      var found = mimeModes[spec.name];
+      if (typeof found == "string") { found = {name: found}; }
+      spec = createObj(found, spec);
+      spec.name = found.name;
+    } else if (typeof spec == "string" && /^[\w\-]+\/[\w\-]+\+xml$/.test(spec)) {
+      return resolveMode("application/xml")
+    } else if (typeof spec == "string" && /^[\w\-]+\/[\w\-]+\+json$/.test(spec)) {
+      return resolveMode("application/json")
+    }
+    if (typeof spec == "string") { return {name: spec} }
+    else { return spec || {name: "null"} }
+  }
+
+  // Given a mode spec (anything that resolveMode accepts), find and
+  // initialize an actual mode object.
+  function getMode(options, spec) {
+    spec = resolveMode(spec);
+    var mfactory = modes[spec.name];
+    if (!mfactory) { return getMode(options, "text/plain") }
+    var modeObj = mfactory(options, spec);
+    if (modeExtensions.hasOwnProperty(spec.name)) {
+      var exts = modeExtensions[spec.name];
+      for (var prop in exts) {
+        if (!exts.hasOwnProperty(prop)) { continue }
+        if (modeObj.hasOwnProperty(prop)) { modeObj["_" + prop] = modeObj[prop]; }
+        modeObj[prop] = exts[prop];
+      }
+    }
+    modeObj.name = spec.name;
+    if (spec.helperType) { modeObj.helperType = spec.helperType; }
+    if (spec.modeProps) { for (var prop$1 in spec.modeProps)
+      { modeObj[prop$1] = spec.modeProps[prop$1]; } }
+
+    return modeObj
+  }
+
+  // This can be used to attach properties to mode objects from
+  // outside the actual mode definition.
+  var modeExtensions = {};
+  function extendMode(mode, properties) {
+    var exts = modeExtensions.hasOwnProperty(mode) ? modeExtensions[mode] : (modeExtensions[mode] = {});
+    copyObj(properties, exts);
+  }
+
+  function copyState(mode, state) {
+    if (state === true) { return state }
+    if (mode.copyState) { return mode.copyState(state) }
+    var nstate = {};
+    for (var n in state) {
+      var val = state[n];
+      if (val instanceof Array) { val = val.concat([]); }
+      nstate[n] = val;
+    }
+    return nstate
+  }
+
+  // Given a mode and a state (for that mode), find the inner mode and
+  // state at the position that the state refers to.
+  function innerMode(mode, state) {
+    var info;
+    while (mode.innerMode) {
+      info = mode.innerMode(state);
+      if (!info || info.mode == mode) { break }
+      state = info.state;
+      mode = info.mode;
+    }
+    return info || {mode: mode, state: state}
+  }
+
+  function startState(mode, a1, a2) {
+    return mode.startState ? mode.startState(a1, a2) : true
+  }
+
+  // STRING STREAM
+
+  // Fed to the mode parsers, provides helper functions to make
+  // parsers more succinct.
+
+  var StringStream = function(string, tabSize, lineOracle) {
+    this.pos = this.start = 0;
+    this.string = string;
+    this.tabSize = tabSize || 8;
+    this.lastColumnPos = this.lastColumnValue = 0;
+    this.lineStart = 0;
+    this.lineOracle = lineOracle;
+  };
+
+  StringStream.prototype.eol = function () {return this.pos >= this.string.length};
+  StringStream.prototype.sol = function () {return this.pos == this.lineStart};
+  StringStream.prototype.peek = function () {return this.string.charAt(this.pos) || undefined};
+  StringStream.prototype.next = function () {
+    if (this.pos < this.string.length)
+      { return this.string.charAt(this.pos++) }
+  };
+  StringStream.prototype.eat = function (match) {
+    var ch = this.string.charAt(this.pos);
+    var ok;
+    if (typeof match == "string") { ok = ch == match; }
+    else { ok = ch && (match.test ? match.test(ch) : match(ch)); }
+    if (ok) {++this.pos; return ch}
+  };
+  StringStream.prototype.eatWhile = function (match) {
+    var start = this.pos;
+    while (this.eat(match)){}
+    return this.pos > start
+  };
+  StringStream.prototype.eatSpace = function () {
+    var start = this.pos;
+    while (/[\s\u00a0]/.test(this.string.charAt(this.pos))) { ++this.pos; }
+    return this.pos > start
+  };
+  StringStream.prototype.skipToEnd = function () {this.pos = this.string.length;};
+  StringStream.prototype.skipTo = function (ch) {
+    var found = this.string.indexOf(ch, this.pos);
+    if (found > -1) {this.pos = found; return true}
+  };
+  StringStream.prototype.backUp = function (n) {this.pos -= n;};
+  StringStream.prototype.column = function () {
+    if (this.lastColumnPos < this.start) {
+      this.lastColumnValue = countColumn(this.string, this.start, this.tabSize, this.lastColumnPos, this.lastColumnValue);
+      this.lastColumnPos = this.start;
+    }
+    return this.lastColumnValue - (this.lineStart ? countColumn(this.string, this.lineStart, this.tabSize) : 0)
+  };
+  StringStream.prototype.indentation = function () {
+    return countColumn(this.string, null, this.tabSize) -
+      (this.lineStart ? countColumn(this.string, this.lineStart, this.tabSize) : 0)
+  };
+  StringStream.prototype.match = function (pattern, consume, caseInsensitive) {
+    if (typeof pattern == "string") {
+      var cased = function (str) { return caseInsensitive ? str.toLowerCase() : str; };
+      var substr = this.string.substr(this.pos, pattern.length);
+      if (cased(substr) == cased(pattern)) {
+        if (consume !== false) { this.pos += pattern.length; }
+        return true
+      }
+    } else {
+      var match = this.string.slice(this.pos).match(pattern);
+      if (match && match.index > 0) { return null }
+      if (match && consume !== false) { this.pos += match[0].length; }
+      return match
+    }
+  };
+  StringStream.prototype.current = function (){return this.string.slice(this.start, this.pos)};
+  StringStream.prototype.hideFirstChars = function (n, inner) {
+    this.lineStart += n;
+    try { return inner() }
+    finally { this.lineStart -= n; }
+  };
+  StringStream.prototype.lookAhead = function (n) {
+    var oracle = this.lineOracle;
+    return oracle && oracle.lookAhead(n)
+  };
+  StringStream.prototype.baseToken = function () {
+    var oracle = this.lineOracle;
+    return oracle && oracle.baseToken(this.pos)
+  };
+
+  // Find the line object corresponding to the given line number.
+  function getLine(doc, n) {
+    n -= doc.first;
+    if (n < 0 || n >= doc.size) { throw new Error("There is no line " + (n + doc.first) + " in the document.") }
+    var chunk = doc;
+    while (!chunk.lines) {
+      for (var i = 0;; ++i) {
+        var child = chunk.children[i], sz = child.chunkSize();
+        if (n < sz) { chunk = child; break }
+        n -= sz;
+      }
+    }
+    return chunk.lines[n]
+  }
+
+  // Get the part of a document between two positions, as an array of
+  // strings.
+  function getBetween(doc, start, end) {
+    var out = [], n = start.line;
+    doc.iter(start.line, end.line + 1, function (line) {
+      var text = line.text;
+      if (n == end.line) { text = text.slice(0, end.ch); }
+      if (n == start.line) { text = text.slice(start.ch); }
+      out.push(text);
+      ++n;
+    });
+    return out
+  }
+  // Get the lines between from and to, as array of strings.
+  function getLines(doc, from, to) {
+    var out = [];
+    doc.iter(from, to, function (line) { out.push(line.text); }); // iter aborts when callback returns truthy value
+    return out
+  }
+
+  // Update the height of a line, propagating the height change
+  // upwards to parent nodes.
+  function updateLineHeight(line, height) {
+    var diff = height - line.height;
+    if (diff) { for (var n = line; n; n = n.parent) { n.height += diff; } }
+  }
+
+  // Given a line object, find its line number by walking up through
+  // its parent links.
+  function lineNo(line) {
+    if (line.parent == null) { return null }
+    var cur = line.parent, no = indexOf(cur.lines, line);
+    for (var chunk = cur.parent; chunk; cur = chunk, chunk = chunk.parent) {
+      for (var i = 0;; ++i) {
+        if (chunk.children[i] == cur) { break }
+        no += chunk.children[i].chunkSize();
+      }
+    }
+    return no + cur.first
+  }
+
+  // Find the line at the given vertical position, using the height
+  // information in the document tree.
+  function lineAtHeight(chunk, h) {
+    var n = chunk.first;
+    outer: do {
+      for (var i$1 = 0; i$1 < chunk.children.length; ++i$1) {
+        var child = chunk.children[i$1], ch = child.height;
+        if (h < ch) { chunk = child; continue outer }
+        h -= ch;
+        n += child.chunkSize();
+      }
+      return n
+    } while (!chunk.lines)
+    var i = 0;
+    for (; i < chunk.lines.length; ++i) {
+      var line = chunk.lines[i], lh = line.height;
+      if (h < lh) { break }
+      h -= lh;
+    }
+    return n + i
+  }
+
+  function isLine(doc, l) {return l >= doc.first && l < doc.first + doc.size}
+
+  function lineNumberFor(options, i) {
+    return String(options.lineNumberFormatter(i + options.firstLineNumber))
+  }
+
+  // A Pos instance represents a position within the text.
+  function Pos(line, ch, sticky) {
+    if ( sticky === void 0 ) sticky = null;
+
+    if (!(this instanceof Pos)) { return new Pos(line, ch, sticky) }
+    this.line = line;
+    this.ch = ch;
+    this.sticky = sticky;
+  }
+
+  // Compare two positions, return 0 if they are the same, a negative
+  // number when a is less, and a positive number otherwise.
+  function cmp(a, b) { return a.line - b.line || a.ch - b.ch }
+
+  function equalCursorPos(a, b) { return a.sticky == b.sticky && cmp(a, b) == 0 }
+
+  function copyPos(x) {return Pos(x.line, x.ch)}
+  function maxPos(a, b) { return cmp(a, b) < 0 ? b : a }
+  function minPos(a, b) { return cmp(a, b) < 0 ? a : b }
+
+  // Most of the external API clips given positions to make sure they
+  // actually exist within the document.
+  function clipLine(doc, n) {return Math.max(doc.first, Math.min(n, doc.first + doc.size - 1))}
+  function clipPos(doc, pos) {
+    if (pos.line < doc.first) { return Pos(doc.first, 0) }
+    var last = doc.first + doc.size - 1;
+    if (pos.line > last) { return Pos(last, getLine(doc, last).text.length) }
+    return clipToLen(pos, getLine(doc, pos.line).text.length)
+  }
+  function clipToLen(pos, linelen) {
+    var ch = pos.ch;
+    if (ch == null || ch > linelen) { return Pos(pos.line, linelen) }
+    else if (ch < 0) { return Pos(pos.line, 0) }
+    else { return pos }
+  }
+  function clipPosArray(doc, array) {
+    var out = [];
+    for (var i = 0; i < array.length; i++) { out[i] = clipPos(doc, array[i]); }
+    return out
+  }
+
+  var SavedContext = function(state, lookAhead) {
+    this.state = state;
+    this.lookAhead = lookAhead;
+  };
+
+  var Context = function(doc, state, line, lookAhead) {
+    this.state = state;
+    this.doc = doc;
+    this.line = line;
+    this.maxLookAhead = lookAhead || 0;
+    this.baseTokens = null;
+    this.baseTokenPos = 1;
+  };
+
+  Context.prototype.lookAhead = function (n) {
+    var line = this.doc.getLine(this.line + n);
+    if (line != null && n > this.maxLookAhead) { this.maxLookAhead = n; }
+    return line
+  };
+
+  Context.prototype.baseToken = function (n) {
+    if (!this.baseTokens) { return null }
+    while (this.baseTokens[this.baseTokenPos] <= n)
+      { this.baseTokenPos += 2; }
+    var type = this.baseTokens[this.baseTokenPos + 1];
+    return {type: type && type.replace(/( |^)overlay .*/, ""),
+            size: this.baseTokens[this.baseTokenPos] - n}
+  };
+
+  Context.prototype.nextLine = function () {
+    this.line++;
+    if (this.maxLookAhead > 0) { this.maxLookAhead--; }
+  };
+
+  Context.fromSaved = function (doc, saved, line) {
+    if (saved instanceof SavedContext)
+      { return new Context(doc, copyState(doc.mode, saved.state), line, saved.lookAhead) }
+    else
+      { return new Context(doc, copyState(doc.mode, saved), line) }
+  };
+
+  Context.prototype.save = function (copy) {
+    var state = copy !== false ? copyState(this.doc.mode, this.state) : this.state;
+    return this.maxLookAhead > 0 ? new SavedContext(state, this.maxLookAhead) : state
+  };
+
+
+  // Compute a style array (an array starting with a mode generation
+  // -- for invalidation -- followed by pairs of end positions and
+  // style strings), which is used to highlight the tokens on the
+  // line.
+  function highlightLine(cm, line, context, forceToEnd) {
+    // A styles array always starts with a number identifying the
+    // mode/overlays that it is based on (for easy invalidation).
+    var st = [cm.state.modeGen], lineClasses = {};
+    // Compute the base array of styles
+    runMode(cm, line.text, cm.doc.mode, context, function (end, style) { return st.push(end, style); },
+            lineClasses, forceToEnd);
+    var state = context.state;
+
+    // Run overlays, adjust style array.
+    var loop = function ( o ) {
+      context.baseTokens = st;
+      var overlay = cm.state.overlays[o], i = 1, at = 0;
+      context.state = true;
+      runMode(cm, line.text, overlay.mode, context, function (end, style) {
+        var start = i;
+        // Ensure there's a token end at the current position, and that i points at it
+        while (at < end) {
+          var i_end = st[i];
+          if (i_end > end)
+            { st.splice(i, 1, end, st[i+1], i_end); }
+          i += 2;
+          at = Math.min(end, i_end);
+        }
+        if (!style) { return }
+        if (overlay.opaque) {
+          st.splice(start, i - start, end, "overlay " + style);
+          i = start + 2;
+        } else {
+          for (; start < i; start += 2) {
+            var cur = st[start+1];
+            st[start+1] = (cur ? cur + " " : "") + "overlay " + style;
+          }
+        }
+      }, lineClasses);
+      context.state = state;
+      context.baseTokens = null;
+      context.baseTokenPos = 1;
+    };
+
+    for (var o = 0; o < cm.state.overlays.length; ++o) loop( o );
+
+    return {styles: st, classes: lineClasses.bgClass || lineClasses.textClass ? lineClasses : null}
+  }
+
+  function getLineStyles(cm, line, updateFrontier) {
+    if (!line.styles || line.styles[0] != cm.state.modeGen) {
+      var context = getContextBefore(cm, lineNo(line));
+      var resetState = line.text.length > cm.options.maxHighlightLength && copyState(cm.doc.mode, context.state);
+      var result = highlightLine(cm, line, context);
+      if (resetState) { context.state = resetState; }
+      line.stateAfter = context.save(!resetState);
+      line.styles = result.styles;
+      if (result.classes) { line.styleClasses = result.classes; }
+      else if (line.styleClasses) { line.styleClasses = null; }
+      if (updateFrontier === cm.doc.highlightFrontier)
+        { cm.doc.modeFrontier = Math.max(cm.doc.modeFrontier, ++cm.doc.highlightFrontier); }
+    }
+    return line.styles
+  }
+
+  function getContextBefore(cm, n, precise) {
+    var doc = cm.doc, display = cm.display;
+    if (!doc.mode.startState) { return new Context(doc, true, n) }
+    var start = findStartLine(cm, n, precise);
+    var saved = start > doc.first && getLine(doc, start - 1).stateAfter;
+    var context = saved ? Context.fromSaved(doc, saved, start) : new Context(doc, startState(doc.mode), start);
+
+    doc.iter(start, n, function (line) {
+      processLine(cm, line.text, context);
+      var pos = context.line;
+      line.stateAfter = pos == n - 1 || pos % 5 == 0 || pos >= display.viewFrom && pos < display.viewTo ? context.save() : null;
+      context.nextLine();
+    });
+    if (precise) { doc.modeFrontier = context.line; }
+    return context
+  }
+
+  // Lightweight form of highlight -- proceed over this line and
+  // update state, but don't save a style array. Used for lines that
+  // aren't currently visible.
+  function processLine(cm, text, context, startAt) {
+    var mode = cm.doc.mode;
+    var stream = new StringStream(text, cm.options.tabSize, context);
+    stream.start = stream.pos = startAt || 0;
+    if (text == "") { callBlankLine(mode, context.state); }
+    while (!stream.eol()) {
+      readToken(mode, stream, context.state);
+      stream.start = stream.pos;
+    }
+  }
+
+  function callBlankLine(mode, state) {
+    if (mode.blankLine) { return mode.blankLine(state) }
+    if (!mode.innerMode) { return }
+    var inner = innerMode(mode, state);
+    if (inner.mode.blankLine) { return inner.mode.blankLine(inner.state) }
+  }
+
+  function readToken(mode, stream, state, inner) {
+    for (var i = 0; i < 10; i++) {
+      if (inner) { inner[0] = innerMode(mode, state).mode; }
+      var style = mode.token(stream, state);
+      if (stream.pos > stream.start) { return style }
+    }
+    throw new Error("Mode " + mode.name + " failed to advance stream.")
+  }
+
+  var Token = function(stream, type, state) {
+    this.start = stream.start; this.end = stream.pos;
+    this.string = stream.current();
+    this.type = type || null;
+    this.state = state;
+  };
+
+  // Utility for getTokenAt and getLineTokens
+  function takeToken(cm, pos, precise, asArray) {
+    var doc = cm.doc, mode = doc.mode, style;
+    pos = clipPos(doc, pos);
+    var line = getLine(doc, pos.line), context = getContextBefore(cm, pos.line, precise);
+    var stream = new StringStream(line.text, cm.options.tabSize, context), tokens;
+    if (asArray) { tokens = []; }
+    while ((asArray || stream.pos < pos.ch) && !stream.eol()) {
+      stream.start = stream.pos;
+      style = readToken(mode, stream, context.state);
+      if (asArray) { tokens.push(new Token(stream, style, copyState(doc.mode, context.state))); }
+    }
+    return asArray ? tokens : new Token(stream, style, context.state)
+  }
+
+  function extractLineClasses(type, output) {
+    if (type) { for (;;) {
+      var lineClass = type.match(/(?:^|\s+)line-(background-)?(\S+)/);
+      if (!lineClass) { break }
+      type = type.slice(0, lineClass.index) + type.slice(lineClass.index + lineClass[0].length);
+      var prop = lineClass[1] ? "bgClass" : "textClass";
+      if (output[prop] == null)
+        { output[prop] = lineClass[2]; }
+      else if (!(new RegExp("(?:^|\\s)" + lineClass[2] + "(?:$|\\s)")).test(output[prop]))
+        { output[prop] += " " + lineClass[2]; }
+    } }
+    return type
+  }
+
+  // Run the given mode's parser over a line, calling f for each token.
+  function runMode(cm, text, mode, context, f, lineClasses, forceToEnd) {
+    var flattenSpans = mode.flattenSpans;
+    if (flattenSpans == null) { flattenSpans = cm.options.flattenSpans; }
+    var curStart = 0, curStyle = null;
+    var stream = new StringStream(text, cm.options.tabSize, context), style;
+    var inner = cm.options.addModeClass && [null];
+    if (text == "") { extractLineClasses(callBlankLine(mode, context.state), lineClasses); }
+    while (!stream.eol()) {
+      if (stream.pos > cm.options.maxHighlightLength) {
+        flattenSpans = false;
+        if (forceToEnd) { processLine(cm, text, context, stream.pos); }
+        stream.pos = text.length;
+        style = null;
+      } else {
+        style = extractLineClasses(readToken(mode, stream, context.state, inner), lineClasses);
+      }
+      if (inner) {
+        var mName = inner[0].name;
+        if (mName) { style = "m-" + (style ? mName + " " + style : mName); }
+      }
+      if (!flattenSpans || curStyle != style) {
+        while (curStart < stream.start) {
+          curStart = Math.min(stream.start, curStart + 5000);
+          f(curStart, curStyle);
+        }
+        curStyle = style;
+      }
+      stream.start = stream.pos;
+    }
+    while (curStart < stream.pos) {
+      // Webkit seems to refuse to render text nodes longer than 57444
+      // characters, and returns inaccurate measurements in nodes
+      // starting around 5000 chars.
+      var pos = Math.min(stream.pos, curStart + 5000);
+      f(pos, curStyle);
+      curStart = pos;
+    }
+  }
+
+  // Finds the line to start with when starting a parse. Tries to
+  // find a line with a stateAfter, so that it can start with a
+  // valid state. If that fails, it returns the line with the
+  // smallest indentation, which tends to need the least context to
+  // parse correctly.
+  function findStartLine(cm, n, precise) {
+    var minindent, minline, doc = cm.doc;
+    var lim = precise ? -1 : n - (cm.doc.mode.innerMode ? 1000 : 100);
+    for (var search = n; search > lim; --search) {
+      if (search <= doc.first) { return doc.first }
+      var line = getLine(doc, search - 1), after = line.stateAfter;
+      if (after && (!precise || search + (after instanceof SavedContext ? after.lookAhead : 0) <= doc.modeFrontier))
+        { return search }
+      var indented = countColumn(line.text, null, cm.options.tabSize);
+      if (minline == null || minindent > indented) {
+        minline = search - 1;
+        minindent = indented;
+      }
+    }
+    return minline
+  }
+
+  function retreatFrontier(doc, n) {
+    doc.modeFrontier = Math.min(doc.modeFrontier, n);
+    if (doc.highlightFrontier < n - 10) { return }
+    var start = doc.first;
+    for (var line = n - 1; line > start; line--) {
+      var saved = getLine(doc, line).stateAfter;
+      // change is on 3
+      // state on line 1 looked ahead 2 -- so saw 3
+      // test 1 + 2 < 3 should cover this
+      if (saved && (!(saved instanceof SavedContext) || line + saved.lookAhead < n)) {
+        start = line + 1;
+        break
+      }
+    }
+    doc.highlightFrontier = Math.min(doc.highlightFrontier, start);
+  }
+
+  // Optimize some code when these features are not used.
+  var sawReadOnlySpans = false, sawCollapsedSpans = false;
+
+  function seeReadOnlySpans() {
+    sawReadOnlySpans = true;
+  }
+
+  function seeCollapsedSpans() {
+    sawCollapsedSpans = true;
+  }
+
+  // TEXTMARKER SPANS
+
+  function MarkedSpan(marker, from, to) {
+    this.marker = marker;
+    this.from = from; this.to = to;
+  }
+
+  // Search an array of spans for a span matching the given marker.
+  function getMarkedSpanFor(spans, marker) {
+    if (spans) { for (var i = 0; i < spans.length; ++i) {
+      var span = spans[i];
+      if (span.marker == marker) { return span }
+    } }
+  }
+  // Remove a span from an array, returning undefined if no spans are
+  // left (we don't store arrays for lines without spans).
+  function removeMarkedSpan(spans, span) {
+    var r;
+    for (var i = 0; i < spans.length; ++i)
+      { if (spans[i] != span) { (r || (r = [])).push(spans[i]); } }
+    return r
+  }
+  // Add a span to a line.
+  function addMarkedSpan(line, span) {
+    line.markedSpans = line.markedSpans ? line.markedSpans.concat([span]) : [span];
+    span.marker.attachLine(line);
+  }
+
+  // Used for the algorithm that adjusts markers for a change in the
+  // document. These functions cut an array of spans at a given
+  // character position, returning an array of remaining chunks (or
+  // undefined if nothing remains).
+  function markedSpansBefore(old, startCh, isInsert) {
+    var nw;
+    if (old) { for (var i = 0; i < old.length; ++i) {
+      var span = old[i], marker = span.marker;
+      var startsBefore = span.from == null || (marker.inclusiveLeft ? span.from <= startCh : span.from < startCh);
+      if (startsBefore || span.from == startCh && marker.type == "bookmark" && (!isInsert || !span.marker.insertLeft)) {
+        var endsAfter = span.to == null || (marker.inclusiveRight ? span.to >= startCh : span.to > startCh)
+        ;(nw || (nw = [])).push(new MarkedSpan(marker, span.from, endsAfter ? null : span.to));
+      }
+    } }
+    return nw
+  }
+  function markedSpansAfter(old, endCh, isInsert) {
+    var nw;
+    if (old) { for (var i = 0; i < old.length; ++i) {
+      var span = old[i], marker = span.marker;
+      var endsAfter = span.to == null || (marker.inclusiveRight ? span.to >= endCh : span.to > endCh);
+      if (endsAfter || span.from == endCh && marker.type == "bookmark" && (!isInsert || span.marker.insertLeft)) {
+        var startsBefore = span.from == null || (marker.inclusiveLeft ? span.from <= endCh : span.from < endCh)
+        ;(nw || (nw = [])).push(new MarkedSpan(marker, startsBefore ? null : span.from - endCh,
+                                              span.to == null ? null : span.to - endCh));
+      }
+    } }
+    return nw
+  }
+
+  // Given a change object, compute the new set of marker spans that
+  // cover the line in which the change took place. Removes spans
+  // entirely within the change, reconnects spans belonging to the
+  // same marker that appear on both sides of the change, and cuts off
+  // spans partially within the change. Returns an array of span
+  // arrays with one element for each line in (after) the change.
+  function stretchSpansOverChange(doc, change) {
+    if (change.full) { return null }
+    var oldFirst = isLine(doc, change.from.line) && getLine(doc, change.from.line).markedSpans;
+    var oldLast = isLine(doc, change.to.line) && getLine(doc, change.to.line).markedSpans;
+    if (!oldFirst && !oldLast) { return null }
+
+    var startCh = change.from.ch, endCh = change.to.ch, isInsert = cmp(change.from, change.to) == 0;
+    // Get the spans that 'stick out' on both sides
+    var first = markedSpansBefore(oldFirst, startCh, isInsert);
+    var last = markedSpansAfter(oldLast, endCh, isInsert);
+
+    // Next, merge those two ends
+    var sameLine = change.text.length == 1, offset = lst(change.text).length + (sameLine ? startCh : 0);
+    if (first) {
+      // Fix up .to properties of first
+      for (var i = 0; i < first.length; ++i) {
+        var span = first[i];
+        if (span.to == null) {
+          var found = getMarkedSpanFor(last, span.marker);
+          if (!found) { span.to = startCh; }
+          else if (sameLine) { span.to = found.to == null ? null : found.to + offset; }
+        }
+      }
+    }
+    if (last) {
+      // Fix up .from in last (or move them into first in case of sameLine)
+      for (var i$1 = 0; i$1 < last.length; ++i$1) {
+        var span$1 = last[i$1];
+        if (span$1.to != null) { span$1.to += offset; }
+        if (span$1.from == null) {
+          var found$1 = getMarkedSpanFor(first, span$1.marker);
+          if (!found$1) {
+            span$1.from = offset;
+            if (sameLine) { (first || (first = [])).push(span$1); }
+          }
+        } else {
+          span$1.from += offset;
+          if (sameLine) { (first || (first = [])).push(span$1); }
+        }
+      }
+    }
+    // Make sure we didn't create any zero-length spans
+    if (first) { first = clearEmptySpans(first); }
+    if (last && last != first) { last = clearEmptySpans(last); }
+
+    var newMarkers = [first];
+    if (!sameLine) {
+      // Fill gap with whole-line-spans
+      var gap = change.text.length - 2, gapMarkers;
+      if (gap > 0 && first)
+        { for (var i$2 = 0; i$2 < first.length; ++i$2)
+          { if (first[i$2].to == null)
+            { (gapMarkers || (gapMarkers = [])).push(new MarkedSpan(first[i$2].marker, null, null)); } } }
+      for (var i$3 = 0; i$3 < gap; ++i$3)
+        { newMarkers.push(gapMarkers); }
+      newMarkers.push(last);
+    }
+    return newMarkers
+  }
+
+  // Remove spans that are empty and don't have a clearWhenEmpty
+  // option of false.
+  function clearEmptySpans(spans) {
+    for (var i = 0; i < spans.length; ++i) {
+      var span = spans[i];
+      if (span.from != null && span.from == span.to && span.marker.clearWhenEmpty !== false)
+        { spans.splice(i--, 1); }
+    }
+    if (!spans.length) { return null }
+    return spans
+  }
+
+  // Used to 'clip' out readOnly ranges when making a change.
+  function removeReadOnlyRanges(doc, from, to) {
+    var markers = null;
+    doc.iter(from.line, to.line + 1, function (line) {
+      if (line.markedSpans) { for (var i = 0; i < line.markedSpans.length; ++i) {
+        var mark = line.markedSpans[i].marker;
+        if (mark.readOnly && (!markers || indexOf(markers, mark) == -1))
+          { (markers || (markers = [])).push(mark); }
+      } }
+    });
+    if (!markers) { return null }
+    var parts = [{from: from, to: to}];
+    for (var i = 0; i < markers.length; ++i) {
+      var mk = markers[i], m = mk.find(0);
+      for (var j = 0; j < parts.length; ++j) {
+        var p = parts[j];
+        if (cmp(p.to, m.from) < 0 || cmp(p.from, m.to) > 0) { continue }
+        var newParts = [j, 1], dfrom = cmp(p.from, m.from), dto = cmp(p.to, m.to);
+        if (dfrom < 0 || !mk.inclusiveLeft && !dfrom)
+          { newParts.push({from: p.from, to: m.from}); }
+        if (dto > 0 || !mk.inclusiveRight && !dto)
+          { newParts.push({from: m.to, to: p.to}); }
+        parts.splice.apply(parts, newParts);
+        j += newParts.length - 3;
+      }
+    }
+    return parts
+  }
+
+  // Connect or disconnect spans from a line.
+  function detachMarkedSpans(line) {
+    var spans = line.markedSpans;
+    if (!spans) { return }
+    for (var i = 0; i < spans.length; ++i)
+      { spans[i].marker.detachLine(line); }
+    line.markedSpans = null;
+  }
+  function attachMarkedSpans(line, spans) {
+    if (!spans) { return }
+    for (var i = 0; i < spans.length; ++i)
+      { spans[i].marker.attachLine(line); }
+    line.markedSpans = spans;
+  }
+
+  // Helpers used when computing which overlapping collapsed span
+  // counts as the larger one.
+  function extraLeft(marker) { return marker.inclusiveLeft ? -1 : 0 }
+  function extraRight(marker) { return marker.inclusiveRight ? 1 : 0 }
+
+  // Returns a number indicating which of two overlapping collapsed
+  // spans is larger (and thus includes the other). Falls back to
+  // comparing ids when the spans cover exactly the same range.
+  function compareCollapsedMarkers(a, b) {
+    var lenDiff = a.lines.length - b.lines.length;
+    if (lenDiff != 0) { return lenDiff }
+    var aPos = a.find(), bPos = b.find();
+    var fromCmp = cmp(aPos.from, bPos.from) || extraLeft(a) - extraLeft(b);
+    if (fromCmp) { return -fromCmp }
+    var toCmp = cmp(aPos.to, bPos.to) || extraRight(a) - extraRight(b);
+    if (toCmp) { return toCmp }
+    return b.id - a.id
+  }
+
+  // Find out whether a line ends or starts in a collapsed span. If
+  // so, return the marker for that span.
+  function collapsedSpanAtSide(line, start) {
+    var sps = sawCollapsedSpans && line.markedSpans, found;
+    if (sps) { for (var sp = (void 0), i = 0; i < sps.length; ++i) {
+      sp = sps[i];
+      if (sp.marker.collapsed && (start ? sp.from : sp.to) == null &&
+          (!found || compareCollapsedMarkers(found, sp.marker) < 0))
+        { found = sp.marker; }
+    } }
+    return found
+  }
+  function collapsedSpanAtStart(line) { return collapsedSpanAtSide(line, true) }
+  function collapsedSpanAtEnd(line) { return collapsedSpanAtSide(line, false) }
+
+  function collapsedSpanAround(line, ch) {
+    var sps = sawCollapsedSpans && line.markedSpans, found;
+    if (sps) { for (var i = 0; i < sps.length; ++i) {
+      var sp = sps[i];
+      if (sp.marker.collapsed && (sp.from == null || sp.from < ch) && (sp.to == null || sp.to > ch) &&
+          (!found || compareCollapsedMarkers(found, sp.marker) < 0)) { found = sp.marker; }
+    } }
+    return found
+  }
+
+  // Test whether there exists a collapsed span that partially
+  // overlaps (covers the start or end, but not both) of a new span.
+  // Such overlap is not allowed.
+  function conflictingCollapsedRange(doc, lineNo, from, to, marker) {
+    var line = getLine(doc, lineNo);
+    var sps = sawCollapsedSpans && line.markedSpans;
+    if (sps) { for (var i = 0; i < sps.length; ++i) {
+      var sp = sps[i];
+      if (!sp.marker.collapsed) { continue }
+      var found = sp.marker.find(0);
+      var fromCmp = cmp(found.from, from) || extraLeft(sp.marker) - extraLeft(marker);
+      var toCmp = cmp(found.to, to) || extraRight(sp.marker) - extraRight(marker);
+      if (fromCmp >= 0 && toCmp <= 0 || fromCmp <= 0 && toCmp >= 0) { continue }
+      if (fromCmp <= 0 && (sp.marker.inclusiveRight && marker.inclusiveLeft ? cmp(found.to, from) >= 0 : cmp(found.to, from) > 0) ||
+          fromCmp >= 0 && (sp.marker.inclusiveRight && marker.inclusiveLeft ? cmp(found.from, to) <= 0 : cmp(found.from, to) < 0))
+        { return true }
+    } }
+  }
+
+  // A visual line is a line as drawn on the screen. Folding, for
+  // example, can cause multiple logical lines to appear on the same
+  // visual line. This finds the start of the visual line that the
+  // given line is part of (usually that is the line itself).
+  function visualLine(line) {
+    var merged;
+    while (merged = collapsedSpanAtStart(line))
+      { line = merged.find(-1, true).line; }
+    return line
+  }
+
+  function visualLineEnd(line) {
+    var merged;
+    while (merged = collapsedSpanAtEnd(line))
+      { line = merged.find(1, true).line; }
+    return line
+  }
+
+  // Returns an array of logical lines that continue the visual line
+  // started by the argument, or undefined if there are no such lines.
+  function visualLineContinued(line) {
+    var merged, lines;
+    while (merged = collapsedSpanAtEnd(line)) {
+      line = merged.find(1, true).line
+      ;(lines || (lines = [])).push(line);
+    }
+    return lines
+  }
+
+  // Get the line number of the start of the visual line that the
+  // given line number is part of.
+  function visualLineNo(doc, lineN) {
+    var line = getLine(doc, lineN), vis = visualLine(line);
+    if (line == vis) { return lineN }
+    return lineNo(vis)
+  }
+
+  // Get the line number of the start of the next visual line after
+  // the given line.
+  function visualLineEndNo(doc, lineN) {
+    if (lineN > doc.lastLine()) { return lineN }
+    var line = getLine(doc, lineN), merged;
+    if (!lineIsHidden(doc, line)) { return lineN }
+    while (merged = collapsedSpanAtEnd(line))
+      { line = merged.find(1, true).line; }
+    return lineNo(line) + 1
+  }
+
+  // Compute whether a line is hidden. Lines count as hidden when they
+  // are part of a visual line that starts with another line, or when
+  // they are entirely covered by collapsed, non-widget span.
+  function lineIsHidden(doc, line) {
+    var sps = sawCollapsedSpans && line.markedSpans;
+    if (sps) { for (var sp = (void 0), i = 0; i < sps.length; ++i) {
+      sp = sps[i];
+      if (!sp.marker.collapsed) { continue }
+      if (sp.from == null) { return true }
+      if (sp.marker.widgetNode) { continue }
+      if (sp.from == 0 && sp.marker.inclusiveLeft && lineIsHiddenInner(doc, line, sp))
+        { return true }
+    } }
+  }
+  function lineIsHiddenInner(doc, line, span) {
+    if (span.to == null) {
+      var end = span.marker.find(1, true);
+      return lineIsHiddenInner(doc, end.line, getMarkedSpanFor(end.line.markedSpans, span.marker))
+    }
+    if (span.marker.inclusiveRight && span.to == line.text.length)
+      { return true }
+    for (var sp = (void 0), i = 0; i < line.markedSpans.length; ++i) {
+      sp = line.markedSpans[i];
+      if (sp.marker.collapsed && !sp.marker.widgetNode && sp.from == span.to &&
+          (sp.to == null || sp.to != span.from) &&
+          (sp.marker.inclusiveLeft || span.marker.inclusiveRight) &&
+          lineIsHiddenInner(doc, line, sp)) { return true }
+    }
+  }
+
+  // Find the height above the given line.
+  function heightAtLine(lineObj) {
+    lineObj = visualLine(lineObj);
+
+    var h = 0, chunk = lineObj.parent;
+    for (var i = 0; i < chunk.lines.length; ++i) {
+      var line = chunk.lines[i];
+      if (line == lineObj) { break }
+      else { h += line.height; }
+    }
+    for (var p = chunk.parent; p; chunk = p, p = chunk.parent) {
+      for (var i$1 = 0; i$1 < p.children.length; ++i$1) {
+        var cur = p.children[i$1];
+        if (cur == chunk) { break }
+        else { h += cur.height; }
+      }
+    }
+    return h
+  }
+
+  // Compute the character length of a line, taking into account
+  // collapsed ranges (see markText) that might hide parts, and join
+  // other lines onto it.
+  function lineLength(line) {
+    if (line.height == 0) { return 0 }
+    var len = line.text.length, merged, cur = line;
+    while (merged = collapsedSpanAtStart(cur)) {
+      var found = merged.find(0, true);
+      cur = found.from.line;
+      len += found.from.ch - found.to.ch;
+    }
+    cur = line;
+    while (merged = collapsedSpanAtEnd(cur)) {
+      var found$1 = merged.find(0, true);
+      len -= cur.text.length - found$1.from.ch;
+      cur = found$1.to.line;
+      len += cur.text.length - found$1.to.ch;
+    }
+    return len
+  }
+
+  // Find the longest line in the document.
+  function findMaxLine(cm) {
+    var d = cm.display, doc = cm.doc;
+    d.maxLine = getLine(doc, doc.first);
+    d.maxLineLength = lineLength(d.maxLine);
+    d.maxLineChanged = true;
+    doc.iter(function (line) {
+      var len = lineLength(line);
+      if (len > d.maxLineLength) {
+        d.maxLineLength = len;
+        d.maxLine = line;
+      }
+    });
+  }
+
+  // LINE DATA STRUCTURE
+
+  // Line objects. These hold state related to a line, including
+  // highlighting info (the styles array).
+  var Line = function(text, markedSpans, estimateHeight) {
+    this.text = text;
+    attachMarkedSpans(this, markedSpans);
+    this.height = estimateHeight ? estimateHeight(this) : 1;
+  };
+
+  Line.prototype.lineNo = function () { return lineNo(this) };
+  eventMixin(Line);
+
+  // Change the content (text, markers) of a line. Automatically
+  // invalidates cached information and tries to re-estimate the
+  // line's height.
+  function updateLine(line, text, markedSpans, estimateHeight) {
+    line.text = text;
+    if (line.stateAfter) { line.stateAfter = null; }
+    if (line.styles) { line.styles = null; }
+    if (line.order != null) { line.order = null; }
+    detachMarkedSpans(line);
+    attachMarkedSpans(line, markedSpans);
+    var estHeight = estimateHeight ? estimateHeight(line) : 1;
+    if (estHeight != line.height) { updateLineHeight(line, estHeight); }
+  }
+
+  // Detach a line from the document tree and its markers.
+  function cleanUpLine(line) {
+    line.parent = null;
+    detachMarkedSpans(line);
+  }
+
+  // Convert a style as returned by a mode (either null, or a string
+  // containing one or more styles) to a CSS style. This is cached,
+  // and also looks for line-wide styles.
+  var styleToClassCache = {}, styleToClassCacheWithMode = {};
+  function interpretTokenStyle(style, options) {
+    if (!style || /^\s*$/.test(style)) { return null }
+    var cache = options.addModeClass ? styleToClassCacheWithMode : styleToClassCache;
+    return cache[style] ||
+      (cache[style] = style.replace(/\S+/g, "cm-$&"))
+  }
+
+  // Render the DOM representation of the text of a line. Also builds
+  // up a 'line map', which points at the DOM nodes that represent
+  // specific stretches of text, and is used by the measuring code.
+  // The returned object contains the DOM node, this map, and
+  // information about line-wide styles that were set by the mode.
+  function buildLineContent(cm, lineView) {
+    // The padding-right forces the element to have a 'border', which
+    // is needed on Webkit to be able to get line-level bounding
+    // rectangles for it (in measureChar).
+    var content = eltP("span", null, null, webkit ? "padding-right: .1px" : null);
+    var builder = {pre: eltP("pre", [content], "CodeMirror-line"), content: content,
+                   col: 0, pos: 0, cm: cm,
+                   trailingSpace: false,
+                   splitSpaces: cm.getOption("lineWrapping")};
+    lineView.measure = {};
+
+    // Iterate over the logical lines that make up this visual line.
+    for (var i = 0; i <= (lineView.rest ? lineView.rest.length : 0); i++) {
+      var line = i ? lineView.rest[i - 1] : lineView.line, order = (void 0);
+      builder.pos = 0;
+      builder.addToken = buildToken;
+      // Optionally wire in some hacks into the token-rendering
+      // algorithm, to deal with browser quirks.
+      if (hasBadBidiRects(cm.display.measure) && (order = getOrder(line, cm.doc.direction)))
+        { builder.addToken = buildTokenBadBidi(builder.addToken, order); }
+      builder.map = [];
+      var allowFrontierUpdate = lineView != cm.display.externalMeasured && lineNo(line);
+      insertLineContent(line, builder, getLineStyles(cm, line, allowFrontierUpdate));
+      if (line.styleClasses) {
+        if (line.styleClasses.bgClass)
+          { builder.bgClass = joinClasses(line.styleClasses.bgClass, builder.bgClass || ""); }
+        if (line.styleClasses.textClass)
+          { builder.textClass = joinClasses(line.styleClasses.textClass, builder.textClass || ""); }
+      }
+
+      // Ensure at least a single node is present, for measuring.
+      if (builder.map.length == 0)
+        { builder.map.push(0, 0, builder.content.appendChild(zeroWidthElement(cm.display.measure))); }
+
+      // Store the map and a cache object for the current logical line
+      if (i == 0) {
+        lineView.measure.map = builder.map;
+        lineView.measure.cache = {};
+      } else {
+  (lineView.measure.maps || (lineView.measure.maps = [])).push(builder.map)
+        ;(lineView.measure.caches || (lineView.measure.caches = [])).push({});
+      }
+    }
+
+    // See issue #2901
+    if (webkit) {
+      var last = builder.content.lastChild;
+      if (/\bcm-tab\b/.test(last.className) || (last.querySelector && last.querySelector(".cm-tab")))
+        { builder.content.className = "cm-tab-wrap-hack"; }
+    }
+
+    signal(cm, "renderLine", cm, lineView.line, builder.pre);
+    if (builder.pre.className)
+      { builder.textClass = joinClasses(builder.pre.className, builder.textClass || ""); }
+
+    return builder
+  }
+
+  function defaultSpecialCharPlaceholder(ch) {
+    var token = elt("span", "\u2022", "cm-invalidchar");
+    token.title = "\\u" + ch.charCodeAt(0).toString(16);
+    token.setAttribute("aria-label", token.title);
+    return token
+  }
+
+  // Build up the DOM representation for a single token, and add it to
+  // the line map. Takes care to render special characters separately.
+  function buildToken(builder, text, style, startStyle, endStyle, css, attributes) {
+    if (!text) { return }
+    var displayText = builder.splitSpaces ? splitSpaces(text, builder.trailingSpace) : text;
+    var special = builder.cm.state.specialChars, mustWrap = false;
+    var content;
+    if (!special.test(text)) {
+      builder.col += text.length;
+      content = document.createTextNode(displayText);
+      builder.map.push(builder.pos, builder.pos + text.length, content);
+      if (ie && ie_version < 9) { mustWrap = true; }
+      builder.pos += text.length;
+    } else {
+      content = document.createDocumentFragment();
+      var pos = 0;
+      while (true) {
+        special.lastIndex = pos;
+        var m = special.exec(text);
+        var skipped = m ? m.index - pos : text.length - pos;
+        if (skipped) {
+          var txt = document.createTextNode(displayText.slice(pos, pos + skipped));
+          if (ie && ie_version < 9) { content.appendChild(elt("span", [txt])); }
+          else { content.appendChild(txt); }
+          builder.map.push(builder.pos, builder.pos + skipped, txt);
+          builder.col += skipped;
+          builder.pos += skipped;
+        }
+        if (!m) { break }
+        pos += skipped + 1;
+        var txt$1 = (void 0);
+        if (m[0] == "\t") {
+          var tabSize = builder.cm.options.tabSize, tabWidth = tabSize - builder.col % tabSize;
+          txt$1 = content.appendChild(elt("span", spaceStr(tabWidth), "cm-tab"));
+          txt$1.setAttribute("role", "presentation");
+          txt$1.setAttribute("cm-text", "\t");
+          builder.col += tabWidth;
+        } else if (m[0] == "\r" || m[0] == "\n") {
+          txt$1 = content.appendChild(elt("span", m[0] == "\r" ? "\u240d" : "\u2424", "cm-invalidchar"));
+          txt$1.setAttribute("cm-text", m[0]);
+          builder.col += 1;
+        } else {
+          txt$1 = builder.cm.options.specialCharPlaceholder(m[0]);
+          txt$1.setAttribute("cm-text", m[0]);
+          if (ie && ie_version < 9) { content.appendChild(elt("span", [txt$1])); }
+          else { content.appendChild(txt$1); }
+          builder.col += 1;
+        }
+        builder.map.push(builder.pos, builder.pos + 1, txt$1);
+        builder.pos++;
+      }
+    }
+    builder.trailingSpace = displayText.charCodeAt(text.length - 1) == 32;
+    if (style || startStyle || endStyle || mustWrap || css) {
+      var fullStyle = style || "";
+      if (startStyle) { fullStyle += startStyle; }
+      if (endStyle) { fullStyle += endStyle; }
+      var token = elt("span", [content], fullStyle, css);
+      if (attributes) {
+        for (var attr in attributes) { if (attributes.hasOwnProperty(attr) && attr != "style" && attr != "class")
+          { token.setAttribute(attr, attributes[attr]); } }
+      }
+      return builder.content.appendChild(token)
+    }
+    builder.content.appendChild(content);
+  }
+
+  // Change some spaces to NBSP to prevent the browser from collapsing
+  // trailing spaces at the end of a line when rendering text (issue #1362).
+  function splitSpaces(text, trailingBefore) {
+    if (text.length > 1 && !/  /.test(text)) { return text }
+    var spaceBefore = trailingBefore, result = "";
+    for (var i = 0; i < text.length; i++) {
+      var ch = text.charAt(i);
+      if (ch == " " && spaceBefore && (i == text.length - 1 || text.charCodeAt(i + 1) == 32))
+        { ch = "\u00a0"; }
+      result += ch;
+      spaceBefore = ch == " ";
+    }
+    return result
+  }
+
+  // Work around nonsense dimensions being reported for stretches of
+  // right-to-left text.
+  function buildTokenBadBidi(inner, order) {
+    return function (builder, text, style, startStyle, endStyle, css, attributes) {
+      style = style ? style + " cm-force-border" : "cm-force-border";
+      var start = builder.pos, end = start + text.length;
+      for (;;) {
+        // Find the part that overlaps with the start of this text
+        var part = (void 0);
+        for (var i = 0; i < order.length; i++) {
+          part = order[i];
+          if (part.to > start && part.from <= start) { break }
+        }
+        if (part.to >= end) { return inner(builder, text, style, startStyle, endStyle, css, attributes) }
+        inner(builder, text.slice(0, part.to - start), style, startStyle, null, css, attributes);
+        startStyle = null;
+        text = text.slice(part.to - start);
+        start = part.to;
+      }
+    }
+  }
+
+  function buildCollapsedSpan(builder, size, marker, ignoreWidget) {
+    var widget = !ignoreWidget && marker.widgetNode;
+    if (widget) { builder.map.push(builder.pos, builder.pos + size, widget); }
+    if (!ignoreWidget && builder.cm.display.input.needsContentAttribute) {
+      if (!widget)
+        { widget = builder.content.appendChild(document.createElement("span")); }
+      widget.setAttribute("cm-marker", marker.id);
+    }
+    if (widget) {
+      builder.cm.display.input.setUneditable(widget);
+      builder.content.appendChild(widget);
+    }
+    builder.pos += size;
+    builder.trailingSpace = false;
+  }
+
+  // Outputs a number of spans to make up a line, taking highlighting
+  // and marked text into account.
+  function insertLineContent(line, builder, styles) {
+    var spans = line.markedSpans, allText = line.text, at = 0;
+    if (!spans) {
+      for (var i$1 = 1; i$1 < styles.length; i$1+=2)
+        { builder.addToken(builder, allText.slice(at, at = styles[i$1]), interpretTokenStyle(styles[i$1+1], builder.cm.options)); }
+      return
+    }
+
+    var len = allText.length, pos = 0, i = 1, text = "", style, css;
+    var nextChange = 0, spanStyle, spanEndStyle, spanStartStyle, collapsed, attributes;
+    for (;;) {
+      if (nextChange == pos) { // Update current marker set
+        spanStyle = spanEndStyle = spanStartStyle = css = "";
+        attributes = null;
+        collapsed = null; nextChange = Infinity;
+        var foundBookmarks = [], endStyles = (void 0);
+        for (var j = 0; j < spans.length; ++j) {
+          var sp = spans[j], m = sp.marker;
+          if (m.type == "bookmark" && sp.from == pos && m.widgetNode) {
+            foundBookmarks.push(m);
+          } else if (sp.from <= pos && (sp.to == null || sp.to > pos || m.collapsed && sp.to == pos && sp.from == pos)) {
+            if (sp.to != null && sp.to != pos && nextChange > sp.to) {
+              nextChange = sp.to;
+              spanEndStyle = "";
+            }
+            if (m.className) { spanStyle += " " + m.className; }
+            if (m.css) { css = (css ? css + ";" : "") + m.css; }
+            if (m.startStyle && sp.from == pos) { spanStartStyle += " " + m.startStyle; }
+            if (m.endStyle && sp.to == nextChange) { (endStyles || (endStyles = [])).push(m.endStyle, sp.to); }
+            // support for the old title property
+            // https://github.com/codemirror/CodeMirror/pull/5673
+            if (m.title) { (attributes || (attributes = {})).title = m.title; }
+            if (m.attributes) {
+              for (var attr in m.attributes)
+                { (attributes || (attributes = {}))[attr] = m.attributes[attr]; }
+            }
+            if (m.collapsed && (!collapsed || compareCollapsedMarkers(collapsed.marker, m) < 0))
+              { collapsed = sp; }
+          } else if (sp.from > pos && nextChange > sp.from) {
+            nextChange = sp.from;
+          }
+        }
+        if (endStyles) { for (var j$1 = 0; j$1 < endStyles.length; j$1 += 2)
+          { if (endStyles[j$1 + 1] == nextChange) { spanEndStyle += " " + endStyles[j$1]; } } }
+
+        if (!collapsed || collapsed.from == pos) { for (var j$2 = 0; j$2 < foundBookmarks.length; ++j$2)
+          { buildCollapsedSpan(builder, 0, foundBookmarks[j$2]); } }
+        if (collapsed && (collapsed.from || 0) == pos) {
+          buildCollapsedSpan(builder, (collapsed.to == null ? len + 1 : collapsed.to) - pos,
+                             collapsed.marker, collapsed.from == null);
+          if (collapsed.to == null) { return }
+          if (collapsed.to == pos) { collapsed = false; }
+        }
+      }
+      if (pos >= len) { break }
+
+      var upto = Math.min(len, nextChange);
+      while (true) {
+        if (text) {
+          var end = pos + text.length;
+          if (!collapsed) {
+            var tokenText = end > upto ? text.slice(0, upto - pos) : text;
+            builder.addToken(builder, tokenText, style ? style + spanStyle : spanStyle,
+                             spanStartStyle, pos + tokenText.length == nextChange ? spanEndStyle : "", css, attributes);
+          }
+          if (end >= upto) {text = text.slice(upto - pos); pos = upto; break}
+          pos = end;
+          spanStartStyle = "";
+        }
+        text = allText.slice(at, at = styles[i++]);
+        style = interpretTokenStyle(styles[i++], builder.cm.options);
+      }
+    }
+  }
+
+
+  // These objects are used to represent the visible (currently drawn)
+  // part of the document. A LineView may correspond to multiple
+  // logical lines, if those are connected by collapsed ranges.
+  function LineView(doc, line, lineN) {
+    // The starting line
+    this.line = line;
+    // Continuing lines, if any
+    this.rest = visualLineContinued(line);
+    // Number of logical lines in this visual line
+    this.size = this.rest ? lineNo(lst(this.rest)) - lineN + 1 : 1;
+    this.node = this.text = null;
+    this.hidden = lineIsHidden(doc, line);
+  }
+
+  // Create a range of LineView objects for the given lines.
+  function buildViewArray(cm, from, to) {
+    var array = [], nextPos;
+    for (var pos = from; pos < to; pos = nextPos) {
+      var view = new LineView(cm.doc, getLine(cm.doc, pos), pos);
+      nextPos = pos + view.size;
+      array.push(view);
+    }
+    return array
+  }
+
+  var operationGroup = null;
+
+  function pushOperation(op) {
+    if (operationGroup) {
+      operationGroup.ops.push(op);
+    } else {
+      op.ownsGroup = operationGroup = {
+        ops: [op],
+        delayedCallbacks: []
+      };
+    }
+  }
+
+  function fireCallbacksForOps(group) {
+    // Calls delayed callbacks and cursorActivity handlers until no
+    // new ones appear
+    var callbacks = group.delayedCallbacks, i = 0;
+    do {
+      for (; i < callbacks.length; i++)
+        { callbacks[i].call(null); }
+      for (var j = 0; j < group.ops.length; j++) {
+        var op = group.ops[j];
+        if (op.cursorActivityHandlers)
+          { while (op.cursorActivityCalled < op.cursorActivityHandlers.length)
+            { op.cursorActivityHandlers[op.cursorActivityCalled++].call(null, op.cm); } }
+      }
+    } while (i < callbacks.length)
+  }
+
+  function finishOperation(op, endCb) {
+    var group = op.ownsGroup;
+    if (!group) { return }
+
+    try { fireCallbacksForOps(group); }
+    finally {
+      operationGroup = null;
+      endCb(group);
+    }
+  }
+
+  var orphanDelayedCallbacks = null;
+
+  // Often, we want to signal events at a point where we are in the
+  // middle of some work, but don't want the handler to start calling
+  // other methods on the editor, which might be in an inconsistent
+  // state or simply not expect any other events to happen.
+  // signalLater looks whether there are any handlers, and schedules
+  // them to be executed when the last operation ends, or, if no
+  // operation is active, when a timeout fires.
+  function signalLater(emitter, type /*, values...*/) {
+    var arr = getHandlers(emitter, type);
+    if (!arr.length) { return }
+    var args = Array.prototype.slice.call(arguments, 2), list;
+    if (operationGroup) {
+      list = operationGroup.delayedCallbacks;
+    } else if (orphanDelayedCallbacks) {
+      list = orphanDelayedCallbacks;
+    } else {
+      list = orphanDelayedCallbacks = [];
+      setTimeout(fireOrphanDelayed, 0);
+    }
+    var loop = function ( i ) {
+      list.push(function () { return arr[i].apply(null, args); });
+    };
+
+    for (var i = 0; i < arr.length; ++i)
+      loop( i );
+  }
+
+  function fireOrphanDelayed() {
+    var delayed = orphanDelayedCallbacks;
+    orphanDelayedCallbacks = null;
+    for (var i = 0; i < delayed.length; ++i) { delayed[i](); }
+  }
+
+  // When an aspect of a line changes, a string is added to
+  // lineView.changes. This updates the relevant part of the line's
+  // DOM structure.
+  function updateLineForChanges(cm, lineView, lineN, dims) {
+    for (var j = 0; j < lineView.changes.length; j++) {
+      var type = lineView.changes[j];
+      if (type == "text") { updateLineText(cm, lineView); }
+      else if (type == "gutter") { updateLineGutter(cm, lineView, lineN, dims); }
+      else if (type == "class") { updateLineClasses(cm, lineView); }
+      else if (type == "widget") { updateLineWidgets(cm, lineView, dims); }
+    }
+    lineView.changes = null;
+  }
+
+  // Lines with gutter elements, widgets or a background class need to
+  // be wrapped, and have the extra elements added to the wrapper div
+  function ensureLineWrapped(lineView) {
+    if (lineView.node == lineView.text) {
+      lineView.node = elt("div", null, null, "position: relative");
+      if (lineView.text.parentNode)
+        { lineView.text.parentNode.replaceChild(lineView.node, lineView.text); }
+      lineView.node.appendChild(lineView.text);
+      if (ie && ie_version < 8) { lineView.node.style.zIndex = 2; }
+    }
+    return lineView.node
+  }
+
+  function updateLineBackground(cm, lineView) {
+    var cls = lineView.bgClass ? lineView.bgClass + " " + (lineView.line.bgClass || "") : lineView.line.bgClass;
+    if (cls) { cls += " CodeMirror-linebackground"; }
+    if (lineView.background) {
+      if (cls) { lineView.background.className = cls; }
+      else { lineView.background.parentNode.removeChild(lineView.background); lineView.background = null; }
+    } else if (cls) {
+      var wrap = ensureLineWrapped(lineView);
+      lineView.background = wrap.insertBefore(elt("div", null, cls), wrap.firstChild);
+      cm.display.input.setUneditable(lineView.background);
+    }
+  }
+
+  // Wrapper around buildLineContent which will reuse the structure
+  // in display.externalMeasured when possible.
+  function getLineContent(cm, lineView) {
+    var ext = cm.display.externalMeasured;
+    if (ext && ext.line == lineView.line) {
+      cm.display.externalMeasured = null;
+      lineView.measure = ext.measure;
+      return ext.built
+    }
+    return buildLineContent(cm, lineView)
+  }
+
+  // Redraw the line's text. Interacts with the background and text
+  // classes because the mode may output tokens that influence these
+  // classes.
+  function updateLineText(cm, lineView) {
+    var cls = lineView.text.className;
+    var built = getLineContent(cm, lineView);
+    if (lineView.text == lineView.node) { lineView.node = built.pre; }
+    lineView.text.parentNode.replaceChild(built.pre, lineView.text);
+    lineView.text = built.pre;
+    if (built.bgClass != lineView.bgClass || built.textClass != lineView.textClass) {
+      lineView.bgClass = built.bgClass;
+      lineView.textClass = built.textClass;
+      updateLineClasses(cm, lineView);
+    } else if (cls) {
+      lineView.text.className = cls;
+    }
+  }
+
+  function updateLineClasses(cm, lineView) {
+    updateLineBackground(cm, lineView);
+    if (lineView.line.wrapClass)
+      { ensureLineWrapped(lineView).className = lineView.line.wrapClass; }
+    else if (lineView.node != lineView.text)
+      { lineView.node.className = ""; }
+    var textClass = lineView.textClass ? lineView.textClass + " " + (lineView.line.textClass || "") : lineView.line.textClass;
+    lineView.text.className = textClass || "";
+  }
+
+  function updateLineGutter(cm, lineView, lineN, dims) {
+    if (lineView.gutter) {
+      lineView.node.removeChild(lineView.gutter);
+      lineView.gutter = null;
+    }
+    if (lineView.gutterBackground) {
+      lineView.node.removeChild(lineView.gutterBackground);
+      lineView.gutterBackground = null;
+    }
+    if (lineView.line.gutterClass) {
+      var wrap = ensureLineWrapped(lineView);
+      lineView.gutterBackground = elt("div", null, "CodeMirror-gutter-background " + lineView.line.gutterClass,
+                                      ("left: " + (cm.options.fixedGutter ? dims.fixedPos : -dims.gutterTotalWidth) + "px; width: " + (dims.gutterTotalWidth) + "px"));
+      cm.display.input.setUneditable(lineView.gutterBackground);
+      wrap.insertBefore(lineView.gutterBackground, lineView.text);
+    }
+    var markers = lineView.line.gutterMarkers;
+    if (cm.options.lineNumbers || markers) {
+      var wrap$1 = ensureLineWrapped(lineView);
+      var gutterWrap = lineView.gutter = elt("div", null, "CodeMirror-gutter-wrapper", ("left: " + (cm.options.fixedGutter ? dims.fixedPos : -dims.gutterTotalWidth) + "px"));
+      cm.display.input.setUneditable(gutterWrap);
+      wrap$1.insertBefore(gutterWrap, lineView.text);
+      if (lineView.line.gutterClass)
+        { gutterWrap.className += " " + lineView.line.gutterClass; }
+      if (cm.options.lineNumbers && (!markers || !markers["CodeMirror-linenumbers"]))
+        { lineView.lineNumber = gutterWrap.appendChild(
+          elt("div", lineNumberFor(cm.options, lineN),
+              "CodeMirror-linenumber CodeMirror-gutter-elt",
+              ("left: " + (dims.gutterLeft["CodeMirror-linenumbers"]) + "px; width: " + (cm.display.lineNumInnerWidth) + "px"))); }
+      if (markers) { for (var k = 0; k < cm.display.gutterSpecs.length; ++k) {
+        var id = cm.display.gutterSpecs[k].className, found = markers.hasOwnProperty(id) && markers[id];
+        if (found)
+          { gutterWrap.appendChild(elt("div", [found], "CodeMirror-gutter-elt",
+                                     ("left: " + (dims.gutterLeft[id]) + "px; width: " + (dims.gutterWidth[id]) + "px"))); }
+      } }
+    }
+  }
+
+  function updateLineWidgets(cm, lineView, dims) {
+    if (lineView.alignable) { lineView.alignable = null; }
+    var isWidget = classTest("CodeMirror-linewidget");
+    for (var node = lineView.node.firstChild, next = (void 0); node; node = next) {
+      next = node.nextSibling;
+      if (isWidget.test(node.className)) { lineView.node.removeChild(node); }
+    }
+    insertLineWidgets(cm, lineView, dims);
+  }
+
+  // Build a line's DOM representation from scratch
+  function buildLineElement(cm, lineView, lineN, dims) {
+    var built = getLineContent(cm, lineView);
+    lineView.text = lineView.node = built.pre;
+    if (built.bgClass) { lineView.bgClass = built.bgClass; }
+    if (built.textClass) { lineView.textClass = built.textClass; }
+
+    updateLineClasses(cm, lineView);
+    updateLineGutter(cm, lineView, lineN, dims);
+    insertLineWidgets(cm, lineView, dims);
+    return lineView.node
+  }
+
+  // A lineView may contain multiple logical lines (when merged by
+  // collapsed spans). The widgets for all of them need to be drawn.
+  function insertLineWidgets(cm, lineView, dims) {
+    insertLineWidgetsFor(cm, lineView.line, lineView, dims, true);
+    if (lineView.rest) { for (var i = 0; i < lineView.rest.length; i++)
+      { insertLineWidgetsFor(cm, lineView.rest[i], lineView, dims, false); } }
+  }
+
+  function insertLineWidgetsFor(cm, line, lineView, dims, allowAbove) {
+    if (!line.widgets) { return }
+    var wrap = ensureLineWrapped(lineView);
+    for (var i = 0, ws = line.widgets; i < ws.length; ++i) {
+      var widget = ws[i], node = elt("div", [widget.node], "CodeMirror-linewidget" + (widget.className ? " " + widget.className : ""));
+      if (!widget.handleMouseEvents) { node.setAttribute("cm-ignore-events", "true"); }
+      positionLineWidget(widget, node, lineView, dims);
+      cm.display.input.setUneditable(node);
+      if (allowAbove && widget.above)
+        { wrap.insertBefore(node, lineView.gutter || lineView.text); }
+      else
+        { wrap.appendChild(node); }
+      signalLater(widget, "redraw");
+    }
+  }
+
+  function positionLineWidget(widget, node, lineView, dims) {
+    if (widget.noHScroll) {
+  (lineView.alignable || (lineView.alignable = [])).push(node);
+      var width = dims.wrapperWidth;
+      node.style.left = dims.fixedPos + "px";
+      if (!widget.coverGutter) {
+        width -= dims.gutterTotalWidth;
+        node.style.paddingLeft = dims.gutterTotalWidth + "px";
+      }
+      node.style.width = width + "px";
+    }
+    if (widget.coverGutter) {
+      node.style.zIndex = 5;
+      node.style.position = "relative";
+      if (!widget.noHScroll) { node.style.marginLeft = -dims.gutterTotalWidth + "px"; }
+    }
+  }
+
+  function widgetHeight(widget) {
+    if (widget.height != null) { return widget.height }
+    var cm = widget.doc.cm;
+    if (!cm) { return 0 }
+    if (!contains(document.body, widget.node)) {
+      var parentStyle = "position: relative;";
+      if (widget.coverGutter)
+        { parentStyle += "margin-left: -" + cm.display.gutters.offsetWidth + "px;"; }
+      if (widget.noHScroll)
+        { parentStyle += "width: " + cm.display.wrapper.clientWidth + "px;"; }
+      removeChildrenAndAdd(cm.display.measure, elt("div", [widget.node], null, parentStyle));
+    }
+    return widget.height = widget.node.parentNode.offsetHeight
+  }
+
+  // Return true when the given mouse event happened in a widget
+  function eventInWidget(display, e) {
+    for (var n = e_target(e); n != display.wrapper; n = n.parentNode) {
+      if (!n || (n.nodeType == 1 && n.getAttribute("cm-ignore-events") == "true") ||
+          (n.parentNode == display.sizer && n != display.mover))
+        { return true }
+    }
+  }
+
+  // POSITION MEASUREMENT
+
+  function paddingTop(display) {return display.lineSpace.offsetTop}
+  function paddingVert(display) {return display.mover.offsetHeight - display.lineSpace.offsetHeight}
+  function paddingH(display) {
+    if (display.cachedPaddingH) { return display.cachedPaddingH }
+    var e = removeChildrenAndAdd(display.measure, elt("pre", "x", "CodeMirror-line-like"));
+    var style = window.getComputedStyle ? window.getComputedStyle(e) : e.currentStyle;
+    var data = {left: parseInt(style.paddingLeft), right: parseInt(style.paddingRight)};
+    if (!isNaN(data.left) && !isNaN(data.right)) { display.cachedPaddingH = data; }
+    return data
+  }
+
+  function scrollGap(cm) { return scrollerGap - cm.display.nativeBarWidth }
+  function displayWidth(cm) {
+    return cm.display.scroller.clientWidth - scrollGap(cm) - cm.display.barWidth
+  }
+  function displayHeight(cm) {
+    return cm.display.scroller.clientHeight - scrollGap(cm) - cm.display.barHeight
+  }
+
+  // Ensure the lineView.wrapping.heights array is populated. This is
+  // an array of bottom offsets for the lines that make up a drawn
+  // line. When lineWrapping is on, there might be more than one
+  // height.
+  function ensureLineHeights(cm, lineView, rect) {
+    var wrapping = cm.options.lineWrapping;
+    var curWidth = wrapping && displayWidth(cm);
+    if (!lineView.measure.heights || wrapping && lineView.measure.width != curWidth) {
+      var heights = lineView.measure.heights = [];
+      if (wrapping) {
+        lineView.measure.width = curWidth;
+        var rects = lineView.text.firstChild.getClientRects();
+        for (var i = 0; i < rects.length - 1; i++) {
+          var cur = rects[i], next = rects[i + 1];
+          if (Math.abs(cur.bottom - next.bottom) > 2)
+            { heights.push((cur.bottom + next.top) / 2 - rect.top); }
+        }
+      }
+      heights.push(rect.bottom - rect.top);
+    }
+  }
+
+  // Find a line map (mapping character offsets to text nodes) and a
+  // measurement cache for the given line number. (A line view might
+  // contain multiple lines when collapsed ranges are present.)
+  function mapFromLineView(lineView, line, lineN) {
+    if (lineView.line == line)
+      { return {map: lineView.measure.map, cache: lineView.measure.cache} }
+    for (var i = 0; i < lineView.rest.length; i++)
+      { if (lineView.rest[i] == line)
+        { return {map: lineView.measure.maps[i], cache: lineView.measure.caches[i]} } }
+    for (var i$1 = 0; i$1 < lineView.rest.length; i$1++)
+      { if (lineNo(lineView.rest[i$1]) > lineN)
+        { return {map: lineView.measure.maps[i$1], cache: lineView.measure.caches[i$1], before: true} } }
+  }
+
+  // Render a line into the hidden node display.externalMeasured. Used
+  // when measurement is needed for a line that's not in the viewport.
+  function updateExternalMeasurement(cm, line) {
+    line = visualLine(line);
+    var lineN = lineNo(line);
+    var view = cm.display.externalMeasured = new LineView(cm.doc, line, lineN);
+    view.lineN = lineN;
+    var built = view.built = buildLineContent(cm, view);
+    view.text = built.pre;
+    removeChildrenAndAdd(cm.display.lineMeasure, built.pre);
+    return view
+  }
+
+  // Get a {top, bottom, left, right} box (in line-local coordinates)
+  // for a given character.
+  function measureChar(cm, line, ch, bias) {
+    return measureCharPrepared(cm, prepareMeasureForLine(cm, line), ch, bias)
+  }
+
+  // Find a line view that corresponds to the given line number.
+  function findViewForLine(cm, lineN) {
+    if (lineN >= cm.display.viewFrom && lineN < cm.display.viewTo)
+      { return cm.display.view[findViewIndex(cm, lineN)] }
+    var ext = cm.display.externalMeasured;
+    if (ext && lineN >= ext.lineN && lineN < ext.lineN + ext.size)
+      { return ext }
+  }
+
+  // Measurement can be split in two steps, the set-up work that
+  // applies to the whole line, and the measurement of the actual
+  // character. Functions like coordsChar, that need to do a lot of
+  // measurements in a row, can thus ensure that the set-up work is
+  // only done once.
+  function prepareMeasureForLine(cm, line) {
+    var lineN = lineNo(line);
+    var view = findViewForLine(cm, lineN);
+    if (view && !view.text) {
+      view = null;
+    } else if (view && view.changes) {
+      updateLineForChanges(cm, view, lineN, getDimensions(cm));
+      cm.curOp.forceUpdate = true;
+    }
+    if (!view)
+      { view = updateExternalMeasurement(cm, line); }
+
+    var info = mapFromLineView(view, line, lineN);
+    return {
+      line: line, view: view, rect: null,
+      map: info.map, cache: info.cache, before: info.before,
+      hasHeights: false
+    }
+  }
+
+  // Given a prepared measurement object, measures the position of an
+  // actual character (or fetches it from the cache).
+  function measureCharPrepared(cm, prepared, ch, bias, varHeight) {
+    if (prepared.before) { ch = -1; }
+    var key = ch + (bias || ""), found;
+    if (prepared.cache.hasOwnProperty(key)) {
+      found = prepared.cache[key];
+    } else {
+      if (!prepared.rect)
+        { prepared.rect = prepared.view.text.getBoundingClientRect(); }
+      if (!prepared.hasHeights) {
+        ensureLineHeights(cm, prepared.view, prepared.rect);
+        prepared.hasHeights = true;
+      }
+      found = measureCharInner(cm, prepared, ch, bias);
+      if (!found.bogus) { prepared.cache[key] = found; }
+    }
+    return {left: found.left, right: found.right,
+            top: varHeight ? found.rtop : found.top,
+            bottom: varHeight ? found.rbottom : found.bottom}
+  }
+
+  var nullRect = {left: 0, right: 0, top: 0, bottom: 0};
+
+  function nodeAndOffsetInLineMap(map, ch, bias) {
+    var node, start, end, collapse, mStart, mEnd;
+    // First, search the line map for the text node corresponding to,
+    // or closest to, the target character.
+    for (var i = 0; i < map.length; i += 3) {
+      mStart = map[i];
+      mEnd = map[i + 1];
+      if (ch < mStart) {
+        start = 0; end = 1;
+        collapse = "left";
+      } else if (ch < mEnd) {
+        start = ch - mStart;
+        end = start + 1;
+      } else if (i == map.length - 3 || ch == mEnd && map[i + 3] > ch) {
+        end = mEnd - mStart;
+        start = end - 1;
+        if (ch >= mEnd) { collapse = "right"; }
+      }
+      if (start != null) {
+        node = map[i + 2];
+        if (mStart == mEnd && bias == (node.insertLeft ? "left" : "right"))
+          { collapse = bias; }
+        if (bias == "left" && start == 0)
+          { while (i && map[i - 2] == map[i - 3] && map[i - 1].insertLeft) {
+            node = map[(i -= 3) + 2];
+            collapse = "left";
+          } }
+        if (bias == "right" && start == mEnd - mStart)
+          { while (i < map.length - 3 && map[i + 3] == map[i + 4] && !map[i + 5].insertLeft) {
+            node = map[(i += 3) + 2];
+            collapse = "right";
+          } }
+        break
+      }
+    }
+    return {node: node, start: start, end: end, collapse: collapse, coverStart: mStart, coverEnd: mEnd}
+  }
+
+  function getUsefulRect(rects, bias) {
+    var rect = nullRect;
+    if (bias == "left") { for (var i = 0; i < rects.length; i++) {
+      if ((rect = rects[i]).left != rect.right) { break }
+    } } else { for (var i$1 = rects.length - 1; i$1 >= 0; i$1--) {
+      if ((rect = rects[i$1]).left != rect.right) { break }
+    } }
+    return rect
+  }
+
+  function measureCharInner(cm, prepared, ch, bias) {
+    var place = nodeAndOffsetInLineMap(prepared.map, ch, bias);
+    var node = place.node, start = place.start, end = place.end, collapse = place.collapse;
+
+    var rect;
+    if (node.nodeType == 3) { // If it is a text node, use a range to retrieve the coordinates.
+      for (var i$1 = 0; i$1 < 4; i$1++) { // Retry a maximum of 4 times when nonsense rectangles are returned
+        while (start && isExtendingChar(prepared.line.text.charAt(place.coverStart + start))) { --start; }
+        while (place.coverStart + end < place.coverEnd && isExtendingChar(prepared.line.text.charAt(place.coverStart + end))) { ++end; }
+        if (ie && ie_version < 9 && start == 0 && end == place.coverEnd - place.coverStart)
+          { rect = node.parentNode.getBoundingClientRect(); }
+        else
+          { rect = getUsefulRect(range(node, start, end).getClientRects(), bias); }
+        if (rect.left || rect.right || start == 0) { break }
+        end = start;
+        start = start - 1;
+        collapse = "right";
+      }
+      if (ie && ie_version < 11) { rect = maybeUpdateRectForZooming(cm.display.measure, rect); }
+    } else { // If it is a widget, simply get the box for the whole widget.
+      if (start > 0) { collapse = bias = "right"; }
+      var rects;
+      if (cm.options.lineWrapping && (rects = node.getClientRects()).length > 1)
+        { rect = rects[bias == "right" ? rects.length - 1 : 0]; }
+      else
+        { rect = node.getBoundingClientRect(); }
+    }
+    if (ie && ie_version < 9 && !start && (!rect || !rect.left && !rect.right)) {
+      var rSpan = node.parentNode.getClientRects()[0];
+      if (rSpan)
+        { rect = {left: rSpan.left, right: rSpan.left + charWidth(cm.display), top: rSpan.top, bottom: rSpan.bottom}; }
+      else
+        { rect = nullRect; }
+    }
+
+    var rtop = rect.top - prepared.rect.top, rbot = rect.bottom - prepared.rect.top;
+    var mid = (rtop + rbot) / 2;
+    var heights = prepared.view.measure.heights;
+    var i = 0;
+    for (; i < heights.length - 1; i++)
+      { if (mid < heights[i]) { break } }
+    var top = i ? heights[i - 1] : 0, bot = heights[i];
+    var result = {left: (collapse == "right" ? rect.right : rect.left) - prepared.rect.left,
+                  right: (collapse == "left" ? rect.left : rect.right) - prepared.rect.left,
+                  top: top, bottom: bot};
+    if (!rect.left && !rect.right) { result.bogus = true; }
+    if (!cm.options.singleCursorHeightPerLine) { result.rtop = rtop; result.rbottom = rbot; }
+
+    return result
+  }
+
+  // Work around problem with bounding client rects on ranges being
+  // returned incorrectly when zoomed on IE10 and below.
+  function maybeUpdateRectForZooming(measure, rect) {
+    if (!window.screen || screen.logicalXDPI == null ||
+        screen.logicalXDPI == screen.deviceXDPI || !hasBadZoomedRects(measure))
+      { return rect }
+    var scaleX = screen.logicalXDPI / screen.deviceXDPI;
+    var scaleY = screen.logicalYDPI / screen.deviceYDPI;
+    return {left: rect.left * scaleX, right: rect.right * scaleX,
+            top: rect.top * scaleY, bottom: rect.bottom * scaleY}
+  }
+
+  function clearLineMeasurementCacheFor(lineView) {
+    if (lineView.measure) {
+      lineView.measure.cache = {};
+      lineView.measure.heights = null;
+      if (lineView.rest) { for (var i = 0; i < lineView.rest.length; i++)
+        { lineView.measure.caches[i] = {}; } }
+    }
+  }
+
+  function clearLineMeasurementCache(cm) {
+    cm.display.externalMeasure = null;
+    removeChildren(cm.display.lineMeasure);
+    for (var i = 0; i < cm.display.view.length; i++)
+      { clearLineMeasurementCacheFor(cm.display.view[i]); }
+  }
+
+  function clearCaches(cm) {
+    clearLineMeasurementCache(cm);
+    cm.display.cachedCharWidth = cm.display.cachedTextHeight = cm.display.cachedPaddingH = null;
+    if (!cm.options.lineWrapping) { cm.display.maxLineChanged = true; }
+    cm.display.lineNumChars = null;
+  }
+
+  function pageScrollX() {
+    // Work around https://bugs.chromium.org/p/chromium/issues/detail?id=489206
+    // which causes page_Offset and bounding client rects to use
+    // different reference viewports and invalidate our calculations.
+    if (chrome && android) { return -(document.body.getBoundingClientRect().left - parseInt(getComputedStyle(document.body).marginLeft)) }
+    return window.pageXOffset || (document.documentElement || document.body).scrollLeft
+  }
+  function pageScrollY() {
+    if (chrome && android) { return -(document.body.getBoundingClientRect().top - parseInt(getComputedStyle(document.body).marginTop)) }
+    return window.pageYOffset || (document.documentElement || document.body).scrollTop
+  }
+
+  function widgetTopHeight(lineObj) {
+    var height = 0;
+    if (lineObj.widgets) { for (var i = 0; i < lineObj.widgets.length; ++i) { if (lineObj.widgets[i].above)
+      { height += widgetHeight(lineObj.widgets[i]); } } }
+    return height
+  }
+
+  // Converts a {top, bottom, left, right} box from line-local
+  // coordinates into another coordinate system. Context may be one of
+  // "line", "div" (display.lineDiv), "local"./null (editor), "window",
+  // or "page".
+  function intoCoordSystem(cm, lineObj, rect, context, includeWidgets) {
+    if (!includeWidgets) {
+      var height = widgetTopHeight(lineObj);
+      rect.top += height; rect.bottom += height;
+    }
+    if (context == "line") { return rect }
+    if (!context) { context = "local"; }
+    var yOff = heightAtLine(lineObj);
+    if (context == "local") { yOff += paddingTop(cm.display); }
+    else { yOff -= cm.display.viewOffset; }
+    if (context == "page" || context == "window") {
+      var lOff = cm.display.lineSpace.getBoundingClientRect();
+      yOff += lOff.top + (context == "window" ? 0 : pageScrollY());
+      var xOff = lOff.left + (context == "window" ? 0 : pageScrollX());
+      rect.left += xOff; rect.right += xOff;
+    }
+    rect.top += yOff; rect.bottom += yOff;
+    return rect
+  }
+
+  // Coverts a box from "div" coords to another coordinate system.
+  // Context may be "window", "page", "div", or "local"./null.
+  function fromCoordSystem(cm, coords, context) {
+    if (context == "div") { return coords }
+    var left = coords.left, top = coords.top;
+    // First move into "page" coordinate system
+    if (context == "page") {
+      left -= pageScrollX();
+      top -= pageScrollY();
+    } else if (context == "local" || !context) {
+      var localBox = cm.display.sizer.getBoundingClientRect();
+      left += localBox.left;
+      top += localBox.top;
+    }
+
+    var lineSpaceBox = cm.display.lineSpace.getBoundingClientRect();
+    return {left: left - lineSpaceBox.left, top: top - lineSpaceBox.top}
+  }
+
+  function charCoords(cm, pos, context, lineObj, bias) {
+    if (!lineObj) { lineObj = getLine(cm.doc, pos.line); }
+    return intoCoordSystem(cm, lineObj, measureChar(cm, lineObj, pos.ch, bias), context)
+  }
+
+  // Returns a box for a given cursor position, which may have an
+  // 'other' property containing the position of the secondary cursor
+  // on a bidi boundary.
+  // A cursor Pos(line, char, "before") is on the same visual line as `char - 1`
+  // and after `char - 1` in writing order of `char - 1`
+  // A cursor Pos(line, char, "after") is on the same visual line as `char`
+  // and before `char` in writing order of `char`
+  // Examples (upper-case letters are RTL, lower-case are LTR):
+  //     Pos(0, 1, ...)
+  //     before   after
+  // ab     a|b     a|b
+  // aB     a|B     aB|
+  // Ab     |Ab     A|b
+  // AB     B|A     B|A
+  // Every position after the last character on a line is considered to stick
+  // to the last character on the line.
+  function cursorCoords(cm, pos, context, lineObj, preparedMeasure, varHeight) {
+    lineObj = lineObj || getLine(cm.doc, pos.line);
+    if (!preparedMeasure) { preparedMeasure = prepareMeasureForLine(cm, lineObj); }
+    function get(ch, right) {
+      var m = measureCharPrepared(cm, preparedMeasure, ch, right ? "right" : "left", varHeight);
+      if (right) { m.left = m.right; } else { m.right = m.left; }
+      return intoCoordSystem(cm, lineObj, m, context)
+    }
+    var order = getOrder(lineObj, cm.doc.direction), ch = pos.ch, sticky = pos.sticky;
+    if (ch >= lineObj.text.length) {
+      ch = lineObj.text.length;
+      sticky = "before";
+    } else if (ch <= 0) {
+      ch = 0;
+      sticky = "after";
+    }
+    if (!order) { return get(sticky == "before" ? ch - 1 : ch, sticky == "before") }
+
+    function getBidi(ch, partPos, invert) {
+      var part = order[partPos], right = part.level == 1;
+      return get(invert ? ch - 1 : ch, right != invert)
+    }
+    var partPos = getBidiPartAt(order, ch, sticky);
+    var other = bidiOther;
+    var val = getBidi(ch, partPos, sticky == "before");
+    if (other != null) { val.other = getBidi(ch, other, sticky != "before"); }
+    return val
+  }
+
+  // Used to cheaply estimate the coordinates for a position. Used for
+  // intermediate scroll updates.
+  function estimateCoords(cm, pos) {
+    var left = 0;
+    pos = clipPos(cm.doc, pos);
+    if (!cm.options.lineWrapping) { left = charWidth(cm.display) * pos.ch; }
+    var lineObj = getLine(cm.doc, pos.line);
+    var top = heightAtLine(lineObj) + paddingTop(cm.display);
+    return {left: left, right: left, top: top, bottom: top + lineObj.height}
+  }
+
+  // Positions returned by coordsChar contain some extra information.
+  // xRel is the relative x position of the input coordinates compared
+  // to the found position (so xRel > 0 means the coordinates are to
+  // the right of the character position, for example). When outside
+  // is true, that means the coordinates lie outside the line's
+  // vertical range.
+  function PosWithInfo(line, ch, sticky, outside, xRel) {
+    var pos = Pos(line, ch, sticky);
+    pos.xRel = xRel;
+    if (outside) { pos.outside = outside; }
+    return pos
+  }
+
+  // Compute the character position closest to the given coordinates.
+  // Input must be lineSpace-local ("div" coordinate system).
+  function coordsChar(cm, x, y) {
+    var doc = cm.doc;
+    y += cm.display.viewOffset;
+    if (y < 0) { return PosWithInfo(doc.first, 0, null, -1, -1) }
+    var lineN = lineAtHeight(doc, y), last = doc.first + doc.size - 1;
+    if (lineN > last)
+      { return PosWithInfo(doc.first + doc.size - 1, getLine(doc, last).text.length, null, 1, 1) }
+    if (x < 0) { x = 0; }
+
+    var lineObj = getLine(doc, lineN);
+    for (;;) {
+      var found = coordsCharInner(cm, lineObj, lineN, x, y);
+      var collapsed = collapsedSpanAround(lineObj, found.ch + (found.xRel > 0 || found.outside > 0 ? 1 : 0));
+      if (!collapsed) { return found }
+      var rangeEnd = collapsed.find(1);
+      if (rangeEnd.line == lineN) { return rangeEnd }
+      lineObj = getLine(doc, lineN = rangeEnd.line);
+    }
+  }
+
+  function wrappedLineExtent(cm, lineObj, preparedMeasure, y) {
+    y -= widgetTopHeight(lineObj);
+    var end = lineObj.text.length;
+    var begin = findFirst(function (ch) { return measureCharPrepared(cm, preparedMeasure, ch - 1).bottom <= y; }, end, 0);
+    end = findFirst(function (ch) { return measureCharPrepared(cm, preparedMeasure, ch).top > y; }, begin, end);
+    return {begin: begin, end: end}
+  }
+
+  function wrappedLineExtentChar(cm, lineObj, preparedMeasure, target) {
+    if (!preparedMeasure) { preparedMeasure = prepareMeasureForLine(cm, lineObj); }
+    var targetTop = intoCoordSystem(cm, lineObj, measureCharPrepared(cm, preparedMeasure, target), "line").top;
+    return wrappedLineExtent(cm, lineObj, preparedMeasure, targetTop)
+  }
+
+  // Returns true if the given side of a box is after the given
+  // coordinates, in top-to-bottom, left-to-right order.
+  function boxIsAfter(box, x, y, left) {
+    return box.bottom <= y ? false : box.top > y ? true : (left ? box.left : box.right) > x
+  }
+
+  function coordsCharInner(cm, lineObj, lineNo, x, y) {
+    // Move y into line-local coordinate space
+    y -= heightAtLine(lineObj);
+    var preparedMeasure = prepareMeasureForLine(cm, lineObj);
+    // When directly calling `measureCharPrepared`, we have to adjust
+    // for the widgets at this line.
+    var widgetHeight = widgetTopHeight(lineObj);
+    var begin = 0, end = lineObj.text.length, ltr = true;
+
+    var order = getOrder(lineObj, cm.doc.direction);
+    // If the line isn't plain left-to-right text, first figure out
+    // which bidi section the coordinates fall into.
+    if (order) {
+      var part = (cm.options.lineWrapping ? coordsBidiPartWrapped : coordsBidiPart)
+                   (cm, lineObj, lineNo, preparedMeasure, order, x, y);
+      ltr = part.level != 1;
+      // The awkward -1 offsets are needed because findFirst (called
+      // on these below) will treat its first bound as inclusive,
+      // second as exclusive, but we want to actually address the
+      // characters in the part's range
+      begin = ltr ? part.from : part.to - 1;
+      end = ltr ? part.to : part.from - 1;
+    }
+
+    // A binary search to find the first character whose bounding box
+    // starts after the coordinates. If we run across any whose box wrap
+    // the coordinates, store that.
+    var chAround = null, boxAround = null;
+    var ch = findFirst(function (ch) {
+      var box = measureCharPrepared(cm, preparedMeasure, ch);
+      box.top += widgetHeight; box.bottom += widgetHeight;
+      if (!boxIsAfter(box, x, y, false)) { return false }
+      if (box.top <= y && box.left <= x) {
+        chAround = ch;
+        boxAround = box;
+      }
+      return true
+    }, begin, end);
+
+    var baseX, sticky, outside = false;
+    // If a box around the coordinates was found, use that
+    if (boxAround) {
+      // Distinguish coordinates nearer to the left or right side of the box
+      var atLeft = x - boxAround.left < boxAround.right - x, atStart = atLeft == ltr;
+      ch = chAround + (atStart ? 0 : 1);
+      sticky = atStart ? "after" : "before";
+      baseX = atLeft ? boxAround.left : boxAround.right;
+    } else {
+      // (Adjust for extended bound, if necessary.)
+      if (!ltr && (ch == end || ch == begin)) { ch++; }
+      // To determine which side to associate with, get the box to the
+      // left of the character and compare it's vertical position to the
+      // coordinates
+      sticky = ch == 0 ? "after" : ch == lineObj.text.length ? "before" :
+        (measureCharPrepared(cm, preparedMeasure, ch - (ltr ? 1 : 0)).bottom + widgetHeight <= y) == ltr ?
+        "after" : "before";
+      // Now get accurate coordinates for this place, in order to get a
+      // base X position
+      var coords = cursorCoords(cm, Pos(lineNo, ch, sticky), "line", lineObj, preparedMeasure);
+      baseX = coords.left;
+      outside = y < coords.top ? -1 : y >= coords.bottom ? 1 : 0;
+    }
+
+    ch = skipExtendingChars(lineObj.text, ch, 1);
+    return PosWithInfo(lineNo, ch, sticky, outside, x - baseX)
+  }
+
+  function coordsBidiPart(cm, lineObj, lineNo, preparedMeasure, order, x, y) {
+    // Bidi parts are sorted left-to-right, and in a non-line-wrapping
+    // situation, we can take this ordering to correspond to the visual
+    // ordering. This finds the first part whose end is after the given
+    // coordinates.
+    var index = findFirst(function (i) {
+      var part = order[i], ltr = part.level != 1;
+      return boxIsAfter(cursorCoords(cm, Pos(lineNo, ltr ? part.to : part.from, ltr ? "before" : "after"),
+                                     "line", lineObj, preparedMeasure), x, y, true)
+    }, 0, order.length - 1);
+    var part = order[index];
+    // If this isn't the first part, the part's start is also after
+    // the coordinates, and the coordinates aren't on the same line as
+    // that start, move one part back.
+    if (index > 0) {
+      var ltr = part.level != 1;
+      var start = cursorCoords(cm, Pos(lineNo, ltr ? part.from : part.to, ltr ? "after" : "before"),
+                               "line", lineObj, preparedMeasure);
+      if (boxIsAfter(start, x, y, true) && start.top > y)
+        { part = order[index - 1]; }
+    }
+    return part
+  }
+
+  function coordsBidiPartWrapped(cm, lineObj, _lineNo, preparedMeasure, order, x, y) {
+    // In a wrapped line, rtl text on wrapping boundaries can do things
+    // that don't correspond to the ordering in our `order` array at
+    // all, so a binary search doesn't work, and we want to return a
+    // part that only spans one line so that the binary search in
+    // coordsCharInner is safe. As such, we first find the extent of the
+    // wrapped line, and then do a flat search in which we discard any
+    // spans that aren't on the line.
+    var ref = wrappedLineExtent(cm, lineObj, preparedMeasure, y);
+    var begin = ref.begin;
+    var end = ref.end;
+    if (/\s/.test(lineObj.text.charAt(end - 1))) { end--; }
+    var part = null, closestDist = null;
+    for (var i = 0; i < order.length; i++) {
+      var p = order[i];
+      if (p.from >= end || p.to <= begin) { continue }
+      var ltr = p.level != 1;
+      var endX = measureCharPrepared(cm, preparedMeasure, ltr ? Math.min(end, p.to) - 1 : Math.max(begin, p.from)).right;
+      // Weigh against spans ending before this, so that they are only
+      // picked if nothing ends after
+      var dist = endX < x ? x - endX + 1e9 : endX - x;
+      if (!part || closestDist > dist) {
+        part = p;
+        closestDist = dist;
+      }
+    }
+    if (!part) { part = order[order.length - 1]; }
+    // Clip the part to the wrapped line.
+    if (part.from < begin) { part = {from: begin, to: part.to, level: part.level}; }
+    if (part.to > end) { part = {from: part.from, to: end, level: part.level}; }
+    return part
+  }
+
+  var measureText;
+  // Compute the default text height.
+  function textHeight(display) {
+    if (display.cachedTextHeight != null) { return display.cachedTextHeight }
+    if (measureText == null) {
+      measureText = elt("pre", null, "CodeMirror-line-like");
+      // Measure a bunch of lines, for browsers that compute
+      // fractional heights.
+      for (var i = 0; i < 49; ++i) {
+        measureText.appendChild(document.createTextNode("x"));
+        measureText.appendChild(elt("br"));
+      }
+      measureText.appendChild(document.createTextNode("x"));
+    }
+    removeChildrenAndAdd(display.measure, measureText);
+    var height = measureText.offsetHeight / 50;
+    if (height > 3) { display.cachedTextHeight = height; }
+    removeChildren(display.measure);
+    return height || 1
+  }
+
+  // Compute the default character width.
+  function charWidth(display) {
+    if (display.cachedCharWidth != null) { return display.cachedCharWidth }
+    var anchor = elt("span", "xxxxxxxxxx");
+    var pre = elt("pre", [anchor], "CodeMirror-line-like");
+    removeChildrenAndAdd(display.measure, pre);
+    var rect = anchor.getBoundingClientRect(), width = (rect.right - rect.left) / 10;
+    if (width > 2) { display.cachedCharWidth = width; }
+    return width || 10
+  }
+
+  // Do a bulk-read of the DOM positions and sizes needed to draw the
+  // view, so that we don't interleave reading and writing to the DOM.
+  function getDimensions(cm) {
+    var d = cm.display, left = {}, width = {};
+    var gutterLeft = d.gutters.clientLeft;
+    for (var n = d.gutters.firstChild, i = 0; n; n = n.nextSibling, ++i) {
+      var id = cm.display.gutterSpecs[i].className;
+      left[id] = n.offsetLeft + n.clientLeft + gutterLeft;
+      width[id] = n.clientWidth;
+    }
+    return {fixedPos: compensateForHScroll(d),
+            gutterTotalWidth: d.gutters.offsetWidth,
+            gutterLeft: left,
+            gutterWidth: width,
+            wrapperWidth: d.wrapper.clientWidth}
+  }
+
+  // Computes display.scroller.scrollLeft + display.gutters.offsetWidth,
+  // but using getBoundingClientRect to get a sub-pixel-accurate
+  // result.
+  function compensateForHScroll(display) {
+    return display.scroller.getBoundingClientRect().left - display.sizer.getBoundingClientRect().left
+  }
+
+  // Returns a function that estimates the height of a line, to use as
+  // first approximation until the line becomes visible (and is thus
+  // properly measurable).
+  function estimateHeight(cm) {
+    var th = textHeight(cm.display), wrapping = cm.options.lineWrapping;
+    var perLine = wrapping && Math.max(5, cm.display.scroller.clientWidth / charWidth(cm.display) - 3);
+    return function (line) {
+      if (lineIsHidden(cm.doc, line)) { return 0 }
+
+      var widgetsHeight = 0;
+      if (line.widgets) { for (var i = 0; i < line.widgets.length; i++) {
+        if (line.widgets[i].height) { widgetsHeight += line.widgets[i].height; }
+      } }
+
+      if (wrapping)
+        { return widgetsHeight + (Math.ceil(line.text.length / perLine) || 1) * th }
+      else
+        { return widgetsHeight + th }
+    }
+  }
+
+  function estimateLineHeights(cm) {
+    var doc = cm.doc, est = estimateHeight(cm);
+    doc.iter(function (line) {
+      var estHeight = est(line);
+      if (estHeight != line.height) { updateLineHeight(line, estHeight); }
+    });
+  }
+
+  // Given a mouse event, find the corresponding position. If liberal
+  // is false, it checks whether a gutter or scrollbar was clicked,
+  // and returns null if it was. forRect is used by rectangular
+  // selections, and tries to estimate a character position even for
+  // coordinates beyond the right of the text.
+  function posFromMouse(cm, e, liberal, forRect) {
+    var display = cm.display;
+    if (!liberal && e_target(e).getAttribute("cm-not-content") == "true") { return null }
+
+    var x, y, space = display.lineSpace.getBoundingClientRect();
+    // Fails unpredictably on IE[67] when mouse is dragged around quickly.
+    try { x = e.clientX - space.left; y = e.clientY - space.top; }
+    catch (e$1) { return null }
+    var coords = coordsChar(cm, x, y), line;
+    if (forRect && coords.xRel > 0 && (line = getLine(cm.doc, coords.line).text).length == coords.ch) {
+      var colDiff = countColumn(line, line.length, cm.options.tabSize) - line.length;
+      coords = Pos(coords.line, Math.max(0, Math.round((x - paddingH(cm.display).left) / charWidth(cm.display)) - colDiff));
+    }
+    return coords
+  }
+
+  // Find the view element corresponding to a given line. Return null
+  // when the line isn't visible.
+  function findViewIndex(cm, n) {
+    if (n >= cm.display.viewTo) { return null }
+    n -= cm.display.viewFrom;
+    if (n < 0) { return null }
+    var view = cm.display.view;
+    for (var i = 0; i < view.length; i++) {
+      n -= view[i].size;
+      if (n < 0) { return i }
+    }
+  }
+
+  // Updates the display.view data structure for a given change to the
+  // document. From and to are in pre-change coordinates. Lendiff is
+  // the amount of lines added or subtracted by the change. This is
+  // used for changes that span multiple lines, or change the way
+  // lines are divided into visual lines. regLineChange (below)
+  // registers single-line changes.
+  function regChange(cm, from, to, lendiff) {
+    if (from == null) { from = cm.doc.first; }
+    if (to == null) { to = cm.doc.first + cm.doc.size; }
+    if (!lendiff) { lendiff = 0; }
+
+    var display = cm.display;
+    if (lendiff && to < display.viewTo &&
+        (display.updateLineNumbers == null || display.updateLineNumbers > from))
+      { display.updateLineNumbers = from; }
+
+    cm.curOp.viewChanged = true;
+
+    if (from >= display.viewTo) { // Change after
+      if (sawCollapsedSpans && visualLineNo(cm.doc, from) < display.viewTo)
+        { resetView(cm); }
+    } else if (to <= display.viewFrom) { // Change before
+      if (sawCollapsedSpans && visualLineEndNo(cm.doc, to + lendiff) > display.viewFrom) {
+        resetView(cm);
+      } else {
+        display.viewFrom += lendiff;
+        display.viewTo += lendiff;
+      }
+    } else if (from <= display.viewFrom && to >= display.viewTo) { // Full overlap
+      resetView(cm);
+    } else if (from <= display.viewFrom) { // Top overlap
+      var cut = viewCuttingPoint(cm, to, to + lendiff, 1);
+      if (cut) {
+        display.view = display.view.slice(cut.index);
+        display.viewFrom = cut.lineN;
+        display.viewTo += lendiff;
+      } else {
+        resetView(cm);
+      }
+    } else if (to >= display.viewTo) { // Bottom overlap
+      var cut$1 = viewCuttingPoint(cm, from, from, -1);
+      if (cut$1) {
+        display.view = display.view.slice(0, cut$1.index);
+        display.viewTo = cut$1.lineN;
+      } else {
+        resetView(cm);
+      }
+    } else { // Gap in the middle
+      var cutTop = viewCuttingPoint(cm, from, from, -1);
+      var cutBot = viewCuttingPoint(cm, to, to + lendiff, 1);
+      if (cutTop && cutBot) {
+        display.view = display.view.slice(0, cutTop.index)
+          .concat(buildViewArray(cm, cutTop.lineN, cutBot.lineN))
+          .concat(display.view.slice(cutBot.index));
+        display.viewTo += lendiff;
+      } else {
+        resetView(cm);
+      }
+    }
+
+    var ext = display.externalMeasured;
+    if (ext) {
+      if (to < ext.lineN)
+        { ext.lineN += lendiff; }
+      else if (from < ext.lineN + ext.size)
+        { display.externalMeasured = null; }
+    }
+  }
+
+  // Register a change to a single line. Type must be one of "text",
+  // "gutter", "class", "widget"
+  function regLineChange(cm, line, type) {
+    cm.curOp.viewChanged = true;
+    var display = cm.display, ext = cm.display.externalMeasured;
+    if (ext && line >= ext.lineN && line < ext.lineN + ext.size)
+      { display.externalMeasured = null; }
+
+    if (line < display.viewFrom || line >= display.viewTo) { return }
+    var lineView = display.view[findViewIndex(cm, line)];
+    if (lineView.node == null) { return }
+    var arr = lineView.changes || (lineView.changes = []);
+    if (indexOf(arr, type) == -1) { arr.push(type); }
+  }
+
+  // Clear the view.
+  function resetView(cm) {
+    cm.display.viewFrom = cm.display.viewTo = cm.doc.first;
+    cm.display.view = [];
+    cm.display.viewOffset = 0;
+  }
+
+  function viewCuttingPoint(cm, oldN, newN, dir) {
+    var index = findViewIndex(cm, oldN), diff, view = cm.display.view;
+    if (!sawCollapsedSpans || newN == cm.doc.first + cm.doc.size)
+      { return {index: index, lineN: newN} }
+    var n = cm.display.viewFrom;
+    for (var i = 0; i < index; i++)
+      { n += view[i].size; }
+    if (n != oldN) {
+      if (dir > 0) {
+        if (index == view.length - 1) { return null }
+        diff = (n + view[index].size) - oldN;
+        index++;
+      } else {
+        diff = n - oldN;
+      }
+      oldN += diff; newN += diff;
+    }
+    while (visualLineNo(cm.doc, newN) != newN) {
+      if (index == (dir < 0 ? 0 : view.length - 1)) { return null }
+      newN += dir * view[index - (dir < 0 ? 1 : 0)].size;
+      index += dir;
+    }
+    return {index: index, lineN: newN}
+  }
+
+  // Force the view to cover a given range, adding empty view element
+  // or clipping off existing ones as needed.
+  function adjustView(cm, from, to) {
+    var display = cm.display, view = display.view;
+    if (view.length == 0 || from >= display.viewTo || to <= display.viewFrom) {
+      display.view = buildViewArray(cm, from, to);
+      display.viewFrom = from;
+    } else {
+      if (display.viewFrom > from)
+        { display.view = buildViewArray(cm, from, display.viewFrom).concat(display.view); }
+      else if (display.viewFrom < from)
+        { display.view = display.view.slice(findViewIndex(cm, from)); }
+      display.viewFrom = from;
+      if (display.viewTo < to)
+        { display.view = display.view.concat(buildViewArray(cm, display.viewTo, to)); }
+      else if (display.viewTo > to)
+        { display.view = display.view.slice(0, findViewIndex(cm, to)); }
+    }
+    display.viewTo = to;
+  }
+
+  // Count the number of lines in the view whose DOM representation is
+  // out of date (or nonexistent).
+  function countDirtyView(cm) {
+    var view = cm.display.view, dirty = 0;
+    for (var i = 0; i < view.length; i++) {
+      var lineView = view[i];
+      if (!lineView.hidden && (!lineView.node || lineView.changes)) { ++dirty; }
+    }
+    return dirty
+  }
+
+  function updateSelection(cm) {
+    cm.display.input.showSelection(cm.display.input.prepareSelection());
+  }
+
+  function prepareSelection(cm, primary) {
+    if ( primary === void 0 ) primary = true;
+
+    var doc = cm.doc, result = {};
+    var curFragment = result.cursors = document.createDocumentFragment();
+    var selFragment = result.selection = document.createDocumentFragment();
+
+    for (var i = 0; i < doc.sel.ranges.length; i++) {
+      if (!primary && i == doc.sel.primIndex) { continue }
+      var range = doc.sel.ranges[i];
+      if (range.from().line >= cm.display.viewTo || range.to().line < cm.display.viewFrom) { continue }
+      var collapsed = range.empty();
+      if (collapsed || cm.options.showCursorWhenSelecting)
+        { drawSelectionCursor(cm, range.head, curFragment); }
+      if (!collapsed)
+        { drawSelectionRange(cm, range, selFragment); }
+    }
+    return result
+  }
+
+  // Draws a cursor for the given range
+  function drawSelectionCursor(cm, head, output) {
+    var pos = cursorCoords(cm, head, "div", null, null, !cm.options.singleCursorHeightPerLine);
+
+    var cursor = output.appendChild(elt("div", "\u00a0", "CodeMirror-cursor"));
+    cursor.style.left = pos.left + "px";
+    cursor.style.top = pos.top + "px";
+    cursor.style.height = Math.max(0, pos.bottom - pos.top) * cm.options.cursorHeight + "px";
+
+    if (pos.other) {
+      // Secondary cursor, shown when on a 'jump' in bi-directional text
+      var otherCursor = output.appendChild(elt("div", "\u00a0", "CodeMirror-cursor CodeMirror-secondarycursor"));
+      otherCursor.style.display = "";
+      otherCursor.style.left = pos.other.left + "px";
+      otherCursor.style.top = pos.other.top + "px";
+      otherCursor.style.height = (pos.other.bottom - pos.other.top) * .85 + "px";
+    }
+  }
+
+  function cmpCoords(a, b) { return a.top - b.top || a.left - b.left }
+
+  // Draws the given range as a highlighted selection
+  function drawSelectionRange(cm, range, output) {
+    var display = cm.display, doc = cm.doc;
+    var fragment = document.createDocumentFragment();
+    var padding = paddingH(cm.display), leftSide = padding.left;
+    var rightSide = Math.max(display.sizerWidth, displayWidth(cm) - display.sizer.offsetLeft) - padding.right;
+    var docLTR = doc.direction == "ltr";
+
+    function add(left, top, width, bottom) {
+      if (top < 0) { top = 0; }
+      top = Math.round(top);
+      bottom = Math.round(bottom);
+      fragment.appendChild(elt("div", null, "CodeMirror-selected", ("position: absolute; left: " + left + "px;\n                             top: " + top + "px; width: " + (width == null ? rightSide - left : width) + "px;\n                             height: " + (bottom - top) + "px")));
+    }
+
+    function drawForLine(line, fromArg, toArg) {
+      var lineObj = getLine(doc, line);
+      var lineLen = lineObj.text.length;
+      var start, end;
+      function coords(ch, bias) {
+        return charCoords(cm, Pos(line, ch), "div", lineObj, bias)
+      }
+
+      function wrapX(pos, dir, side) {
+        var extent = wrappedLineExtentChar(cm, lineObj, null, pos);
+        var prop = (dir == "ltr") == (side == "after") ? "left" : "right";
+        var ch = side == "after" ? extent.begin : extent.end - (/\s/.test(lineObj.text.charAt(extent.end - 1)) ? 2 : 1);
+        return coords(ch, prop)[prop]
+      }
+
+      var order = getOrder(lineObj, doc.direction);
+      iterateBidiSections(order, fromArg || 0, toArg == null ? lineLen : toArg, function (from, to, dir, i) {
+        var ltr = dir == "ltr";
+        var fromPos = coords(from, ltr ? "left" : "right");
+        var toPos = coords(to - 1, ltr ? "right" : "left");
+
+        var openStart = fromArg == null && from == 0, openEnd = toArg == null && to == lineLen;
+        var first = i == 0, last = !order || i == order.length - 1;
+        if (toPos.top - fromPos.top <= 3) { // Single line
+          var openLeft = (docLTR ? openStart : openEnd) && first;
+          var openRight = (docLTR ? openEnd : openStart) && last;
+          var left = openLeft ? leftSide : (ltr ? fromPos : toPos).left;
+          var right = openRight ? rightSide : (ltr ? toPos : fromPos).right;
+          add(left, fromPos.top, right - left, fromPos.bottom);
+        } else { // Multiple lines
+          var topLeft, topRight, botLeft, botRight;
+          if (ltr) {
+            topLeft = docLTR && openStart && first ? leftSide : fromPos.left;
+            topRight = docLTR ? rightSide : wrapX(from, dir, "before");
+            botLeft = docLTR ? leftSide : wrapX(to, dir, "after");
+            botRight = docLTR && openEnd && last ? rightSide : toPos.right;
+          } else {
+            topLeft = !docLTR ? leftSide : wrapX(from, dir, "before");
+            topRight = !docLTR && openStart && first ? rightSide : fromPos.right;
+            botLeft = !docLTR && openEnd && last ? leftSide : toPos.left;
+            botRight = !docLTR ? rightSide : wrapX(to, dir, "after");
+          }
+          add(topLeft, fromPos.top, topRight - topLeft, fromPos.bottom);
+          if (fromPos.bottom < toPos.top) { add(leftSide, fromPos.bottom, null, toPos.top); }
+          add(botLeft, toPos.top, botRight - botLeft, toPos.bottom);
+        }
+
+        if (!start || cmpCoords(fromPos, start) < 0) { start = fromPos; }
+        if (cmpCoords(toPos, start) < 0) { start = toPos; }
+        if (!end || cmpCoords(fromPos, end) < 0) { end = fromPos; }
+        if (cmpCoords(toPos, end) < 0) { end = toPos; }
+      });
+      return {start: start, end: end}
+    }
+
+    var sFrom = range.from(), sTo = range.to();
+    if (sFrom.line == sTo.line) {
+      drawForLine(sFrom.line, sFrom.ch, sTo.ch);
+    } else {
+      var fromLine = getLine(doc, sFrom.line), toLine = getLine(doc, sTo.line);
+      var singleVLine = visualLine(fromLine) == visualLine(toLine);
+      var leftEnd = drawForLine(sFrom.line, sFrom.ch, singleVLine ? fromLine.text.length + 1 : null).end;
+      var rightStart = drawForLine(sTo.line, singleVLine ? 0 : null, sTo.ch).start;
+      if (singleVLine) {
+        if (leftEnd.top < rightStart.top - 2) {
+          add(leftEnd.right, leftEnd.top, null, leftEnd.bottom);
+          add(leftSide, rightStart.top, rightStart.left, rightStart.bottom);
+        } else {
+          add(leftEnd.right, leftEnd.top, rightStart.left - leftEnd.right, leftEnd.bottom);
+        }
+      }
+      if (leftEnd.bottom < rightStart.top)
+        { add(leftSide, leftEnd.bottom, null, rightStart.top); }
+    }
+
+    output.appendChild(fragment);
+  }
+
+  // Cursor-blinking
+  function restartBlink(cm) {
+    if (!cm.state.focused) { return }
+    var display = cm.display;
+    clearInterval(display.blinker);
+    var on = true;
+    display.cursorDiv.style.visibility = "";
+    if (cm.options.cursorBlinkRate > 0)
+      { display.blinker = setInterval(function () { return display.cursorDiv.style.visibility = (on = !on) ? "" : "hidden"; },
+        cm.options.cursorBlinkRate); }
+    else if (cm.options.cursorBlinkRate < 0)
+      { display.cursorDiv.style.visibility = "hidden"; }
+  }
+
+  function ensureFocus(cm) {
+    if (!cm.state.focused) { cm.display.input.focus(); onFocus(cm); }
+  }
+
+  function delayBlurEvent(cm) {
+    cm.state.delayingBlurEvent = true;
+    setTimeout(function () { if (cm.state.delayingBlurEvent) {
+      cm.state.delayingBlurEvent = false;
+      onBlur(cm);
+    } }, 100);
+  }
+
+  function onFocus(cm, e) {
+    if (cm.state.delayingBlurEvent) { cm.state.delayingBlurEvent = false; }
+
+    if (cm.options.readOnly == "nocursor") { return }
+    if (!cm.state.focused) {
+      signal(cm, "focus", cm, e);
+      cm.state.focused = true;
+      addClass(cm.display.wrapper, "CodeMirror-focused");
+      // This test prevents this from firing when a context
+      // menu is closed (since the input reset would kill the
+      // select-all detection hack)
+      if (!cm.curOp && cm.display.selForContextMenu != cm.doc.sel) {
+        cm.display.input.reset();
+        if (webkit) { setTimeout(function () { return cm.display.input.reset(true); }, 20); } // Issue #1730
+      }
+      cm.display.input.receivedFocus();
+    }
+    restartBlink(cm);
+  }
+  function onBlur(cm, e) {
+    if (cm.state.delayingBlurEvent) { return }
+
+    if (cm.state.focused) {
+      signal(cm, "blur", cm, e);
+      cm.state.focused = false;
+      rmClass(cm.display.wrapper, "CodeMirror-focused");
+    }
+    clearInterval(cm.display.blinker);
+    setTimeout(function () { if (!cm.state.focused) { cm.display.shift = false; } }, 150);
+  }
+
+  // Read the actual heights of the rendered lines, and update their
+  // stored heights to match.
+  function updateHeightsInViewport(cm) {
+    var display = cm.display;
+    var prevBottom = display.lineDiv.offsetTop;
+    for (var i = 0; i < display.view.length; i++) {
+      var cur = display.view[i], wrapping = cm.options.lineWrapping;
+      var height = (void 0), width = 0;
+      if (cur.hidden) { continue }
+      if (ie && ie_version < 8) {
+        var bot = cur.node.offsetTop + cur.node.offsetHeight;
+        height = bot - prevBottom;
+        prevBottom = bot;
+      } else {
+        var box = cur.node.getBoundingClientRect();
+        height = box.bottom - box.top;
+        // Check that lines don't extend past the right of the current
+        // editor width
+        if (!wrapping && cur.text.firstChild)
+          { width = cur.text.firstChild.getBoundingClientRect().right - box.left - 1; }
+      }
+      var diff = cur.line.height - height;
+      if (diff > .005 || diff < -.005) {
+        updateLineHeight(cur.line, height);
+        updateWidgetHeight(cur.line);
+        if (cur.rest) { for (var j = 0; j < cur.rest.length; j++)
+          { updateWidgetHeight(cur.rest[j]); } }
+      }
+      if (width > cm.display.sizerWidth) {
+        var chWidth = Math.ceil(width / charWidth(cm.display));
+        if (chWidth > cm.display.maxLineLength) {
+          cm.display.maxLineLength = chWidth;
+          cm.display.maxLine = cur.line;
+          cm.display.maxLineChanged = true;
+        }
+      }
+    }
+  }
+
+  // Read and store the height of line widgets associated with the
+  // given line.
+  function updateWidgetHeight(line) {
+    if (line.widgets) { for (var i = 0; i < line.widgets.length; ++i) {
+      var w = line.widgets[i], parent = w.node.parentNode;
+      if (parent) { w.height = parent.offsetHeight; }
+    } }
+  }
+
+  // Compute the lines that are visible in a given viewport (defaults
+  // the the current scroll position). viewport may contain top,
+  // height, and ensure (see op.scrollToPos) properties.
+  function visibleLines(display, doc, viewport) {
+    var top = viewport && viewport.top != null ? Math.max(0, viewport.top) : display.scroller.scrollTop;
+    top = Math.floor(top - paddingTop(display));
+    var bottom = viewport && viewport.bottom != null ? viewport.bottom : top + display.wrapper.clientHeight;
+
+    var from = lineAtHeight(doc, top), to = lineAtHeight(doc, bottom);
+    // Ensure is a {from: {line, ch}, to: {line, ch}} object, and
+    // forces those lines into the viewport (if possible).
+    if (viewport && viewport.ensure) {
+      var ensureFrom = viewport.ensure.from.line, ensureTo = viewport.ensure.to.line;
+      if (ensureFrom < from) {
+        from = ensureFrom;
+        to = lineAtHeight(doc, heightAtLine(getLine(doc, ensureFrom)) + display.wrapper.clientHeight);
+      } else if (Math.min(ensureTo, doc.lastLine()) >= to) {
+        from = lineAtHeight(doc, heightAtLine(getLine(doc, ensureTo)) - display.wrapper.clientHeight);
+        to = ensureTo;
+      }
+    }
+    return {from: from, to: Math.max(to, from + 1)}
+  }
+
+  // SCROLLING THINGS INTO VIEW
+
+  // If an editor sits on the top or bottom of the window, partially
+  // scrolled out of view, this ensures that the cursor is visible.
+  function maybeScrollWindow(cm, rect) {
+    if (signalDOMEvent(cm, "scrollCursorIntoView")) { return }
+
+    var display = cm.display, box = display.sizer.getBoundingClientRect(), doScroll = null;
+    if (rect.top + box.top < 0) { doScroll = true; }
+    else if (rect.bottom + box.top > (window.innerHeight || document.documentElement.clientHeight)) { doScroll = false; }
+    if (doScroll != null && !phantom) {
+      var scrollNode = elt("div", "\u200b", null, ("position: absolute;\n                         top: " + (rect.top - display.viewOffset - paddingTop(cm.display)) + "px;\n                         height: " + (rect.bottom - rect.top + scrollGap(cm) + display.barHeight) + "px;\n                         left: " + (rect.left) + "px; width: " + (Math.max(2, rect.right - rect.left)) + "px;"));
+      cm.display.lineSpace.appendChild(scrollNode);
+      scrollNode.scrollIntoView(doScroll);
+      cm.display.lineSpace.removeChild(scrollNode);
+    }
+  }
+
+  // Scroll a given position into view (immediately), verifying that
+  // it actually became visible (as line heights are accurately
+  // measured, the position of something may 'drift' during drawing).
+  function scrollPosIntoView(cm, pos, end, margin) {
+    if (margin == null) { margin = 0; }
+    var rect;
+    if (!cm.options.lineWrapping && pos == end) {
+      // Set pos and end to the cursor positions around the character pos sticks to
+      // If pos.sticky == "before", that is around pos.ch - 1, otherwise around pos.ch
+      // If pos == Pos(_, 0, "before"), pos and end are unchanged
+      pos = pos.ch ? Pos(pos.line, pos.sticky == "before" ? pos.ch - 1 : pos.ch, "after") : pos;
+      end = pos.sticky == "before" ? Pos(pos.line, pos.ch + 1, "before") : pos;
+    }
+    for (var limit = 0; limit < 5; limit++) {
+      var changed = false;
+      var coords = cursorCoords(cm, pos);
+      var endCoords = !end || end == pos ? coords : cursorCoords(cm, end);
+      rect = {left: Math.min(coords.left, endCoords.left),
+              top: Math.min(coords.top, endCoords.top) - margin,
+              right: Math.max(coords.left, endCoords.left),
+              bottom: Math.max(coords.bottom, endCoords.bottom) + margin};
+      var scrollPos = calculateScrollPos(cm, rect);
+      var startTop = cm.doc.scrollTop, startLeft = cm.doc.scrollLeft;
+      if (scrollPos.scrollTop != null) {
+        updateScrollTop(cm, scrollPos.scrollTop);
+        if (Math.abs(cm.doc.scrollTop - startTop) > 1) { changed = true; }
+      }
+      if (scrollPos.scrollLeft != null) {
+        setScrollLeft(cm, scrollPos.scrollLeft);
+        if (Math.abs(cm.doc.scrollLeft - startLeft) > 1) { changed = true; }
+      }
+      if (!changed) { break }
+    }
+    return rect
+  }
+
+  // Scroll a given set of coordinates into view (immediately).
+  function scrollIntoView(cm, rect) {
+    var scrollPos = calculateScrollPos(cm, rect);
+    if (scrollPos.scrollTop != null) { updateScrollTop(cm, scrollPos.scrollTop); }
+    if (scrollPos.scrollLeft != null) { setScrollLeft(cm, scrollPos.scrollLeft); }
+  }
+
+  // Calculate a new scroll position needed to scroll the given
+  // rectangle into view. Returns an object with scrollTop and
+  // scrollLeft properties. When these are undefined, the
+  // vertical/horizontal position does not need to be adjusted.
+  function calculateScrollPos(cm, rect) {
+    var display = cm.display, snapMargin = textHeight(cm.display);
+    if (rect.top < 0) { rect.top = 0; }
+    var screentop = cm.curOp && cm.curOp.scrollTop != null ? cm.curOp.scrollTop : display.scroller.scrollTop;
+    var screen = displayHeight(cm), result = {};
+    if (rect.bottom - rect.top > screen) { rect.bottom = rect.top + screen; }
+    var docBottom = cm.doc.height + paddingVert(display);
+    var atTop = rect.top < snapMargin, atBottom = rect.bottom > docBottom - snapMargin;
+    if (rect.top < screentop) {
+      result.scrollTop = atTop ? 0 : rect.top;
+    } else if (rect.bottom > screentop + screen) {
+      var newTop = Math.min(rect.top, (atBottom ? docBottom : rect.bottom) - screen);
+      if (newTop != screentop) { result.scrollTop = newTop; }
+    }
+
+    var screenleft = cm.curOp && cm.curOp.scrollLeft != null ? cm.curOp.scrollLeft : display.scroller.scrollLeft;
+    var screenw = displayWidth(cm) - (cm.options.fixedGutter ? display.gutters.offsetWidth : 0);
+    var tooWide = rect.right - rect.left > screenw;
+    if (tooWide) { rect.right = rect.left + screenw; }
+    if (rect.left < 10)
+      { result.scrollLeft = 0; }
+    else if (rect.left < screenleft)
+      { result.scrollLeft = Math.max(0, rect.left - (tooWide ? 0 : 10)); }
+    else if (rect.right > screenw + screenleft - 3)
+      { result.scrollLeft = rect.right + (tooWide ? 0 : 10) - screenw; }
+    return result
+  }
+
+  // Store a relative adjustment to the scroll position in the current
+  // operation (to be applied when the operation finishes).
+  function addToScrollTop(cm, top) {
+    if (top == null) { return }
+    resolveScrollToPos(cm);
+    cm.curOp.scrollTop = (cm.curOp.scrollTop == null ? cm.doc.scrollTop : cm.curOp.scrollTop) + top;
+  }
+
+  // Make sure that at the end of the operation the current cursor is
+  // shown.
+  function ensureCursorVisible(cm) {
+    resolveScrollToPos(cm);
+    var cur = cm.getCursor();
+    cm.curOp.scrollToPos = {from: cur, to: cur, margin: cm.options.cursorScrollMargin};
+  }
+
+  function scrollToCoords(cm, x, y) {
+    if (x != null || y != null) { resolveScrollToPos(cm); }
+    if (x != null) { cm.curOp.scrollLeft = x; }
+    if (y != null) { cm.curOp.scrollTop = y; }
+  }
+
+  function scrollToRange(cm, range) {
+    resolveScrollToPos(cm);
+    cm.curOp.scrollToPos = range;
+  }
+
+  // When an operation has its scrollToPos property set, and another
+  // scroll action is applied before the end of the operation, this
+  // 'simulates' scrolling that position into view in a cheap way, so
+  // that the effect of intermediate scroll commands is not ignored.
+  function resolveScrollToPos(cm) {
+    var range = cm.curOp.scrollToPos;
+    if (range) {
+      cm.curOp.scrollToPos = null;
+      var from = estimateCoords(cm, range.from), to = estimateCoords(cm, range.to);
+      scrollToCoordsRange(cm, from, to, range.margin);
+    }
+  }
+
+  function scrollToCoordsRange(cm, from, to, margin) {
+    var sPos = calculateScrollPos(cm, {
+      left: Math.min(from.left, to.left),
+      top: Math.min(from.top, to.top) - margin,
+      right: Math.max(from.right, to.right),
+      bottom: Math.max(from.bottom, to.bottom) + margin
+    });
+    scrollToCoords(cm, sPos.scrollLeft, sPos.scrollTop);
+  }
+
+  // Sync the scrollable area and scrollbars, ensure the viewport
+  // covers the visible area.
+  function updateScrollTop(cm, val) {
+    if (Math.abs(cm.doc.scrollTop - val) < 2) { return }
+    if (!gecko) { updateDisplaySimple(cm, {top: val}); }
+    setScrollTop(cm, val, true);
+    if (gecko) { updateDisplaySimple(cm); }
+    startWorker(cm, 100);
+  }
+
+  function setScrollTop(cm, val, forceScroll) {
+    val = Math.max(0, Math.min(cm.display.scroller.scrollHeight - cm.display.scroller.clientHeight, val));
+    if (cm.display.scroller.scrollTop == val && !forceScroll) { return }
+    cm.doc.scrollTop = val;
+    cm.display.scrollbars.setScrollTop(val);
+    if (cm.display.scroller.scrollTop != val) { cm.display.scroller.scrollTop = val; }
+  }
+
+  // Sync scroller and scrollbar, ensure the gutter elements are
+  // aligned.
+  function setScrollLeft(cm, val, isScroller, forceScroll) {
+    val = Math.max(0, Math.min(val, cm.display.scroller.scrollWidth - cm.display.scroller.clientWidth));
+    if ((isScroller ? val == cm.doc.scrollLeft : Math.abs(cm.doc.scrollLeft - val) < 2) && !forceScroll) { return }
+    cm.doc.scrollLeft = val;
+    alignHorizontally(cm);
+    if (cm.display.scroller.scrollLeft != val) { cm.display.scroller.scrollLeft = val; }
+    cm.display.scrollbars.setScrollLeft(val);
+  }
+
+  // SCROLLBARS
+
+  // Prepare DOM reads needed to update the scrollbars. Done in one
+  // shot to minimize update/measure roundtrips.
+  function measureForScrollbars(cm) {
+    var d = cm.display, gutterW = d.gutters.offsetWidth;
+    var docH = Math.round(cm.doc.height + paddingVert(cm.display));
+    return {
+      clientHeight: d.scroller.clientHeight,
+      viewHeight: d.wrapper.clientHeight,
+      scrollWidth: d.scroller.scrollWidth, clientWidth: d.scroller.clientWidth,
+      viewWidth: d.wrapper.clientWidth,
+      barLeft: cm.options.fixedGutter ? gutterW : 0,
+      docHeight: docH,
+      scrollHeight: docH + scrollGap(cm) + d.barHeight,
+      nativeBarWidth: d.nativeBarWidth,
+      gutterWidth: gutterW
+    }
+  }
+
+  var NativeScrollbars = function(place, scroll, cm) {
+    this.cm = cm;
+    var vert = this.vert = elt("div", [elt("div", null, null, "min-width: 1px")], "CodeMirror-vscrollbar");
+    var horiz = this.horiz = elt("div", [elt("div", null, null, "height: 100%; min-height: 1px")], "CodeMirror-hscrollbar");
+    vert.tabIndex = horiz.tabIndex = -1;
+    place(vert); place(horiz);
+
+    on(vert, "scroll", function () {
+      if (vert.clientHeight) { scroll(vert.scrollTop, "vertical"); }
+    });
+    on(horiz, "scroll", function () {
+      if (horiz.clientWidth) { scroll(horiz.scrollLeft, "horizontal"); }
+    });
+
+    this.checkedZeroWidth = false;
+    // Need to set a minimum width to see the scrollbar on IE7 (but must not set it on IE8).
+    if (ie && ie_version < 8) { this.horiz.style.minHeight = this.vert.style.minWidth = "18px"; }
+  };
+
+  NativeScrollbars.prototype.update = function (measure) {
+    var needsH = measure.scrollWidth > measure.clientWidth + 1;
+    var needsV = measure.scrollHeight > measure.clientHeight + 1;
+    var sWidth = measure.nativeBarWidth;
+
+    if (needsV) {
+      this.vert.style.display = "block";
+      this.vert.style.bottom = needsH ? sWidth + "px" : "0";
+      var totalHeight = measure.viewHeight - (needsH ? sWidth : 0);
+      // A bug in IE8 can cause this value to be negative, so guard it.
+      this.vert.firstChild.style.height =
+        Math.max(0, measure.scrollHeight - measure.clientHeight + totalHeight) + "px";
+    } else {
+      this.vert.style.display = "";
+      this.vert.firstChild.style.height = "0";
+    }
+
+    if (needsH) {
+      this.horiz.style.display = "block";
+      this.horiz.style.right = needsV ? sWidth + "px" : "0";
+      this.horiz.style.left = measure.barLeft + "px";
+      var totalWidth = measure.viewWidth - measure.barLeft - (needsV ? sWidth : 0);
+      this.horiz.firstChild.style.width =
+        Math.max(0, measure.scrollWidth - measure.clientWidth + totalWidth) + "px";
+    } else {
+      this.horiz.style.display = "";
+      this.horiz.firstChild.style.width = "0";
+    }
+
+    if (!this.checkedZeroWidth && measure.clientHeight > 0) {
+      if (sWidth == 0) { this.zeroWidthHack(); }
+      this.checkedZeroWidth = true;
+    }
+
+    return {right: needsV ? sWidth : 0, bottom: needsH ? sWidth : 0}
+  };
+
+  NativeScrollbars.prototype.setScrollLeft = function (pos) {
+    if (this.horiz.scrollLeft != pos) { this.horiz.scrollLeft = pos; }
+    if (this.disableHoriz) { this.enableZeroWidthBar(this.horiz, this.disableHoriz, "horiz"); }
+  };
+
+  NativeScrollbars.prototype.setScrollTop = function (pos) {
+    if (this.vert.scrollTop != pos) { this.vert.scrollTop = pos; }
+    if (this.disableVert) { this.enableZeroWidthBar(this.vert, this.disableVert, "vert"); }
+  };
+
+  NativeScrollbars.prototype.zeroWidthHack = function () {
+    var w = mac && !mac_geMountainLion ? "12px" : "18px";
+    this.horiz.style.height = this.vert.style.width = w;
+    this.horiz.style.pointerEvents = this.vert.style.pointerEvents = "none";
+    this.disableHoriz = new Delayed;
+    this.disableVert = new Delayed;
+  };
+
+  NativeScrollbars.prototype.enableZeroWidthBar = function (bar, delay, type) {
+    bar.style.pointerEvents = "auto";
+    function maybeDisable() {
+      // To find out whether the scrollbar is still visible, we
+      // check whether the element under the pixel in the bottom
+      // right corner of the scrollbar box is the scrollbar box
+      // itself (when the bar is still visible) or its filler child
+      // (when the bar is hidden). If it is still visible, we keep
+      // it enabled, if it's hidden, we disable pointer events.
+      var box = bar.getBoundingClientRect();
+      var elt = type == "vert" ? document.elementFromPoint(box.right - 1, (box.top + box.bottom) / 2)
+          : document.elementFromPoint((box.right + box.left) / 2, box.bottom - 1);
+      if (elt != bar) { bar.style.pointerEvents = "none"; }
+      else { delay.set(1000, maybeDisable); }
+    }
+    delay.set(1000, maybeDisable);
+  };
+
+  NativeScrollbars.prototype.clear = function () {
+    var parent = this.horiz.parentNode;
+    parent.removeChild(this.horiz);
+    parent.removeChild(this.vert);
+  };
+
+  var NullScrollbars = function () {};
+
+  NullScrollbars.prototype.update = function () { return {bottom: 0, right: 0} };
+  NullScrollbars.prototype.setScrollLeft = function () {};
+  NullScrollbars.prototype.setScrollTop = function () {};
+  NullScrollbars.prototype.clear = function () {};
+
+  function updateScrollbars(cm, measure) {
+    if (!measure) { measure = measureForScrollbars(cm); }
+    var startWidth = cm.display.barWidth, startHeight = cm.display.barHeight;
+    updateScrollbarsInner(cm, measure);
+    for (var i = 0; i < 4 && startWidth != cm.display.barWidth || startHeight != cm.display.barHeight; i++) {
+      if (startWidth != cm.display.barWidth && cm.options.lineWrapping)
+        { updateHeightsInViewport(cm); }
+      updateScrollbarsInner(cm, measureForScrollbars(cm));
+      startWidth = cm.display.barWidth; startHeight = cm.display.barHeight;
+    }
+  }
+
+  // Re-synchronize the fake scrollbars with the actual size of the
+  // content.
+  function updateScrollbarsInner(cm, measure) {
+    var d = cm.display;
+    var sizes = d.scrollbars.update(measure);
+
+    d.sizer.style.paddingRight = (d.barWidth = sizes.right) + "px";
+    d.sizer.style.paddingBottom = (d.barHeight = sizes.bottom) + "px";
+    d.heightForcer.style.borderBottom = sizes.bottom + "px solid transparent";
+
+    if (sizes.right && sizes.bottom) {
+      d.scrollbarFiller.style.display = "block";
+      d.scrollbarFiller.style.height = sizes.bottom + "px";
+      d.scrollbarFiller.style.width = sizes.right + "px";
+    } else { d.scrollbarFiller.style.display = ""; }
+    if (sizes.bottom && cm.options.coverGutterNextToScrollbar && cm.options.fixedGutter) {
+      d.gutterFiller.style.display = "block";
+      d.gutterFiller.style.height = sizes.bottom + "px";
+      d.gutterFiller.style.width = measure.gutterWidth + "px";
+    } else { d.gutterFiller.style.display = ""; }
+  }
+
+  var scrollbarModel = {"native": NativeScrollbars, "null": NullScrollbars};
+
+  function initScrollbars(cm) {
+    if (cm.display.scrollbars) {
+      cm.display.scrollbars.clear();
+      if (cm.display.scrollbars.addClass)
+        { rmClass(cm.display.wrapper, cm.display.scrollbars.addClass); }
+    }
+
+    cm.display.scrollbars = new scrollbarModel[cm.options.scrollbarStyle](function (node) {
+      cm.display.wrapper.insertBefore(node, cm.display.scrollbarFiller);
+      // Prevent clicks in the scrollbars from killing focus
+      on(node, "mousedown", function () {
+        if (cm.state.focused) { setTimeout(function () { return cm.display.input.focus(); }, 0); }
+      });
+      node.setAttribute("cm-not-content", "true");
+    }, function (pos, axis) {
+      if (axis == "horizontal") { setScrollLeft(cm, pos); }
+      else { updateScrollTop(cm, pos); }
+    }, cm);
+    if (cm.display.scrollbars.addClass)
+      { addClass(cm.display.wrapper, cm.display.scrollbars.addClass); }
+  }
+
+  // Operations are used to wrap a series of changes to the editor
+  // state in such a way that each change won't have to update the
+  // cursor and display (which would be awkward, slow, and
+  // error-prone). Instead, display updates are batched and then all
+  // combined and executed at once.
+
+  var nextOpId = 0;
+  // Start a new operation.
+  function startOperation(cm) {
+    cm.curOp = {
+      cm: cm,
+      viewChanged: false,      // Flag that indicates that lines might need to be redrawn
+      startHeight: cm.doc.height, // Used to detect need to update scrollbar
+      forceUpdate: false,      // Used to force a redraw
+      updateInput: 0,       // Whether to reset the input textarea
+      typing: false,           // Whether this reset should be careful to leave existing text (for compositing)
+      changeObjs: null,        // Accumulated changes, for firing change events
+      cursorActivityHandlers: null, // Set of handlers to fire cursorActivity on
+      cursorActivityCalled: 0, // Tracks which cursorActivity handlers have been called already
+      selectionChanged: false, // Whether the selection needs to be redrawn
+      updateMaxLine: false,    // Set when the widest line needs to be determined anew
+      scrollLeft: null, scrollTop: null, // Intermediate scroll position, not pushed to DOM yet
+      scrollToPos: null,       // Used to scroll to a specific position
+      focus: false,
+      id: ++nextOpId           // Unique ID
+    };
+    pushOperation(cm.curOp);
+  }
+
+  // Finish an operation, updating the display and signalling delayed events
+  function endOperation(cm) {
+    var op = cm.curOp;
+    if (op) { finishOperation(op, function (group) {
+      for (var i = 0; i < group.ops.length; i++)
+        { group.ops[i].cm.curOp = null; }
+      endOperations(group);
+    }); }
+  }
+
+  // The DOM updates done when an operation finishes are batched so
+  // that the minimum number of relayouts are required.
+  function endOperations(group) {
+    var ops = group.ops;
+    for (var i = 0; i < ops.length; i++) // Read DOM
+      { endOperation_R1(ops[i]); }
+    for (var i$1 = 0; i$1 < ops.length; i$1++) // Write DOM (maybe)
+      { endOperation_W1(ops[i$1]); }
+    for (var i$2 = 0; i$2 < ops.length; i$2++) // Read DOM
+      { endOperation_R2(ops[i$2]); }
+    for (var i$3 = 0; i$3 < ops.length; i$3++) // Write DOM (maybe)
+      { endOperation_W2(ops[i$3]); }
+    for (var i$4 = 0; i$4 < ops.length; i$4++) // Read DOM
+      { endOperation_finish(ops[i$4]); }
+  }
+
+  function endOperation_R1(op) {
+    var cm = op.cm, display = cm.display;
+    maybeClipScrollbars(cm);
+    if (op.updateMaxLine) { findMaxLine(cm); }
+
+    op.mustUpdate = op.viewChanged || op.forceUpdate || op.scrollTop != null ||
+      op.scrollToPos && (op.scrollToPos.from.line < display.viewFrom ||
+                         op.scrollToPos.to.line >= display.viewTo) ||
+      display.maxLineChanged && cm.options.lineWrapping;
+    op.update = op.mustUpdate &&
+      new DisplayUpdate(cm, op.mustUpdate && {top: op.scrollTop, ensure: op.scrollToPos}, op.forceUpdate);
+  }
+
+  function endOperation_W1(op) {
+    op.updatedDisplay = op.mustUpdate && updateDisplayIfNeeded(op.cm, op.update);
+  }
+
+  function endOperation_R2(op) {
+    var cm = op.cm, display = cm.display;
+    if (op.updatedDisplay) { updateHeightsInViewport(cm); }
+
+    op.barMeasure = measureForScrollbars(cm);
+
+    // If the max line changed since it was last measured, measure it,
+    // and ensure the document's width matches it.
+    // updateDisplay_W2 will use these properties to do the actual resizing
+    if (display.maxLineChanged && !cm.options.lineWrapping) {
+      op.adjustWidthTo = measureChar(cm, display.maxLine, display.maxLine.text.length).left + 3;
+      cm.display.sizerWidth = op.adjustWidthTo;
+      op.barMeasure.scrollWidth =
+        Math.max(display.scroller.clientWidth, display.sizer.offsetLeft + op.adjustWidthTo + scrollGap(cm) + cm.display.barWidth);
+      op.maxScrollLeft = Math.max(0, display.sizer.offsetLeft + op.adjustWidthTo - displayWidth(cm));
+    }
+
+    if (op.updatedDisplay || op.selectionChanged)
+      { op.preparedSelection = display.input.prepareSelection(); }
+  }
+
+  function endOperation_W2(op) {
+    var cm = op.cm;
+
+    if (op.adjustWidthTo != null) {
+      cm.display.sizer.style.minWidth = op.adjustWidthTo + "px";
+      if (op.maxScrollLeft < cm.doc.scrollLeft)
+        { setScrollLeft(cm, Math.min(cm.display.scroller.scrollLeft, op.maxScrollLeft), true); }
+      cm.display.maxLineChanged = false;
+    }
+
+    var takeFocus = op.focus && op.focus == activeElt();
+    if (op.preparedSelection)
+      { cm.display.input.showSelection(op.preparedSelection, takeFocus); }
+    if (op.updatedDisplay || op.startHeight != cm.doc.height)
+      { updateScrollbars(cm, op.barMeasure); }
+    if (op.updatedDisplay)
+      { setDocumentHeight(cm, op.barMeasure); }
+
+    if (op.selectionChanged) { restartBlink(cm); }
+
+    if (cm.state.focused && op.updateInput)
+      { cm.display.input.reset(op.typing); }
+    if (takeFocus) { ensureFocus(op.cm); }
+  }
+
+  function endOperation_finish(op) {
+    var cm = op.cm, display = cm.display, doc = cm.doc;
+
+    if (op.updatedDisplay) { postUpdateDisplay(cm, op.update); }
+
+    // Abort mouse wheel delta measurement, when scrolling explicitly
+    if (display.wheelStartX != null && (op.scrollTop != null || op.scrollLeft != null || op.scrollToPos))
+      { display.wheelStartX = display.wheelStartY = null; }
+
+    // Propagate the scroll position to the actual DOM scroller
+    if (op.scrollTop != null) { setScrollTop(cm, op.scrollTop, op.forceScroll); }
+
+    if (op.scrollLeft != null) { setScrollLeft(cm, op.scrollLeft, true, true); }
+    // If we need to scroll a specific position into view, do so.
+    if (op.scrollToPos) {
+      var rect = scrollPosIntoView(cm, clipPos(doc, op.scrollToPos.from),
+                                   clipPos(doc, op.scrollToPos.to), op.scrollToPos.margin);
+      maybeScrollWindow(cm, rect);
+    }
+
+    // Fire events for markers that are hidden/unidden by editing or
+    // undoing
+    var hidden = op.maybeHiddenMarkers, unhidden = op.maybeUnhiddenMarkers;
+    if (hidden) { for (var i = 0; i < hidden.length; ++i)
+      { if (!hidden[i].lines.length) { signal(hidden[i], "hide"); } } }
+    if (unhidden) { for (var i$1 = 0; i$1 < unhidden.length; ++i$1)
+      { if (unhidden[i$1].lines.length) { signal(unhidden[i$1], "unhide"); } } }
+
+    if (display.wrapper.offsetHeight)
+      { doc.scrollTop = cm.display.scroller.scrollTop; }
+
+    // Fire change events, and delayed event handlers
+    if (op.changeObjs)
+      { signal(cm, "changes", cm, op.changeObjs); }
+    if (op.update)
+      { op.update.finish(); }
+  }
+
+  // Run the given function in an operation
+  function runInOp(cm, f) {
+    if (cm.curOp) { return f() }
+    startOperation(cm);
+    try { return f() }
+    finally { endOperation(cm); }
+  }
+  // Wraps a function in an operation. Returns the wrapped function.
+  function operation(cm, f) {
+    return function() {
+      if (cm.curOp) { return f.apply(cm, arguments) }
+      startOperation(cm);
+      try { return f.apply(cm, arguments) }
+      finally { endOperation(cm); }
+    }
+  }
+  // Used to add methods to editor and doc instances, wrapping them in
+  // operations.
+  function methodOp(f) {
+    return function() {
+      if (this.curOp) { return f.apply(this, arguments) }
+      startOperation(this);
+      try { return f.apply(this, arguments) }
+      finally { endOperation(this); }
+    }
+  }
+  function docMethodOp(f) {
+    return function() {
+      var cm = this.cm;
+      if (!cm || cm.curOp) { return f.apply(this, arguments) }
+      startOperation(cm);
+      try { return f.apply(this, arguments) }
+      finally { endOperation(cm); }
+    }
+  }
+
+  // HIGHLIGHT WORKER
+
+  function startWorker(cm, time) {
+    if (cm.doc.highlightFrontier < cm.display.viewTo)
+      { cm.state.highlight.set(time, bind(highlightWorker, cm)); }
+  }
+
+  function highlightWorker(cm) {
+    var doc = cm.doc;
+    if (doc.highlightFrontier >= cm.display.viewTo) { return }
+    var end = +new Date + cm.options.workTime;
+    var context = getContextBefore(cm, doc.highlightFrontier);
+    var changedLines = [];
+
+    doc.iter(context.line, Math.min(doc.first + doc.size, cm.display.viewTo + 500), function (line) {
+      if (context.line >= cm.display.viewFrom) { // Visible
+        var oldStyles = line.styles;
+        var resetState = line.text.length > cm.options.maxHighlightLength ? copyState(doc.mode, context.state) : null;
+        var highlighted = highlightLine(cm, line, context, true);
+        if (resetState) { context.state = resetState; }
+        line.styles = highlighted.styles;
+        var oldCls = line.styleClasses, newCls = highlighted.classes;
+        if (newCls) { line.styleClasses = newCls; }
+        else if (oldCls) { line.styleClasses = null; }
+        var ischange = !oldStyles || oldStyles.length != line.styles.length ||
+          oldCls != newCls && (!oldCls || !newCls || oldCls.bgClass != newCls.bgClass || oldCls.textClass != newCls.textClass);
+        for (var i = 0; !ischange && i < oldStyles.length; ++i) { ischange = oldStyles[i] != line.styles[i]; }
+        if (ischange) { changedLines.push(context.line); }
+        line.stateAfter = context.save();
+        context.nextLine();
+      } else {
+        if (line.text.length <= cm.options.maxHighlightLength)
+          { processLine(cm, line.text, context); }
+        line.stateAfter = context.line % 5 == 0 ? context.save() : null;
+        context.nextLine();
+      }
+      if (+new Date > end) {
+        startWorker(cm, cm.options.workDelay);
+        return true
+      }
+    });
+    doc.highlightFrontier = context.line;
+    doc.modeFrontier = Math.max(doc.modeFrontier, context.line);
+    if (changedLines.length) { runInOp(cm, function () {
+      for (var i = 0; i < changedLines.length; i++)
+        { regLineChange(cm, changedLines[i], "text"); }
+    }); }
+  }
+
+  // DISPLAY DRAWING
+
+  var DisplayUpdate = function(cm, viewport, force) {
+    var display = cm.display;
+
+    this.viewport = viewport;
+    // Store some values that we'll need later (but don't want to force a relayout for)
+    this.visible = visibleLines(display, cm.doc, viewport);
+    this.editorIsHidden = !display.wrapper.offsetWidth;
+    this.wrapperHeight = display.wrapper.clientHeight;
+    this.wrapperWidth = display.wrapper.clientWidth;
+    this.oldDisplayWidth = displayWidth(cm);
+    this.force = force;
+    this.dims = getDimensions(cm);
+    this.events = [];
+  };
+
+  DisplayUpdate.prototype.signal = function (emitter, type) {
+    if (hasHandler(emitter, type))
+      { this.events.push(arguments); }
+  };
+  DisplayUpdate.prototype.finish = function () {
+    for (var i = 0; i < this.events.length; i++)
+      { signal.apply(null, this.events[i]); }
+  };
+
+  function maybeClipScrollbars(cm) {
+    var display = cm.display;
+    if (!display.scrollbarsClipped && display.scroller.offsetWidth) {
+      display.nativeBarWidth = display.scroller.offsetWidth - display.scroller.clientWidth;
+      display.heightForcer.style.height = scrollGap(cm) + "px";
+      display.sizer.style.marginBottom = -display.nativeBarWidth + "px";
+      display.sizer.style.borderRightWidth = scrollGap(cm) + "px";
+      display.scrollbarsClipped = true;
+    }
+  }
+
+  function selectionSnapshot(cm) {
+    if (cm.hasFocus()) { return null }
+    var active = activeElt();
+    if (!active || !contains(cm.display.lineDiv, active)) { return null }
+    var result = {activeElt: active};
+    if (window.getSelection) {
+      var sel = window.getSelection();
+      if (sel.anchorNode && sel.extend && contains(cm.display.lineDiv, sel.anchorNode)) {
+        result.anchorNode = sel.anchorNode;
+        result.anchorOffset = sel.anchorOffset;
+        result.focusNode = sel.focusNode;
+        result.focusOffset = sel.focusOffset;
+      }
+    }
+    return result
+  }
+
+  function restoreSelection(snapshot) {
+    if (!snapshot || !snapshot.activeElt || snapshot.activeElt == activeElt()) { return }
+    snapshot.activeElt.focus();
+    if (!/^(INPUT|TEXTAREA)$/.test(snapshot.activeElt.nodeName) &&
+        snapshot.anchorNode && contains(document.body, snapshot.anchorNode) && contains(document.body, snapshot.focusNode)) {
+      var sel = window.getSelection(), range = document.createRange();
+      range.setEnd(snapshot.anchorNode, snapshot.anchorOffset);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      sel.extend(snapshot.focusNode, snapshot.focusOffset);
+    }
+  }
+
+  // Does the actual updating of the line display. Bails out
+  // (returning false) when there is nothing to be done and forced is
+  // false.
+  function updateDisplayIfNeeded(cm, update) {
+    var display = cm.display, doc = cm.doc;
+
+    if (update.editorIsHidden) {
+      resetView(cm);
+      return false
+    }
+
+    // Bail out if the visible area is already rendered and nothing changed.
+    if (!update.force &&
+        update.visible.from >= display.viewFrom && update.visible.to <= display.viewTo &&
+        (display.updateLineNumbers == null || display.updateLineNumbers >= display.viewTo) &&
+        display.renderedView == display.view && countDirtyView(cm) == 0)
+      { return false }
+
+    if (maybeUpdateLineNumberWidth(cm)) {
+      resetView(cm);
+      update.dims = getDimensions(cm);
+    }
+
+    // Compute a suitable new viewport (from & to)
+    var end = doc.first + doc.size;
+    var from = Math.max(update.visible.from - cm.options.viewportMargin, doc.first);
+    var to = Math.min(end, update.visible.to + cm.options.viewportMargin);
+    if (display.viewFrom < from && from - display.viewFrom < 20) { from = Math.max(doc.first, display.viewFrom); }
+    if (display.viewTo > to && display.viewTo - to < 20) { to = Math.min(end, display.viewTo); }
+    if (sawCollapsedSpans) {
+      from = visualLineNo(cm.doc, from);
+      to = visualLineEndNo(cm.doc, to);
+    }
+
+    var different = from != display.viewFrom || to != display.viewTo ||
+      display.lastWrapHeight != update.wrapperHeight || display.lastWrapWidth != update.wrapperWidth;
+    adjustView(cm, from, to);
+
+    display.viewOffset = heightAtLine(getLine(cm.doc, display.viewFrom));
+    // Position the mover div to align with the current scroll position
+    cm.display.mover.style.top = display.viewOffset + "px";
+
+    var toUpdate = countDirtyView(cm);
+    if (!different && toUpdate == 0 && !update.force && display.renderedView == display.view &&
+        (display.updateLineNumbers == null || display.updateLineNumbers >= display.viewTo))
+      { return false }
+
+    // For big changes, we hide the enclosing element during the
+    // update, since that speeds up the operations on most browsers.
+    var selSnapshot = selectionSnapshot(cm);
+    if (toUpdate > 4) { display.lineDiv.style.display = "none"; }
+    patchDisplay(cm, display.updateLineNumbers, update.dims);
+    if (toUpdate > 4) { display.lineDiv.style.display = ""; }
+    display.renderedView = display.view;
+    // There might have been a widget with a focused element that got
+    // hidden or updated, if so re-focus it.
+    restoreSelection(selSnapshot);
+
+    // Prevent selection and cursors from interfering with the scroll
+    // width and height.
+    removeChildren(display.cursorDiv);
+    removeChildren(display.selectionDiv);
+    display.gutters.style.height = display.sizer.style.minHeight = 0;
+
+    if (different) {
+      display.lastWrapHeight = update.wrapperHeight;
+      display.lastWrapWidth = update.wrapperWidth;
+      startWorker(cm, 400);
+    }
+
+    display.updateLineNumbers = null;
+
+    return true
+  }
+
+  function postUpdateDisplay(cm, update) {
+    var viewport = update.viewport;
+
+    for (var first = true;; first = false) {
+      if (!first || !cm.options.lineWrapping || update.oldDisplayWidth == displayWidth(cm)) {
+        // Clip forced viewport to actual scrollable area.
+        if (viewport && viewport.top != null)
+          { viewport = {top: Math.min(cm.doc.height + paddingVert(cm.display) - displayHeight(cm), viewport.top)}; }
+        // Updated line heights might result in the drawn area not
+        // actually covering the viewport. Keep looping until it does.
+        update.visible = visibleLines(cm.display, cm.doc, viewport);
+        if (update.visible.from >= cm.display.viewFrom && update.visible.to <= cm.display.viewTo)
+          { break }
+      } else if (first) {
+        update.visible = visibleLines(cm.display, cm.doc, viewport);
+      }
+      if (!updateDisplayIfNeeded(cm, update)) { break }
+      updateHeightsInViewport(cm);
+      var barMeasure = measureForScrollbars(cm);
+      updateSelection(cm);
+      updateScrollbars(cm, barMeasure);
+      setDocumentHeight(cm, barMeasure);
+      update.force = false;
+    }
+
+    update.signal(cm, "update", cm);
+    if (cm.display.viewFrom != cm.display.reportedViewFrom || cm.display.viewTo != cm.display.reportedViewTo) {
+      update.signal(cm, "viewportChange", cm, cm.display.viewFrom, cm.display.viewTo);
+      cm.display.reportedViewFrom = cm.display.viewFrom; cm.display.reportedViewTo = cm.display.viewTo;
+    }
+  }
+
+  function updateDisplaySimple(cm, viewport) {
+    var update = new DisplayUpdate(cm, viewport);
+    if (updateDisplayIfNeeded(cm, update)) {
+      updateHeightsInViewport(cm);
+      postUpdateDisplay(cm, update);
+      var barMeasure = measureForScrollbars(cm);
+      updateSelection(cm);
+      updateScrollbars(cm, barMeasure);
+      setDocumentHeight(cm, barMeasure);
+      update.finish();
+    }
+  }
+
+  // Sync the actual display DOM structure with display.view, removing
+  // nodes for lines that are no longer in view, and creating the ones
+  // that are not there yet, and updating the ones that are out of
+  // date.
+  function patchDisplay(cm, updateNumbersFrom, dims) {
+    var display = cm.display, lineNumbers = cm.options.lineNumbers;
+    var container = display.lineDiv, cur = container.firstChild;
+
+    function rm(node) {
+      var next = node.nextSibling;
+      // Works around a throw-scroll bug in OS X Webkit
+      if (webkit && mac && cm.display.currentWheelTarget == node)
+        { node.style.display = "none"; }
+      else
+        { node.parentNode.removeChild(node); }
+      return next
+    }
+
+    var view = display.view, lineN = display.viewFrom;
+    // Loop over the elements in the view, syncing cur (the DOM nodes
+    // in display.lineDiv) with the view as we go.
+    for (var i = 0; i < view.length; i++) {
+      var lineView = view[i];
+      if (lineView.hidden) ; else if (!lineView.node || lineView.node.parentNode != container) { // Not drawn yet
+        var node = buildLineElement(cm, lineView, lineN, dims);
+        container.insertBefore(node, cur);
+      } else { // Already drawn
+        while (cur != lineView.node) { cur = rm(cur); }
+        var updateNumber = lineNumbers && updateNumbersFrom != null &&
+          updateNumbersFrom <= lineN && lineView.lineNumber;
+        if (lineView.changes) {
+          if (indexOf(lineView.changes, "gutter") > -1) { updateNumber = false; }
+          updateLineForChanges(cm, lineView, lineN, dims);
+        }
+        if (updateNumber) {
+          removeChildren(lineView.lineNumber);
+          lineView.lineNumber.appendChild(document.createTextNode(lineNumberFor(cm.options, lineN)));
+        }
+        cur = lineView.node.nextSibling;
+      }
+      lineN += lineView.size;
+    }
+    while (cur) { cur = rm(cur); }
+  }
+
+  function updateGutterSpace(display) {
+    var width = display.gutters.offsetWidth;
+    display.sizer.style.marginLeft = width + "px";
+  }
+
+  function setDocumentHeight(cm, measure) {
+    cm.display.sizer.style.minHeight = measure.docHeight + "px";
+    cm.display.heightForcer.style.top = measure.docHeight + "px";
+    cm.display.gutters.style.height = (measure.docHeight + cm.display.barHeight + scrollGap(cm)) + "px";
+  }
+
+  // Re-align line numbers and gutter marks to compensate for
+  // horizontal scrolling.
+  function alignHorizontally(cm) {
+    var display = cm.display, view = display.view;
+    if (!display.alignWidgets && (!display.gutters.firstChild || !cm.options.fixedGutter)) { return }
+    var comp = compensateForHScroll(display) - display.scroller.scrollLeft + cm.doc.scrollLeft;
+    var gutterW = display.gutters.offsetWidth, left = comp + "px";
+    for (var i = 0; i < view.length; i++) { if (!view[i].hidden) {
+      if (cm.options.fixedGutter) {
+        if (view[i].gutter)
+          { view[i].gutter.style.left = left; }
+        if (view[i].gutterBackground)
+          { view[i].gutterBackground.style.left = left; }
+      }
+      var align = view[i].alignable;
+      if (align) { for (var j = 0; j < align.length; j++)
+        { align[j].style.left = left; } }
+    } }
+    if (cm.options.fixedGutter)
+      { display.gutters.style.left = (comp + gutterW) + "px"; }
+  }
+
+  // Used to ensure that the line number gutter is still the right
+  // size for the current document size. Returns true when an update
+  // is needed.
+  function maybeUpdateLineNumberWidth(cm) {
+    if (!cm.options.lineNumbers) { return false }
+    var doc = cm.doc, last = lineNumberFor(cm.options, doc.first + doc.size - 1), display = cm.display;
+    if (last.length != display.lineNumChars) {
+      var test = display.measure.appendChild(elt("div", [elt("div", last)],
+                                                 "CodeMirror-linenumber CodeMirror-gutter-elt"));
+      var innerW = test.firstChild.offsetWidth, padding = test.offsetWidth - innerW;
+      display.lineGutter.style.width = "";
+      display.lineNumInnerWidth = Math.max(innerW, display.lineGutter.offsetWidth - padding) + 1;
+      display.lineNumWidth = display.lineNumInnerWidth + padding;
+      display.lineNumChars = display.lineNumInnerWidth ? last.length : -1;
+      display.lineGutter.style.width = display.lineNumWidth + "px";
+      updateGutterSpace(cm.display);
+      return true
+    }
+    return false
+  }
+
+  function getGutters(gutters, lineNumbers) {
+    var result = [], sawLineNumbers = false;
+    for (var i = 0; i < gutters.length; i++) {
+      var name = gutters[i], style = null;
+      if (typeof name != "string") { style = name.style; name = name.className; }
+      if (name == "CodeMirror-linenumbers") {
+        if (!lineNumbers) { continue }
+        else { sawLineNumbers = true; }
+      }
+      result.push({className: name, style: style});
+    }
+    if (lineNumbers && !sawLineNumbers) { result.push({className: "CodeMirror-linenumbers", style: null}); }
+    return result
+  }
+
+  // Rebuild the gutter elements, ensure the margin to the left of the
+  // code matches their width.
+  function renderGutters(display) {
+    var gutters = display.gutters, specs = display.gutterSpecs;
+    removeChildren(gutters);
+    display.lineGutter = null;
+    for (var i = 0; i < specs.length; ++i) {
+      var ref = specs[i];
+      var className = ref.className;
+      var style = ref.style;
+      var gElt = gutters.appendChild(elt("div", null, "CodeMirror-gutter " + className));
+      if (style) { gElt.style.cssText = style; }
+      if (className == "CodeMirror-linenumbers") {
+        display.lineGutter = gElt;
+        gElt.style.width = (display.lineNumWidth || 1) + "px";
+      }
+    }
+    gutters.style.display = specs.length ? "" : "none";
+    updateGutterSpace(display);
+  }
+
+  function updateGutters(cm) {
+    renderGutters(cm.display);
+    regChange(cm);
+    alignHorizontally(cm);
+  }
+
+  // The display handles the DOM integration, both for input reading
+  // and content drawing. It holds references to DOM nodes and
+  // display-related state.
+
+  function Display(place, doc, input, options) {
+    var d = this;
+    this.input = input;
+
+    // Covers bottom-right square when both scrollbars are present.
+    d.scrollbarFiller = elt("div", null, "CodeMirror-scrollbar-filler");
+    d.scrollbarFiller.setAttribute("cm-not-content", "true");
+    // Covers bottom of gutter when coverGutterNextToScrollbar is on
+    // and h scrollbar is present.
+    d.gutterFiller = elt("div", null, "CodeMirror-gutter-filler");
+    d.gutterFiller.setAttribute("cm-not-content", "true");
+    // Will contain the actual code, positioned to cover the viewport.
+    d.lineDiv = eltP("div", null, "CodeMirror-code");
+    // Elements are added to these to represent selection and cursors.
+    d.selectionDiv = elt("div", null, null, "position: relative; z-index: 1");
+    d.cursorDiv = elt("div", null, "CodeMirror-cursors");
+    // A visibility: hidden element used to find the size of things.
+    d.measure = elt("div", null, "CodeMirror-measure");
+    // When lines outside of the viewport are measured, they are drawn in this.
+    d.lineMeasure = elt("div", null, "CodeMirror-measure");
+    // Wraps everything that needs to exist inside the vertically-padded coordinate system
+    d.lineSpace = eltP("div", [d.measure, d.lineMeasure, d.selectionDiv, d.cursorDiv, d.lineDiv],
+                      null, "position: relative; outline: none");
+    var lines = eltP("div", [d.lineSpace], "CodeMirror-lines");
+    // Moved around its parent to cover visible view.
+    d.mover = elt("div", [lines], null, "position: relative");
+    // Set to the height of the document, allowing scrolling.
+    d.sizer = elt("div", [d.mover], "CodeMirror-sizer");
+    d.sizerWidth = null;
+    // Behavior of elts with overflow: auto and padding is
+    // inconsistent across browsers. This is used to ensure the
+    // scrollable area is big enough.
+    d.heightForcer = elt("div", null, null, "position: absolute; height: " + scrollerGap + "px; width: 1px;");
+    // Will contain the gutters, if any.
+    d.gutters = elt("div", null, "CodeMirror-gutters");
+    d.lineGutter = null;
+    // Actual scrollable element.
+    d.scroller = elt("div", [d.sizer, d.heightForcer, d.gutters], "CodeMirror-scroll");
+    d.scroller.setAttribute("tabIndex", "-1");
+    // The element in which the editor lives.
+    d.wrapper = elt("div", [d.scrollbarFiller, d.gutterFiller, d.scroller], "CodeMirror");
+
+    // Work around IE7 z-index bug (not perfect, hence IE7 not really being supported)
+    if (ie && ie_version < 8) { d.gutters.style.zIndex = -1; d.scroller.style.paddingRight = 0; }
+    if (!webkit && !(gecko && mobile)) { d.scroller.draggable = true; }
+
+    if (place) {
+      if (place.appendChild) { place.appendChild(d.wrapper); }
+      else { place(d.wrapper); }
+    }
+
+    // Current rendered range (may be bigger than the view window).
+    d.viewFrom = d.viewTo = doc.first;
+    d.reportedViewFrom = d.reportedViewTo = doc.first;
+    // Information about the rendered lines.
+    d.view = [];
+    d.renderedView = null;
+    // Holds info about a single rendered line when it was rendered
+    // for measurement, while not in view.
+    d.externalMeasured = null;
+    // Empty space (in pixels) above the view
+    d.viewOffset = 0;
+    d.lastWrapHeight = d.lastWrapWidth = 0;
+    d.updateLineNumbers = null;
+
+    d.nativeBarWidth = d.barHeight = d.barWidth = 0;
+    d.scrollbarsClipped = false;
+
+    // Used to only resize the line number gutter when necessary (when
+    // the amount of lines crosses a boundary that makes its width change)
+    d.lineNumWidth = d.lineNumInnerWidth = d.lineNumChars = null;
+    // Set to true when a non-horizontal-scrolling line widget is
+    // added. As an optimization, line widget aligning is skipped when
+    // this is false.
+    d.alignWidgets = false;
+
+    d.cachedCharWidth = d.cachedTextHeight = d.cachedPaddingH = null;
+
+    // Tracks the maximum line length so that the horizontal scrollbar
+    // can be kept static when scrolling.
+    d.maxLine = null;
+    d.maxLineLength = 0;
+    d.maxLineChanged = false;
+
+    // Used for measuring wheel scrolling granularity
+    d.wheelDX = d.wheelDY = d.wheelStartX = d.wheelStartY = null;
+
+    // True when shift is held down.
+    d.shift = false;
+
+    // Used to track whether anything happened since the context menu
+    // was opened.
+    d.selForContextMenu = null;
+
+    d.activeTouch = null;
+
+    d.gutterSpecs = getGutters(options.gutters, options.lineNumbers);
+    renderGutters(d);
+
+    input.init(d);
+  }
+
+  // Since the delta values reported on mouse wheel events are
+  // unstandardized between browsers and even browser versions, and
+  // generally horribly unpredictable, this code starts by measuring
+  // the scroll effect that the first few mouse wheel events have,
+  // and, from that, detects the way it can convert deltas to pixel
+  // offsets afterwards.
+  //
+  // The reason we want to know the amount a wheel event will scroll
+  // is that it gives us a chance to update the display before the
+  // actual scrolling happens, reducing flickering.
+
+  var wheelSamples = 0, wheelPixelsPerUnit = null;
+  // Fill in a browser-detected starting value on browsers where we
+  // know one. These don't have to be accurate -- the result of them
+  // being wrong would just be a slight flicker on the first wheel
+  // scroll (if it is large enough).
+  if (ie) { wheelPixelsPerUnit = -.53; }
+  else if (gecko) { wheelPixelsPerUnit = 15; }
+  else if (chrome) { wheelPixelsPerUnit = -.7; }
+  else if (safari) { wheelPixelsPerUnit = -1/3; }
+
+  function wheelEventDelta(e) {
+    var dx = e.wheelDeltaX, dy = e.wheelDeltaY;
+    if (dx == null && e.detail && e.axis == e.HORIZONTAL_AXIS) { dx = e.detail; }
+    if (dy == null && e.detail && e.axis == e.VERTICAL_AXIS) { dy = e.detail; }
+    else if (dy == null) { dy = e.wheelDelta; }
+    return {x: dx, y: dy}
+  }
+  function wheelEventPixels(e) {
+    var delta = wheelEventDelta(e);
+    delta.x *= wheelPixelsPerUnit;
+    delta.y *= wheelPixelsPerUnit;
+    return delta
+  }
+
+  function onScrollWheel(cm, e) {
+    var delta = wheelEventDelta(e), dx = delta.x, dy = delta.y;
+
+    var display = cm.display, scroll = display.scroller;
+    // Quit if there's nothing to scroll here
+    var canScrollX = scroll.scrollWidth > scroll.clientWidth;
+    var canScrollY = scroll.scrollHeight > scroll.clientHeight;
+    if (!(dx && canScrollX || dy && canScrollY)) { return }
+
+    // Webkit browsers on OS X abort momentum scrolls when the target
+    // of the scroll event is removed from the scrollable element.
+    // This hack (see related code in patchDisplay) makes sure the
+    // element is kept around.
+    if (dy && mac && webkit) {
+      outer: for (var cur = e.target, view = display.view; cur != scroll; cur = cur.parentNode) {
+        for (var i = 0; i < view.length; i++) {
+          if (view[i].node == cur) {
+            cm.display.currentWheelTarget = cur;
+            break outer
+          }
+        }
+      }
+    }
+
+    // On some browsers, horizontal scrolling will cause redraws to
+    // happen before the gutter has been realigned, causing it to
+    // wriggle around in a most unseemly way. When we have an
+    // estimated pixels/delta value, we just handle horizontal
+    // scrolling entirely here. It'll be slightly off from native, but
+    // better than glitching out.
+    if (dx && !gecko && !presto && wheelPixelsPerUnit != null) {
+      if (dy && canScrollY)
+        { updateScrollTop(cm, Math.max(0, scroll.scrollTop + dy * wheelPixelsPerUnit)); }
+      setScrollLeft(cm, Math.max(0, scroll.scrollLeft + dx * wheelPixelsPerUnit));
+      // Only prevent default scrolling if vertical scrolling is
+      // actually possible. Otherwise, it causes vertical scroll
+      // jitter on OSX trackpads when deltaX is small and deltaY
+      // is large (issue #3579)
+      if (!dy || (dy && canScrollY))
+        { e_preventDefault(e); }
+      display.wheelStartX = null; // Abort measurement, if in progress
+      return
+    }
+
+    // 'Project' the visible viewport to cover the area that is being
+    // scrolled into view (if we know enough to estimate it).
+    if (dy && wheelPixelsPerUnit != null) {
+      var pixels = dy * wheelPixelsPerUnit;
+      var top = cm.doc.scrollTop, bot = top + display.wrapper.clientHeight;
+      if (pixels < 0) { top = Math.max(0, top + pixels - 50); }
+      else { bot = Math.min(cm.doc.height, bot + pixels + 50); }
+      updateDisplaySimple(cm, {top: top, bottom: bot});
+    }
+
+    if (wheelSamples < 20) {
+      if (display.wheelStartX == null) {
+        display.wheelStartX = scroll.scrollLeft; display.wheelStartY = scroll.scrollTop;
+        display.wheelDX = dx; display.wheelDY = dy;
+        setTimeout(function () {
+          if (display.wheelStartX == null) { return }
+          var movedX = scroll.scrollLeft - display.wheelStartX;
+          var movedY = scroll.scrollTop - display.wheelStartY;
+          var sample = (movedY && display.wheelDY && movedY / display.wheelDY) ||
+            (movedX && display.wheelDX && movedX / display.wheelDX);
+          display.wheelStartX = display.wheelStartY = null;
+          if (!sample) { return }
+          wheelPixelsPerUnit = (wheelPixelsPerUnit * wheelSamples + sample) / (wheelSamples + 1);
+          ++wheelSamples;
+        }, 200);
+      } else {
+        display.wheelDX += dx; display.wheelDY += dy;
+      }
+    }
+  }
+
+  // Selection objects are immutable. A new one is created every time
+  // the selection changes. A selection is one or more non-overlapping
+  // (and non-touching) ranges, sorted, and an integer that indicates
+  // which one is the primary selection (the one that's scrolled into
+  // view, that getCursor returns, etc).
+  var Selection = function(ranges, primIndex) {
+    this.ranges = ranges;
+    this.primIndex = primIndex;
+  };
+
+  Selection.prototype.primary = function () { return this.ranges[this.primIndex] };
+
+  Selection.prototype.equals = function (other) {
+    if (other == this) { return true }
+    if (other.primIndex != this.primIndex || other.ranges.length != this.ranges.length) { return false }
+    for (var i = 0; i < this.ranges.length; i++) {
+      var here = this.ranges[i], there = other.ranges[i];
+      if (!equalCursorPos(here.anchor, there.anchor) || !equalCursorPos(here.head, there.head)) { return false }
+    }
+    return true
+  };
+
+  Selection.prototype.deepCopy = function () {
+    var out = [];
+    for (var i = 0; i < this.ranges.length; i++)
+      { out[i] = new Range(copyPos(this.ranges[i].anchor), copyPos(this.ranges[i].head)); }
+    return new Selection(out, this.primIndex)
+  };
+
+  Selection.prototype.somethingSelected = function () {
+    for (var i = 0; i < this.ranges.length; i++)
+      { if (!this.ranges[i].empty()) { return true } }
+    return false
+  };
+
+  Selection.prototype.contains = function (pos, end) {
+    if (!end) { end = pos; }
+    for (var i = 0; i < this.ranges.length; i++) {
+      var range = this.ranges[i];
+      if (cmp(end, range.from()) >= 0 && cmp(pos, range.to()) <= 0)
+        { return i }
+    }
+    return -1
+  };
+
+  var Range = function(anchor, head) {
+    this.anchor = anchor; this.head = head;
+  };
+
+  Range.prototype.from = function () { return minPos(this.anchor, this.head) };
+  Range.prototype.to = function () { return maxPos(this.anchor, this.head) };
+  Range.prototype.empty = function () { return this.head.line == this.anchor.line && this.head.ch == this.anchor.ch };
+
+  // Take an unsorted, potentially overlapping set of ranges, and
+  // build a selection out of it. 'Consumes' ranges array (modifying
+  // it).
+  function normalizeSelection(cm, ranges, primIndex) {
+    var mayTouch = cm && cm.options.selectionsMayTouch;
+    var prim = ranges[primIndex];
+    ranges.sort(function (a, b) { return cmp(a.from(), b.from()); });
+    primIndex = indexOf(ranges, prim);
+    for (var i = 1; i < ranges.length; i++) {
+      var cur = ranges[i], prev = ranges[i - 1];
+      var diff = cmp(prev.to(), cur.from());
+      if (mayTouch && !cur.empty() ? diff > 0 : diff >= 0) {
+        var from = minPos(prev.from(), cur.from()), to = maxPos(prev.to(), cur.to());
+        var inv = prev.empty() ? cur.from() == cur.head : prev.from() == prev.head;
+        if (i <= primIndex) { --primIndex; }
+        ranges.splice(--i, 2, new Range(inv ? to : from, inv ? from : to));
+      }
+    }
+    return new Selection(ranges, primIndex)
+  }
+
+  function simpleSelection(anchor, head) {
+    return new Selection([new Range(anchor, head || anchor)], 0)
+  }
+
+  // Compute the position of the end of a change (its 'to' property
+  // refers to the pre-change end).
+  function changeEnd(change) {
+    if (!change.text) { return change.to }
+    return Pos(change.from.line + change.text.length - 1,
+               lst(change.text).length + (change.text.length == 1 ? change.from.ch : 0))
+  }
+
+  // Adjust a position to refer to the post-change position of the
+  // same text, or the end of the change if the change covers it.
+  function adjustForChange(pos, change) {
+    if (cmp(pos, change.from) < 0) { return pos }
+    if (cmp(pos, change.to) <= 0) { return changeEnd(change) }
+
+    var line = pos.line + change.text.length - (change.to.line - change.from.line) - 1, ch = pos.ch;
+    if (pos.line == change.to.line) { ch += changeEnd(change).ch - change.to.ch; }
+    return Pos(line, ch)
+  }
+
+  function computeSelAfterChange(doc, change) {
+    var out = [];
+    for (var i = 0; i < doc.sel.ranges.length; i++) {
+      var range = doc.sel.ranges[i];
+      out.push(new Range(adjustForChange(range.anchor, change),
+                         adjustForChange(range.head, change)));
+    }
+    return normalizeSelection(doc.cm, out, doc.sel.primIndex)
+  }
+
+  function offsetPos(pos, old, nw) {
+    if (pos.line == old.line)
+      { return Pos(nw.line, pos.ch - old.ch + nw.ch) }
+    else
+      { return Pos(nw.line + (pos.line - old.line), pos.ch) }
+  }
+
+  // Used by replaceSelections to allow moving the selection to the
+  // start or around the replaced test. Hint may be "start" or "around".
+  function computeReplacedSel(doc, changes, hint) {
+    var out = [];
+    var oldPrev = Pos(doc.first, 0), newPrev = oldPrev;
+    for (var i = 0; i < changes.length; i++) {
+      var change = changes[i];
+      var from = offsetPos(change.from, oldPrev, newPrev);
+      var to = offsetPos(changeEnd(change), oldPrev, newPrev);
+      oldPrev = change.to;
+      newPrev = to;
+      if (hint == "around") {
+        var range = doc.sel.ranges[i], inv = cmp(range.head, range.anchor) < 0;
+        out[i] = new Range(inv ? to : from, inv ? from : to);
+      } else {
+        out[i] = new Range(from, from);
+      }
+    }
+    return new Selection(out, doc.sel.primIndex)
+  }
+
+  // Used to get the editor into a consistent state again when options change.
+
+  function loadMode(cm) {
+    cm.doc.mode = getMode(cm.options, cm.doc.modeOption);
+    resetModeState(cm);
+  }
+
+  function resetModeState(cm) {
+    cm.doc.iter(function (line) {
+      if (line.stateAfter) { line.stateAfter = null; }
+      if (line.styles) { line.styles = null; }
+    });
+    cm.doc.modeFrontier = cm.doc.highlightFrontier = cm.doc.first;
+    startWorker(cm, 100);
+    cm.state.modeGen++;
+    if (cm.curOp) { regChange(cm); }
+  }
+
+  // DOCUMENT DATA STRUCTURE
+
+  // By default, updates that start and end at the beginning of a line
+  // are treated specially, in order to make the association of line
+  // widgets and marker elements with the text behave more intuitive.
+  function isWholeLineUpdate(doc, change) {
+    return change.from.ch == 0 && change.to.ch == 0 && lst(change.text) == "" &&
+      (!doc.cm || doc.cm.options.wholeLineUpdateBefore)
+  }
+
+  // Perform a change on the document data structure.
+  function updateDoc(doc, change, markedSpans, estimateHeight) {
+    function spansFor(n) {return markedSpans ? markedSpans[n] : null}
+    function update(line, text, spans) {
+      updateLine(line, text, spans, estimateHeight);
+      signalLater(line, "change", line, change);
+    }
+    function linesFor(start, end) {
+      var result = [];
+      for (var i = start; i < end; ++i)
+        { result.push(new Line(text[i], spansFor(i), estimateHeight)); }
+      return result
+    }
+
+    var from = change.from, to = change.to, text = change.text;
+    var firstLine = getLine(doc, from.line), lastLine = getLine(doc, to.line);
+    var lastText = lst(text), lastSpans = spansFor(text.length - 1), nlines = to.line - from.line;
+
+    // Adjust the line structure
+    if (change.full) {
+      doc.insert(0, linesFor(0, text.length));
+      doc.remove(text.length, doc.size - text.length);
+    } else if (isWholeLineUpdate(doc, change)) {
+      // This is a whole-line replace. Treated specially to make
+      // sure line objects move the way they are supposed to.
+      var added = linesFor(0, text.length - 1);
+      update(lastLine, lastLine.text, lastSpans);
+      if (nlines) { doc.remove(from.line, nlines); }
+      if (added.length) { doc.insert(from.line, added); }
+    } else if (firstLine == lastLine) {
+      if (text.length == 1) {
+        update(firstLine, firstLine.text.slice(0, from.ch) + lastText + firstLine.text.slice(to.ch), lastSpans);
+      } else {
+        var added$1 = linesFor(1, text.length - 1);
+        added$1.push(new Line(lastText + firstLine.text.slice(to.ch), lastSpans, estimateHeight));
+        update(firstLine, firstLine.text.slice(0, from.ch) + text[0], spansFor(0));
+        doc.insert(from.line + 1, added$1);
+      }
+    } else if (text.length == 1) {
+      update(firstLine, firstLine.text.slice(0, from.ch) + text[0] + lastLine.text.slice(to.ch), spansFor(0));
+      doc.remove(from.line + 1, nlines);
+    } else {
+      update(firstLine, firstLine.text.slice(0, from.ch) + text[0], spansFor(0));
+      update(lastLine, lastText + lastLine.text.slice(to.ch), lastSpans);
+      var added$2 = linesFor(1, text.length - 1);
+      if (nlines > 1) { doc.remove(from.line + 1, nlines - 1); }
+      doc.insert(from.line + 1, added$2);
+    }
+
+    signalLater(doc, "change", doc, change);
+  }
+
+  // Call f for all linked documents.
+  function linkedDocs(doc, f, sharedHistOnly) {
+    function propagate(doc, skip, sharedHist) {
+      if (doc.linked) { for (var i = 0; i < doc.linked.length; ++i) {
+        var rel = doc.linked[i];
+        if (rel.doc == skip) { continue }
+        var shared = sharedHist && rel.sharedHist;
+        if (sharedHistOnly && !shared) { continue }
+        f(rel.doc, shared);
+        propagate(rel.doc, doc, shared);
+      } }
+    }
+    propagate(doc, null, true);
+  }
+
+  // Attach a document to an editor.
+  function attachDoc(cm, doc) {
+    if (doc.cm) { throw new Error("This document is already in use.") }
+    cm.doc = doc;
+    doc.cm = cm;
+    estimateLineHeights(cm);
+    loadMode(cm);
+    setDirectionClass(cm);
+    if (!cm.options.lineWrapping) { findMaxLine(cm); }
+    cm.options.mode = doc.modeOption;
+    regChange(cm);
+  }
+
+  function setDirectionClass(cm) {
+  (cm.doc.direction == "rtl" ? addClass : rmClass)(cm.display.lineDiv, "CodeMirror-rtl");
+  }
+
+  function directionChanged(cm) {
+    runInOp(cm, function () {
+      setDirectionClass(cm);
+      regChange(cm);
+    });
+  }
+
+  function History(startGen) {
+    // Arrays of change events and selections. Doing something adds an
+    // event to done and clears undo. Undoing moves events from done
+    // to undone, redoing moves them in the other direction.
+    this.done = []; this.undone = [];
+    this.undoDepth = Infinity;
+    // Used to track when changes can be merged into a single undo
+    // event
+    this.lastModTime = this.lastSelTime = 0;
+    this.lastOp = this.lastSelOp = null;
+    this.lastOrigin = this.lastSelOrigin = null;
+    // Used by the isClean() method
+    this.generation = this.maxGeneration = startGen || 1;
+  }
+
+  // Create a history change event from an updateDoc-style change
+  // object.
+  function historyChangeFromChange(doc, change) {
+    var histChange = {from: copyPos(change.from), to: changeEnd(change), text: getBetween(doc, change.from, change.to)};
+    attachLocalSpans(doc, histChange, change.from.line, change.to.line + 1);
+    linkedDocs(doc, function (doc) { return attachLocalSpans(doc, histChange, change.from.line, change.to.line + 1); }, true);
+    return histChange
+  }
+
+  // Pop all selection events off the end of a history array. Stop at
+  // a change event.
+  function clearSelectionEvents(array) {
+    while (array.length) {
+      var last = lst(array);
+      if (last.ranges) { array.pop(); }
+      else { break }
+    }
+  }
+
+  // Find the top change event in the history. Pop off selection
+  // events that are in the way.
+  function lastChangeEvent(hist, force) {
+    if (force) {
+      clearSelectionEvents(hist.done);
+      return lst(hist.done)
+    } else if (hist.done.length && !lst(hist.done).ranges) {
+      return lst(hist.done)
+    } else if (hist.done.length > 1 && !hist.done[hist.done.length - 2].ranges) {
+      hist.done.pop();
+      return lst(hist.done)
+    }
+  }
+
+  // Register a change in the history. Merges changes that are within
+  // a single operation, or are close together with an origin that
+  // allows merging (starting with "+") into a single event.
+  function addChangeToHistory(doc, change, selAfter, opId) {
+    var hist = doc.history;
+    hist.undone.length = 0;
+    var time = +new Date, cur;
+    var last;
+
+    if ((hist.lastOp == opId ||
+         hist.lastOrigin == change.origin && change.origin &&
+         ((change.origin.charAt(0) == "+" && hist.lastModTime > time - (doc.cm ? doc.cm.options.historyEventDelay : 500)) ||
+          change.origin.charAt(0) == "*")) &&
+        (cur = lastChangeEvent(hist, hist.lastOp == opId))) {
+      // Merge this change into the last event
+      last = lst(cur.changes);
+      if (cmp(change.from, change.to) == 0 && cmp(change.from, last.to) == 0) {
+        // Optimized case for simple insertion -- don't want to add
+        // new changesets for every character typed
+        last.to = changeEnd(change);
+      } else {
+        // Add new sub-event
+        cur.changes.push(historyChangeFromChange(doc, change));
+      }
+    } else {
+      // Can not be merged, start a new event.
+      var before = lst(hist.done);
+      if (!before || !before.ranges)
+        { pushSelectionToHistory(doc.sel, hist.done); }
+      cur = {changes: [historyChangeFromChange(doc, change)],
+             generation: hist.generation};
+      hist.done.push(cur);
+      while (hist.done.length > hist.undoDepth) {
+        hist.done.shift();
+        if (!hist.done[0].ranges) { hist.done.shift(); }
+      }
+    }
+    hist.done.push(selAfter);
+    hist.generation = ++hist.maxGeneration;
+    hist.lastModTime = hist.lastSelTime = time;
+    hist.lastOp = hist.lastSelOp = opId;
+    hist.lastOrigin = hist.lastSelOrigin = change.origin;
+
+    if (!last) { signal(doc, "historyAdded"); }
+  }
+
+  function selectionEventCanBeMerged(doc, origin, prev, sel) {
+    var ch = origin.charAt(0);
+    return ch == "*" ||
+      ch == "+" &&
+      prev.ranges.length == sel.ranges.length &&
+      prev.somethingSelected() == sel.somethingSelected() &&
+      new Date - doc.history.lastSelTime <= (doc.cm ? doc.cm.options.historyEventDelay : 500)
+  }
+
+  // Called whenever the selection changes, sets the new selection as
+  // the pending selection in the history, and pushes the old pending
+  // selection into the 'done' array when it was significantly
+  // different (in number of selected ranges, emptiness, or time).
+  function addSelectionToHistory(doc, sel, opId, options) {
+    var hist = doc.history, origin = options && options.origin;
+
+    // A new event is started when the previous origin does not match
+    // the current, or the origins don't allow matching. Origins
+    // starting with * are always merged, those starting with + are
+    // merged when similar and close together in time.
+    if (opId == hist.lastSelOp ||
+        (origin && hist.lastSelOrigin == origin &&
+         (hist.lastModTime == hist.lastSelTime && hist.lastOrigin == origin ||
+          selectionEventCanBeMerged(doc, origin, lst(hist.done), sel))))
+      { hist.done[hist.done.length - 1] = sel; }
+    else
+      { pushSelectionToHistory(sel, hist.done); }
+
+    hist.lastSelTime = +new Date;
+    hist.lastSelOrigin = origin;
+    hist.lastSelOp = opId;
+    if (options && options.clearRedo !== false)
+      { clearSelectionEvents(hist.undone); }
+  }
+
+  function pushSelectionToHistory(sel, dest) {
+    var top = lst(dest);
+    if (!(top && top.ranges && top.equals(sel)))
+      { dest.push(sel); }
+  }
+
+  // Used to store marked span information in the history.
+  function attachLocalSpans(doc, change, from, to) {
+    var existing = change["spans_" + doc.id], n = 0;
+    doc.iter(Math.max(doc.first, from), Math.min(doc.first + doc.size, to), function (line) {
+      if (line.markedSpans)
+        { (existing || (existing = change["spans_" + doc.id] = {}))[n] = line.markedSpans; }
+      ++n;
+    });
+  }
+
+  // When un/re-doing restores text containing marked spans, those
+  // that have been explicitly cleared should not be restored.
+  function removeClearedSpans(spans) {
+    if (!spans) { return null }
+    var out;
+    for (var i = 0; i < spans.length; ++i) {
+      if (spans[i].marker.explicitlyCleared) { if (!out) { out = spans.slice(0, i); } }
+      else if (out) { out.push(spans[i]); }
+    }
+    return !out ? spans : out.length ? out : null
+  }
+
+  // Retrieve and filter the old marked spans stored in a change event.
+  function getOldSpans(doc, change) {
+    var found = change["spans_" + doc.id];
+    if (!found) { return null }
+    var nw = [];
+    for (var i = 0; i < change.text.length; ++i)
+      { nw.push(removeClearedSpans(found[i])); }
+    return nw
+  }
+
+  // Used for un/re-doing changes from the history. Combines the
+  // result of computing the existing spans with the set of spans that
+  // existed in the history (so that deleting around a span and then
+  // undoing brings back the span).
+  function mergeOldSpans(doc, change) {
+    var old = getOldSpans(doc, change);
+    var stretched = stretchSpansOverChange(doc, change);
+    if (!old) { return stretched }
+    if (!stretched) { return old }
+
+    for (var i = 0; i < old.length; ++i) {
+      var oldCur = old[i], stretchCur = stretched[i];
+      if (oldCur && stretchCur) {
+        spans: for (var j = 0; j < stretchCur.length; ++j) {
+          var span = stretchCur[j];
+          for (var k = 0; k < oldCur.length; ++k)
+            { if (oldCur[k].marker == span.marker) { continue spans } }
+          oldCur.push(span);
+        }
+      } else if (stretchCur) {
+        old[i] = stretchCur;
+      }
+    }
+    return old
+  }
+
+  // Used both to provide a JSON-safe object in .getHistory, and, when
+  // detaching a document, to split the history in two
+  function copyHistoryArray(events, newGroup, instantiateSel) {
+    var copy = [];
+    for (var i = 0; i < events.length; ++i) {
+      var event = events[i];
+      if (event.ranges) {
+        copy.push(instantiateSel ? Selection.prototype.deepCopy.call(event) : event);
+        continue
+      }
+      var changes = event.changes, newChanges = [];
+      copy.push({changes: newChanges});
+      for (var j = 0; j < changes.length; ++j) {
+        var change = changes[j], m = (void 0);
+        newChanges.push({from: change.from, to: change.to, text: change.text});
+        if (newGroup) { for (var prop in change) { if (m = prop.match(/^spans_(\d+)$/)) {
+          if (indexOf(newGroup, Number(m[1])) > -1) {
+            lst(newChanges)[prop] = change[prop];
+            delete change[prop];
+          }
+        } } }
+      }
+    }
+    return copy
+  }
+
+  // The 'scroll' parameter given to many of these indicated whether
+  // the new cursor position should be scrolled into view after
+  // modifying the selection.
+
+  // If shift is held or the extend flag is set, extends a range to
+  // include a given position (and optionally a second position).
+  // Otherwise, simply returns the range between the given positions.
+  // Used for cursor motion and such.
+  function extendRange(range, head, other, extend) {
+    if (extend) {
+      var anchor = range.anchor;
+      if (other) {
+        var posBefore = cmp(head, anchor) < 0;
+        if (posBefore != (cmp(other, anchor) < 0)) {
+          anchor = head;
+          head = other;
+        } else if (posBefore != (cmp(head, other) < 0)) {
+          head = other;
+        }
+      }
+      return new Range(anchor, head)
+    } else {
+      return new Range(other || head, head)
+    }
+  }
+
+  // Extend the primary selection range, discard the rest.
+  function extendSelection(doc, head, other, options, extend) {
+    if (extend == null) { extend = doc.cm && (doc.cm.display.shift || doc.extend); }
+    setSelection(doc, new Selection([extendRange(doc.sel.primary(), head, other, extend)], 0), options);
+  }
+
+  // Extend all selections (pos is an array of selections with length
+  // equal the number of selections)
+  function extendSelections(doc, heads, options) {
+    var out = [];
+    var extend = doc.cm && (doc.cm.display.shift || doc.extend);
+    for (var i = 0; i < doc.sel.ranges.length; i++)
+      { out[i] = extendRange(doc.sel.ranges[i], heads[i], null, extend); }
+    var newSel = normalizeSelection(doc.cm, out, doc.sel.primIndex);
+    setSelection(doc, newSel, options);
+  }
+
+  // Updates a single range in the selection.
+  function replaceOneSelection(doc, i, range, options) {
+    var ranges = doc.sel.ranges.slice(0);
+    ranges[i] = range;
+    setSelection(doc, normalizeSelection(doc.cm, ranges, doc.sel.primIndex), options);
+  }
+
+  // Reset the selection to a single range.
+  function setSimpleSelection(doc, anchor, head, options) {
+    setSelection(doc, simpleSelection(anchor, head), options);
+  }
+
+  // Give beforeSelectionChange handlers a change to influence a
+  // selection update.
+  function filterSelectionChange(doc, sel, options) {
+    var obj = {
+      ranges: sel.ranges,
+      update: function(ranges) {
+        this.ranges = [];
+        for (var i = 0; i < ranges.length; i++)
+          { this.ranges[i] = new Range(clipPos(doc, ranges[i].anchor),
+                                     clipPos(doc, ranges[i].head)); }
+      },
+      origin: options && options.origin
+    };
+    signal(doc, "beforeSelectionChange", doc, obj);
+    if (doc.cm) { signal(doc.cm, "beforeSelectionChange", doc.cm, obj); }
+    if (obj.ranges != sel.ranges) { return normalizeSelection(doc.cm, obj.ranges, obj.ranges.length - 1) }
+    else { return sel }
+  }
+
+  function setSelectionReplaceHistory(doc, sel, options) {
+    var done = doc.history.done, last = lst(done);
+    if (last && last.ranges) {
+      done[done.length - 1] = sel;
+      setSelectionNoUndo(doc, sel, options);
+    } else {
+      setSelection(doc, sel, options);
+    }
+  }
+
+  // Set a new selection.
+  function setSelection(doc, sel, options) {
+    setSelectionNoUndo(doc, sel, options);
+    addSelectionToHistory(doc, doc.sel, doc.cm ? doc.cm.curOp.id : NaN, options);
+  }
+
+  function setSelectionNoUndo(doc, sel, options) {
+    if (hasHandler(doc, "beforeSelectionChange") || doc.cm && hasHandler(doc.cm, "beforeSelectionChange"))
+      { sel = filterSelectionChange(doc, sel, options); }
+
+    var bias = options && options.bias ||
+      (cmp(sel.primary().head, doc.sel.primary().head) < 0 ? -1 : 1);
+    setSelectionInner(doc, skipAtomicInSelection(doc, sel, bias, true));
+
+    if (!(options && options.scroll === false) && doc.cm)
+      { ensureCursorVisible(doc.cm); }
+  }
+
+  function setSelectionInner(doc, sel) {
+    if (sel.equals(doc.sel)) { return }
+
+    doc.sel = sel;
+
+    if (doc.cm) {
+      doc.cm.curOp.updateInput = 1;
+      doc.cm.curOp.selectionChanged = true;
+      signalCursorActivity(doc.cm);
+    }
+    signalLater(doc, "cursorActivity", doc);
+  }
+
+  // Verify that the selection does not partially select any atomic
+  // marked ranges.
+  function reCheckSelection(doc) {
+    setSelectionInner(doc, skipAtomicInSelection(doc, doc.sel, null, false));
+  }
+
+  // Return a selection that does not partially select any atomic
+  // ranges.
+  function skipAtomicInSelection(doc, sel, bias, mayClear) {
+    var out;
+    for (var i = 0; i < sel.ranges.length; i++) {
+      var range = sel.ranges[i];
+      var old = sel.ranges.length == doc.sel.ranges.length && doc.sel.ranges[i];
+      var newAnchor = skipAtomic(doc, range.anchor, old && old.anchor, bias, mayClear);
+      var newHead = skipAtomic(doc, range.head, old && old.head, bias, mayClear);
+      if (out || newAnchor != range.anchor || newHead != range.head) {
+        if (!out) { out = sel.ranges.slice(0, i); }
+        out[i] = new Range(newAnchor, newHead);
+      }
+    }
+    return out ? normalizeSelection(doc.cm, out, sel.primIndex) : sel
+  }
+
+  function skipAtomicInner(doc, pos, oldPos, dir, mayClear) {
+    var line = getLine(doc, pos.line);
+    if (line.markedSpans) { for (var i = 0; i < line.markedSpans.length; ++i) {
+      var sp = line.markedSpans[i], m = sp.marker;
+
+      // Determine if we should prevent the cursor being placed to the left/right of an atomic marker
+      // Historically this was determined using the inclusiveLeft/Right option, but the new way to control it
+      // is with selectLeft/Right
+      var preventCursorLeft = ("selectLeft" in m) ? !m.selectLeft : m.inclusiveLeft;
+      var preventCursorRight = ("selectRight" in m) ? !m.selectRight : m.inclusiveRight;
+
+      if ((sp.from == null || (preventCursorLeft ? sp.from <= pos.ch : sp.from < pos.ch)) &&
+          (sp.to == null || (preventCursorRight ? sp.to >= pos.ch : sp.to > pos.ch))) {
+        if (mayClear) {
+          signal(m, "beforeCursorEnter");
+          if (m.explicitlyCleared) {
+            if (!line.markedSpans) { break }
+            else {--i; continue}
+          }
+        }
+        if (!m.atomic) { continue }
+
+        if (oldPos) {
+          var near = m.find(dir < 0 ? 1 : -1), diff = (void 0);
+          if (dir < 0 ? preventCursorRight : preventCursorLeft)
+            { near = movePos(doc, near, -dir, near && near.line == pos.line ? line : null); }
+          if (near && near.line == pos.line && (diff = cmp(near, oldPos)) && (dir < 0 ? diff < 0 : diff > 0))
+            { return skipAtomicInner(doc, near, pos, dir, mayClear) }
+        }
+
+        var far = m.find(dir < 0 ? -1 : 1);
+        if (dir < 0 ? preventCursorLeft : preventCursorRight)
+          { far = movePos(doc, far, dir, far.line == pos.line ? line : null); }
+        return far ? skipAtomicInner(doc, far, pos, dir, mayClear) : null
+      }
+    } }
+    return pos
+  }
+
+  // Ensure a given position is not inside an atomic range.
+  function skipAtomic(doc, pos, oldPos, bias, mayClear) {
+    var dir = bias || 1;
+    var found = skipAtomicInner(doc, pos, oldPos, dir, mayClear) ||
+        (!mayClear && skipAtomicInner(doc, pos, oldPos, dir, true)) ||
+        skipAtomicInner(doc, pos, oldPos, -dir, mayClear) ||
+        (!mayClear && skipAtomicInner(doc, pos, oldPos, -dir, true));
+    if (!found) {
+      doc.cantEdit = true;
+      return Pos(doc.first, 0)
+    }
+    return found
+  }
+
+  function movePos(doc, pos, dir, line) {
+    if (dir < 0 && pos.ch == 0) {
+      if (pos.line > doc.first) { return clipPos(doc, Pos(pos.line - 1)) }
+      else { return null }
+    } else if (dir > 0 && pos.ch == (line || getLine(doc, pos.line)).text.length) {
+      if (pos.line < doc.first + doc.size - 1) { return Pos(pos.line + 1, 0) }
+      else { return null }
+    } else {
+      return new Pos(pos.line, pos.ch + dir)
+    }
+  }
+
+  function selectAll(cm) {
+    cm.setSelection(Pos(cm.firstLine(), 0), Pos(cm.lastLine()), sel_dontScroll);
+  }
+
+  // UPDATING
+
+  // Allow "beforeChange" event handlers to influence a change
+  function filterChange(doc, change, update) {
+    var obj = {
+      canceled: false,
+      from: change.from,
+      to: change.to,
+      text: change.text,
+      origin: change.origin,
+      cancel: function () { return obj.canceled = true; }
+    };
+    if (update) { obj.update = function (from, to, text, origin) {
+      if (from) { obj.from = clipPos(doc, from); }
+      if (to) { obj.to = clipPos(doc, to); }
+      if (text) { obj.text = text; }
+      if (origin !== undefined) { obj.origin = origin; }
+    }; }
+    signal(doc, "beforeChange", doc, obj);
+    if (doc.cm) { signal(doc.cm, "beforeChange", doc.cm, obj); }
+
+    if (obj.canceled) {
+      if (doc.cm) { doc.cm.curOp.updateInput = 2; }
+      return null
+    }
+    return {from: obj.from, to: obj.to, text: obj.text, origin: obj.origin}
+  }
+
+  // Apply a change to a document, and add it to the document's
+  // history, and propagating it to all linked documents.
+  function makeChange(doc, change, ignoreReadOnly) {
+    if (doc.cm) {
+      if (!doc.cm.curOp) { return operation(doc.cm, makeChange)(doc, change, ignoreReadOnly) }
+      if (doc.cm.state.suppressEdits) { return }
+    }
+
+    if (hasHandler(doc, "beforeChange") || doc.cm && hasHandler(doc.cm, "beforeChange")) {
+      change = filterChange(doc, change, true);
+      if (!change) { return }
+    }
+
+    // Possibly split or suppress the update based on the presence
+    // of read-only spans in its range.
+    var split = sawReadOnlySpans && !ignoreReadOnly && removeReadOnlyRanges(doc, change.from, change.to);
+    if (split) {
+      for (var i = split.length - 1; i >= 0; --i)
+        { makeChangeInner(doc, {from: split[i].from, to: split[i].to, text: i ? [""] : change.text, origin: change.origin}); }
+    } else {
+      makeChangeInner(doc, change);
+    }
+  }
+
+  function makeChangeInner(doc, change) {
+    if (change.text.length == 1 && change.text[0] == "" && cmp(change.from, change.to) == 0) { return }
+    var selAfter = computeSelAfterChange(doc, change);
+    addChangeToHistory(doc, change, selAfter, doc.cm ? doc.cm.curOp.id : NaN);
+
+    makeChangeSingleDoc(doc, change, selAfter, stretchSpansOverChange(doc, change));
+    var rebased = [];
+
+    linkedDocs(doc, function (doc, sharedHist) {
+      if (!sharedHist && indexOf(rebased, doc.history) == -1) {
+        rebaseHist(doc.history, change);
+        rebased.push(doc.history);
+      }
+      makeChangeSingleDoc(doc, change, null, stretchSpansOverChange(doc, change));
+    });
+  }
+
+  // Revert a change stored in a document's history.
+  function makeChangeFromHistory(doc, type, allowSelectionOnly) {
+    var suppress = doc.cm && doc.cm.state.suppressEdits;
+    if (suppress && !allowSelectionOnly) { return }
+
+    var hist = doc.history, event, selAfter = doc.sel;
+    var source = type == "undo" ? hist.done : hist.undone, dest = type == "undo" ? hist.undone : hist.done;
+
+    // Verify that there is a useable event (so that ctrl-z won't
+    // needlessly clear selection events)
+    var i = 0;
+    for (; i < source.length; i++) {
+      event = source[i];
+      if (allowSelectionOnly ? event.ranges && !event.equals(doc.sel) : !event.ranges)
+        { break }
+    }
+    if (i == source.length) { return }
+    hist.lastOrigin = hist.lastSelOrigin = null;
+
+    for (;;) {
+      event = source.pop();
+      if (event.ranges) {
+        pushSelectionToHistory(event, dest);
+        if (allowSelectionOnly && !event.equals(doc.sel)) {
+          setSelection(doc, event, {clearRedo: false});
+          return
+        }
+        selAfter = event;
+      } else if (suppress) {
+        source.push(event);
+        return
+      } else { break }
+    }
+
+    // Build up a reverse change object to add to the opposite history
+    // stack (redo when undoing, and vice versa).
+    var antiChanges = [];
+    pushSelectionToHistory(selAfter, dest);
+    dest.push({changes: antiChanges, generation: hist.generation});
+    hist.generation = event.generation || ++hist.maxGeneration;
+
+    var filter = hasHandler(doc, "beforeChange") || doc.cm && hasHandler(doc.cm, "beforeChange");
+
+    var loop = function ( i ) {
+      var change = event.changes[i];
+      change.origin = type;
+      if (filter && !filterChange(doc, change, false)) {
+        source.length = 0;
+        return {}
+      }
+
+      antiChanges.push(historyChangeFromChange(doc, change));
+
+      var after = i ? computeSelAfterChange(doc, change) : lst(source);
+      makeChangeSingleDoc(doc, change, after, mergeOldSpans(doc, change));
+      if (!i && doc.cm) { doc.cm.scrollIntoView({from: change.from, to: changeEnd(change)}); }
+      var rebased = [];
+
+      // Propagate to the linked documents
+      linkedDocs(doc, function (doc, sharedHist) {
+        if (!sharedHist && indexOf(rebased, doc.history) == -1) {
+          rebaseHist(doc.history, change);
+          rebased.push(doc.history);
+        }
+        makeChangeSingleDoc(doc, change, null, mergeOldSpans(doc, change));
+      });
+    };
+
+    for (var i$1 = event.changes.length - 1; i$1 >= 0; --i$1) {
+      var returned = loop( i$1 );
+
+      if ( returned ) return returned.v;
+    }
+  }
+
+  // Sub-views need their line numbers shifted when text is added
+  // above or below them in the parent document.
+  function shiftDoc(doc, distance) {
+    if (distance == 0) { return }
+    doc.first += distance;
+    doc.sel = new Selection(map(doc.sel.ranges, function (range) { return new Range(
+      Pos(range.anchor.line + distance, range.anchor.ch),
+      Pos(range.head.line + distance, range.head.ch)
+    ); }), doc.sel.primIndex);
+    if (doc.cm) {
+      regChange(doc.cm, doc.first, doc.first - distance, distance);
+      for (var d = doc.cm.display, l = d.viewFrom; l < d.viewTo; l++)
+        { regLineChange(doc.cm, l, "gutter"); }
+    }
+  }
+
+  // More lower-level change function, handling only a single document
+  // (not linked ones).
+  function makeChangeSingleDoc(doc, change, selAfter, spans) {
+    if (doc.cm && !doc.cm.curOp)
+      { return operation(doc.cm, makeChangeSingleDoc)(doc, change, selAfter, spans) }
+
+    if (change.to.line < doc.first) {
+      shiftDoc(doc, change.text.length - 1 - (change.to.line - change.from.line));
+      return
+    }
+    if (change.from.line > doc.lastLine()) { return }
+
+    // Clip the change to the size of this doc
+    if (change.from.line < doc.first) {
+      var shift = change.text.length - 1 - (doc.first - change.from.line);
+      shiftDoc(doc, shift);
+      change = {from: Pos(doc.first, 0), to: Pos(change.to.line + shift, change.to.ch),
+                text: [lst(change.text)], origin: change.origin};
+    }
+    var last = doc.lastLine();
+    if (change.to.line > last) {
+      change = {from: change.from, to: Pos(last, getLine(doc, last).text.length),
+                text: [change.text[0]], origin: change.origin};
+    }
+
+    change.removed = getBetween(doc, change.from, change.to);
+
+    if (!selAfter) { selAfter = computeSelAfterChange(doc, change); }
+    if (doc.cm) { makeChangeSingleDocInEditor(doc.cm, change, spans); }
+    else { updateDoc(doc, change, spans); }
+    setSelectionNoUndo(doc, selAfter, sel_dontScroll);
+
+    if (doc.cantEdit && skipAtomic(doc, Pos(doc.firstLine(), 0)))
+      { doc.cantEdit = false; }
+  }
+
+  // Handle the interaction of a change to a document with the editor
+  // that this document is part of.
+  function makeChangeSingleDocInEditor(cm, change, spans) {
+    var doc = cm.doc, display = cm.display, from = change.from, to = change.to;
+
+    var recomputeMaxLength = false, checkWidthStart = from.line;
+    if (!cm.options.lineWrapping) {
+      checkWidthStart = lineNo(visualLine(getLine(doc, from.line)));
+      doc.iter(checkWidthStart, to.line + 1, function (line) {
+        if (line == display.maxLine) {
+          recomputeMaxLength = true;
+          return true
+        }
+      });
+    }
+
+    if (doc.sel.contains(change.from, change.to) > -1)
+      { signalCursorActivity(cm); }
+
+    updateDoc(doc, change, spans, estimateHeight(cm));
+
+    if (!cm.options.lineWrapping) {
+      doc.iter(checkWidthStart, from.line + change.text.length, function (line) {
+        var len = lineLength(line);
+        if (len > display.maxLineLength) {
+          display.maxLine = line;
+          display.maxLineLength = len;
+          display.maxLineChanged = true;
+          recomputeMaxLength = false;
+        }
+      });
+      if (recomputeMaxLength) { cm.curOp.updateMaxLine = true; }
+    }
+
+    retreatFrontier(doc, from.line);
+    startWorker(cm, 400);
+
+    var lendiff = change.text.length - (to.line - from.line) - 1;
+    // Remember that these lines changed, for updating the display
+    if (change.full)
+      { regChange(cm); }
+    else if (from.line == to.line && change.text.length == 1 && !isWholeLineUpdate(cm.doc, change))
+      { regLineChange(cm, from.line, "text"); }
+    else
+      { regChange(cm, from.line, to.line + 1, lendiff); }
+
+    var changesHandler = hasHandler(cm, "changes"), changeHandler = hasHandler(cm, "change");
+    if (changeHandler || changesHandler) {
+      var obj = {
+        from: from, to: to,
+        text: change.text,
+        removed: change.removed,
+        origin: change.origin
+      };
+      if (changeHandler) { signalLater(cm, "change", cm, obj); }
+      if (changesHandler) { (cm.curOp.changeObjs || (cm.curOp.changeObjs = [])).push(obj); }
+    }
+    cm.display.selForContextMenu = null;
+  }
+
+  function replaceRange(doc, code, from, to, origin) {
+    var assign;
+
+    if (!to) { to = from; }
+    if (cmp(to, from) < 0) { (assign = [to, from], from = assign[0], to = assign[1]); }
+    if (typeof code == "string") { code = doc.splitLines(code); }
+    makeChange(doc, {from: from, to: to, text: code, origin: origin});
+  }
+
+  // Rebasing/resetting history to deal with externally-sourced changes
+
+  function rebaseHistSelSingle(pos, from, to, diff) {
+    if (to < pos.line) {
+      pos.line += diff;
+    } else if (from < pos.line) {
+      pos.line = from;
+      pos.ch = 0;
+    }
+  }
+
+  // Tries to rebase an array of history events given a change in the
+  // document. If the change touches the same lines as the event, the
+  // event, and everything 'behind' it, is discarded. If the change is
+  // before the event, the event's positions are updated. Uses a
+  // copy-on-write scheme for the positions, to avoid having to
+  // reallocate them all on every rebase, but also avoid problems with
+  // shared position objects being unsafely updated.
+  function rebaseHistArray(array, from, to, diff) {
+    for (var i = 0; i < array.length; ++i) {
+      var sub = array[i], ok = true;
+      if (sub.ranges) {
+        if (!sub.copied) { sub = array[i] = sub.deepCopy(); sub.copied = true; }
+        for (var j = 0; j < sub.ranges.length; j++) {
+          rebaseHistSelSingle(sub.ranges[j].anchor, from, to, diff);
+          rebaseHistSelSingle(sub.ranges[j].head, from, to, diff);
+        }
+        continue
+      }
+      for (var j$1 = 0; j$1 < sub.changes.length; ++j$1) {
+        var cur = sub.changes[j$1];
+        if (to < cur.from.line) {
+          cur.from = Pos(cur.from.line + diff, cur.from.ch);
+          cur.to = Pos(cur.to.line + diff, cur.to.ch);
+        } else if (from <= cur.to.line) {
+          ok = false;
+          break
+        }
+      }
+      if (!ok) {
+        array.splice(0, i + 1);
+        i = 0;
+      }
+    }
+  }
+
+  function rebaseHist(hist, change) {
+    var from = change.from.line, to = change.to.line, diff = change.text.length - (to - from) - 1;
+    rebaseHistArray(hist.done, from, to, diff);
+    rebaseHistArray(hist.undone, from, to, diff);
+  }
+
+  // Utility for applying a change to a line by handle or number,
+  // returning the number and optionally registering the line as
+  // changed.
+  function changeLine(doc, handle, changeType, op) {
+    var no = handle, line = handle;
+    if (typeof handle == "number") { line = getLine(doc, clipLine(doc, handle)); }
+    else { no = lineNo(handle); }
+    if (no == null) { return null }
+    if (op(line, no) && doc.cm) { regLineChange(doc.cm, no, changeType); }
+    return line
+  }
+
+  // The document is represented as a BTree consisting of leaves, with
+  // chunk of lines in them, and branches, with up to ten leaves or
+  // other branch nodes below them. The top node is always a branch
+  // node, and is the document object itself (meaning it has
+  // additional methods and properties).
+  //
+  // All nodes have parent links. The tree is used both to go from
+  // line numbers to line objects, and to go from objects to numbers.
+  // It also indexes by height, and is used to convert between height
+  // and line object, and to find the total height of the document.
+  //
+  // See also http://marijnhaverbeke.nl/blog/codemirror-line-tree.html
+
+  function LeafChunk(lines) {
+    this.lines = lines;
+    this.parent = null;
+    var height = 0;
+    for (var i = 0; i < lines.length; ++i) {
+      lines[i].parent = this;
+      height += lines[i].height;
+    }
+    this.height = height;
+  }
+
+  LeafChunk.prototype = {
+    chunkSize: function() { return this.lines.length },
+
+    // Remove the n lines at offset 'at'.
+    removeInner: function(at, n) {
+      for (var i = at, e = at + n; i < e; ++i) {
+        var line = this.lines[i];
+        this.height -= line.height;
+        cleanUpLine(line);
+        signalLater(line, "delete");
+      }
+      this.lines.splice(at, n);
+    },
+
+    // Helper used to collapse a small branch into a single leaf.
+    collapse: function(lines) {
+      lines.push.apply(lines, this.lines);
+    },
+
+    // Insert the given array of lines at offset 'at', count them as
+    // having the given height.
+    insertInner: function(at, lines, height) {
+      this.height += height;
+      this.lines = this.lines.slice(0, at).concat(lines).concat(this.lines.slice(at));
+      for (var i = 0; i < lines.length; ++i) { lines[i].parent = this; }
+    },
+
+    // Used to iterate over a part of the tree.
+    iterN: function(at, n, op) {
+      for (var e = at + n; at < e; ++at)
+        { if (op(this.lines[at])) { return true } }
+    }
+  };
+
+  function BranchChunk(children) {
+    this.children = children;
+    var size = 0, height = 0;
+    for (var i = 0; i < children.length; ++i) {
+      var ch = children[i];
+      size += ch.chunkSize(); height += ch.height;
+      ch.parent = this;
+    }
+    this.size = size;
+    this.height = height;
+    this.parent = null;
+  }
+
+  BranchChunk.prototype = {
+    chunkSize: function() { return this.size },
+
+    removeInner: function(at, n) {
+      this.size -= n;
+      for (var i = 0; i < this.children.length; ++i) {
+        var child = this.children[i], sz = child.chunkSize();
+        if (at < sz) {
+          var rm = Math.min(n, sz - at), oldHeight = child.height;
+          child.removeInner(at, rm);
+          this.height -= oldHeight - child.height;
+          if (sz == rm) { this.children.splice(i--, 1); child.parent = null; }
+          if ((n -= rm) == 0) { break }
+          at = 0;
+        } else { at -= sz; }
+      }
+      // If the result is smaller than 25 lines, ensure that it is a
+      // single leaf node.
+      if (this.size - n < 25 &&
+          (this.children.length > 1 || !(this.children[0] instanceof LeafChunk))) {
+        var lines = [];
+        this.collapse(lines);
+        this.children = [new LeafChunk(lines)];
+        this.children[0].parent = this;
+      }
+    },
+
+    collapse: function(lines) {
+      for (var i = 0; i < this.children.length; ++i) { this.children[i].collapse(lines); }
+    },
+
+    insertInner: function(at, lines, height) {
+      this.size += lines.length;
+      this.height += height;
+      for (var i = 0; i < this.children.length; ++i) {
+        var child = this.children[i], sz = child.chunkSize();
+        if (at <= sz) {
+          child.insertInner(at, lines, height);
+          if (child.lines && child.lines.length > 50) {
+            // To avoid memory thrashing when child.lines is huge (e.g. first view of a large file), it's never spliced.
+            // Instead, small slices are taken. They're taken in order because sequential memory accesses are fastest.
+            var remaining = child.lines.length % 25 + 25;
+            for (var pos = remaining; pos < child.lines.length;) {
+              var leaf = new LeafChunk(child.lines.slice(pos, pos += 25));
+              child.height -= leaf.height;
+              this.children.splice(++i, 0, leaf);
+              leaf.parent = this;
+            }
+            child.lines = child.lines.slice(0, remaining);
+            this.maybeSpill();
+          }
+          break
+        }
+        at -= sz;
+      }
+    },
+
+    // When a node has grown, check whether it should be split.
+    maybeSpill: function() {
+      if (this.children.length <= 10) { return }
+      var me = this;
+      do {
+        var spilled = me.children.splice(me.children.length - 5, 5);
+        var sibling = new BranchChunk(spilled);
+        if (!me.parent) { // Become the parent node
+          var copy = new BranchChunk(me.children);
+          copy.parent = me;
+          me.children = [copy, sibling];
+          me = copy;
+       } else {
+          me.size -= sibling.size;
+          me.height -= sibling.height;
+          var myIndex = indexOf(me.parent.children, me);
+          me.parent.children.splice(myIndex + 1, 0, sibling);
+        }
+        sibling.parent = me.parent;
+      } while (me.children.length > 10)
+      me.parent.maybeSpill();
+    },
+
+    iterN: function(at, n, op) {
+      for (var i = 0; i < this.children.length; ++i) {
+        var child = this.children[i], sz = child.chunkSize();
+        if (at < sz) {
+          var used = Math.min(n, sz - at);
+          if (child.iterN(at, used, op)) { return true }
+          if ((n -= used) == 0) { break }
+          at = 0;
+        } else { at -= sz; }
+      }
+    }
+  };
+
+  // Line widgets are block elements displayed above or below a line.
+
+  var LineWidget = function(doc, node, options) {
+    if (options) { for (var opt in options) { if (options.hasOwnProperty(opt))
+      { this[opt] = options[opt]; } } }
+    this.doc = doc;
+    this.node = node;
+  };
+
+  LineWidget.prototype.clear = function () {
+    var cm = this.doc.cm, ws = this.line.widgets, line = this.line, no = lineNo(line);
+    if (no == null || !ws) { return }
+    for (var i = 0; i < ws.length; ++i) { if (ws[i] == this) { ws.splice(i--, 1); } }
+    if (!ws.length) { line.widgets = null; }
+    var height = widgetHeight(this);
+    updateLineHeight(line, Math.max(0, line.height - height));
+    if (cm) {
+      runInOp(cm, function () {
+        adjustScrollWhenAboveVisible(cm, line, -height);
+        regLineChange(cm, no, "widget");
+      });
+      signalLater(cm, "lineWidgetCleared", cm, this, no);
+    }
+  };
+
+  LineWidget.prototype.changed = function () {
+      var this$1 = this;
+
+    var oldH = this.height, cm = this.doc.cm, line = this.line;
+    this.height = null;
+    var diff = widgetHeight(this) - oldH;
+    if (!diff) { return }
+    if (!lineIsHidden(this.doc, line)) { updateLineHeight(line, line.height + diff); }
+    if (cm) {
+      runInOp(cm, function () {
+        cm.curOp.forceUpdate = true;
+        adjustScrollWhenAboveVisible(cm, line, diff);
+        signalLater(cm, "lineWidgetChanged", cm, this$1, lineNo(line));
+      });
+    }
+  };
+  eventMixin(LineWidget);
+
+  function adjustScrollWhenAboveVisible(cm, line, diff) {
+    if (heightAtLine(line) < ((cm.curOp && cm.curOp.scrollTop) || cm.doc.scrollTop))
+      { addToScrollTop(cm, diff); }
+  }
+
+  function addLineWidget(doc, handle, node, options) {
+    var widget = new LineWidget(doc, node, options);
+    var cm = doc.cm;
+    if (cm && widget.noHScroll) { cm.display.alignWidgets = true; }
+    changeLine(doc, handle, "widget", function (line) {
+      var widgets = line.widgets || (line.widgets = []);
+      if (widget.insertAt == null) { widgets.push(widget); }
+      else { widgets.splice(Math.min(widgets.length - 1, Math.max(0, widget.insertAt)), 0, widget); }
+      widget.line = line;
+      if (cm && !lineIsHidden(doc, line)) {
+        var aboveVisible = heightAtLine(line) < doc.scrollTop;
+        updateLineHeight(line, line.height + widgetHeight(widget));
+        if (aboveVisible) { addToScrollTop(cm, widget.height); }
+        cm.curOp.forceUpdate = true;
+      }
+      return true
+    });
+    if (cm) { signalLater(cm, "lineWidgetAdded", cm, widget, typeof handle == "number" ? handle : lineNo(handle)); }
+    return widget
+  }
+
+  // TEXTMARKERS
+
+  // Created with markText and setBookmark methods. A TextMarker is a
+  // handle that can be used to clear or find a marked position in the
+  // document. Line objects hold arrays (markedSpans) containing
+  // {from, to, marker} object pointing to such marker objects, and
+  // indicating that such a marker is present on that line. Multiple
+  // lines may point to the same marker when it spans across lines.
+  // The spans will have null for their from/to properties when the
+  // marker continues beyond the start/end of the line. Markers have
+  // links back to the lines they currently touch.
+
+  // Collapsed markers have unique ids, in order to be able to order
+  // them, which is needed for uniquely determining an outer marker
+  // when they overlap (they may nest, but not partially overlap).
+  var nextMarkerId = 0;
+
+  var TextMarker = function(doc, type) {
+    this.lines = [];
+    this.type = type;
+    this.doc = doc;
+    this.id = ++nextMarkerId;
+  };
+
+  // Clear the marker.
+  TextMarker.prototype.clear = function () {
+    if (this.explicitlyCleared) { return }
+    var cm = this.doc.cm, withOp = cm && !cm.curOp;
+    if (withOp) { startOperation(cm); }
+    if (hasHandler(this, "clear")) {
+      var found = this.find();
+      if (found) { signalLater(this, "clear", found.from, found.to); }
+    }
+    var min = null, max = null;
+    for (var i = 0; i < this.lines.length; ++i) {
+      var line = this.lines[i];
+      var span = getMarkedSpanFor(line.markedSpans, this);
+      if (cm && !this.collapsed) { regLineChange(cm, lineNo(line), "text"); }
+      else if (cm) {
+        if (span.to != null) { max = lineNo(line); }
+        if (span.from != null) { min = lineNo(line); }
+      }
+      line.markedSpans = removeMarkedSpan(line.markedSpans, span);
+      if (span.from == null && this.collapsed && !lineIsHidden(this.doc, line) && cm)
+        { updateLineHeight(line, textHeight(cm.display)); }
+    }
+    if (cm && this.collapsed && !cm.options.lineWrapping) { for (var i$1 = 0; i$1 < this.lines.length; ++i$1) {
+      var visual = visualLine(this.lines[i$1]), len = lineLength(visual);
+      if (len > cm.display.maxLineLength) {
+        cm.display.maxLine = visual;
+        cm.display.maxLineLength = len;
+        cm.display.maxLineChanged = true;
+      }
+    } }
+
+    if (min != null && cm && this.collapsed) { regChange(cm, min, max + 1); }
+    this.lines.length = 0;
+    this.explicitlyCleared = true;
+    if (this.atomic && this.doc.cantEdit) {
+      this.doc.cantEdit = false;
+      if (cm) { reCheckSelection(cm.doc); }
+    }
+    if (cm) { signalLater(cm, "markerCleared", cm, this, min, max); }
+    if (withOp) { endOperation(cm); }
+    if (this.parent) { this.parent.clear(); }
+  };
+
+  // Find the position of the marker in the document. Returns a {from,
+  // to} object by default. Side can be passed to get a specific side
+  // -- 0 (both), -1 (left), or 1 (right). When lineObj is true, the
+  // Pos objects returned contain a line object, rather than a line
+  // number (used to prevent looking up the same line twice).
+  TextMarker.prototype.find = function (side, lineObj) {
+    if (side == null && this.type == "bookmark") { side = 1; }
+    var from, to;
+    for (var i = 0; i < this.lines.length; ++i) {
+      var line = this.lines[i];
+      var span = getMarkedSpanFor(line.markedSpans, this);
+      if (span.from != null) {
+        from = Pos(lineObj ? line : lineNo(line), span.from);
+        if (side == -1) { return from }
+      }
+      if (span.to != null) {
+        to = Pos(lineObj ? line : lineNo(line), span.to);
+        if (side == 1) { return to }
+      }
+    }
+    return from && {from: from, to: to}
+  };
+
+  // Signals that the marker's widget changed, and surrounding layout
+  // should be recomputed.
+  TextMarker.prototype.changed = function () {
+      var this$1 = this;
+
+    var pos = this.find(-1, true), widget = this, cm = this.doc.cm;
+    if (!pos || !cm) { return }
+    runInOp(cm, function () {
+      var line = pos.line, lineN = lineNo(pos.line);
+      var view = findViewForLine(cm, lineN);
+      if (view) {
+        clearLineMeasurementCacheFor(view);
+        cm.curOp.selectionChanged = cm.curOp.forceUpdate = true;
+      }
+      cm.curOp.updateMaxLine = true;
+      if (!lineIsHidden(widget.doc, line) && widget.height != null) {
+        var oldHeight = widget.height;
+        widget.height = null;
+        var dHeight = widgetHeight(widget) - oldHeight;
+        if (dHeight)
+          { updateLineHeight(line, line.height + dHeight); }
+      }
+      signalLater(cm, "markerChanged", cm, this$1);
+    });
+  };
+
+  TextMarker.prototype.attachLine = function (line) {
+    if (!this.lines.length && this.doc.cm) {
+      var op = this.doc.cm.curOp;
+      if (!op.maybeHiddenMarkers || indexOf(op.maybeHiddenMarkers, this) == -1)
+        { (op.maybeUnhiddenMarkers || (op.maybeUnhiddenMarkers = [])).push(this); }
+    }
+    this.lines.push(line);
+  };
+
+  TextMarker.prototype.detachLine = function (line) {
+    this.lines.splice(indexOf(this.lines, line), 1);
+    if (!this.lines.length && this.doc.cm) {
+      var op = this.doc.cm.curOp
+      ;(op.maybeHiddenMarkers || (op.maybeHiddenMarkers = [])).push(this);
+    }
+  };
+  eventMixin(TextMarker);
+
+  // Create a marker, wire it up to the right lines, and
+  function markText(doc, from, to, options, type) {
+    // Shared markers (across linked documents) are handled separately
+    // (markTextShared will call out to this again, once per
+    // document).
+    if (options && options.shared) { return markTextShared(doc, from, to, options, type) }
+    // Ensure we are in an operation.
+    if (doc.cm && !doc.cm.curOp) { return operation(doc.cm, markText)(doc, from, to, options, type) }
+
+    var marker = new TextMarker(doc, type), diff = cmp(from, to);
+    if (options) { copyObj(options, marker, false); }
+    // Don't connect empty markers unless clearWhenEmpty is false
+    if (diff > 0 || diff == 0 && marker.clearWhenEmpty !== false)
+      { return marker }
+    if (marker.replacedWith) {
+      // Showing up as a widget implies collapsed (widget replaces text)
+      marker.collapsed = true;
+      marker.widgetNode = eltP("span", [marker.replacedWith], "CodeMirror-widget");
+      if (!options.handleMouseEvents) { marker.widgetNode.setAttribute("cm-ignore-events", "true"); }
+      if (options.insertLeft) { marker.widgetNode.insertLeft = true; }
+    }
+    if (marker.collapsed) {
+      if (conflictingCollapsedRange(doc, from.line, from, to, marker) ||
+          from.line != to.line && conflictingCollapsedRange(doc, to.line, from, to, marker))
+        { throw new Error("Inserting collapsed marker partially overlapping an existing one") }
+      seeCollapsedSpans();
+    }
+
+    if (marker.addToHistory)
+      { addChangeToHistory(doc, {from: from, to: to, origin: "markText"}, doc.sel, NaN); }
+
+    var curLine = from.line, cm = doc.cm, updateMaxLine;
+    doc.iter(curLine, to.line + 1, function (line) {
+      if (cm && marker.collapsed && !cm.options.lineWrapping && visualLine(line) == cm.display.maxLine)
+        { updateMaxLine = true; }
+      if (marker.collapsed && curLine != from.line) { updateLineHeight(line, 0); }
+      addMarkedSpan(line, new MarkedSpan(marker,
+                                         curLine == from.line ? from.ch : null,
+                                         curLine == to.line ? to.ch : null));
+      ++curLine;
+    });
+    // lineIsHidden depends on the presence of the spans, so needs a second pass
+    if (marker.collapsed) { doc.iter(from.line, to.line + 1, function (line) {
+      if (lineIsHidden(doc, line)) { updateLineHeight(line, 0); }
+    }); }
+
+    if (marker.clearOnEnter) { on(marker, "beforeCursorEnter", function () { return marker.clear(); }); }
+
+    if (marker.readOnly) {
+      seeReadOnlySpans();
+      if (doc.history.done.length || doc.history.undone.length)
+        { doc.clearHistory(); }
+    }
+    if (marker.collapsed) {
+      marker.id = ++nextMarkerId;
+      marker.atomic = true;
+    }
+    if (cm) {
+      // Sync editor state
+      if (updateMaxLine) { cm.curOp.updateMaxLine = true; }
+      if (marker.collapsed)
+        { regChange(cm, from.line, to.line + 1); }
+      else if (marker.className || marker.startStyle || marker.endStyle || marker.css ||
+               marker.attributes || marker.title)
+        { for (var i = from.line; i <= to.line; i++) { regLineChange(cm, i, "text"); } }
+      if (marker.atomic) { reCheckSelection(cm.doc); }
+      signalLater(cm, "markerAdded", cm, marker);
+    }
+    return marker
+  }
+
+  // SHARED TEXTMARKERS
+
+  // A shared marker spans multiple linked documents. It is
+  // implemented as a meta-marker-object controlling multiple normal
+  // markers.
+  var SharedTextMarker = function(markers, primary) {
+    this.markers = markers;
+    this.primary = primary;
+    for (var i = 0; i < markers.length; ++i)
+      { markers[i].parent = this; }
+  };
+
+  SharedTextMarker.prototype.clear = function () {
+    if (this.explicitlyCleared) { return }
+    this.explicitlyCleared = true;
+    for (var i = 0; i < this.markers.length; ++i)
+      { this.markers[i].clear(); }
+    signalLater(this, "clear");
+  };
+
+  SharedTextMarker.prototype.find = function (side, lineObj) {
+    return this.primary.find(side, lineObj)
+  };
+  eventMixin(SharedTextMarker);
+
+  function markTextShared(doc, from, to, options, type) {
+    options = copyObj(options);
+    options.shared = false;
+    var markers = [markText(doc, from, to, options, type)], primary = markers[0];
+    var widget = options.widgetNode;
+    linkedDocs(doc, function (doc) {
+      if (widget) { options.widgetNode = widget.cloneNode(true); }
+      markers.push(markText(doc, clipPos(doc, from), clipPos(doc, to), options, type));
+      for (var i = 0; i < doc.linked.length; ++i)
+        { if (doc.linked[i].isParent) { return } }
+      primary = lst(markers);
+    });
+    return new SharedTextMarker(markers, primary)
+  }
+
+  function findSharedMarkers(doc) {
+    return doc.findMarks(Pos(doc.first, 0), doc.clipPos(Pos(doc.lastLine())), function (m) { return m.parent; })
+  }
+
+  function copySharedMarkers(doc, markers) {
+    for (var i = 0; i < markers.length; i++) {
+      var marker = markers[i], pos = marker.find();
+      var mFrom = doc.clipPos(pos.from), mTo = doc.clipPos(pos.to);
+      if (cmp(mFrom, mTo)) {
+        var subMark = markText(doc, mFrom, mTo, marker.primary, marker.primary.type);
+        marker.markers.push(subMark);
+        subMark.parent = marker;
+      }
+    }
+  }
+
+  function detachSharedMarkers(markers) {
+    var loop = function ( i ) {
+      var marker = markers[i], linked = [marker.primary.doc];
+      linkedDocs(marker.primary.doc, function (d) { return linked.push(d); });
+      for (var j = 0; j < marker.markers.length; j++) {
+        var subMarker = marker.markers[j];
+        if (indexOf(linked, subMarker.doc) == -1) {
+          subMarker.parent = null;
+          marker.markers.splice(j--, 1);
+        }
+      }
+    };
+
+    for (var i = 0; i < markers.length; i++) loop( i );
+  }
+
+  var nextDocId = 0;
+  var Doc = function(text, mode, firstLine, lineSep, direction) {
+    if (!(this instanceof Doc)) { return new Doc(text, mode, firstLine, lineSep, direction) }
+    if (firstLine == null) { firstLine = 0; }
+
+    BranchChunk.call(this, [new LeafChunk([new Line("", null)])]);
+    this.first = firstLine;
+    this.scrollTop = this.scrollLeft = 0;
+    this.cantEdit = false;
+    this.cleanGeneration = 1;
+    this.modeFrontier = this.highlightFrontier = firstLine;
+    var start = Pos(firstLine, 0);
+    this.sel = simpleSelection(start);
+    this.history = new History(null);
+    this.id = ++nextDocId;
+    this.modeOption = mode;
+    this.lineSep = lineSep;
+    this.direction = (direction == "rtl") ? "rtl" : "ltr";
+    this.extend = false;
+
+    if (typeof text == "string") { text = this.splitLines(text); }
+    updateDoc(this, {from: start, to: start, text: text});
+    setSelection(this, simpleSelection(start), sel_dontScroll);
+  };
+
+  Doc.prototype = createObj(BranchChunk.prototype, {
+    constructor: Doc,
+    // Iterate over the document. Supports two forms -- with only one
+    // argument, it calls that for each line in the document. With
+    // three, it iterates over the range given by the first two (with
+    // the second being non-inclusive).
+    iter: function(from, to, op) {
+      if (op) { this.iterN(from - this.first, to - from, op); }
+      else { this.iterN(this.first, this.first + this.size, from); }
+    },
+
+    // Non-public interface for adding and removing lines.
+    insert: function(at, lines) {
+      var height = 0;
+      for (var i = 0; i < lines.length; ++i) { height += lines[i].height; }
+      this.insertInner(at - this.first, lines, height);
+    },
+    remove: function(at, n) { this.removeInner(at - this.first, n); },
+
+    // From here, the methods are part of the public interface. Most
+    // are also available from CodeMirror (editor) instances.
+
+    getValue: function(lineSep) {
+      var lines = getLines(this, this.first, this.first + this.size);
+      if (lineSep === false) { return lines }
+      return lines.join(lineSep || this.lineSeparator())
+    },
+    setValue: docMethodOp(function(code) {
+      var top = Pos(this.first, 0), last = this.first + this.size - 1;
+      makeChange(this, {from: top, to: Pos(last, getLine(this, last).text.length),
+                        text: this.splitLines(code), origin: "setValue", full: true}, true);
+      if (this.cm) { scrollToCoords(this.cm, 0, 0); }
+      setSelection(this, simpleSelection(top), sel_dontScroll);
+    }),
+    replaceRange: function(code, from, to, origin) {
+      from = clipPos(this, from);
+      to = to ? clipPos(this, to) : from;
+      replaceRange(this, code, from, to, origin);
+    },
+    getRange: function(from, to, lineSep) {
+      var lines = getBetween(this, clipPos(this, from), clipPos(this, to));
+      if (lineSep === false) { return lines }
+      return lines.join(lineSep || this.lineSeparator())
+    },
+
+    getLine: function(line) {var l = this.getLineHandle(line); return l && l.text},
+
+    getLineHandle: function(line) {if (isLine(this, line)) { return getLine(this, line) }},
+    getLineNumber: function(line) {return lineNo(line)},
+
+    getLineHandleVisualStart: function(line) {
+      if (typeof line == "number") { line = getLine(this, line); }
+      return visualLine(line)
+    },
+
+    lineCount: function() {return this.size},
+    firstLine: function() {return this.first},
+    lastLine: function() {return this.first + this.size - 1},
+
+    clipPos: function(pos) {return clipPos(this, pos)},
+
+    getCursor: function(start) {
+      var range = this.sel.primary(), pos;
+      if (start == null || start == "head") { pos = range.head; }
+      else if (start == "anchor") { pos = range.anchor; }
+      else if (start == "end" || start == "to" || start === false) { pos = range.to(); }
+      else { pos = range.from(); }
+      return pos
+    },
+    listSelections: function() { return this.sel.ranges },
+    somethingSelected: function() {return this.sel.somethingSelected()},
+
+    setCursor: docMethodOp(function(line, ch, options) {
+      setSimpleSelection(this, clipPos(this, typeof line == "number" ? Pos(line, ch || 0) : line), null, options);
+    }),
+    setSelection: docMethodOp(function(anchor, head, options) {
+      setSimpleSelection(this, clipPos(this, anchor), clipPos(this, head || anchor), options);
+    }),
+    extendSelection: docMethodOp(function(head, other, options) {
+      extendSelection(this, clipPos(this, head), other && clipPos(this, other), options);
+    }),
+    extendSelections: docMethodOp(function(heads, options) {
+      extendSelections(this, clipPosArray(this, heads), options);
+    }),
+    extendSelectionsBy: docMethodOp(function(f, options) {
+      var heads = map(this.sel.ranges, f);
+      extendSelections(this, clipPosArray(this, heads), options);
+    }),
+    setSelections: docMethodOp(function(ranges, primary, options) {
+      if (!ranges.length) { return }
+      var out = [];
+      for (var i = 0; i < ranges.length; i++)
+        { out[i] = new Range(clipPos(this, ranges[i].anchor),
+                           clipPos(this, ranges[i].head)); }
+      if (primary == null) { primary = Math.min(ranges.length - 1, this.sel.primIndex); }
+      setSelection(this, normalizeSelection(this.cm, out, primary), options);
+    }),
+    addSelection: docMethodOp(function(anchor, head, options) {
+      var ranges = this.sel.ranges.slice(0);
+      ranges.push(new Range(clipPos(this, anchor), clipPos(this, head || anchor)));
+      setSelection(this, normalizeSelection(this.cm, ranges, ranges.length - 1), options);
+    }),
+
+    getSelection: function(lineSep) {
+      var ranges = this.sel.ranges, lines;
+      for (var i = 0; i < ranges.length; i++) {
+        var sel = getBetween(this, ranges[i].from(), ranges[i].to());
+        lines = lines ? lines.concat(sel) : sel;
+      }
+      if (lineSep === false) { return lines }
+      else { return lines.join(lineSep || this.lineSeparator()) }
+    },
+    getSelections: function(lineSep) {
+      var parts = [], ranges = this.sel.ranges;
+      for (var i = 0; i < ranges.length; i++) {
+        var sel = getBetween(this, ranges[i].from(), ranges[i].to());
+        if (lineSep !== false) { sel = sel.join(lineSep || this.lineSeparator()); }
+        parts[i] = sel;
+      }
+      return parts
+    },
+    replaceSelection: function(code, collapse, origin) {
+      var dup = [];
+      for (var i = 0; i < this.sel.ranges.length; i++)
+        { dup[i] = code; }
+      this.replaceSelections(dup, collapse, origin || "+input");
+    },
+    replaceSelections: docMethodOp(function(code, collapse, origin) {
+      var changes = [], sel = this.sel;
+      for (var i = 0; i < sel.ranges.length; i++) {
+        var range = sel.ranges[i];
+        changes[i] = {from: range.from(), to: range.to(), text: this.splitLines(code[i]), origin: origin};
+      }
+      var newSel = collapse && collapse != "end" && computeReplacedSel(this, changes, collapse);
+      for (var i$1 = changes.length - 1; i$1 >= 0; i$1--)
+        { makeChange(this, changes[i$1]); }
+      if (newSel) { setSelectionReplaceHistory(this, newSel); }
+      else if (this.cm) { ensureCursorVisible(this.cm); }
+    }),
+    undo: docMethodOp(function() {makeChangeFromHistory(this, "undo");}),
+    redo: docMethodOp(function() {makeChangeFromHistory(this, "redo");}),
+    undoSelection: docMethodOp(function() {makeChangeFromHistory(this, "undo", true);}),
+    redoSelection: docMethodOp(function() {makeChangeFromHistory(this, "redo", true);}),
+
+    setExtending: function(val) {this.extend = val;},
+    getExtending: function() {return this.extend},
+
+    historySize: function() {
+      var hist = this.history, done = 0, undone = 0;
+      for (var i = 0; i < hist.done.length; i++) { if (!hist.done[i].ranges) { ++done; } }
+      for (var i$1 = 0; i$1 < hist.undone.length; i$1++) { if (!hist.undone[i$1].ranges) { ++undone; } }
+      return {undo: done, redo: undone}
+    },
+    clearHistory: function() {
+      var this$1 = this;
+
+      this.history = new History(this.history.maxGeneration);
+      linkedDocs(this, function (doc) { return doc.history = this$1.history; }, true);
+    },
+
+    markClean: function() {
+      this.cleanGeneration = this.changeGeneration(true);
+    },
+    changeGeneration: function(forceSplit) {
+      if (forceSplit)
+        { this.history.lastOp = this.history.lastSelOp = this.history.lastOrigin = null; }
+      return this.history.generation
+    },
+    isClean: function (gen) {
+      return this.history.generation == (gen || this.cleanGeneration)
+    },
+
+    getHistory: function() {
+      return {done: copyHistoryArray(this.history.done),
+              undone: copyHistoryArray(this.history.undone)}
+    },
+    setHistory: function(histData) {
+      var hist = this.history = new History(this.history.maxGeneration);
+      hist.done = copyHistoryArray(histData.done.slice(0), null, true);
+      hist.undone = copyHistoryArray(histData.undone.slice(0), null, true);
+    },
+
+    setGutterMarker: docMethodOp(function(line, gutterID, value) {
+      return changeLine(this, line, "gutter", function (line) {
+        var markers = line.gutterMarkers || (line.gutterMarkers = {});
+        markers[gutterID] = value;
+        if (!value && isEmpty(markers)) { line.gutterMarkers = null; }
+        return true
+      })
+    }),
+
+    clearGutter: docMethodOp(function(gutterID) {
+      var this$1 = this;
+
+      this.iter(function (line) {
+        if (line.gutterMarkers && line.gutterMarkers[gutterID]) {
+          changeLine(this$1, line, "gutter", function () {
+            line.gutterMarkers[gutterID] = null;
+            if (isEmpty(line.gutterMarkers)) { line.gutterMarkers = null; }
+            return true
+          });
+        }
+      });
+    }),
+
+    lineInfo: function(line) {
+      var n;
+      if (typeof line == "number") {
+        if (!isLine(this, line)) { return null }
+        n = line;
+        line = getLine(this, line);
+        if (!line) { return null }
+      } else {
+        n = lineNo(line);
+        if (n == null) { return null }
+      }
+      return {line: n, handle: line, text: line.text, gutterMarkers: line.gutterMarkers,
+              textClass: line.textClass, bgClass: line.bgClass, wrapClass: line.wrapClass,
+              widgets: line.widgets}
+    },
+
+    addLineClass: docMethodOp(function(handle, where, cls) {
+      return changeLine(this, handle, where == "gutter" ? "gutter" : "class", function (line) {
+        var prop = where == "text" ? "textClass"
+                 : where == "background" ? "bgClass"
+                 : where == "gutter" ? "gutterClass" : "wrapClass";
+        if (!line[prop]) { line[prop] = cls; }
+        else if (classTest(cls).test(line[prop])) { return false }
+        else { line[prop] += " " + cls; }
+        return true
+      })
+    }),
+    removeLineClass: docMethodOp(function(handle, where, cls) {
+      return changeLine(this, handle, where == "gutter" ? "gutter" : "class", function (line) {
+        var prop = where == "text" ? "textClass"
+                 : where == "background" ? "bgClass"
+                 : where == "gutter" ? "gutterClass" : "wrapClass";
+        var cur = line[prop];
+        if (!cur) { return false }
+        else if (cls == null) { line[prop] = null; }
+        else {
+          var found = cur.match(classTest(cls));
+          if (!found) { return false }
+          var end = found.index + found[0].length;
+          line[prop] = cur.slice(0, found.index) + (!found.index || end == cur.length ? "" : " ") + cur.slice(end) || null;
+        }
+        return true
+      })
+    }),
+
+    addLineWidget: docMethodOp(function(handle, node, options) {
+      return addLineWidget(this, handle, node, options)
+    }),
+    removeLineWidget: function(widget) { widget.clear(); },
+
+    markText: function(from, to, options) {
+      return markText(this, clipPos(this, from), clipPos(this, to), options, options && options.type || "range")
+    },
+    setBookmark: function(pos, options) {
+      var realOpts = {replacedWith: options && (options.nodeType == null ? options.widget : options),
+                      insertLeft: options && options.insertLeft,
+                      clearWhenEmpty: false, shared: options && options.shared,
+                      handleMouseEvents: options && options.handleMouseEvents};
+      pos = clipPos(this, pos);
+      return markText(this, pos, pos, realOpts, "bookmark")
+    },
+    findMarksAt: function(pos) {
+      pos = clipPos(this, pos);
+      var markers = [], spans = getLine(this, pos.line).markedSpans;
+      if (spans) { for (var i = 0; i < spans.length; ++i) {
+        var span = spans[i];
+        if ((span.from == null || span.from <= pos.ch) &&
+            (span.to == null || span.to >= pos.ch))
+          { markers.push(span.marker.parent || span.marker); }
+      } }
+      return markers
+    },
+    findMarks: function(from, to, filter) {
+      from = clipPos(this, from); to = clipPos(this, to);
+      var found = [], lineNo = from.line;
+      this.iter(from.line, to.line + 1, function (line) {
+        var spans = line.markedSpans;
+        if (spans) { for (var i = 0; i < spans.length; i++) {
+          var span = spans[i];
+          if (!(span.to != null && lineNo == from.line && from.ch >= span.to ||
+                span.from == null && lineNo != from.line ||
+                span.from != null && lineNo == to.line && span.from >= to.ch) &&
+              (!filter || filter(span.marker)))
+            { found.push(span.marker.parent || span.marker); }
+        } }
+        ++lineNo;
+      });
+      return found
+    },
+    getAllMarks: function() {
+      var markers = [];
+      this.iter(function (line) {
+        var sps = line.markedSpans;
+        if (sps) { for (var i = 0; i < sps.length; ++i)
+          { if (sps[i].from != null) { markers.push(sps[i].marker); } } }
+      });
+      return markers
+    },
+
+    posFromIndex: function(off) {
+      var ch, lineNo = this.first, sepSize = this.lineSeparator().length;
+      this.iter(function (line) {
+        var sz = line.text.length + sepSize;
+        if (sz > off) { ch = off; return true }
+        off -= sz;
+        ++lineNo;
+      });
+      return clipPos(this, Pos(lineNo, ch))
+    },
+    indexFromPos: function (coords) {
+      coords = clipPos(this, coords);
+      var index = coords.ch;
+      if (coords.line < this.first || coords.ch < 0) { return 0 }
+      var sepSize = this.lineSeparator().length;
+      this.iter(this.first, coords.line, function (line) { // iter aborts when callback returns a truthy value
+        index += line.text.length + sepSize;
+      });
+      return index
+    },
+
+    copy: function(copyHistory) {
+      var doc = new Doc(getLines(this, this.first, this.first + this.size),
+                        this.modeOption, this.first, this.lineSep, this.direction);
+      doc.scrollTop = this.scrollTop; doc.scrollLeft = this.scrollLeft;
+      doc.sel = this.sel;
+      doc.extend = false;
+      if (copyHistory) {
+        doc.history.undoDepth = this.history.undoDepth;
+        doc.setHistory(this.getHistory());
+      }
+      return doc
+    },
+
+    linkedDoc: function(options) {
+      if (!options) { options = {}; }
+      var from = this.first, to = this.first + this.size;
+      if (options.from != null && options.from > from) { from = options.from; }
+      if (options.to != null && options.to < to) { to = options.to; }
+      var copy = new Doc(getLines(this, from, to), options.mode || this.modeOption, from, this.lineSep, this.direction);
+      if (options.sharedHist) { copy.history = this.history
+      ; }(this.linked || (this.linked = [])).push({doc: copy, sharedHist: options.sharedHist});
+      copy.linked = [{doc: this, isParent: true, sharedHist: options.sharedHist}];
+      copySharedMarkers(copy, findSharedMarkers(this));
+      return copy
+    },
+    unlinkDoc: function(other) {
+      if (other instanceof CodeMirror) { other = other.doc; }
+      if (this.linked) { for (var i = 0; i < this.linked.length; ++i) {
+        var link = this.linked[i];
+        if (link.doc != other) { continue }
+        this.linked.splice(i, 1);
+        other.unlinkDoc(this);
+        detachSharedMarkers(findSharedMarkers(this));
+        break
+      } }
+      // If the histories were shared, split them again
+      if (other.history == this.history) {
+        var splitIds = [other.id];
+        linkedDocs(other, function (doc) { return splitIds.push(doc.id); }, true);
+        other.history = new History(null);
+        other.history.done = copyHistoryArray(this.history.done, splitIds);
+        other.history.undone = copyHistoryArray(this.history.undone, splitIds);
+      }
+    },
+    iterLinkedDocs: function(f) {linkedDocs(this, f);},
+
+    getMode: function() {return this.mode},
+    getEditor: function() {return this.cm},
+
+    splitLines: function(str) {
+      if (this.lineSep) { return str.split(this.lineSep) }
+      return splitLinesAuto(str)
+    },
+    lineSeparator: function() { return this.lineSep || "\n" },
+
+    setDirection: docMethodOp(function (dir) {
+      if (dir != "rtl") { dir = "ltr"; }
+      if (dir == this.direction) { return }
+      this.direction = dir;
+      this.iter(function (line) { return line.order = null; });
+      if (this.cm) { directionChanged(this.cm); }
+    })
+  });
+
+  // Public alias.
+  Doc.prototype.eachLine = Doc.prototype.iter;
+
+  // Kludge to work around strange IE behavior where it'll sometimes
+  // re-fire a series of drag-related events right after the drop (#1551)
+  var lastDrop = 0;
+
+  function onDrop(e) {
+    var cm = this;
+    clearDragCursor(cm);
+    if (signalDOMEvent(cm, e) || eventInWidget(cm.display, e))
+      { return }
+    e_preventDefault(e);
+    if (ie) { lastDrop = +new Date; }
+    var pos = posFromMouse(cm, e, true), files = e.dataTransfer.files;
+    if (!pos || cm.isReadOnly()) { return }
+    // Might be a file drop, in which case we simply extract the text
+    // and insert it.
+    if (files && files.length && window.FileReader && window.File) {
+      var n = files.length, text = Array(n), read = 0;
+      var markAsReadAndPasteIfAllFilesAreRead = function () {
+        if (++read == n) {
+          operation(cm, function () {
+            pos = clipPos(cm.doc, pos);
+            var change = {from: pos, to: pos,
+                          text: cm.doc.splitLines(
+                              text.filter(function (t) { return t != null; }).join(cm.doc.lineSeparator())),
+                          origin: "paste"};
+            makeChange(cm.doc, change);
+            setSelectionReplaceHistory(cm.doc, simpleSelection(clipPos(cm.doc, pos), clipPos(cm.doc, changeEnd(change))));
+          })();
+        }
+      };
+      var readTextFromFile = function (file, i) {
+        if (cm.options.allowDropFileTypes &&
+            indexOf(cm.options.allowDropFileTypes, file.type) == -1) {
+          markAsReadAndPasteIfAllFilesAreRead();
+          return
+        }
+        var reader = new FileReader;
+        reader.onerror = function () { return markAsReadAndPasteIfAllFilesAreRead(); };
+        reader.onload = function () {
+          var content = reader.result;
+          if (/[\x00-\x08\x0e-\x1f]{2}/.test(content)) {
+            markAsReadAndPasteIfAllFilesAreRead();
+            return
+          }
+          text[i] = content;
+          markAsReadAndPasteIfAllFilesAreRead();
+        };
+        reader.readAsText(file);
+      };
+      for (var i = 0; i < files.length; i++) { readTextFromFile(files[i], i); }
+    } else { // Normal drop
+      // Don't do a replace if the drop happened inside of the selected text.
+      if (cm.state.draggingText && cm.doc.sel.contains(pos) > -1) {
+        cm.state.draggingText(e);
+        // Ensure the editor is re-focused
+        setTimeout(function () { return cm.display.input.focus(); }, 20);
+        return
+      }
+      try {
+        var text$1 = e.dataTransfer.getData("Text");
+        if (text$1) {
+          var selected;
+          if (cm.state.draggingText && !cm.state.draggingText.copy)
+            { selected = cm.listSelections(); }
+          setSelectionNoUndo(cm.doc, simpleSelection(pos, pos));
+          if (selected) { for (var i$1 = 0; i$1 < selected.length; ++i$1)
+            { replaceRange(cm.doc, "", selected[i$1].anchor, selected[i$1].head, "drag"); } }
+          cm.replaceSelection(text$1, "around", "paste");
+          cm.display.input.focus();
+        }
+      }
+      catch(e$1){}
+    }
+  }
+
+  function onDragStart(cm, e) {
+    if (ie && (!cm.state.draggingText || +new Date - lastDrop < 100)) { e_stop(e); return }
+    if (signalDOMEvent(cm, e) || eventInWidget(cm.display, e)) { return }
+
+    e.dataTransfer.setData("Text", cm.getSelection());
+    e.dataTransfer.effectAllowed = "copyMove";
+
+    // Use dummy image instead of default browsers image.
+    // Recent Safari (~6.0.2) have a tendency to segfault when this happens, so we don't do it there.
+    if (e.dataTransfer.setDragImage && !safari) {
+      var img = elt("img", null, null, "position: fixed; left: 0; top: 0;");
+      img.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+      if (presto) {
+        img.width = img.height = 1;
+        cm.display.wrapper.appendChild(img);
+        // Force a relayout, or Opera won't use our image for some obscure reason
+        img._top = img.offsetTop;
+      }
+      e.dataTransfer.setDragImage(img, 0, 0);
+      if (presto) { img.parentNode.removeChild(img); }
+    }
+  }
+
+  function onDragOver(cm, e) {
+    var pos = posFromMouse(cm, e);
+    if (!pos) { return }
+    var frag = document.createDocumentFragment();
+    drawSelectionCursor(cm, pos, frag);
+    if (!cm.display.dragCursor) {
+      cm.display.dragCursor = elt("div", null, "CodeMirror-cursors CodeMirror-dragcursors");
+      cm.display.lineSpace.insertBefore(cm.display.dragCursor, cm.display.cursorDiv);
+    }
+    removeChildrenAndAdd(cm.display.dragCursor, frag);
+  }
+
+  function clearDragCursor(cm) {
+    if (cm.display.dragCursor) {
+      cm.display.lineSpace.removeChild(cm.display.dragCursor);
+      cm.display.dragCursor = null;
+    }
+  }
+
+  // These must be handled carefully, because naively registering a
+  // handler for each editor will cause the editors to never be
+  // garbage collected.
+
+  function forEachCodeMirror(f) {
+    if (!document.getElementsByClassName) { return }
+    var byClass = document.getElementsByClassName("CodeMirror"), editors = [];
+    for (var i = 0; i < byClass.length; i++) {
+      var cm = byClass[i].CodeMirror;
+      if (cm) { editors.push(cm); }
+    }
+    if (editors.length) { editors[0].operation(function () {
+      for (var i = 0; i < editors.length; i++) { f(editors[i]); }
+    }); }
+  }
+
+  var globalsRegistered = false;
+  function ensureGlobalHandlers() {
+    if (globalsRegistered) { return }
+    registerGlobalHandlers();
+    globalsRegistered = true;
+  }
+  function registerGlobalHandlers() {
+    // When the window resizes, we need to refresh active editors.
+    var resizeTimer;
+    on(window, "resize", function () {
+      if (resizeTimer == null) { resizeTimer = setTimeout(function () {
+        resizeTimer = null;
+        forEachCodeMirror(onResize);
+      }, 100); }
+    });
+    // When the window loses focus, we want to show the editor as blurred
+    on(window, "blur", function () { return forEachCodeMirror(onBlur); });
+  }
+  // Called when the window resizes
+  function onResize(cm) {
+    var d = cm.display;
+    // Might be a text scaling operation, clear size caches.
+    d.cachedCharWidth = d.cachedTextHeight = d.cachedPaddingH = null;
+    d.scrollbarsClipped = false;
+    cm.setSize();
+  }
+
+  var keyNames = {
+    3: "Pause", 8: "Backspace", 9: "Tab", 13: "Enter", 16: "Shift", 17: "Ctrl", 18: "Alt",
+    19: "Pause", 20: "CapsLock", 27: "Esc", 32: "Space", 33: "PageUp", 34: "PageDown", 35: "End",
+    36: "Home", 37: "Left", 38: "Up", 39: "Right", 40: "Down", 44: "PrintScrn", 45: "Insert",
+    46: "Delete", 59: ";", 61: "=", 91: "Mod", 92: "Mod", 93: "Mod",
+    106: "*", 107: "=", 109: "-", 110: ".", 111: "/", 145: "ScrollLock",
+    173: "-", 186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/", 192: "`", 219: "[", 220: "\\",
+    221: "]", 222: "'", 224: "Mod", 63232: "Up", 63233: "Down", 63234: "Left", 63235: "Right", 63272: "Delete",
+    63273: "Home", 63275: "End", 63276: "PageUp", 63277: "PageDown", 63302: "Insert"
+  };
+
+  // Number keys
+  for (var i = 0; i < 10; i++) { keyNames[i + 48] = keyNames[i + 96] = String(i); }
+  // Alphabetic keys
+  for (var i$1 = 65; i$1 <= 90; i$1++) { keyNames[i$1] = String.fromCharCode(i$1); }
+  // Function keys
+  for (var i$2 = 1; i$2 <= 12; i$2++) { keyNames[i$2 + 111] = keyNames[i$2 + 63235] = "F" + i$2; }
+
+  var keyMap = {};
+
+  keyMap.basic = {
+    "Left": "goCharLeft", "Right": "goCharRight", "Up": "goLineUp", "Down": "goLineDown",
+    "End": "goLineEnd", "Home": "goLineStartSmart", "PageUp": "goPageUp", "PageDown": "goPageDown",
+    "Delete": "delCharAfter", "Backspace": "delCharBefore", "Shift-Backspace": "delCharBefore",
+    "Tab": "defaultTab", "Shift-Tab": "indentAuto",
+    "Enter": "newlineAndIndent", "Insert": "toggleOverwrite",
+    "Esc": "singleSelection"
+  };
+  // Note that the save and find-related commands aren't defined by
+  // default. User code or addons can define them. Unknown commands
+  // are simply ignored.
+  keyMap.pcDefault = {
+    "Ctrl-A": "selectAll", "Ctrl-D": "deleteLine", "Ctrl-Z": "undo", "Shift-Ctrl-Z": "redo", "Ctrl-Y": "redo",
+    "Ctrl-Home": "goDocStart", "Ctrl-End": "goDocEnd", "Ctrl-Up": "goLineUp", "Ctrl-Down": "goLineDown",
+    "Ctrl-Left": "goGroupLeft", "Ctrl-Right": "goGroupRight", "Alt-Left": "goLineStart", "Alt-Right": "goLineEnd",
+    "Ctrl-Backspace": "delGroupBefore", "Ctrl-Delete": "delGroupAfter", "Ctrl-S": "save", "Ctrl-F": "find",
+    "Ctrl-G": "findNext", "Shift-Ctrl-G": "findPrev", "Shift-Ctrl-F": "replace", "Shift-Ctrl-R": "replaceAll",
+    "Ctrl-[": "indentLess", "Ctrl-]": "indentMore",
+    "Ctrl-U": "undoSelection", "Shift-Ctrl-U": "redoSelection", "Alt-U": "redoSelection",
+    "fallthrough": "basic"
+  };
+  // Very basic readline/emacs-style bindings, which are standard on Mac.
+  keyMap.emacsy = {
+    "Ctrl-F": "goCharRight", "Ctrl-B": "goCharLeft", "Ctrl-P": "goLineUp", "Ctrl-N": "goLineDown",
+    "Alt-F": "goWordRight", "Alt-B": "goWordLeft", "Ctrl-A": "goLineStart", "Ctrl-E": "goLineEnd",
+    "Ctrl-V": "goPageDown", "Shift-Ctrl-V": "goPageUp", "Ctrl-D": "delCharAfter", "Ctrl-H": "delCharBefore",
+    "Alt-D": "delWordAfter", "Alt-Backspace": "delWordBefore", "Ctrl-K": "killLine", "Ctrl-T": "transposeChars",
+    "Ctrl-O": "openLine"
+  };
+  keyMap.macDefault = {
+    "Cmd-A": "selectAll", "Cmd-D": "deleteLine", "Cmd-Z": "undo", "Shift-Cmd-Z": "redo", "Cmd-Y": "redo",
+    "Cmd-Home": "goDocStart", "Cmd-Up": "goDocStart", "Cmd-End": "goDocEnd", "Cmd-Down": "goDocEnd", "Alt-Left": "goGroupLeft",
+    "Alt-Right": "goGroupRight", "Cmd-Left": "goLineLeft", "Cmd-Right": "goLineRight", "Alt-Backspace": "delGroupBefore",
+    "Ctrl-Alt-Backspace": "delGroupAfter", "Alt-Delete": "delGroupAfter", "Cmd-S": "save", "Cmd-F": "find",
+    "Cmd-G": "findNext", "Shift-Cmd-G": "findPrev", "Cmd-Alt-F": "replace", "Shift-Cmd-Alt-F": "replaceAll",
+    "Cmd-[": "indentLess", "Cmd-]": "indentMore", "Cmd-Backspace": "delWrappedLineLeft", "Cmd-Delete": "delWrappedLineRight",
+    "Cmd-U": "undoSelection", "Shift-Cmd-U": "redoSelection", "Ctrl-Up": "goDocStart", "Ctrl-Down": "goDocEnd",
+    "fallthrough": ["basic", "emacsy"]
+  };
+  keyMap["default"] = mac ? keyMap.macDefault : keyMap.pcDefault;
+
+  // KEYMAP DISPATCH
+
+  function normalizeKeyName(name) {
+    var parts = name.split(/-(?!$)/);
+    name = parts[parts.length - 1];
+    var alt, ctrl, shift, cmd;
+    for (var i = 0; i < parts.length - 1; i++) {
+      var mod = parts[i];
+      if (/^(cmd|meta|m)$/i.test(mod)) { cmd = true; }
+      else if (/^a(lt)?$/i.test(mod)) { alt = true; }
+      else if (/^(c|ctrl|control)$/i.test(mod)) { ctrl = true; }
+      else if (/^s(hift)?$/i.test(mod)) { shift = true; }
+      else { throw new Error("Unrecognized modifier name: " + mod) }
+    }
+    if (alt) { name = "Alt-" + name; }
+    if (ctrl) { name = "Ctrl-" + name; }
+    if (cmd) { name = "Cmd-" + name; }
+    if (shift) { name = "Shift-" + name; }
+    return name
+  }
+
+  // This is a kludge to keep keymaps mostly working as raw objects
+  // (backwards compatibility) while at the same time support features
+  // like normalization and multi-stroke key bindings. It compiles a
+  // new normalized keymap, and then updates the old object to reflect
+  // this.
+  function normalizeKeyMap(keymap) {
+    var copy = {};
+    for (var keyname in keymap) { if (keymap.hasOwnProperty(keyname)) {
+      var value = keymap[keyname];
+      if (/^(name|fallthrough|(de|at)tach)$/.test(keyname)) { continue }
+      if (value == "...") { delete keymap[keyname]; continue }
+
+      var keys = map(keyname.split(" "), normalizeKeyName);
+      for (var i = 0; i < keys.length; i++) {
+        var val = (void 0), name = (void 0);
+        if (i == keys.length - 1) {
+          name = keys.join(" ");
+          val = value;
+        } else {
+          name = keys.slice(0, i + 1).join(" ");
+          val = "...";
+        }
+        var prev = copy[name];
+        if (!prev) { copy[name] = val; }
+        else if (prev != val) { throw new Error("Inconsistent bindings for " + name) }
+      }
+      delete keymap[keyname];
+    } }
+    for (var prop in copy) { keymap[prop] = copy[prop]; }
+    return keymap
+  }
+
+  function lookupKey(key, map, handle, context) {
+    map = getKeyMap(map);
+    var found = map.call ? map.call(key, context) : map[key];
+    if (found === false) { return "nothing" }
+    if (found === "...") { return "multi" }
+    if (found != null && handle(found)) { return "handled" }
+
+    if (map.fallthrough) {
+      if (Object.prototype.toString.call(map.fallthrough) != "[object Array]")
+        { return lookupKey(key, map.fallthrough, handle, context) }
+      for (var i = 0; i < map.fallthrough.length; i++) {
+        var result = lookupKey(key, map.fallthrough[i], handle, context);
+        if (result) { return result }
+      }
+    }
+  }
+
+  // Modifier key presses don't count as 'real' key presses for the
+  // purpose of keymap fallthrough.
+  function isModifierKey(value) {
+    var name = typeof value == "string" ? value : keyNames[value.keyCode];
+    return name == "Ctrl" || name == "Alt" || name == "Shift" || name == "Mod"
+  }
+
+  function addModifierNames(name, event, noShift) {
+    var base = name;
+    if (event.altKey && base != "Alt") { name = "Alt-" + name; }
+    if ((flipCtrlCmd ? event.metaKey : event.ctrlKey) && base != "Ctrl") { name = "Ctrl-" + name; }
+    if ((flipCtrlCmd ? event.ctrlKey : event.metaKey) && base != "Mod") { name = "Cmd-" + name; }
+    if (!noShift && event.shiftKey && base != "Shift") { name = "Shift-" + name; }
+    return name
+  }
+
+  // Look up the name of a key as indicated by an event object.
+  function keyName(event, noShift) {
+    if (presto && event.keyCode == 34 && event["char"]) { return false }
+    var name = keyNames[event.keyCode];
+    if (name == null || event.altGraphKey) { return false }
+    // Ctrl-ScrollLock has keyCode 3, same as Ctrl-Pause,
+    // so we'll use event.code when available (Chrome 48+, FF 38+, Safari 10.1+)
+    if (event.keyCode == 3 && event.code) { name = event.code; }
+    return addModifierNames(name, event, noShift)
+  }
+
+  function getKeyMap(val) {
+    return typeof val == "string" ? keyMap[val] : val
+  }
+
+  // Helper for deleting text near the selection(s), used to implement
+  // backspace, delete, and similar functionality.
+  function deleteNearSelection(cm, compute) {
+    var ranges = cm.doc.sel.ranges, kill = [];
+    // Build up a set of ranges to kill first, merging overlapping
+    // ranges.
+    for (var i = 0; i < ranges.length; i++) {
+      var toKill = compute(ranges[i]);
+      while (kill.length && cmp(toKill.from, lst(kill).to) <= 0) {
+        var replaced = kill.pop();
+        if (cmp(replaced.from, toKill.from) < 0) {
+          toKill.from = replaced.from;
+          break
+        }
+      }
+      kill.push(toKill);
+    }
+    // Next, remove those actual ranges.
+    runInOp(cm, function () {
+      for (var i = kill.length - 1; i >= 0; i--)
+        { replaceRange(cm.doc, "", kill[i].from, kill[i].to, "+delete"); }
+      ensureCursorVisible(cm);
+    });
+  }
+
+  function moveCharLogically(line, ch, dir) {
+    var target = skipExtendingChars(line.text, ch + dir, dir);
+    return target < 0 || target > line.text.length ? null : target
+  }
+
+  function moveLogically(line, start, dir) {
+    var ch = moveCharLogically(line, start.ch, dir);
+    return ch == null ? null : new Pos(start.line, ch, dir < 0 ? "after" : "before")
+  }
+
+  function endOfLine(visually, cm, lineObj, lineNo, dir) {
+    if (visually) {
+      if (cm.doc.direction == "rtl") { dir = -dir; }
+      var order = getOrder(lineObj, cm.doc.direction);
+      if (order) {
+        var part = dir < 0 ? lst(order) : order[0];
+        var moveInStorageOrder = (dir < 0) == (part.level == 1);
+        var sticky = moveInStorageOrder ? "after" : "before";
+        var ch;
+        // With a wrapped rtl chunk (possibly spanning multiple bidi parts),
+        // it could be that the last bidi part is not on the last visual line,
+        // since visual lines contain content order-consecutive chunks.
+        // Thus, in rtl, we are looking for the first (content-order) character
+        // in the rtl chunk that is on the last line (that is, the same line
+        // as the last (content-order) character).
+        if (part.level > 0 || cm.doc.direction == "rtl") {
+          var prep = prepareMeasureForLine(cm, lineObj);
+          ch = dir < 0 ? lineObj.text.length - 1 : 0;
+          var targetTop = measureCharPrepared(cm, prep, ch).top;
+          ch = findFirst(function (ch) { return measureCharPrepared(cm, prep, ch).top == targetTop; }, (dir < 0) == (part.level == 1) ? part.from : part.to - 1, ch);
+          if (sticky == "before") { ch = moveCharLogically(lineObj, ch, 1); }
+        } else { ch = dir < 0 ? part.to : part.from; }
+        return new Pos(lineNo, ch, sticky)
+      }
+    }
+    return new Pos(lineNo, dir < 0 ? lineObj.text.length : 0, dir < 0 ? "before" : "after")
+  }
+
+  function moveVisually(cm, line, start, dir) {
+    var bidi = getOrder(line, cm.doc.direction);
+    if (!bidi) { return moveLogically(line, start, dir) }
+    if (start.ch >= line.text.length) {
+      start.ch = line.text.length;
+      start.sticky = "before";
+    } else if (start.ch <= 0) {
+      start.ch = 0;
+      start.sticky = "after";
+    }
+    var partPos = getBidiPartAt(bidi, start.ch, start.sticky), part = bidi[partPos];
+    if (cm.doc.direction == "ltr" && part.level % 2 == 0 && (dir > 0 ? part.to > start.ch : part.from < start.ch)) {
+      // Case 1: We move within an ltr part in an ltr editor. Even with wrapped lines,
+      // nothing interesting happens.
+      return moveLogically(line, start, dir)
+    }
+
+    var mv = function (pos, dir) { return moveCharLogically(line, pos instanceof Pos ? pos.ch : pos, dir); };
+    var prep;
+    var getWrappedLineExtent = function (ch) {
+      if (!cm.options.lineWrapping) { return {begin: 0, end: line.text.length} }
+      prep = prep || prepareMeasureForLine(cm, line);
+      return wrappedLineExtentChar(cm, line, prep, ch)
+    };
+    var wrappedLineExtent = getWrappedLineExtent(start.sticky == "before" ? mv(start, -1) : start.ch);
+
+    if (cm.doc.direction == "rtl" || part.level == 1) {
+      var moveInStorageOrder = (part.level == 1) == (dir < 0);
+      var ch = mv(start, moveInStorageOrder ? 1 : -1);
+      if (ch != null && (!moveInStorageOrder ? ch >= part.from && ch >= wrappedLineExtent.begin : ch <= part.to && ch <= wrappedLineExtent.end)) {
+        // Case 2: We move within an rtl part or in an rtl editor on the same visual line
+        var sticky = moveInStorageOrder ? "before" : "after";
+        return new Pos(start.line, ch, sticky)
+      }
+    }
+
+    // Case 3: Could not move within this bidi part in this visual line, so leave
+    // the current bidi part
+
+    var searchInVisualLine = function (partPos, dir, wrappedLineExtent) {
+      var getRes = function (ch, moveInStorageOrder) { return moveInStorageOrder
+        ? new Pos(start.line, mv(ch, 1), "before")
+        : new Pos(start.line, ch, "after"); };
+
+      for (; partPos >= 0 && partPos < bidi.length; partPos += dir) {
+        var part = bidi[partPos];
+        var moveInStorageOrder = (dir > 0) == (part.level != 1);
+        var ch = moveInStorageOrder ? wrappedLineExtent.begin : mv(wrappedLineExtent.end, -1);
+        if (part.from <= ch && ch < part.to) { return getRes(ch, moveInStorageOrder) }
+        ch = moveInStorageOrder ? part.from : mv(part.to, -1);
+        if (wrappedLineExtent.begin <= ch && ch < wrappedLineExtent.end) { return getRes(ch, moveInStorageOrder) }
+      }
+    };
+
+    // Case 3a: Look for other bidi parts on the same visual line
+    var res = searchInVisualLine(partPos + dir, dir, wrappedLineExtent);
+    if (res) { return res }
+
+    // Case 3b: Look for other bidi parts on the next visual line
+    var nextCh = dir > 0 ? wrappedLineExtent.end : mv(wrappedLineExtent.begin, -1);
+    if (nextCh != null && !(dir > 0 && nextCh == line.text.length)) {
+      res = searchInVisualLine(dir > 0 ? 0 : bidi.length - 1, dir, getWrappedLineExtent(nextCh));
+      if (res) { return res }
+    }
+
+    // Case 4: Nowhere to move
+    return null
+  }
+
+  // Commands are parameter-less actions that can be performed on an
+  // editor, mostly used for keybindings.
+  var commands = {
+    selectAll: selectAll,
+    singleSelection: function (cm) { return cm.setSelection(cm.getCursor("anchor"), cm.getCursor("head"), sel_dontScroll); },
+    killLine: function (cm) { return deleteNearSelection(cm, function (range) {
+      if (range.empty()) {
+        var len = getLine(cm.doc, range.head.line).text.length;
+        if (range.head.ch == len && range.head.line < cm.lastLine())
+          { return {from: range.head, to: Pos(range.head.line + 1, 0)} }
+        else
+          { return {from: range.head, to: Pos(range.head.line, len)} }
+      } else {
+        return {from: range.from(), to: range.to()}
+      }
+    }); },
+    deleteLine: function (cm) { return deleteNearSelection(cm, function (range) { return ({
+      from: Pos(range.from().line, 0),
+      to: clipPos(cm.doc, Pos(range.to().line + 1, 0))
+    }); }); },
+    delLineLeft: function (cm) { return deleteNearSelection(cm, function (range) { return ({
+      from: Pos(range.from().line, 0), to: range.from()
+    }); }); },
+    delWrappedLineLeft: function (cm) { return deleteNearSelection(cm, function (range) {
+      var top = cm.charCoords(range.head, "div").top + 5;
+      var leftPos = cm.coordsChar({left: 0, top: top}, "div");
+      return {from: leftPos, to: range.from()}
+    }); },
+    delWrappedLineRight: function (cm) { return deleteNearSelection(cm, function (range) {
+      var top = cm.charCoords(range.head, "div").top + 5;
+      var rightPos = cm.coordsChar({left: cm.display.lineDiv.offsetWidth + 100, top: top}, "div");
+      return {from: range.from(), to: rightPos }
+    }); },
+    undo: function (cm) { return cm.undo(); },
+    redo: function (cm) { return cm.redo(); },
+    undoSelection: function (cm) { return cm.undoSelection(); },
+    redoSelection: function (cm) { return cm.redoSelection(); },
+    goDocStart: function (cm) { return cm.extendSelection(Pos(cm.firstLine(), 0)); },
+    goDocEnd: function (cm) { return cm.extendSelection(Pos(cm.lastLine())); },
+    goLineStart: function (cm) { return cm.extendSelectionsBy(function (range) { return lineStart(cm, range.head.line); },
+      {origin: "+move", bias: 1}
+    ); },
+    goLineStartSmart: function (cm) { return cm.extendSelectionsBy(function (range) { return lineStartSmart(cm, range.head); },
+      {origin: "+move", bias: 1}
+    ); },
+    goLineEnd: function (cm) { return cm.extendSelectionsBy(function (range) { return lineEnd(cm, range.head.line); },
+      {origin: "+move", bias: -1}
+    ); },
+    goLineRight: function (cm) { return cm.extendSelectionsBy(function (range) {
+      var top = cm.cursorCoords(range.head, "div").top + 5;
+      return cm.coordsChar({left: cm.display.lineDiv.offsetWidth + 100, top: top}, "div")
+    }, sel_move); },
+    goLineLeft: function (cm) { return cm.extendSelectionsBy(function (range) {
+      var top = cm.cursorCoords(range.head, "div").top + 5;
+      return cm.coordsChar({left: 0, top: top}, "div")
+    }, sel_move); },
+    goLineLeftSmart: function (cm) { return cm.extendSelectionsBy(function (range) {
+      var top = cm.cursorCoords(range.head, "div").top + 5;
+      var pos = cm.coordsChar({left: 0, top: top}, "div");
+      if (pos.ch < cm.getLine(pos.line).search(/\S/)) { return lineStartSmart(cm, range.head) }
+      return pos
+    }, sel_move); },
+    goLineUp: function (cm) { return cm.moveV(-1, "line"); },
+    goLineDown: function (cm) { return cm.moveV(1, "line"); },
+    goPageUp: function (cm) { return cm.moveV(-1, "page"); },
+    goPageDown: function (cm) { return cm.moveV(1, "page"); },
+    goCharLeft: function (cm) { return cm.moveH(-1, "char"); },
+    goCharRight: function (cm) { return cm.moveH(1, "char"); },
+    goColumnLeft: function (cm) { return cm.moveH(-1, "column"); },
+    goColumnRight: function (cm) { return cm.moveH(1, "column"); },
+    goWordLeft: function (cm) { return cm.moveH(-1, "word"); },
+    goGroupRight: function (cm) { return cm.moveH(1, "group"); },
+    goGroupLeft: function (cm) { return cm.moveH(-1, "group"); },
+    goWordRight: function (cm) { return cm.moveH(1, "word"); },
+    delCharBefore: function (cm) { return cm.deleteH(-1, "char"); },
+    delCharAfter: function (cm) { return cm.deleteH(1, "char"); },
+    delWordBefore: function (cm) { return cm.deleteH(-1, "word"); },
+    delWordAfter: function (cm) { return cm.deleteH(1, "word"); },
+    delGroupBefore: function (cm) { return cm.deleteH(-1, "group"); },
+    delGroupAfter: function (cm) { return cm.deleteH(1, "group"); },
+    indentAuto: function (cm) { return cm.indentSelection("smart"); },
+    indentMore: function (cm) { return cm.indentSelection("add"); },
+    indentLess: function (cm) { return cm.indentSelection("subtract"); },
+    insertTab: function (cm) { return cm.replaceSelection("\t"); },
+    insertSoftTab: function (cm) {
+      var spaces = [], ranges = cm.listSelections(), tabSize = cm.options.tabSize;
+      for (var i = 0; i < ranges.length; i++) {
+        var pos = ranges[i].from();
+        var col = countColumn(cm.getLine(pos.line), pos.ch, tabSize);
+        spaces.push(spaceStr(tabSize - col % tabSize));
+      }
+      cm.replaceSelections(spaces);
+    },
+    defaultTab: function (cm) {
+      if (cm.somethingSelected()) { cm.indentSelection("add"); }
+      else { cm.execCommand("insertTab"); }
+    },
+    // Swap the two chars left and right of each selection's head.
+    // Move cursor behind the two swapped characters afterwards.
+    //
+    // Doesn't consider line feeds a character.
+    // Doesn't scan more than one line above to find a character.
+    // Doesn't do anything on an empty line.
+    // Doesn't do anything with non-empty selections.
+    transposeChars: function (cm) { return runInOp(cm, function () {
+      var ranges = cm.listSelections(), newSel = [];
+      for (var i = 0; i < ranges.length; i++) {
+        if (!ranges[i].empty()) { continue }
+        var cur = ranges[i].head, line = getLine(cm.doc, cur.line).text;
+        if (line) {
+          if (cur.ch == line.length) { cur = new Pos(cur.line, cur.ch - 1); }
+          if (cur.ch > 0) {
+            cur = new Pos(cur.line, cur.ch + 1);
+            cm.replaceRange(line.charAt(cur.ch - 1) + line.charAt(cur.ch - 2),
+                            Pos(cur.line, cur.ch - 2), cur, "+transpose");
+          } else if (cur.line > cm.doc.first) {
+            var prev = getLine(cm.doc, cur.line - 1).text;
+            if (prev) {
+              cur = new Pos(cur.line, 1);
+              cm.replaceRange(line.charAt(0) + cm.doc.lineSeparator() +
+                              prev.charAt(prev.length - 1),
+                              Pos(cur.line - 1, prev.length - 1), cur, "+transpose");
+            }
+          }
+        }
+        newSel.push(new Range(cur, cur));
+      }
+      cm.setSelections(newSel);
+    }); },
+    newlineAndIndent: function (cm) { return runInOp(cm, function () {
+      var sels = cm.listSelections();
+      for (var i = sels.length - 1; i >= 0; i--)
+        { cm.replaceRange(cm.doc.lineSeparator(), sels[i].anchor, sels[i].head, "+input"); }
+      sels = cm.listSelections();
+      for (var i$1 = 0; i$1 < sels.length; i$1++)
+        { cm.indentLine(sels[i$1].from().line, null, true); }
+      ensureCursorVisible(cm);
+    }); },
+    openLine: function (cm) { return cm.replaceSelection("\n", "start"); },
+    toggleOverwrite: function (cm) { return cm.toggleOverwrite(); }
+  };
+
+
+  function lineStart(cm, lineN) {
+    var line = getLine(cm.doc, lineN);
+    var visual = visualLine(line);
+    if (visual != line) { lineN = lineNo(visual); }
+    return endOfLine(true, cm, visual, lineN, 1)
+  }
+  function lineEnd(cm, lineN) {
+    var line = getLine(cm.doc, lineN);
+    var visual = visualLineEnd(line);
+    if (visual != line) { lineN = lineNo(visual); }
+    return endOfLine(true, cm, line, lineN, -1)
+  }
+  function lineStartSmart(cm, pos) {
+    var start = lineStart(cm, pos.line);
+    var line = getLine(cm.doc, start.line);
+    var order = getOrder(line, cm.doc.direction);
+    if (!order || order[0].level == 0) {
+      var firstNonWS = Math.max(start.ch, line.text.search(/\S/));
+      var inWS = pos.line == start.line && pos.ch <= firstNonWS && pos.ch;
+      return Pos(start.line, inWS ? 0 : firstNonWS, start.sticky)
+    }
+    return start
+  }
+
+  // Run a handler that was bound to a key.
+  function doHandleBinding(cm, bound, dropShift) {
+    if (typeof bound == "string") {
+      bound = commands[bound];
+      if (!bound) { return false }
+    }
+    // Ensure previous input has been read, so that the handler sees a
+    // consistent view of the document
+    cm.display.input.ensurePolled();
+    var prevShift = cm.display.shift, done = false;
+    try {
+      if (cm.isReadOnly()) { cm.state.suppressEdits = true; }
+      if (dropShift) { cm.display.shift = false; }
+      done = bound(cm) != Pass;
+    } finally {
+      cm.display.shift = prevShift;
+      cm.state.suppressEdits = false;
+    }
+    return done
+  }
+
+  function lookupKeyForEditor(cm, name, handle) {
+    for (var i = 0; i < cm.state.keyMaps.length; i++) {
+      var result = lookupKey(name, cm.state.keyMaps[i], handle, cm);
+      if (result) { return result }
+    }
+    return (cm.options.extraKeys && lookupKey(name, cm.options.extraKeys, handle, cm))
+      || lookupKey(name, cm.options.keyMap, handle, cm)
+  }
+
+  // Note that, despite the name, this function is also used to check
+  // for bound mouse clicks.
+
+  var stopSeq = new Delayed;
+
+  function dispatchKey(cm, name, e, handle) {
+    var seq = cm.state.keySeq;
+    if (seq) {
+      if (isModifierKey(name)) { return "handled" }
+      if (/\'$/.test(name))
+        { cm.state.keySeq = null; }
+      else
+        { stopSeq.set(50, function () {
+          if (cm.state.keySeq == seq) {
+            cm.state.keySeq = null;
+            cm.display.input.reset();
+          }
+        }); }
+      if (dispatchKeyInner(cm, seq + " " + name, e, handle)) { return true }
+    }
+    return dispatchKeyInner(cm, name, e, handle)
+  }
+
+  function dispatchKeyInner(cm, name, e, handle) {
+    var result = lookupKeyForEditor(cm, name, handle);
+
+    if (result == "multi")
+      { cm.state.keySeq = name; }
+    if (result == "handled")
+      { signalLater(cm, "keyHandled", cm, name, e); }
+
+    if (result == "handled" || result == "multi") {
+      e_preventDefault(e);
+      restartBlink(cm);
+    }
+
+    return !!result
+  }
+
+  // Handle a key from the keydown event.
+  function handleKeyBinding(cm, e) {
+    var name = keyName(e, true);
+    if (!name) { return false }
+
+    if (e.shiftKey && !cm.state.keySeq) {
+      // First try to resolve full name (including 'Shift-'). Failing
+      // that, see if there is a cursor-motion command (starting with
+      // 'go') bound to the keyname without 'Shift-'.
+      return dispatchKey(cm, "Shift-" + name, e, function (b) { return doHandleBinding(cm, b, true); })
+          || dispatchKey(cm, name, e, function (b) {
+               if (typeof b == "string" ? /^go[A-Z]/.test(b) : b.motion)
+                 { return doHandleBinding(cm, b) }
+             })
+    } else {
+      return dispatchKey(cm, name, e, function (b) { return doHandleBinding(cm, b); })
+    }
+  }
+
+  // Handle a key from the keypress event
+  function handleCharBinding(cm, e, ch) {
+    return dispatchKey(cm, "'" + ch + "'", e, function (b) { return doHandleBinding(cm, b, true); })
+  }
+
+  var lastStoppedKey = null;
+  function onKeyDown(e) {
+    var cm = this;
+    if (e.target && e.target != cm.display.input.getField()) { return }
+    cm.curOp.focus = activeElt();
+    if (signalDOMEvent(cm, e)) { return }
+    // IE does strange things with escape.
+    if (ie && ie_version < 11 && e.keyCode == 27) { e.returnValue = false; }
+    var code = e.keyCode;
+    cm.display.shift = code == 16 || e.shiftKey;
+    var handled = handleKeyBinding(cm, e);
+    if (presto) {
+      lastStoppedKey = handled ? code : null;
+      // Opera has no cut event... we try to at least catch the key combo
+      if (!handled && code == 88 && !hasCopyEvent && (mac ? e.metaKey : e.ctrlKey))
+        { cm.replaceSelection("", null, "cut"); }
+    }
+    if (gecko && !mac && !handled && code == 46 && e.shiftKey && !e.ctrlKey && document.execCommand)
+      { document.execCommand("cut"); }
+
+    // Turn mouse into crosshair when Alt is held on Mac.
+    if (code == 18 && !/\bCodeMirror-crosshair\b/.test(cm.display.lineDiv.className))
+      { showCrossHair(cm); }
+  }
+
+  function showCrossHair(cm) {
+    var lineDiv = cm.display.lineDiv;
+    addClass(lineDiv, "CodeMirror-crosshair");
+
+    function up(e) {
+      if (e.keyCode == 18 || !e.altKey) {
+        rmClass(lineDiv, "CodeMirror-crosshair");
+        off(document, "keyup", up);
+        off(document, "mouseover", up);
+      }
+    }
+    on(document, "keyup", up);
+    on(document, "mouseover", up);
+  }
+
+  function onKeyUp(e) {
+    if (e.keyCode == 16) { this.doc.sel.shift = false; }
+    signalDOMEvent(this, e);
+  }
+
+  function onKeyPress(e) {
+    var cm = this;
+    if (e.target && e.target != cm.display.input.getField()) { return }
+    if (eventInWidget(cm.display, e) || signalDOMEvent(cm, e) || e.ctrlKey && !e.altKey || mac && e.metaKey) { return }
+    var keyCode = e.keyCode, charCode = e.charCode;
+    if (presto && keyCode == lastStoppedKey) {lastStoppedKey = null; e_preventDefault(e); return}
+    if ((presto && (!e.which || e.which < 10)) && handleKeyBinding(cm, e)) { return }
+    var ch = String.fromCharCode(charCode == null ? keyCode : charCode);
+    // Some browsers fire keypress events for backspace
+    if (ch == "\x08") { return }
+    if (handleCharBinding(cm, e, ch)) { return }
+    cm.display.input.onKeyPress(e);
+  }
+
+  var DOUBLECLICK_DELAY = 400;
+
+  var PastClick = function(time, pos, button) {
+    this.time = time;
+    this.pos = pos;
+    this.button = button;
+  };
+
+  PastClick.prototype.compare = function (time, pos, button) {
+    return this.time + DOUBLECLICK_DELAY > time &&
+      cmp(pos, this.pos) == 0 && button == this.button
+  };
+
+  var lastClick, lastDoubleClick;
+  function clickRepeat(pos, button) {
+    var now = +new Date;
+    if (lastDoubleClick && lastDoubleClick.compare(now, pos, button)) {
+      lastClick = lastDoubleClick = null;
+      return "triple"
+    } else if (lastClick && lastClick.compare(now, pos, button)) {
+      lastDoubleClick = new PastClick(now, pos, button);
+      lastClick = null;
+      return "double"
+    } else {
+      lastClick = new PastClick(now, pos, button);
+      lastDoubleClick = null;
+      return "single"
+    }
+  }
+
+  // A mouse down can be a single click, double click, triple click,
+  // start of selection drag, start of text drag, new cursor
+  // (ctrl-click), rectangle drag (alt-drag), or xwin
+  // middle-click-paste. Or it might be a click on something we should
+  // not interfere with, such as a scrollbar or widget.
+  function onMouseDown(e) {
+    var cm = this, display = cm.display;
+    if (signalDOMEvent(cm, e) || display.activeTouch && display.input.supportsTouch()) { return }
+    display.input.ensurePolled();
+    display.shift = e.shiftKey;
+
+    if (eventInWidget(display, e)) {
+      if (!webkit) {
+        // Briefly turn off draggability, to allow widgets to do
+        // normal dragging things.
+        display.scroller.draggable = false;
+        setTimeout(function () { return display.scroller.draggable = true; }, 100);
+      }
+      return
+    }
+    if (clickInGutter(cm, e)) { return }
+    var pos = posFromMouse(cm, e), button = e_button(e), repeat = pos ? clickRepeat(pos, button) : "single";
+    window.focus();
+
+    // #3261: make sure, that we're not starting a second selection
+    if (button == 1 && cm.state.selectingText)
+      { cm.state.selectingText(e); }
+
+    if (pos && handleMappedButton(cm, button, pos, repeat, e)) { return }
+
+    if (button == 1) {
+      if (pos) { leftButtonDown(cm, pos, repeat, e); }
+      else if (e_target(e) == display.scroller) { e_preventDefault(e); }
+    } else if (button == 2) {
+      if (pos) { extendSelection(cm.doc, pos); }
+      setTimeout(function () { return display.input.focus(); }, 20);
+    } else if (button == 3) {
+      if (captureRightClick) { cm.display.input.onContextMenu(e); }
+      else { delayBlurEvent(cm); }
+    }
+  }
+
+  function handleMappedButton(cm, button, pos, repeat, event) {
+    var name = "Click";
+    if (repeat == "double") { name = "Double" + name; }
+    else if (repeat == "triple") { name = "Triple" + name; }
+    name = (button == 1 ? "Left" : button == 2 ? "Middle" : "Right") + name;
+
+    return dispatchKey(cm,  addModifierNames(name, event), event, function (bound) {
+      if (typeof bound == "string") { bound = commands[bound]; }
+      if (!bound) { return false }
+      var done = false;
+      try {
+        if (cm.isReadOnly()) { cm.state.suppressEdits = true; }
+        done = bound(cm, pos) != Pass;
+      } finally {
+        cm.state.suppressEdits = false;
+      }
+      return done
+    })
+  }
+
+  function configureMouse(cm, repeat, event) {
+    var option = cm.getOption("configureMouse");
+    var value = option ? option(cm, repeat, event) : {};
+    if (value.unit == null) {
+      var rect = chromeOS ? event.shiftKey && event.metaKey : event.altKey;
+      value.unit = rect ? "rectangle" : repeat == "single" ? "char" : repeat == "double" ? "word" : "line";
+    }
+    if (value.extend == null || cm.doc.extend) { value.extend = cm.doc.extend || event.shiftKey; }
+    if (value.addNew == null) { value.addNew = mac ? event.metaKey : event.ctrlKey; }
+    if (value.moveOnDrag == null) { value.moveOnDrag = !(mac ? event.altKey : event.ctrlKey); }
+    return value
+  }
+
+  function leftButtonDown(cm, pos, repeat, event) {
+    if (ie) { setTimeout(bind(ensureFocus, cm), 0); }
+    else { cm.curOp.focus = activeElt(); }
+
+    var behavior = configureMouse(cm, repeat, event);
+
+    var sel = cm.doc.sel, contained;
+    if (cm.options.dragDrop && dragAndDrop && !cm.isReadOnly() &&
+        repeat == "single" && (contained = sel.contains(pos)) > -1 &&
+        (cmp((contained = sel.ranges[contained]).from(), pos) < 0 || pos.xRel > 0) &&
+        (cmp(contained.to(), pos) > 0 || pos.xRel < 0))
+      { leftButtonStartDrag(cm, event, pos, behavior); }
+    else
+      { leftButtonSelect(cm, event, pos, behavior); }
+  }
+
+  // Start a text drag. When it ends, see if any dragging actually
+  // happen, and treat as a click if it didn't.
+  function leftButtonStartDrag(cm, event, pos, behavior) {
+    var display = cm.display, moved = false;
+    var dragEnd = operation(cm, function (e) {
+      if (webkit) { display.scroller.draggable = false; }
+      cm.state.draggingText = false;
+      off(display.wrapper.ownerDocument, "mouseup", dragEnd);
+      off(display.wrapper.ownerDocument, "mousemove", mouseMove);
+      off(display.scroller, "dragstart", dragStart);
+      off(display.scroller, "drop", dragEnd);
+      if (!moved) {
+        e_preventDefault(e);
+        if (!behavior.addNew)
+          { extendSelection(cm.doc, pos, null, null, behavior.extend); }
+        // Work around unexplainable focus problem in IE9 (#2127) and Chrome (#3081)
+        if ((webkit && !safari) || ie && ie_version == 9)
+          { setTimeout(function () {display.wrapper.ownerDocument.body.focus({preventScroll: true}); display.input.focus();}, 20); }
+        else
+          { display.input.focus(); }
+      }
+    });
+    var mouseMove = function(e2) {
+      moved = moved || Math.abs(event.clientX - e2.clientX) + Math.abs(event.clientY - e2.clientY) >= 10;
+    };
+    var dragStart = function () { return moved = true; };
+    // Let the drag handler handle this.
+    if (webkit) { display.scroller.draggable = true; }
+    cm.state.draggingText = dragEnd;
+    dragEnd.copy = !behavior.moveOnDrag;
+    // IE's approach to draggable
+    if (display.scroller.dragDrop) { display.scroller.dragDrop(); }
+    on(display.wrapper.ownerDocument, "mouseup", dragEnd);
+    on(display.wrapper.ownerDocument, "mousemove", mouseMove);
+    on(display.scroller, "dragstart", dragStart);
+    on(display.scroller, "drop", dragEnd);
+
+    delayBlurEvent(cm);
+    setTimeout(function () { return display.input.focus(); }, 20);
+  }
+
+  function rangeForUnit(cm, pos, unit) {
+    if (unit == "char") { return new Range(pos, pos) }
+    if (unit == "word") { return cm.findWordAt(pos) }
+    if (unit == "line") { return new Range(Pos(pos.line, 0), clipPos(cm.doc, Pos(pos.line + 1, 0))) }
+    var result = unit(cm, pos);
+    return new Range(result.from, result.to)
+  }
+
+  // Normal selection, as opposed to text dragging.
+  function leftButtonSelect(cm, event, start, behavior) {
+    var display = cm.display, doc = cm.doc;
+    e_preventDefault(event);
+
+    var ourRange, ourIndex, startSel = doc.sel, ranges = startSel.ranges;
+    if (behavior.addNew && !behavior.extend) {
+      ourIndex = doc.sel.contains(start);
+      if (ourIndex > -1)
+        { ourRange = ranges[ourIndex]; }
+      else
+        { ourRange = new Range(start, start); }
+    } else {
+      ourRange = doc.sel.primary();
+      ourIndex = doc.sel.primIndex;
+    }
+
+    if (behavior.unit == "rectangle") {
+      if (!behavior.addNew) { ourRange = new Range(start, start); }
+      start = posFromMouse(cm, event, true, true);
+      ourIndex = -1;
+    } else {
+      var range = rangeForUnit(cm, start, behavior.unit);
+      if (behavior.extend)
+        { ourRange = extendRange(ourRange, range.anchor, range.head, behavior.extend); }
+      else
+        { ourRange = range; }
+    }
+
+    if (!behavior.addNew) {
+      ourIndex = 0;
+      setSelection(doc, new Selection([ourRange], 0), sel_mouse);
+      startSel = doc.sel;
+    } else if (ourIndex == -1) {
+      ourIndex = ranges.length;
+      setSelection(doc, normalizeSelection(cm, ranges.concat([ourRange]), ourIndex),
+                   {scroll: false, origin: "*mouse"});
+    } else if (ranges.length > 1 && ranges[ourIndex].empty() && behavior.unit == "char" && !behavior.extend) {
+      setSelection(doc, normalizeSelection(cm, ranges.slice(0, ourIndex).concat(ranges.slice(ourIndex + 1)), 0),
+                   {scroll: false, origin: "*mouse"});
+      startSel = doc.sel;
+    } else {
+      replaceOneSelection(doc, ourIndex, ourRange, sel_mouse);
+    }
+
+    var lastPos = start;
+    function extendTo(pos) {
+      if (cmp(lastPos, pos) == 0) { return }
+      lastPos = pos;
+
+      if (behavior.unit == "rectangle") {
+        var ranges = [], tabSize = cm.options.tabSize;
+        var startCol = countColumn(getLine(doc, start.line).text, start.ch, tabSize);
+        var posCol = countColumn(getLine(doc, pos.line).text, pos.ch, tabSize);
+        var left = Math.min(startCol, posCol), right = Math.max(startCol, posCol);
+        for (var line = Math.min(start.line, pos.line), end = Math.min(cm.lastLine(), Math.max(start.line, pos.line));
+             line <= end; line++) {
+          var text = getLine(doc, line).text, leftPos = findColumn(text, left, tabSize);
+          if (left == right)
+            { ranges.push(new Range(Pos(line, leftPos), Pos(line, leftPos))); }
+          else if (text.length > leftPos)
+            { ranges.push(new Range(Pos(line, leftPos), Pos(line, findColumn(text, right, tabSize)))); }
+        }
+        if (!ranges.length) { ranges.push(new Range(start, start)); }
+        setSelection(doc, normalizeSelection(cm, startSel.ranges.slice(0, ourIndex).concat(ranges), ourIndex),
+                     {origin: "*mouse", scroll: false});
+        cm.scrollIntoView(pos);
+      } else {
+        var oldRange = ourRange;
+        var range = rangeForUnit(cm, pos, behavior.unit);
+        var anchor = oldRange.anchor, head;
+        if (cmp(range.anchor, anchor) > 0) {
+          head = range.head;
+          anchor = minPos(oldRange.from(), range.anchor);
+        } else {
+          head = range.anchor;
+          anchor = maxPos(oldRange.to(), range.head);
+        }
+        var ranges$1 = startSel.ranges.slice(0);
+        ranges$1[ourIndex] = bidiSimplify(cm, new Range(clipPos(doc, anchor), head));
+        setSelection(doc, normalizeSelection(cm, ranges$1, ourIndex), sel_mouse);
+      }
+    }
+
+    var editorSize = display.wrapper.getBoundingClientRect();
+    // Used to ensure timeout re-tries don't fire when another extend
+    // happened in the meantime (clearTimeout isn't reliable -- at
+    // least on Chrome, the timeouts still happen even when cleared,
+    // if the clear happens after their scheduled firing time).
+    var counter = 0;
+
+    function extend(e) {
+      var curCount = ++counter;
+      var cur = posFromMouse(cm, e, true, behavior.unit == "rectangle");
+      if (!cur) { return }
+      if (cmp(cur, lastPos) != 0) {
+        cm.curOp.focus = activeElt();
+        extendTo(cur);
+        var visible = visibleLines(display, doc);
+        if (cur.line >= visible.to || cur.line < visible.from)
+          { setTimeout(operation(cm, function () {if (counter == curCount) { extend(e); }}), 150); }
+      } else {
+        var outside = e.clientY < editorSize.top ? -20 : e.clientY > editorSize.bottom ? 20 : 0;
+        if (outside) { setTimeout(operation(cm, function () {
+          if (counter != curCount) { return }
+          display.scroller.scrollTop += outside;
+          extend(e);
+        }), 50); }
+      }
+    }
+
+    function done(e) {
+      cm.state.selectingText = false;
+      counter = Infinity;
+      // If e is null or undefined we interpret this as someone trying
+      // to explicitly cancel the selection rather than the user
+      // letting go of the mouse button.
+      if (e) {
+        e_preventDefault(e);
+        display.input.focus();
+      }
+      off(display.wrapper.ownerDocument, "mousemove", move);
+      off(display.wrapper.ownerDocument, "mouseup", up);
+      doc.history.lastSelOrigin = null;
+    }
+
+    var move = operation(cm, function (e) {
+      if (e.buttons === 0 || !e_button(e)) { done(e); }
+      else { extend(e); }
+    });
+    var up = operation(cm, done);
+    cm.state.selectingText = up;
+    on(display.wrapper.ownerDocument, "mousemove", move);
+    on(display.wrapper.ownerDocument, "mouseup", up);
+  }
+
+  // Used when mouse-selecting to adjust the anchor to the proper side
+  // of a bidi jump depending on the visual position of the head.
+  function bidiSimplify(cm, range) {
+    var anchor = range.anchor;
+    var head = range.head;
+    var anchorLine = getLine(cm.doc, anchor.line);
+    if (cmp(anchor, head) == 0 && anchor.sticky == head.sticky) { return range }
+    var order = getOrder(anchorLine);
+    if (!order) { return range }
+    var index = getBidiPartAt(order, anchor.ch, anchor.sticky), part = order[index];
+    if (part.from != anchor.ch && part.to != anchor.ch) { return range }
+    var boundary = index + ((part.from == anchor.ch) == (part.level != 1) ? 0 : 1);
+    if (boundary == 0 || boundary == order.length) { return range }
+
+    // Compute the relative visual position of the head compared to the
+    // anchor (<0 is to the left, >0 to the right)
+    var leftSide;
+    if (head.line != anchor.line) {
+      leftSide = (head.line - anchor.line) * (cm.doc.direction == "ltr" ? 1 : -1) > 0;
+    } else {
+      var headIndex = getBidiPartAt(order, head.ch, head.sticky);
+      var dir = headIndex - index || (head.ch - anchor.ch) * (part.level == 1 ? -1 : 1);
+      if (headIndex == boundary - 1 || headIndex == boundary)
+        { leftSide = dir < 0; }
+      else
+        { leftSide = dir > 0; }
+    }
+
+    var usePart = order[boundary + (leftSide ? -1 : 0)];
+    var from = leftSide == (usePart.level == 1);
+    var ch = from ? usePart.from : usePart.to, sticky = from ? "after" : "before";
+    return anchor.ch == ch && anchor.sticky == sticky ? range : new Range(new Pos(anchor.line, ch, sticky), head)
+  }
+
+
+  // Determines whether an event happened in the gutter, and fires the
+  // handlers for the corresponding event.
+  function gutterEvent(cm, e, type, prevent) {
+    var mX, mY;
+    if (e.touches) {
+      mX = e.touches[0].clientX;
+      mY = e.touches[0].clientY;
+    } else {
+      try { mX = e.clientX; mY = e.clientY; }
+      catch(e$1) { return false }
+    }
+    if (mX >= Math.floor(cm.display.gutters.getBoundingClientRect().right)) { return false }
+    if (prevent) { e_preventDefault(e); }
+
+    var display = cm.display;
+    var lineBox = display.lineDiv.getBoundingClientRect();
+
+    if (mY > lineBox.bottom || !hasHandler(cm, type)) { return e_defaultPrevented(e) }
+    mY -= lineBox.top - display.viewOffset;
+
+    for (var i = 0; i < cm.display.gutterSpecs.length; ++i) {
+      var g = display.gutters.childNodes[i];
+      if (g && g.getBoundingClientRect().right >= mX) {
+        var line = lineAtHeight(cm.doc, mY);
+        var gutter = cm.display.gutterSpecs[i];
+        signal(cm, type, cm, line, gutter.className, e);
+        return e_defaultPrevented(e)
+      }
+    }
+  }
+
+  function clickInGutter(cm, e) {
+    return gutterEvent(cm, e, "gutterClick", true)
+  }
+
+  // CONTEXT MENU HANDLING
+
+  // To make the context menu work, we need to briefly unhide the
+  // textarea (making it as unobtrusive as possible) to let the
+  // right-click take effect on it.
+  function onContextMenu(cm, e) {
+    if (eventInWidget(cm.display, e) || contextMenuInGutter(cm, e)) { return }
+    if (signalDOMEvent(cm, e, "contextmenu")) { return }
+    if (!captureRightClick) { cm.display.input.onContextMenu(e); }
+  }
+
+  function contextMenuInGutter(cm, e) {
+    if (!hasHandler(cm, "gutterContextMenu")) { return false }
+    return gutterEvent(cm, e, "gutterContextMenu", false)
+  }
+
+  function themeChanged(cm) {
+    cm.display.wrapper.className = cm.display.wrapper.className.replace(/\s*cm-s-\S+/g, "") +
+      cm.options.theme.replace(/(^|\s)\s*/g, " cm-s-");
+    clearCaches(cm);
+  }
+
+  var Init = {toString: function(){return "CodeMirror.Init"}};
+
+  var defaults = {};
+  var optionHandlers = {};
+
+  function defineOptions(CodeMirror) {
+    var optionHandlers = CodeMirror.optionHandlers;
+
+    function option(name, deflt, handle, notOnInit) {
+      CodeMirror.defaults[name] = deflt;
+      if (handle) { optionHandlers[name] =
+        notOnInit ? function (cm, val, old) {if (old != Init) { handle(cm, val, old); }} : handle; }
+    }
+
+    CodeMirror.defineOption = option;
+
+    // Passed to option handlers when there is no old value.
+    CodeMirror.Init = Init;
+
+    // These two are, on init, called from the constructor because they
+    // have to be initialized before the editor can start at all.
+    option("value", "", function (cm, val) { return cm.setValue(val); }, true);
+    option("mode", null, function (cm, val) {
+      cm.doc.modeOption = val;
+      loadMode(cm);
+    }, true);
+
+    option("indentUnit", 2, loadMode, true);
+    option("indentWithTabs", false);
+    option("smartIndent", true);
+    option("tabSize", 4, function (cm) {
+      resetModeState(cm);
+      clearCaches(cm);
+      regChange(cm);
+    }, true);
+
+    option("lineSeparator", null, function (cm, val) {
+      cm.doc.lineSep = val;
+      if (!val) { return }
+      var newBreaks = [], lineNo = cm.doc.first;
+      cm.doc.iter(function (line) {
+        for (var pos = 0;;) {
+          var found = line.text.indexOf(val, pos);
+          if (found == -1) { break }
+          pos = found + val.length;
+          newBreaks.push(Pos(lineNo, found));
+        }
+        lineNo++;
+      });
+      for (var i = newBreaks.length - 1; i >= 0; i--)
+        { replaceRange(cm.doc, val, newBreaks[i], Pos(newBreaks[i].line, newBreaks[i].ch + val.length)); }
+    });
+    option("specialChars", /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b-\u200c\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g, function (cm, val, old) {
+      cm.state.specialChars = new RegExp(val.source + (val.test("\t") ? "" : "|\t"), "g");
+      if (old != Init) { cm.refresh(); }
+    });
+    option("specialCharPlaceholder", defaultSpecialCharPlaceholder, function (cm) { return cm.refresh(); }, true);
+    option("electricChars", true);
+    option("inputStyle", mobile ? "contenteditable" : "textarea", function () {
+      throw new Error("inputStyle can not (yet) be changed in a running editor") // FIXME
+    }, true);
+    option("spellcheck", false, function (cm, val) { return cm.getInputField().spellcheck = val; }, true);
+    option("autocorrect", false, function (cm, val) { return cm.getInputField().autocorrect = val; }, true);
+    option("autocapitalize", false, function (cm, val) { return cm.getInputField().autocapitalize = val; }, true);
+    option("rtlMoveVisually", !windows);
+    option("wholeLineUpdateBefore", true);
+
+    option("theme", "default", function (cm) {
+      themeChanged(cm);
+      updateGutters(cm);
+    }, true);
+    option("keyMap", "default", function (cm, val, old) {
+      var next = getKeyMap(val);
+      var prev = old != Init && getKeyMap(old);
+      if (prev && prev.detach) { prev.detach(cm, next); }
+      if (next.attach) { next.attach(cm, prev || null); }
+    });
+    option("extraKeys", null);
+    option("configureMouse", null);
+
+    option("lineWrapping", false, wrappingChanged, true);
+    option("gutters", [], function (cm, val) {
+      cm.display.gutterSpecs = getGutters(val, cm.options.lineNumbers);
+      updateGutters(cm);
+    }, true);
+    option("fixedGutter", true, function (cm, val) {
+      cm.display.gutters.style.left = val ? compensateForHScroll(cm.display) + "px" : "0";
+      cm.refresh();
+    }, true);
+    option("coverGutterNextToScrollbar", false, function (cm) { return updateScrollbars(cm); }, true);
+    option("scrollbarStyle", "native", function (cm) {
+      initScrollbars(cm);
+      updateScrollbars(cm);
+      cm.display.scrollbars.setScrollTop(cm.doc.scrollTop);
+      cm.display.scrollbars.setScrollLeft(cm.doc.scrollLeft);
+    }, true);
+    option("lineNumbers", false, function (cm, val) {
+      cm.display.gutterSpecs = getGutters(cm.options.gutters, val);
+      updateGutters(cm);
+    }, true);
+    option("firstLineNumber", 1, updateGutters, true);
+    option("lineNumberFormatter", function (integer) { return integer; }, updateGutters, true);
+    option("showCursorWhenSelecting", false, updateSelection, true);
+
+    option("resetSelectionOnContextMenu", true);
+    option("lineWiseCopyCut", true);
+    option("pasteLinesPerSelection", true);
+    option("selectionsMayTouch", false);
+
+    option("readOnly", false, function (cm, val) {
+      if (val == "nocursor") {
+        onBlur(cm);
+        cm.display.input.blur();
+      }
+      cm.display.input.readOnlyChanged(val);
+    });
+
+    option("screenReaderLabel", null, function (cm, val) {
+      val = (val === '') ? null : val;
+      cm.display.input.screenReaderLabelChanged(val);
+    });
+
+    option("disableInput", false, function (cm, val) {if (!val) { cm.display.input.reset(); }}, true);
+    option("dragDrop", true, dragDropChanged);
+    option("allowDropFileTypes", null);
+
+    option("cursorBlinkRate", 530);
+    option("cursorScrollMargin", 0);
+    option("cursorHeight", 1, updateSelection, true);
+    option("singleCursorHeightPerLine", true, updateSelection, true);
+    option("workTime", 100);
+    option("workDelay", 100);
+    option("flattenSpans", true, resetModeState, true);
+    option("addModeClass", false, resetModeState, true);
+    option("pollInterval", 100);
+    option("undoDepth", 200, function (cm, val) { return cm.doc.history.undoDepth = val; });
+    option("historyEventDelay", 1250);
+    option("viewportMargin", 10, function (cm) { return cm.refresh(); }, true);
+    option("maxHighlightLength", 10000, resetModeState, true);
+    option("moveInputWithCursor", true, function (cm, val) {
+      if (!val) { cm.display.input.resetPosition(); }
+    });
+
+    option("tabindex", null, function (cm, val) { return cm.display.input.getField().tabIndex = val || ""; });
+    option("autofocus", null);
+    option("direction", "ltr", function (cm, val) { return cm.doc.setDirection(val); }, true);
+    option("phrases", null);
+  }
+
+  function dragDropChanged(cm, value, old) {
+    var wasOn = old && old != Init;
+    if (!value != !wasOn) {
+      var funcs = cm.display.dragFunctions;
+      var toggle = value ? on : off;
+      toggle(cm.display.scroller, "dragstart", funcs.start);
+      toggle(cm.display.scroller, "dragenter", funcs.enter);
+      toggle(cm.display.scroller, "dragover", funcs.over);
+      toggle(cm.display.scroller, "dragleave", funcs.leave);
+      toggle(cm.display.scroller, "drop", funcs.drop);
+    }
+  }
+
+  function wrappingChanged(cm) {
+    if (cm.options.lineWrapping) {
+      addClass(cm.display.wrapper, "CodeMirror-wrap");
+      cm.display.sizer.style.minWidth = "";
+      cm.display.sizerWidth = null;
+    } else {
+      rmClass(cm.display.wrapper, "CodeMirror-wrap");
+      findMaxLine(cm);
+    }
+    estimateLineHeights(cm);
+    regChange(cm);
+    clearCaches(cm);
+    setTimeout(function () { return updateScrollbars(cm); }, 100);
+  }
+
+  // A CodeMirror instance represents an editor. This is the object
+  // that user code is usually dealing with.
+
+  function CodeMirror(place, options) {
+    var this$1 = this;
+
+    if (!(this instanceof CodeMirror)) { return new CodeMirror(place, options) }
+
+    this.options = options = options ? copyObj(options) : {};
+    // Determine effective options based on given values and defaults.
+    copyObj(defaults, options, false);
+
+    var doc = options.value;
+    if (typeof doc == "string") { doc = new Doc(doc, options.mode, null, options.lineSeparator, options.direction); }
+    else if (options.mode) { doc.modeOption = options.mode; }
+    this.doc = doc;
+
+    var input = new CodeMirror.inputStyles[options.inputStyle](this);
+    var display = this.display = new Display(place, doc, input, options);
+    display.wrapper.CodeMirror = this;
+    themeChanged(this);
+    if (options.lineWrapping)
+      { this.display.wrapper.className += " CodeMirror-wrap"; }
+    initScrollbars(this);
+
+    this.state = {
+      keyMaps: [],  // stores maps added by addKeyMap
+      overlays: [], // highlighting overlays, as added by addOverlay
+      modeGen: 0,   // bumped when mode/overlay changes, used to invalidate highlighting info
+      overwrite: false,
+      delayingBlurEvent: false,
+      focused: false,
+      suppressEdits: false, // used to disable editing during key handlers when in readOnly mode
+      pasteIncoming: -1, cutIncoming: -1, // help recognize paste/cut edits in input.poll
+      selectingText: false,
+      draggingText: false,
+      highlight: new Delayed(), // stores highlight worker timeout
+      keySeq: null,  // Unfinished key sequence
+      specialChars: null
+    };
+
+    if (options.autofocus && !mobile) { display.input.focus(); }
+
+    // Override magic textarea content restore that IE sometimes does
+    // on our hidden textarea on reload
+    if (ie && ie_version < 11) { setTimeout(function () { return this$1.display.input.reset(true); }, 20); }
+
+    registerEventHandlers(this);
+    ensureGlobalHandlers();
+
+    startOperation(this);
+    this.curOp.forceUpdate = true;
+    attachDoc(this, doc);
+
+    if ((options.autofocus && !mobile) || this.hasFocus())
+      { setTimeout(bind(onFocus, this), 20); }
+    else
+      { onBlur(this); }
+
+    for (var opt in optionHandlers) { if (optionHandlers.hasOwnProperty(opt))
+      { optionHandlers[opt](this, options[opt], Init); } }
+    maybeUpdateLineNumberWidth(this);
+    if (options.finishInit) { options.finishInit(this); }
+    for (var i = 0; i < initHooks.length; ++i) { initHooks[i](this); }
+    endOperation(this);
+    // Suppress optimizelegibility in Webkit, since it breaks text
+    // measuring on line wrapping boundaries.
+    if (webkit && options.lineWrapping &&
+        getComputedStyle(display.lineDiv).textRendering == "optimizelegibility")
+      { display.lineDiv.style.textRendering = "auto"; }
+  }
+
+  // The default configuration options.
+  CodeMirror.defaults = defaults;
+  // Functions to run when options are changed.
+  CodeMirror.optionHandlers = optionHandlers;
+
+  // Attach the necessary event handlers when initializing the editor
+  function registerEventHandlers(cm) {
+    var d = cm.display;
+    on(d.scroller, "mousedown", operation(cm, onMouseDown));
+    // Older IE's will not fire a second mousedown for a double click
+    if (ie && ie_version < 11)
+      { on(d.scroller, "dblclick", operation(cm, function (e) {
+        if (signalDOMEvent(cm, e)) { return }
+        var pos = posFromMouse(cm, e);
+        if (!pos || clickInGutter(cm, e) || eventInWidget(cm.display, e)) { return }
+        e_preventDefault(e);
+        var word = cm.findWordAt(pos);
+        extendSelection(cm.doc, word.anchor, word.head);
+      })); }
+    else
+      { on(d.scroller, "dblclick", function (e) { return signalDOMEvent(cm, e) || e_preventDefault(e); }); }
+    // Some browsers fire contextmenu *after* opening the menu, at
+    // which point we can't mess with it anymore. Context menu is
+    // handled in onMouseDown for these browsers.
+    on(d.scroller, "contextmenu", function (e) { return onContextMenu(cm, e); });
+    on(d.input.getField(), "contextmenu", function (e) {
+      if (!d.scroller.contains(e.target)) { onContextMenu(cm, e); }
+    });
+
+    // Used to suppress mouse event handling when a touch happens
+    var touchFinished, prevTouch = {end: 0};
+    function finishTouch() {
+      if (d.activeTouch) {
+        touchFinished = setTimeout(function () { return d.activeTouch = null; }, 1000);
+        prevTouch = d.activeTouch;
+        prevTouch.end = +new Date;
+      }
+    }
+    function isMouseLikeTouchEvent(e) {
+      if (e.touches.length != 1) { return false }
+      var touch = e.touches[0];
+      return touch.radiusX <= 1 && touch.radiusY <= 1
+    }
+    function farAway(touch, other) {
+      if (other.left == null) { return true }
+      var dx = other.left - touch.left, dy = other.top - touch.top;
+      return dx * dx + dy * dy > 20 * 20
+    }
+    on(d.scroller, "touchstart", function (e) {
+      if (!signalDOMEvent(cm, e) && !isMouseLikeTouchEvent(e) && !clickInGutter(cm, e)) {
+        d.input.ensurePolled();
+        clearTimeout(touchFinished);
+        var now = +new Date;
+        d.activeTouch = {start: now, moved: false,
+                         prev: now - prevTouch.end <= 300 ? prevTouch : null};
+        if (e.touches.length == 1) {
+          d.activeTouch.left = e.touches[0].pageX;
+          d.activeTouch.top = e.touches[0].pageY;
+        }
+      }
+    });
+    on(d.scroller, "touchmove", function () {
+      if (d.activeTouch) { d.activeTouch.moved = true; }
+    });
+    on(d.scroller, "touchend", function (e) {
+      var touch = d.activeTouch;
+      if (touch && !eventInWidget(d, e) && touch.left != null &&
+          !touch.moved && new Date - touch.start < 300) {
+        var pos = cm.coordsChar(d.activeTouch, "page"), range;
+        if (!touch.prev || farAway(touch, touch.prev)) // Single tap
+          { range = new Range(pos, pos); }
+        else if (!touch.prev.prev || farAway(touch, touch.prev.prev)) // Double tap
+          { range = cm.findWordAt(pos); }
+        else // Triple tap
+          { range = new Range(Pos(pos.line, 0), clipPos(cm.doc, Pos(pos.line + 1, 0))); }
+        cm.setSelection(range.anchor, range.head);
+        cm.focus();
+        e_preventDefault(e);
+      }
+      finishTouch();
+    });
+    on(d.scroller, "touchcancel", finishTouch);
+
+    // Sync scrolling between fake scrollbars and real scrollable
+    // area, ensure viewport is updated when scrolling.
+    on(d.scroller, "scroll", function () {
+      if (d.scroller.clientHeight) {
+        updateScrollTop(cm, d.scroller.scrollTop);
+        setScrollLeft(cm, d.scroller.scrollLeft, true);
+        signal(cm, "scroll", cm);
+      }
+    });
+
+    // Listen to wheel events in order to try and update the viewport on time.
+    on(d.scroller, "mousewheel", function (e) { return onScrollWheel(cm, e); });
+    on(d.scroller, "DOMMouseScroll", function (e) { return onScrollWheel(cm, e); });
+
+    // Prevent wrapper from ever scrolling
+    on(d.wrapper, "scroll", function () { return d.wrapper.scrollTop = d.wrapper.scrollLeft = 0; });
+
+    d.dragFunctions = {
+      enter: function (e) {if (!signalDOMEvent(cm, e)) { e_stop(e); }},
+      over: function (e) {if (!signalDOMEvent(cm, e)) { onDragOver(cm, e); e_stop(e); }},
+      start: function (e) { return onDragStart(cm, e); },
+      drop: operation(cm, onDrop),
+      leave: function (e) {if (!signalDOMEvent(cm, e)) { clearDragCursor(cm); }}
+    };
+
+    var inp = d.input.getField();
+    on(inp, "keyup", function (e) { return onKeyUp.call(cm, e); });
+    on(inp, "keydown", operation(cm, onKeyDown));
+    on(inp, "keypress", operation(cm, onKeyPress));
+    on(inp, "focus", function (e) { return onFocus(cm, e); });
+    on(inp, "blur", function (e) { return onBlur(cm, e); });
+  }
+
+  var initHooks = [];
+  CodeMirror.defineInitHook = function (f) { return initHooks.push(f); };
+
+  // Indent the given line. The how parameter can be "smart",
+  // "add"/null, "subtract", or "prev". When aggressive is false
+  // (typically set to true for forced single-line indents), empty
+  // lines are not indented, and places where the mode returns Pass
+  // are left alone.
+  function indentLine(cm, n, how, aggressive) {
+    var doc = cm.doc, state;
+    if (how == null) { how = "add"; }
+    if (how == "smart") {
+      // Fall back to "prev" when the mode doesn't have an indentation
+      // method.
+      if (!doc.mode.indent) { how = "prev"; }
+      else { state = getContextBefore(cm, n).state; }
+    }
+
+    var tabSize = cm.options.tabSize;
+    var line = getLine(doc, n), curSpace = countColumn(line.text, null, tabSize);
+    if (line.stateAfter) { line.stateAfter = null; }
+    var curSpaceString = line.text.match(/^\s*/)[0], indentation;
+    if (!aggressive && !/\S/.test(line.text)) {
+      indentation = 0;
+      how = "not";
+    } else if (how == "smart") {
+      indentation = doc.mode.indent(state, line.text.slice(curSpaceString.length), line.text);
+      if (indentation == Pass || indentation > 150) {
+        if (!aggressive) { return }
+        how = "prev";
+      }
+    }
+    if (how == "prev") {
+      if (n > doc.first) { indentation = countColumn(getLine(doc, n-1).text, null, tabSize); }
+      else { indentation = 0; }
+    } else if (how == "add") {
+      indentation = curSpace + cm.options.indentUnit;
+    } else if (how == "subtract") {
+      indentation = curSpace - cm.options.indentUnit;
+    } else if (typeof how == "number") {
+      indentation = curSpace + how;
+    }
+    indentation = Math.max(0, indentation);
+
+    var indentString = "", pos = 0;
+    if (cm.options.indentWithTabs)
+      { for (var i = Math.floor(indentation / tabSize); i; --i) {pos += tabSize; indentString += "\t";} }
+    if (pos < indentation) { indentString += spaceStr(indentation - pos); }
+
+    if (indentString != curSpaceString) {
+      replaceRange(doc, indentString, Pos(n, 0), Pos(n, curSpaceString.length), "+input");
+      line.stateAfter = null;
+      return true
+    } else {
+      // Ensure that, if the cursor was in the whitespace at the start
+      // of the line, it is moved to the end of that space.
+      for (var i$1 = 0; i$1 < doc.sel.ranges.length; i$1++) {
+        var range = doc.sel.ranges[i$1];
+        if (range.head.line == n && range.head.ch < curSpaceString.length) {
+          var pos$1 = Pos(n, curSpaceString.length);
+          replaceOneSelection(doc, i$1, new Range(pos$1, pos$1));
+          break
+        }
+      }
+    }
+  }
+
+  // This will be set to a {lineWise: bool, text: [string]} object, so
+  // that, when pasting, we know what kind of selections the copied
+  // text was made out of.
+  var lastCopied = null;
+
+  function setLastCopied(newLastCopied) {
+    lastCopied = newLastCopied;
+  }
+
+  function applyTextInput(cm, inserted, deleted, sel, origin) {
+    var doc = cm.doc;
+    cm.display.shift = false;
+    if (!sel) { sel = doc.sel; }
+
+    var recent = +new Date - 200;
+    var paste = origin == "paste" || cm.state.pasteIncoming > recent;
+    var textLines = splitLinesAuto(inserted), multiPaste = null;
+    // When pasting N lines into N selections, insert one line per selection
+    if (paste && sel.ranges.length > 1) {
+      if (lastCopied && lastCopied.text.join("\n") == inserted) {
+        if (sel.ranges.length % lastCopied.text.length == 0) {
+          multiPaste = [];
+          for (var i = 0; i < lastCopied.text.length; i++)
+            { multiPaste.push(doc.splitLines(lastCopied.text[i])); }
+        }
+      } else if (textLines.length == sel.ranges.length && cm.options.pasteLinesPerSelection) {
+        multiPaste = map(textLines, function (l) { return [l]; });
+      }
+    }
+
+    var updateInput = cm.curOp.updateInput;
+    // Normal behavior is to insert the new text into every selection
+    for (var i$1 = sel.ranges.length - 1; i$1 >= 0; i$1--) {
+      var range = sel.ranges[i$1];
+      var from = range.from(), to = range.to();
+      if (range.empty()) {
+        if (deleted && deleted > 0) // Handle deletion
+          { from = Pos(from.line, from.ch - deleted); }
+        else if (cm.state.overwrite && !paste) // Handle overwrite
+          { to = Pos(to.line, Math.min(getLine(doc, to.line).text.length, to.ch + lst(textLines).length)); }
+        else if (paste && lastCopied && lastCopied.lineWise && lastCopied.text.join("\n") == textLines.join("\n"))
+          { from = to = Pos(from.line, 0); }
+      }
+      var changeEvent = {from: from, to: to, text: multiPaste ? multiPaste[i$1 % multiPaste.length] : textLines,
+                         origin: origin || (paste ? "paste" : cm.state.cutIncoming > recent ? "cut" : "+input")};
+      makeChange(cm.doc, changeEvent);
+      signalLater(cm, "inputRead", cm, changeEvent);
+    }
+    if (inserted && !paste)
+      { triggerElectric(cm, inserted); }
+
+    ensureCursorVisible(cm);
+    if (cm.curOp.updateInput < 2) { cm.curOp.updateInput = updateInput; }
+    cm.curOp.typing = true;
+    cm.state.pasteIncoming = cm.state.cutIncoming = -1;
+  }
+
+  function handlePaste(e, cm) {
+    var pasted = e.clipboardData && e.clipboardData.getData("Text");
+    if (pasted) {
+      e.preventDefault();
+      if (!cm.isReadOnly() && !cm.options.disableInput)
+        { runInOp(cm, function () { return applyTextInput(cm, pasted, 0, null, "paste"); }); }
+      return true
+    }
+  }
+
+  function triggerElectric(cm, inserted) {
+    // When an 'electric' character is inserted, immediately trigger a reindent
+    if (!cm.options.electricChars || !cm.options.smartIndent) { return }
+    var sel = cm.doc.sel;
+
+    for (var i = sel.ranges.length - 1; i >= 0; i--) {
+      var range = sel.ranges[i];
+      if (range.head.ch > 100 || (i && sel.ranges[i - 1].head.line == range.head.line)) { continue }
+      var mode = cm.getModeAt(range.head);
+      var indented = false;
+      if (mode.electricChars) {
+        for (var j = 0; j < mode.electricChars.length; j++)
+          { if (inserted.indexOf(mode.electricChars.charAt(j)) > -1) {
+            indented = indentLine(cm, range.head.line, "smart");
+            break
+          } }
+      } else if (mode.electricInput) {
+        if (mode.electricInput.test(getLine(cm.doc, range.head.line).text.slice(0, range.head.ch)))
+          { indented = indentLine(cm, range.head.line, "smart"); }
+      }
+      if (indented) { signalLater(cm, "electricInput", cm, range.head.line); }
+    }
+  }
+
+  function copyableRanges(cm) {
+    var text = [], ranges = [];
+    for (var i = 0; i < cm.doc.sel.ranges.length; i++) {
+      var line = cm.doc.sel.ranges[i].head.line;
+      var lineRange = {anchor: Pos(line, 0), head: Pos(line + 1, 0)};
+      ranges.push(lineRange);
+      text.push(cm.getRange(lineRange.anchor, lineRange.head));
+    }
+    return {text: text, ranges: ranges}
+  }
+
+  function disableBrowserMagic(field, spellcheck, autocorrect, autocapitalize) {
+    field.setAttribute("autocorrect", autocorrect ? "" : "off");
+    field.setAttribute("autocapitalize", autocapitalize ? "" : "off");
+    field.setAttribute("spellcheck", !!spellcheck);
+  }
+
+  function hiddenTextarea() {
+    var te = elt("textarea", null, null, "position: absolute; bottom: -1em; padding: 0; width: 1px; height: 1em; outline: none");
+    var div = elt("div", [te], null, "overflow: hidden; position: relative; width: 3px; height: 0px;");
+    // The textarea is kept positioned near the cursor to prevent the
+    // fact that it'll be scrolled into view on input from scrolling
+    // our fake cursor out of view. On webkit, when wrap=off, paste is
+    // very slow. So make the area wide instead.
+    if (webkit) { te.style.width = "1000px"; }
+    else { te.setAttribute("wrap", "off"); }
+    // If border: 0; -- iOS fails to open keyboard (issue #1287)
+    if (ios) { te.style.border = "1px solid black"; }
+    disableBrowserMagic(te);
+    return div
+  }
+
+  // The publicly visible API. Note that methodOp(f) means
+  // 'wrap f in an operation, performed on its `this` parameter'.
+
+  // This is not the complete set of editor methods. Most of the
+  // methods defined on the Doc type are also injected into
+  // CodeMirror.prototype, for backwards compatibility and
+  // convenience.
+
+  function addEditorMethods(CodeMirror) {
+    var optionHandlers = CodeMirror.optionHandlers;
+
+    var helpers = CodeMirror.helpers = {};
+
+    CodeMirror.prototype = {
+      constructor: CodeMirror,
+      focus: function(){window.focus(); this.display.input.focus();},
+
+      setOption: function(option, value) {
+        var options = this.options, old = options[option];
+        if (options[option] == value && option != "mode") { return }
+        options[option] = value;
+        if (optionHandlers.hasOwnProperty(option))
+          { operation(this, optionHandlers[option])(this, value, old); }
+        signal(this, "optionChange", this, option);
+      },
+
+      getOption: function(option) {return this.options[option]},
+      getDoc: function() {return this.doc},
+
+      addKeyMap: function(map, bottom) {
+        this.state.keyMaps[bottom ? "push" : "unshift"](getKeyMap(map));
+      },
+      removeKeyMap: function(map) {
+        var maps = this.state.keyMaps;
+        for (var i = 0; i < maps.length; ++i)
+          { if (maps[i] == map || maps[i].name == map) {
+            maps.splice(i, 1);
+            return true
+          } }
+      },
+
+      addOverlay: methodOp(function(spec, options) {
+        var mode = spec.token ? spec : CodeMirror.getMode(this.options, spec);
+        if (mode.startState) { throw new Error("Overlays may not be stateful.") }
+        insertSorted(this.state.overlays,
+                     {mode: mode, modeSpec: spec, opaque: options && options.opaque,
+                      priority: (options && options.priority) || 0},
+                     function (overlay) { return overlay.priority; });
+        this.state.modeGen++;
+        regChange(this);
+      }),
+      removeOverlay: methodOp(function(spec) {
+        var overlays = this.state.overlays;
+        for (var i = 0; i < overlays.length; ++i) {
+          var cur = overlays[i].modeSpec;
+          if (cur == spec || typeof spec == "string" && cur.name == spec) {
+            overlays.splice(i, 1);
+            this.state.modeGen++;
+            regChange(this);
+            return
+          }
+        }
+      }),
+
+      indentLine: methodOp(function(n, dir, aggressive) {
+        if (typeof dir != "string" && typeof dir != "number") {
+          if (dir == null) { dir = this.options.smartIndent ? "smart" : "prev"; }
+          else { dir = dir ? "add" : "subtract"; }
+        }
+        if (isLine(this.doc, n)) { indentLine(this, n, dir, aggressive); }
+      }),
+      indentSelection: methodOp(function(how) {
+        var ranges = this.doc.sel.ranges, end = -1;
+        for (var i = 0; i < ranges.length; i++) {
+          var range = ranges[i];
+          if (!range.empty()) {
+            var from = range.from(), to = range.to();
+            var start = Math.max(end, from.line);
+            end = Math.min(this.lastLine(), to.line - (to.ch ? 0 : 1)) + 1;
+            for (var j = start; j < end; ++j)
+              { indentLine(this, j, how); }
+            var newRanges = this.doc.sel.ranges;
+            if (from.ch == 0 && ranges.length == newRanges.length && newRanges[i].from().ch > 0)
+              { replaceOneSelection(this.doc, i, new Range(from, newRanges[i].to()), sel_dontScroll); }
+          } else if (range.head.line > end) {
+            indentLine(this, range.head.line, how, true);
+            end = range.head.line;
+            if (i == this.doc.sel.primIndex) { ensureCursorVisible(this); }
+          }
+        }
+      }),
+
+      // Fetch the parser token for a given character. Useful for hacks
+      // that want to inspect the mode state (say, for completion).
+      getTokenAt: function(pos, precise) {
+        return takeToken(this, pos, precise)
+      },
+
+      getLineTokens: function(line, precise) {
+        return takeToken(this, Pos(line), precise, true)
+      },
+
+      getTokenTypeAt: function(pos) {
+        pos = clipPos(this.doc, pos);
+        var styles = getLineStyles(this, getLine(this.doc, pos.line));
+        var before = 0, after = (styles.length - 1) / 2, ch = pos.ch;
+        var type;
+        if (ch == 0) { type = styles[2]; }
+        else { for (;;) {
+          var mid = (before + after) >> 1;
+          if ((mid ? styles[mid * 2 - 1] : 0) >= ch) { after = mid; }
+          else if (styles[mid * 2 + 1] < ch) { before = mid + 1; }
+          else { type = styles[mid * 2 + 2]; break }
+        } }
+        var cut = type ? type.indexOf("overlay ") : -1;
+        return cut < 0 ? type : cut == 0 ? null : type.slice(0, cut - 1)
+      },
+
+      getModeAt: function(pos) {
+        var mode = this.doc.mode;
+        if (!mode.innerMode) { return mode }
+        return CodeMirror.innerMode(mode, this.getTokenAt(pos).state).mode
+      },
+
+      getHelper: function(pos, type) {
+        return this.getHelpers(pos, type)[0]
+      },
+
+      getHelpers: function(pos, type) {
+        var found = [];
+        if (!helpers.hasOwnProperty(type)) { return found }
+        var help = helpers[type], mode = this.getModeAt(pos);
+        if (typeof mode[type] == "string") {
+          if (help[mode[type]]) { found.push(help[mode[type]]); }
+        } else if (mode[type]) {
+          for (var i = 0; i < mode[type].length; i++) {
+            var val = help[mode[type][i]];
+            if (val) { found.push(val); }
+          }
+        } else if (mode.helperType && help[mode.helperType]) {
+          found.push(help[mode.helperType]);
+        } else if (help[mode.name]) {
+          found.push(help[mode.name]);
+        }
+        for (var i$1 = 0; i$1 < help._global.length; i$1++) {
+          var cur = help._global[i$1];
+          if (cur.pred(mode, this) && indexOf(found, cur.val) == -1)
+            { found.push(cur.val); }
+        }
+        return found
+      },
+
+      getStateAfter: function(line, precise) {
+        var doc = this.doc;
+        line = clipLine(doc, line == null ? doc.first + doc.size - 1: line);
+        return getContextBefore(this, line + 1, precise).state
+      },
+
+      cursorCoords: function(start, mode) {
+        var pos, range = this.doc.sel.primary();
+        if (start == null) { pos = range.head; }
+        else if (typeof start == "object") { pos = clipPos(this.doc, start); }
+        else { pos = start ? range.from() : range.to(); }
+        return cursorCoords(this, pos, mode || "page")
+      },
+
+      charCoords: function(pos, mode) {
+        return charCoords(this, clipPos(this.doc, pos), mode || "page")
+      },
+
+      coordsChar: function(coords, mode) {
+        coords = fromCoordSystem(this, coords, mode || "page");
+        return coordsChar(this, coords.left, coords.top)
+      },
+
+      lineAtHeight: function(height, mode) {
+        height = fromCoordSystem(this, {top: height, left: 0}, mode || "page").top;
+        return lineAtHeight(this.doc, height + this.display.viewOffset)
+      },
+      heightAtLine: function(line, mode, includeWidgets) {
+        var end = false, lineObj;
+        if (typeof line == "number") {
+          var last = this.doc.first + this.doc.size - 1;
+          if (line < this.doc.first) { line = this.doc.first; }
+          else if (line > last) { line = last; end = true; }
+          lineObj = getLine(this.doc, line);
+        } else {
+          lineObj = line;
+        }
+        return intoCoordSystem(this, lineObj, {top: 0, left: 0}, mode || "page", includeWidgets || end).top +
+          (end ? this.doc.height - heightAtLine(lineObj) : 0)
+      },
+
+      defaultTextHeight: function() { return textHeight(this.display) },
+      defaultCharWidth: function() { return charWidth(this.display) },
+
+      getViewport: function() { return {from: this.display.viewFrom, to: this.display.viewTo}},
+
+      addWidget: function(pos, node, scroll, vert, horiz) {
+        var display = this.display;
+        pos = cursorCoords(this, clipPos(this.doc, pos));
+        var top = pos.bottom, left = pos.left;
+        node.style.position = "absolute";
+        node.setAttribute("cm-ignore-events", "true");
+        this.display.input.setUneditable(node);
+        display.sizer.appendChild(node);
+        if (vert == "over") {
+          top = pos.top;
+        } else if (vert == "above" || vert == "near") {
+          var vspace = Math.max(display.wrapper.clientHeight, this.doc.height),
+          hspace = Math.max(display.sizer.clientWidth, display.lineSpace.clientWidth);
+          // Default to positioning above (if specified and possible); otherwise default to positioning below
+          if ((vert == 'above' || pos.bottom + node.offsetHeight > vspace) && pos.top > node.offsetHeight)
+            { top = pos.top - node.offsetHeight; }
+          else if (pos.bottom + node.offsetHeight <= vspace)
+            { top = pos.bottom; }
+          if (left + node.offsetWidth > hspace)
+            { left = hspace - node.offsetWidth; }
+        }
+        node.style.top = top + "px";
+        node.style.left = node.style.right = "";
+        if (horiz == "right") {
+          left = display.sizer.clientWidth - node.offsetWidth;
+          node.style.right = "0px";
+        } else {
+          if (horiz == "left") { left = 0; }
+          else if (horiz == "middle") { left = (display.sizer.clientWidth - node.offsetWidth) / 2; }
+          node.style.left = left + "px";
+        }
+        if (scroll)
+          { scrollIntoView(this, {left: left, top: top, right: left + node.offsetWidth, bottom: top + node.offsetHeight}); }
+      },
+
+      triggerOnKeyDown: methodOp(onKeyDown),
+      triggerOnKeyPress: methodOp(onKeyPress),
+      triggerOnKeyUp: onKeyUp,
+      triggerOnMouseDown: methodOp(onMouseDown),
+
+      execCommand: function(cmd) {
+        if (commands.hasOwnProperty(cmd))
+          { return commands[cmd].call(null, this) }
+      },
+
+      triggerElectric: methodOp(function(text) { triggerElectric(this, text); }),
+
+      findPosH: function(from, amount, unit, visually) {
+        var dir = 1;
+        if (amount < 0) { dir = -1; amount = -amount; }
+        var cur = clipPos(this.doc, from);
+        for (var i = 0; i < amount; ++i) {
+          cur = findPosH(this.doc, cur, dir, unit, visually);
+          if (cur.hitSide) { break }
+        }
+        return cur
+      },
+
+      moveH: methodOp(function(dir, unit) {
+        var this$1 = this;
+
+        this.extendSelectionsBy(function (range) {
+          if (this$1.display.shift || this$1.doc.extend || range.empty())
+            { return findPosH(this$1.doc, range.head, dir, unit, this$1.options.rtlMoveVisually) }
+          else
+            { return dir < 0 ? range.from() : range.to() }
+        }, sel_move);
+      }),
+
+      deleteH: methodOp(function(dir, unit) {
+        var sel = this.doc.sel, doc = this.doc;
+        if (sel.somethingSelected())
+          { doc.replaceSelection("", null, "+delete"); }
+        else
+          { deleteNearSelection(this, function (range) {
+            var other = findPosH(doc, range.head, dir, unit, false);
+            return dir < 0 ? {from: other, to: range.head} : {from: range.head, to: other}
+          }); }
+      }),
+
+      findPosV: function(from, amount, unit, goalColumn) {
+        var dir = 1, x = goalColumn;
+        if (amount < 0) { dir = -1; amount = -amount; }
+        var cur = clipPos(this.doc, from);
+        for (var i = 0; i < amount; ++i) {
+          var coords = cursorCoords(this, cur, "div");
+          if (x == null) { x = coords.left; }
+          else { coords.left = x; }
+          cur = findPosV(this, coords, dir, unit);
+          if (cur.hitSide) { break }
+        }
+        return cur
+      },
+
+      moveV: methodOp(function(dir, unit) {
+        var this$1 = this;
+
+        var doc = this.doc, goals = [];
+        var collapse = !this.display.shift && !doc.extend && doc.sel.somethingSelected();
+        doc.extendSelectionsBy(function (range) {
+          if (collapse)
+            { return dir < 0 ? range.from() : range.to() }
+          var headPos = cursorCoords(this$1, range.head, "div");
+          if (range.goalColumn != null) { headPos.left = range.goalColumn; }
+          goals.push(headPos.left);
+          var pos = findPosV(this$1, headPos, dir, unit);
+          if (unit == "page" && range == doc.sel.primary())
+            { addToScrollTop(this$1, charCoords(this$1, pos, "div").top - headPos.top); }
+          return pos
+        }, sel_move);
+        if (goals.length) { for (var i = 0; i < doc.sel.ranges.length; i++)
+          { doc.sel.ranges[i].goalColumn = goals[i]; } }
+      }),
+
+      // Find the word at the given position (as returned by coordsChar).
+      findWordAt: function(pos) {
+        var doc = this.doc, line = getLine(doc, pos.line).text;
+        var start = pos.ch, end = pos.ch;
+        if (line) {
+          var helper = this.getHelper(pos, "wordChars");
+          if ((pos.sticky == "before" || end == line.length) && start) { --start; } else { ++end; }
+          var startChar = line.charAt(start);
+          var check = isWordChar(startChar, helper)
+            ? function (ch) { return isWordChar(ch, helper); }
+            : /\s/.test(startChar) ? function (ch) { return /\s/.test(ch); }
+            : function (ch) { return (!/\s/.test(ch) && !isWordChar(ch)); };
+          while (start > 0 && check(line.charAt(start - 1))) { --start; }
+          while (end < line.length && check(line.charAt(end))) { ++end; }
+        }
+        return new Range(Pos(pos.line, start), Pos(pos.line, end))
+      },
+
+      toggleOverwrite: function(value) {
+        if (value != null && value == this.state.overwrite) { return }
+        if (this.state.overwrite = !this.state.overwrite)
+          { addClass(this.display.cursorDiv, "CodeMirror-overwrite"); }
+        else
+          { rmClass(this.display.cursorDiv, "CodeMirror-overwrite"); }
+
+        signal(this, "overwriteToggle", this, this.state.overwrite);
+      },
+      hasFocus: function() { return this.display.input.getField() == activeElt() },
+      isReadOnly: function() { return !!(this.options.readOnly || this.doc.cantEdit) },
+
+      scrollTo: methodOp(function (x, y) { scrollToCoords(this, x, y); }),
+      getScrollInfo: function() {
+        var scroller = this.display.scroller;
+        return {left: scroller.scrollLeft, top: scroller.scrollTop,
+                height: scroller.scrollHeight - scrollGap(this) - this.display.barHeight,
+                width: scroller.scrollWidth - scrollGap(this) - this.display.barWidth,
+                clientHeight: displayHeight(this), clientWidth: displayWidth(this)}
+      },
+
+      scrollIntoView: methodOp(function(range, margin) {
+        if (range == null) {
+          range = {from: this.doc.sel.primary().head, to: null};
+          if (margin == null) { margin = this.options.cursorScrollMargin; }
+        } else if (typeof range == "number") {
+          range = {from: Pos(range, 0), to: null};
+        } else if (range.from == null) {
+          range = {from: range, to: null};
+        }
+        if (!range.to) { range.to = range.from; }
+        range.margin = margin || 0;
+
+        if (range.from.line != null) {
+          scrollToRange(this, range);
+        } else {
+          scrollToCoordsRange(this, range.from, range.to, range.margin);
+        }
+      }),
+
+      setSize: methodOp(function(width, height) {
+        var this$1 = this;
+
+        var interpret = function (val) { return typeof val == "number" || /^\d+$/.test(String(val)) ? val + "px" : val; };
+        if (width != null) { this.display.wrapper.style.width = interpret(width); }
+        if (height != null) { this.display.wrapper.style.height = interpret(height); }
+        if (this.options.lineWrapping) { clearLineMeasurementCache(this); }
+        var lineNo = this.display.viewFrom;
+        this.doc.iter(lineNo, this.display.viewTo, function (line) {
+          if (line.widgets) { for (var i = 0; i < line.widgets.length; i++)
+            { if (line.widgets[i].noHScroll) { regLineChange(this$1, lineNo, "widget"); break } } }
+          ++lineNo;
+        });
+        this.curOp.forceUpdate = true;
+        signal(this, "refresh", this);
+      }),
+
+      operation: function(f){return runInOp(this, f)},
+      startOperation: function(){return startOperation(this)},
+      endOperation: function(){return endOperation(this)},
+
+      refresh: methodOp(function() {
+        var oldHeight = this.display.cachedTextHeight;
+        regChange(this);
+        this.curOp.forceUpdate = true;
+        clearCaches(this);
+        scrollToCoords(this, this.doc.scrollLeft, this.doc.scrollTop);
+        updateGutterSpace(this.display);
+        if (oldHeight == null || Math.abs(oldHeight - textHeight(this.display)) > .5 || this.options.lineWrapping)
+          { estimateLineHeights(this); }
+        signal(this, "refresh", this);
+      }),
+
+      swapDoc: methodOp(function(doc) {
+        var old = this.doc;
+        old.cm = null;
+        // Cancel the current text selection if any (#5821)
+        if (this.state.selectingText) { this.state.selectingText(); }
+        attachDoc(this, doc);
+        clearCaches(this);
+        this.display.input.reset();
+        scrollToCoords(this, doc.scrollLeft, doc.scrollTop);
+        this.curOp.forceScroll = true;
+        signalLater(this, "swapDoc", this, old);
+        return old
+      }),
+
+      phrase: function(phraseText) {
+        var phrases = this.options.phrases;
+        return phrases && Object.prototype.hasOwnProperty.call(phrases, phraseText) ? phrases[phraseText] : phraseText
+      },
+
+      getInputField: function(){return this.display.input.getField()},
+      getWrapperElement: function(){return this.display.wrapper},
+      getScrollerElement: function(){return this.display.scroller},
+      getGutterElement: function(){return this.display.gutters}
+    };
+    eventMixin(CodeMirror);
+
+    CodeMirror.registerHelper = function(type, name, value) {
+      if (!helpers.hasOwnProperty(type)) { helpers[type] = CodeMirror[type] = {_global: []}; }
+      helpers[type][name] = value;
+    };
+    CodeMirror.registerGlobalHelper = function(type, name, predicate, value) {
+      CodeMirror.registerHelper(type, name, value);
+      helpers[type]._global.push({pred: predicate, val: value});
+    };
+  }
+
+  // Used for horizontal relative motion. Dir is -1 or 1 (left or
+  // right), unit can be "char", "column" (like char, but doesn't
+  // cross line boundaries), "word" (across next word), or "group" (to
+  // the start of next group of word or non-word-non-whitespace
+  // chars). The visually param controls whether, in right-to-left
+  // text, direction 1 means to move towards the next index in the
+  // string, or towards the character to the right of the current
+  // position. The resulting position will have a hitSide=true
+  // property if it reached the end of the document.
+  function findPosH(doc, pos, dir, unit, visually) {
+    var oldPos = pos;
+    var origDir = dir;
+    var lineObj = getLine(doc, pos.line);
+    var lineDir = visually && doc.direction == "rtl" ? -dir : dir;
+    function findNextLine() {
+      var l = pos.line + lineDir;
+      if (l < doc.first || l >= doc.first + doc.size) { return false }
+      pos = new Pos(l, pos.ch, pos.sticky);
+      return lineObj = getLine(doc, l)
+    }
+    function moveOnce(boundToLine) {
+      var next;
+      if (visually) {
+        next = moveVisually(doc.cm, lineObj, pos, dir);
+      } else {
+        next = moveLogically(lineObj, pos, dir);
+      }
+      if (next == null) {
+        if (!boundToLine && findNextLine())
+          { pos = endOfLine(visually, doc.cm, lineObj, pos.line, lineDir); }
+        else
+          { return false }
+      } else {
+        pos = next;
+      }
+      return true
+    }
+
+    if (unit == "char") {
+      moveOnce();
+    } else if (unit == "column") {
+      moveOnce(true);
+    } else if (unit == "word" || unit == "group") {
+      var sawType = null, group = unit == "group";
+      var helper = doc.cm && doc.cm.getHelper(pos, "wordChars");
+      for (var first = true;; first = false) {
+        if (dir < 0 && !moveOnce(!first)) { break }
+        var cur = lineObj.text.charAt(pos.ch) || "\n";
+        var type = isWordChar(cur, helper) ? "w"
+          : group && cur == "\n" ? "n"
+          : !group || /\s/.test(cur) ? null
+          : "p";
+        if (group && !first && !type) { type = "s"; }
+        if (sawType && sawType != type) {
+          if (dir < 0) {dir = 1; moveOnce(); pos.sticky = "after";}
+          break
+        }
+
+        if (type) { sawType = type; }
+        if (dir > 0 && !moveOnce(!first)) { break }
+      }
+    }
+    var result = skipAtomic(doc, pos, oldPos, origDir, true);
+    if (equalCursorPos(oldPos, result)) { result.hitSide = true; }
+    return result
+  }
+
+  // For relative vertical movement. Dir may be -1 or 1. Unit can be
+  // "page" or "line". The resulting position will have a hitSide=true
+  // property if it reached the end of the document.
+  function findPosV(cm, pos, dir, unit) {
+    var doc = cm.doc, x = pos.left, y;
+    if (unit == "page") {
+      var pageSize = Math.min(cm.display.wrapper.clientHeight, window.innerHeight || document.documentElement.clientHeight);
+      var moveAmount = Math.max(pageSize - .5 * textHeight(cm.display), 3);
+      y = (dir > 0 ? pos.bottom : pos.top) + dir * moveAmount;
+
+    } else if (unit == "line") {
+      y = dir > 0 ? pos.bottom + 3 : pos.top - 3;
+    }
+    var target;
+    for (;;) {
+      target = coordsChar(cm, x, y);
+      if (!target.outside) { break }
+      if (dir < 0 ? y <= 0 : y >= doc.height) { target.hitSide = true; break }
+      y += dir * 5;
+    }
+    return target
+  }
+
+  // CONTENTEDITABLE INPUT STYLE
+
+  var ContentEditableInput = function(cm) {
+    this.cm = cm;
+    this.lastAnchorNode = this.lastAnchorOffset = this.lastFocusNode = this.lastFocusOffset = null;
+    this.polling = new Delayed();
+    this.composing = null;
+    this.gracePeriod = false;
+    this.readDOMTimeout = null;
+  };
+
+  ContentEditableInput.prototype.init = function (display) {
+      var this$1 = this;
+
+    var input = this, cm = input.cm;
+    var div = input.div = display.lineDiv;
+    disableBrowserMagic(div, cm.options.spellcheck, cm.options.autocorrect, cm.options.autocapitalize);
+
+    function belongsToInput(e) {
+      for (var t = e.target; t; t = t.parentNode) {
+        if (t == div) { return true }
+        if (/\bCodeMirror-(?:line)?widget\b/.test(t.className)) { break }
+      }
+      return false
+    }
+
+    on(div, "paste", function (e) {
+      if (!belongsToInput(e) || signalDOMEvent(cm, e) || handlePaste(e, cm)) { return }
+      // IE doesn't fire input events, so we schedule a read for the pasted content in this way
+      if (ie_version <= 11) { setTimeout(operation(cm, function () { return this$1.updateFromDOM(); }), 20); }
+    });
+
+    on(div, "compositionstart", function (e) {
+      this$1.composing = {data: e.data, done: false};
+    });
+    on(div, "compositionupdate", function (e) {
+      if (!this$1.composing) { this$1.composing = {data: e.data, done: false}; }
+    });
+    on(div, "compositionend", function (e) {
+      if (this$1.composing) {
+        if (e.data != this$1.composing.data) { this$1.readFromDOMSoon(); }
+        this$1.composing.done = true;
+      }
+    });
+
+    on(div, "touchstart", function () { return input.forceCompositionEnd(); });
+
+    on(div, "input", function () {
+      if (!this$1.composing) { this$1.readFromDOMSoon(); }
+    });
+
+    function onCopyCut(e) {
+      if (!belongsToInput(e) || signalDOMEvent(cm, e)) { return }
+      if (cm.somethingSelected()) {
+        setLastCopied({lineWise: false, text: cm.getSelections()});
+        if (e.type == "cut") { cm.replaceSelection("", null, "cut"); }
+      } else if (!cm.options.lineWiseCopyCut) {
+        return
+      } else {
+        var ranges = copyableRanges(cm);
+        setLastCopied({lineWise: true, text: ranges.text});
+        if (e.type == "cut") {
+          cm.operation(function () {
+            cm.setSelections(ranges.ranges, 0, sel_dontScroll);
+            cm.replaceSelection("", null, "cut");
+          });
+        }
+      }
+      if (e.clipboardData) {
+        e.clipboardData.clearData();
+        var content = lastCopied.text.join("\n");
+        // iOS exposes the clipboard API, but seems to discard content inserted into it
+        e.clipboardData.setData("Text", content);
+        if (e.clipboardData.getData("Text") == content) {
+          e.preventDefault();
+          return
+        }
+      }
+      // Old-fashioned briefly-focus-a-textarea hack
+      var kludge = hiddenTextarea(), te = kludge.firstChild;
+      cm.display.lineSpace.insertBefore(kludge, cm.display.lineSpace.firstChild);
+      te.value = lastCopied.text.join("\n");
+      var hadFocus = document.activeElement;
+      selectInput(te);
+      setTimeout(function () {
+        cm.display.lineSpace.removeChild(kludge);
+        hadFocus.focus();
+        if (hadFocus == div) { input.showPrimarySelection(); }
+      }, 50);
+    }
+    on(div, "copy", onCopyCut);
+    on(div, "cut", onCopyCut);
+  };
+
+  ContentEditableInput.prototype.screenReaderLabelChanged = function (label) {
+    // Label for screenreaders, accessibility
+    if(label) {
+      this.div.setAttribute('aria-label', label);
+    } else {
+      this.div.removeAttribute('aria-label');
+    }
+  };
+
+  ContentEditableInput.prototype.prepareSelection = function () {
+    var result = prepareSelection(this.cm, false);
+    result.focus = document.activeElement == this.div;
+    return result
+  };
+
+  ContentEditableInput.prototype.showSelection = function (info, takeFocus) {
+    if (!info || !this.cm.display.view.length) { return }
+    if (info.focus || takeFocus) { this.showPrimarySelection(); }
+    this.showMultipleSelections(info);
+  };
+
+  ContentEditableInput.prototype.getSelection = function () {
+    return this.cm.display.wrapper.ownerDocument.getSelection()
+  };
+
+  ContentEditableInput.prototype.showPrimarySelection = function () {
+    var sel = this.getSelection(), cm = this.cm, prim = cm.doc.sel.primary();
+    var from = prim.from(), to = prim.to();
+
+    if (cm.display.viewTo == cm.display.viewFrom || from.line >= cm.display.viewTo || to.line < cm.display.viewFrom) {
+      sel.removeAllRanges();
+      return
+    }
+
+    var curAnchor = domToPos(cm, sel.anchorNode, sel.anchorOffset);
+    var curFocus = domToPos(cm, sel.focusNode, sel.focusOffset);
+    if (curAnchor && !curAnchor.bad && curFocus && !curFocus.bad &&
+        cmp(minPos(curAnchor, curFocus), from) == 0 &&
+        cmp(maxPos(curAnchor, curFocus), to) == 0)
+      { return }
+
+    var view = cm.display.view;
+    var start = (from.line >= cm.display.viewFrom && posToDOM(cm, from)) ||
+        {node: view[0].measure.map[2], offset: 0};
+    var end = to.line < cm.display.viewTo && posToDOM(cm, to);
+    if (!end) {
+      var measure = view[view.length - 1].measure;
+      var map = measure.maps ? measure.maps[measure.maps.length - 1] : measure.map;
+      end = {node: map[map.length - 1], offset: map[map.length - 2] - map[map.length - 3]};
+    }
+
+    if (!start || !end) {
+      sel.removeAllRanges();
+      return
+    }
+
+    var old = sel.rangeCount && sel.getRangeAt(0), rng;
+    try { rng = range(start.node, start.offset, end.offset, end.node); }
+    catch(e) {} // Our model of the DOM might be outdated, in which case the range we try to set can be impossible
+    if (rng) {
+      if (!gecko && cm.state.focused) {
+        sel.collapse(start.node, start.offset);
+        if (!rng.collapsed) {
+          sel.removeAllRanges();
+          sel.addRange(rng);
+        }
+      } else {
+        sel.removeAllRanges();
+        sel.addRange(rng);
+      }
+      if (old && sel.anchorNode == null) { sel.addRange(old); }
+      else if (gecko) { this.startGracePeriod(); }
+    }
+    this.rememberSelection();
+  };
+
+  ContentEditableInput.prototype.startGracePeriod = function () {
+      var this$1 = this;
+
+    clearTimeout(this.gracePeriod);
+    this.gracePeriod = setTimeout(function () {
+      this$1.gracePeriod = false;
+      if (this$1.selectionChanged())
+        { this$1.cm.operation(function () { return this$1.cm.curOp.selectionChanged = true; }); }
+    }, 20);
+  };
+
+  ContentEditableInput.prototype.showMultipleSelections = function (info) {
+    removeChildrenAndAdd(this.cm.display.cursorDiv, info.cursors);
+    removeChildrenAndAdd(this.cm.display.selectionDiv, info.selection);
+  };
+
+  ContentEditableInput.prototype.rememberSelection = function () {
+    var sel = this.getSelection();
+    this.lastAnchorNode = sel.anchorNode; this.lastAnchorOffset = sel.anchorOffset;
+    this.lastFocusNode = sel.focusNode; this.lastFocusOffset = sel.focusOffset;
+  };
+
+  ContentEditableInput.prototype.selectionInEditor = function () {
+    var sel = this.getSelection();
+    if (!sel.rangeCount) { return false }
+    var node = sel.getRangeAt(0).commonAncestorContainer;
+    return contains(this.div, node)
+  };
+
+  ContentEditableInput.prototype.focus = function () {
+    if (this.cm.options.readOnly != "nocursor") {
+      if (!this.selectionInEditor() || document.activeElement != this.div)
+        { this.showSelection(this.prepareSelection(), true); }
+      this.div.focus();
+    }
+  };
+  ContentEditableInput.prototype.blur = function () { this.div.blur(); };
+  ContentEditableInput.prototype.getField = function () { return this.div };
+
+  ContentEditableInput.prototype.supportsTouch = function () { return true };
+
+  ContentEditableInput.prototype.receivedFocus = function () {
+    var input = this;
+    if (this.selectionInEditor())
+      { this.pollSelection(); }
+    else
+      { runInOp(this.cm, function () { return input.cm.curOp.selectionChanged = true; }); }
+
+    function poll() {
+      if (input.cm.state.focused) {
+        input.pollSelection();
+        input.polling.set(input.cm.options.pollInterval, poll);
+      }
+    }
+    this.polling.set(this.cm.options.pollInterval, poll);
+  };
+
+  ContentEditableInput.prototype.selectionChanged = function () {
+    var sel = this.getSelection();
+    return sel.anchorNode != this.lastAnchorNode || sel.anchorOffset != this.lastAnchorOffset ||
+      sel.focusNode != this.lastFocusNode || sel.focusOffset != this.lastFocusOffset
+  };
+
+  ContentEditableInput.prototype.pollSelection = function () {
+    if (this.readDOMTimeout != null || this.gracePeriod || !this.selectionChanged()) { return }
+    var sel = this.getSelection(), cm = this.cm;
+    // On Android Chrome (version 56, at least), backspacing into an
+    // uneditable block element will put the cursor in that element,
+    // and then, because it's not editable, hide the virtual keyboard.
+    // Because Android doesn't allow us to actually detect backspace
+    // presses in a sane way, this code checks for when that happens
+    // and simulates a backspace press in this case.
+    if (android && chrome && this.cm.display.gutterSpecs.length && isInGutter(sel.anchorNode)) {
+      this.cm.triggerOnKeyDown({type: "keydown", keyCode: 8, preventDefault: Math.abs});
+      this.blur();
+      this.focus();
+      return
+    }
+    if (this.composing) { return }
+    this.rememberSelection();
+    var anchor = domToPos(cm, sel.anchorNode, sel.anchorOffset);
+    var head = domToPos(cm, sel.focusNode, sel.focusOffset);
+    if (anchor && head) { runInOp(cm, function () {
+      setSelection(cm.doc, simpleSelection(anchor, head), sel_dontScroll);
+      if (anchor.bad || head.bad) { cm.curOp.selectionChanged = true; }
+    }); }
+  };
+
+  ContentEditableInput.prototype.pollContent = function () {
+    if (this.readDOMTimeout != null) {
+      clearTimeout(this.readDOMTimeout);
+      this.readDOMTimeout = null;
+    }
+
+    var cm = this.cm, display = cm.display, sel = cm.doc.sel.primary();
+    var from = sel.from(), to = sel.to();
+    if (from.ch == 0 && from.line > cm.firstLine())
+      { from = Pos(from.line - 1, getLine(cm.doc, from.line - 1).length); }
+    if (to.ch == getLine(cm.doc, to.line).text.length && to.line < cm.lastLine())
+      { to = Pos(to.line + 1, 0); }
+    if (from.line < display.viewFrom || to.line > display.viewTo - 1) { return false }
+
+    var fromIndex, fromLine, fromNode;
+    if (from.line == display.viewFrom || (fromIndex = findViewIndex(cm, from.line)) == 0) {
+      fromLine = lineNo(display.view[0].line);
+      fromNode = display.view[0].node;
+    } else {
+      fromLine = lineNo(display.view[fromIndex].line);
+      fromNode = display.view[fromIndex - 1].node.nextSibling;
+    }
+    var toIndex = findViewIndex(cm, to.line);
+    var toLine, toNode;
+    if (toIndex == display.view.length - 1) {
+      toLine = display.viewTo - 1;
+      toNode = display.lineDiv.lastChild;
+    } else {
+      toLine = lineNo(display.view[toIndex + 1].line) - 1;
+      toNode = display.view[toIndex + 1].node.previousSibling;
+    }
+
+    if (!fromNode) { return false }
+    var newText = cm.doc.splitLines(domTextBetween(cm, fromNode, toNode, fromLine, toLine));
+    var oldText = getBetween(cm.doc, Pos(fromLine, 0), Pos(toLine, getLine(cm.doc, toLine).text.length));
+    while (newText.length > 1 && oldText.length > 1) {
+      if (lst(newText) == lst(oldText)) { newText.pop(); oldText.pop(); toLine--; }
+      else if (newText[0] == oldText[0]) { newText.shift(); oldText.shift(); fromLine++; }
+      else { break }
+    }
+
+    var cutFront = 0, cutEnd = 0;
+    var newTop = newText[0], oldTop = oldText[0], maxCutFront = Math.min(newTop.length, oldTop.length);
+    while (cutFront < maxCutFront && newTop.charCodeAt(cutFront) == oldTop.charCodeAt(cutFront))
+      { ++cutFront; }
+    var newBot = lst(newText), oldBot = lst(oldText);
+    var maxCutEnd = Math.min(newBot.length - (newText.length == 1 ? cutFront : 0),
+                             oldBot.length - (oldText.length == 1 ? cutFront : 0));
+    while (cutEnd < maxCutEnd &&
+           newBot.charCodeAt(newBot.length - cutEnd - 1) == oldBot.charCodeAt(oldBot.length - cutEnd - 1))
+      { ++cutEnd; }
+    // Try to move start of change to start of selection if ambiguous
+    if (newText.length == 1 && oldText.length == 1 && fromLine == from.line) {
+      while (cutFront && cutFront > from.ch &&
+             newBot.charCodeAt(newBot.length - cutEnd - 1) == oldBot.charCodeAt(oldBot.length - cutEnd - 1)) {
+        cutFront--;
+        cutEnd++;
+      }
+    }
+
+    newText[newText.length - 1] = newBot.slice(0, newBot.length - cutEnd).replace(/^\u200b+/, "");
+    newText[0] = newText[0].slice(cutFront).replace(/\u200b+$/, "");
+
+    var chFrom = Pos(fromLine, cutFront);
+    var chTo = Pos(toLine, oldText.length ? lst(oldText).length - cutEnd : 0);
+    if (newText.length > 1 || newText[0] || cmp(chFrom, chTo)) {
+      replaceRange(cm.doc, newText, chFrom, chTo, "+input");
+      return true
+    }
+  };
+
+  ContentEditableInput.prototype.ensurePolled = function () {
+    this.forceCompositionEnd();
+  };
+  ContentEditableInput.prototype.reset = function () {
+    this.forceCompositionEnd();
+  };
+  ContentEditableInput.prototype.forceCompositionEnd = function () {
+    if (!this.composing) { return }
+    clearTimeout(this.readDOMTimeout);
+    this.composing = null;
+    this.updateFromDOM();
+    this.div.blur();
+    this.div.focus();
+  };
+  ContentEditableInput.prototype.readFromDOMSoon = function () {
+      var this$1 = this;
+
+    if (this.readDOMTimeout != null) { return }
+    this.readDOMTimeout = setTimeout(function () {
+      this$1.readDOMTimeout = null;
+      if (this$1.composing) {
+        if (this$1.composing.done) { this$1.composing = null; }
+        else { return }
+      }
+      this$1.updateFromDOM();
+    }, 80);
+  };
+
+  ContentEditableInput.prototype.updateFromDOM = function () {
+      var this$1 = this;
+
+    if (this.cm.isReadOnly() || !this.pollContent())
+      { runInOp(this.cm, function () { return regChange(this$1.cm); }); }
+  };
+
+  ContentEditableInput.prototype.setUneditable = function (node) {
+    node.contentEditable = "false";
+  };
+
+  ContentEditableInput.prototype.onKeyPress = function (e) {
+    if (e.charCode == 0 || this.composing) { return }
+    e.preventDefault();
+    if (!this.cm.isReadOnly())
+      { operation(this.cm, applyTextInput)(this.cm, String.fromCharCode(e.charCode == null ? e.keyCode : e.charCode), 0); }
+  };
+
+  ContentEditableInput.prototype.readOnlyChanged = function (val) {
+    this.div.contentEditable = String(val != "nocursor");
+  };
+
+  ContentEditableInput.prototype.onContextMenu = function () {};
+  ContentEditableInput.prototype.resetPosition = function () {};
+
+  ContentEditableInput.prototype.needsContentAttribute = true;
+
+  function posToDOM(cm, pos) {
+    var view = findViewForLine(cm, pos.line);
+    if (!view || view.hidden) { return null }
+    var line = getLine(cm.doc, pos.line);
+    var info = mapFromLineView(view, line, pos.line);
+
+    var order = getOrder(line, cm.doc.direction), side = "left";
+    if (order) {
+      var partPos = getBidiPartAt(order, pos.ch);
+      side = partPos % 2 ? "right" : "left";
+    }
+    var result = nodeAndOffsetInLineMap(info.map, pos.ch, side);
+    result.offset = result.collapse == "right" ? result.end : result.start;
+    return result
+  }
+
+  function isInGutter(node) {
+    for (var scan = node; scan; scan = scan.parentNode)
+      { if (/CodeMirror-gutter-wrapper/.test(scan.className)) { return true } }
+    return false
+  }
+
+  function badPos(pos, bad) { if (bad) { pos.bad = true; } return pos }
+
+  function domTextBetween(cm, from, to, fromLine, toLine) {
+    var text = "", closing = false, lineSep = cm.doc.lineSeparator(), extraLinebreak = false;
+    function recognizeMarker(id) { return function (marker) { return marker.id == id; } }
+    function close() {
+      if (closing) {
+        text += lineSep;
+        if (extraLinebreak) { text += lineSep; }
+        closing = extraLinebreak = false;
+      }
+    }
+    function addText(str) {
+      if (str) {
+        close();
+        text += str;
+      }
+    }
+    function walk(node) {
+      if (node.nodeType == 1) {
+        var cmText = node.getAttribute("cm-text");
+        if (cmText) {
+          addText(cmText);
+          return
+        }
+        var markerID = node.getAttribute("cm-marker"), range;
+        if (markerID) {
+          var found = cm.findMarks(Pos(fromLine, 0), Pos(toLine + 1, 0), recognizeMarker(+markerID));
+          if (found.length && (range = found[0].find(0)))
+            { addText(getBetween(cm.doc, range.from, range.to).join(lineSep)); }
+          return
+        }
+        if (node.getAttribute("contenteditable") == "false") { return }
+        var isBlock = /^(pre|div|p|li|table|br)$/i.test(node.nodeName);
+        if (!/^br$/i.test(node.nodeName) && node.textContent.length == 0) { return }
+
+        if (isBlock) { close(); }
+        for (var i = 0; i < node.childNodes.length; i++)
+          { walk(node.childNodes[i]); }
+
+        if (/^(pre|p)$/i.test(node.nodeName)) { extraLinebreak = true; }
+        if (isBlock) { closing = true; }
+      } else if (node.nodeType == 3) {
+        addText(node.nodeValue.replace(/\u200b/g, "").replace(/\u00a0/g, " "));
+      }
+    }
+    for (;;) {
+      walk(from);
+      if (from == to) { break }
+      from = from.nextSibling;
+      extraLinebreak = false;
+    }
+    return text
+  }
+
+  function domToPos(cm, node, offset) {
+    var lineNode;
+    if (node == cm.display.lineDiv) {
+      lineNode = cm.display.lineDiv.childNodes[offset];
+      if (!lineNode) { return badPos(cm.clipPos(Pos(cm.display.viewTo - 1)), true) }
+      node = null; offset = 0;
+    } else {
+      for (lineNode = node;; lineNode = lineNode.parentNode) {
+        if (!lineNode || lineNode == cm.display.lineDiv) { return null }
+        if (lineNode.parentNode && lineNode.parentNode == cm.display.lineDiv) { break }
+      }
+    }
+    for (var i = 0; i < cm.display.view.length; i++) {
+      var lineView = cm.display.view[i];
+      if (lineView.node == lineNode)
+        { return locateNodeInLineView(lineView, node, offset) }
+    }
+  }
+
+  function locateNodeInLineView(lineView, node, offset) {
+    var wrapper = lineView.text.firstChild, bad = false;
+    if (!node || !contains(wrapper, node)) { return badPos(Pos(lineNo(lineView.line), 0), true) }
+    if (node == wrapper) {
+      bad = true;
+      node = wrapper.childNodes[offset];
+      offset = 0;
+      if (!node) {
+        var line = lineView.rest ? lst(lineView.rest) : lineView.line;
+        return badPos(Pos(lineNo(line), line.text.length), bad)
+      }
+    }
+
+    var textNode = node.nodeType == 3 ? node : null, topNode = node;
+    if (!textNode && node.childNodes.length == 1 && node.firstChild.nodeType == 3) {
+      textNode = node.firstChild;
+      if (offset) { offset = textNode.nodeValue.length; }
+    }
+    while (topNode.parentNode != wrapper) { topNode = topNode.parentNode; }
+    var measure = lineView.measure, maps = measure.maps;
+
+    function find(textNode, topNode, offset) {
+      for (var i = -1; i < (maps ? maps.length : 0); i++) {
+        var map = i < 0 ? measure.map : maps[i];
+        for (var j = 0; j < map.length; j += 3) {
+          var curNode = map[j + 2];
+          if (curNode == textNode || curNode == topNode) {
+            var line = lineNo(i < 0 ? lineView.line : lineView.rest[i]);
+            var ch = map[j] + offset;
+            if (offset < 0 || curNode != textNode) { ch = map[j + (offset ? 1 : 0)]; }
+            return Pos(line, ch)
+          }
+        }
+      }
+    }
+    var found = find(textNode, topNode, offset);
+    if (found) { return badPos(found, bad) }
+
+    // FIXME this is all really shaky. might handle the few cases it needs to handle, but likely to cause problems
+    for (var after = topNode.nextSibling, dist = textNode ? textNode.nodeValue.length - offset : 0; after; after = after.nextSibling) {
+      found = find(after, after.firstChild, 0);
+      if (found)
+        { return badPos(Pos(found.line, found.ch - dist), bad) }
+      else
+        { dist += after.textContent.length; }
+    }
+    for (var before = topNode.previousSibling, dist$1 = offset; before; before = before.previousSibling) {
+      found = find(before, before.firstChild, -1);
+      if (found)
+        { return badPos(Pos(found.line, found.ch + dist$1), bad) }
+      else
+        { dist$1 += before.textContent.length; }
+    }
+  }
+
+  // TEXTAREA INPUT STYLE
+
+  var TextareaInput = function(cm) {
+    this.cm = cm;
+    // See input.poll and input.reset
+    this.prevInput = "";
+
+    // Flag that indicates whether we expect input to appear real soon
+    // now (after some event like 'keypress' or 'input') and are
+    // polling intensively.
+    this.pollingFast = false;
+    // Self-resetting timeout for the poller
+    this.polling = new Delayed();
+    // Used to work around IE issue with selection being forgotten when focus moves away from textarea
+    this.hasSelection = false;
+    this.composing = null;
+  };
+
+  TextareaInput.prototype.init = function (display) {
+      var this$1 = this;
+
+    var input = this, cm = this.cm;
+    this.createField(display);
+    var te = this.textarea;
+
+    display.wrapper.insertBefore(this.wrapper, display.wrapper.firstChild);
+
+    // Needed to hide big blue blinking cursor on Mobile Safari (doesn't seem to work in iOS 8 anymore)
+    if (ios) { te.style.width = "0px"; }
+
+    on(te, "input", function () {
+      if (ie && ie_version >= 9 && this$1.hasSelection) { this$1.hasSelection = null; }
+      input.poll();
+    });
+
+    on(te, "paste", function (e) {
+      if (signalDOMEvent(cm, e) || handlePaste(e, cm)) { return }
+
+      cm.state.pasteIncoming = +new Date;
+      input.fastPoll();
+    });
+
+    function prepareCopyCut(e) {
+      if (signalDOMEvent(cm, e)) { return }
+      if (cm.somethingSelected()) {
+        setLastCopied({lineWise: false, text: cm.getSelections()});
+      } else if (!cm.options.lineWiseCopyCut) {
+        return
+      } else {
+        var ranges = copyableRanges(cm);
+        setLastCopied({lineWise: true, text: ranges.text});
+        if (e.type == "cut") {
+          cm.setSelections(ranges.ranges, null, sel_dontScroll);
+        } else {
+          input.prevInput = "";
+          te.value = ranges.text.join("\n");
+          selectInput(te);
+        }
+      }
+      if (e.type == "cut") { cm.state.cutIncoming = +new Date; }
+    }
+    on(te, "cut", prepareCopyCut);
+    on(te, "copy", prepareCopyCut);
+
+    on(display.scroller, "paste", function (e) {
+      if (eventInWidget(display, e) || signalDOMEvent(cm, e)) { return }
+      if (!te.dispatchEvent) {
+        cm.state.pasteIncoming = +new Date;
+        input.focus();
+        return
+      }
+
+      // Pass the `paste` event to the textarea so it's handled by its event listener.
+      var event = new Event("paste");
+      event.clipboardData = e.clipboardData;
+      te.dispatchEvent(event);
+    });
+
+    // Prevent normal selection in the editor (we handle our own)
+    on(display.lineSpace, "selectstart", function (e) {
+      if (!eventInWidget(display, e)) { e_preventDefault(e); }
+    });
+
+    on(te, "compositionstart", function () {
+      var start = cm.getCursor("from");
+      if (input.composing) { input.composing.range.clear(); }
+      input.composing = {
+        start: start,
+        range: cm.markText(start, cm.getCursor("to"), {className: "CodeMirror-composing"})
+      };
+    });
+    on(te, "compositionend", function () {
+      if (input.composing) {
+        input.poll();
+        input.composing.range.clear();
+        input.composing = null;
+      }
+    });
+  };
+
+  TextareaInput.prototype.createField = function (_display) {
+    // Wraps and hides input textarea
+    this.wrapper = hiddenTextarea();
+    // The semihidden textarea that is focused when the editor is
+    // focused, and receives input.
+    this.textarea = this.wrapper.firstChild;
+  };
+
+  TextareaInput.prototype.screenReaderLabelChanged = function (label) {
+    // Label for screenreaders, accessibility
+    if(label) {
+      this.textarea.setAttribute('aria-label', label);
+    } else {
+      this.textarea.removeAttribute('aria-label');
+    }
+  };
+
+  TextareaInput.prototype.prepareSelection = function () {
+    // Redraw the selection and/or cursor
+    var cm = this.cm, display = cm.display, doc = cm.doc;
+    var result = prepareSelection(cm);
+
+    // Move the hidden textarea near the cursor to prevent scrolling artifacts
+    if (cm.options.moveInputWithCursor) {
+      var headPos = cursorCoords(cm, doc.sel.primary().head, "div");
+      var wrapOff = display.wrapper.getBoundingClientRect(), lineOff = display.lineDiv.getBoundingClientRect();
+      result.teTop = Math.max(0, Math.min(display.wrapper.clientHeight - 10,
+                                          headPos.top + lineOff.top - wrapOff.top));
+      result.teLeft = Math.max(0, Math.min(display.wrapper.clientWidth - 10,
+                                           headPos.left + lineOff.left - wrapOff.left));
+    }
+
+    return result
+  };
+
+  TextareaInput.prototype.showSelection = function (drawn) {
+    var cm = this.cm, display = cm.display;
+    removeChildrenAndAdd(display.cursorDiv, drawn.cursors);
+    removeChildrenAndAdd(display.selectionDiv, drawn.selection);
+    if (drawn.teTop != null) {
+      this.wrapper.style.top = drawn.teTop + "px";
+      this.wrapper.style.left = drawn.teLeft + "px";
+    }
+  };
+
+  // Reset the input to correspond to the selection (or to be empty,
+  // when not typing and nothing is selected)
+  TextareaInput.prototype.reset = function (typing) {
+    if (this.contextMenuPending || this.composing) { return }
+    var cm = this.cm;
+    if (cm.somethingSelected()) {
+      this.prevInput = "";
+      var content = cm.getSelection();
+      this.textarea.value = content;
+      if (cm.state.focused) { selectInput(this.textarea); }
+      if (ie && ie_version >= 9) { this.hasSelection = content; }
+    } else if (!typing) {
+      this.prevInput = this.textarea.value = "";
+      if (ie && ie_version >= 9) { this.hasSelection = null; }
+    }
+  };
+
+  TextareaInput.prototype.getField = function () { return this.textarea };
+
+  TextareaInput.prototype.supportsTouch = function () { return false };
+
+  TextareaInput.prototype.focus = function () {
+    if (this.cm.options.readOnly != "nocursor" && (!mobile || activeElt() != this.textarea)) {
+      try { this.textarea.focus(); }
+      catch (e) {} // IE8 will throw if the textarea is display: none or not in DOM
+    }
+  };
+
+  TextareaInput.prototype.blur = function () { this.textarea.blur(); };
+
+  TextareaInput.prototype.resetPosition = function () {
+    this.wrapper.style.top = this.wrapper.style.left = 0;
+  };
+
+  TextareaInput.prototype.receivedFocus = function () { this.slowPoll(); };
+
+  // Poll for input changes, using the normal rate of polling. This
+  // runs as long as the editor is focused.
+  TextareaInput.prototype.slowPoll = function () {
+      var this$1 = this;
+
+    if (this.pollingFast) { return }
+    this.polling.set(this.cm.options.pollInterval, function () {
+      this$1.poll();
+      if (this$1.cm.state.focused) { this$1.slowPoll(); }
+    });
+  };
+
+  // When an event has just come in that is likely to add or change
+  // something in the input textarea, we poll faster, to ensure that
+  // the change appears on the screen quickly.
+  TextareaInput.prototype.fastPoll = function () {
+    var missed = false, input = this;
+    input.pollingFast = true;
+    function p() {
+      var changed = input.poll();
+      if (!changed && !missed) {missed = true; input.polling.set(60, p);}
+      else {input.pollingFast = false; input.slowPoll();}
+    }
+    input.polling.set(20, p);
+  };
+
+  // Read input from the textarea, and update the document to match.
+  // When something is selected, it is present in the textarea, and
+  // selected (unless it is huge, in which case a placeholder is
+  // used). When nothing is selected, the cursor sits after previously
+  // seen text (can be empty), which is stored in prevInput (we must
+  // not reset the textarea when typing, because that breaks IME).
+  TextareaInput.prototype.poll = function () {
+      var this$1 = this;
+
+    var cm = this.cm, input = this.textarea, prevInput = this.prevInput;
+    // Since this is called a *lot*, try to bail out as cheaply as
+    // possible when it is clear that nothing happened. hasSelection
+    // will be the case when there is a lot of text in the textarea,
+    // in which case reading its value would be expensive.
+    if (this.contextMenuPending || !cm.state.focused ||
+        (hasSelection(input) && !prevInput && !this.composing) ||
+        cm.isReadOnly() || cm.options.disableInput || cm.state.keySeq)
+      { return false }
+
+    var text = input.value;
+    // If nothing changed, bail.
+    if (text == prevInput && !cm.somethingSelected()) { return false }
+    // Work around nonsensical selection resetting in IE9/10, and
+    // inexplicable appearance of private area unicode characters on
+    // some key combos in Mac (#2689).
+    if (ie && ie_version >= 9 && this.hasSelection === text ||
+        mac && /[\uf700-\uf7ff]/.test(text)) {
+      cm.display.input.reset();
+      return false
+    }
+
+    if (cm.doc.sel == cm.display.selForContextMenu) {
+      var first = text.charCodeAt(0);
+      if (first == 0x200b && !prevInput) { prevInput = "\u200b"; }
+      if (first == 0x21da) { this.reset(); return this.cm.execCommand("undo") }
+    }
+    // Find the part of the input that is actually new
+    var same = 0, l = Math.min(prevInput.length, text.length);
+    while (same < l && prevInput.charCodeAt(same) == text.charCodeAt(same)) { ++same; }
+
+    runInOp(cm, function () {
+      applyTextInput(cm, text.slice(same), prevInput.length - same,
+                     null, this$1.composing ? "*compose" : null);
+
+      // Don't leave long text in the textarea, since it makes further polling slow
+      if (text.length > 1000 || text.indexOf("\n") > -1) { input.value = this$1.prevInput = ""; }
+      else { this$1.prevInput = text; }
+
+      if (this$1.composing) {
+        this$1.composing.range.clear();
+        this$1.composing.range = cm.markText(this$1.composing.start, cm.getCursor("to"),
+                                           {className: "CodeMirror-composing"});
+      }
+    });
+    return true
+  };
+
+  TextareaInput.prototype.ensurePolled = function () {
+    if (this.pollingFast && this.poll()) { this.pollingFast = false; }
+  };
+
+  TextareaInput.prototype.onKeyPress = function () {
+    if (ie && ie_version >= 9) { this.hasSelection = null; }
+    this.fastPoll();
+  };
+
+  TextareaInput.prototype.onContextMenu = function (e) {
+    var input = this, cm = input.cm, display = cm.display, te = input.textarea;
+    if (input.contextMenuPending) { input.contextMenuPending(); }
+    var pos = posFromMouse(cm, e), scrollPos = display.scroller.scrollTop;
+    if (!pos || presto) { return } // Opera is difficult.
+
+    // Reset the current text selection only if the click is done outside of the selection
+    // and 'resetSelectionOnContextMenu' option is true.
+    var reset = cm.options.resetSelectionOnContextMenu;
+    if (reset && cm.doc.sel.contains(pos) == -1)
+      { operation(cm, setSelection)(cm.doc, simpleSelection(pos), sel_dontScroll); }
+
+    var oldCSS = te.style.cssText, oldWrapperCSS = input.wrapper.style.cssText;
+    var wrapperBox = input.wrapper.offsetParent.getBoundingClientRect();
+    input.wrapper.style.cssText = "position: static";
+    te.style.cssText = "position: absolute; width: 30px; height: 30px;\n      top: " + (e.clientY - wrapperBox.top - 5) + "px; left: " + (e.clientX - wrapperBox.left - 5) + "px;\n      z-index: 1000; background: " + (ie ? "rgba(255, 255, 255, .05)" : "transparent") + ";\n      outline: none; border-width: 0; outline: none; overflow: hidden; opacity: .05; filter: alpha(opacity=5);";
+    var oldScrollY;
+    if (webkit) { oldScrollY = window.scrollY; } // Work around Chrome issue (#2712)
+    display.input.focus();
+    if (webkit) { window.scrollTo(null, oldScrollY); }
+    display.input.reset();
+    // Adds "Select all" to context menu in FF
+    if (!cm.somethingSelected()) { te.value = input.prevInput = " "; }
+    input.contextMenuPending = rehide;
+    display.selForContextMenu = cm.doc.sel;
+    clearTimeout(display.detectingSelectAll);
+
+    // Select-all will be greyed out if there's nothing to select, so
+    // this adds a zero-width space so that we can later check whether
+    // it got selected.
+    function prepareSelectAllHack() {
+      if (te.selectionStart != null) {
+        var selected = cm.somethingSelected();
+        var extval = "\u200b" + (selected ? te.value : "");
+        te.value = "\u21da"; // Used to catch context-menu undo
+        te.value = extval;
+        input.prevInput = selected ? "" : "\u200b";
+        te.selectionStart = 1; te.selectionEnd = extval.length;
+        // Re-set this, in case some other handler touched the
+        // selection in the meantime.
+        display.selForContextMenu = cm.doc.sel;
+      }
+    }
+    function rehide() {
+      if (input.contextMenuPending != rehide) { return }
+      input.contextMenuPending = false;
+      input.wrapper.style.cssText = oldWrapperCSS;
+      te.style.cssText = oldCSS;
+      if (ie && ie_version < 9) { display.scrollbars.setScrollTop(display.scroller.scrollTop = scrollPos); }
+
+      // Try to detect the user choosing select-all
+      if (te.selectionStart != null) {
+        if (!ie || (ie && ie_version < 9)) { prepareSelectAllHack(); }
+        var i = 0, poll = function () {
+          if (display.selForContextMenu == cm.doc.sel && te.selectionStart == 0 &&
+              te.selectionEnd > 0 && input.prevInput == "\u200b") {
+            operation(cm, selectAll)(cm);
+          } else if (i++ < 10) {
+            display.detectingSelectAll = setTimeout(poll, 500);
+          } else {
+            display.selForContextMenu = null;
+            display.input.reset();
+          }
+        };
+        display.detectingSelectAll = setTimeout(poll, 200);
+      }
+    }
+
+    if (ie && ie_version >= 9) { prepareSelectAllHack(); }
+    if (captureRightClick) {
+      e_stop(e);
+      var mouseup = function () {
+        off(window, "mouseup", mouseup);
+        setTimeout(rehide, 20);
+      };
+      on(window, "mouseup", mouseup);
+    } else {
+      setTimeout(rehide, 50);
+    }
+  };
+
+  TextareaInput.prototype.readOnlyChanged = function (val) {
+    if (!val) { this.reset(); }
+    this.textarea.disabled = val == "nocursor";
+  };
+
+  TextareaInput.prototype.setUneditable = function () {};
+
+  TextareaInput.prototype.needsContentAttribute = false;
+
+  function fromTextArea(textarea, options) {
+    options = options ? copyObj(options) : {};
+    options.value = textarea.value;
+    if (!options.tabindex && textarea.tabIndex)
+      { options.tabindex = textarea.tabIndex; }
+    if (!options.placeholder && textarea.placeholder)
+      { options.placeholder = textarea.placeholder; }
+    // Set autofocus to true if this textarea is focused, or if it has
+    // autofocus and no other element is focused.
+    if (options.autofocus == null) {
+      var hasFocus = activeElt();
+      options.autofocus = hasFocus == textarea ||
+        textarea.getAttribute("autofocus") != null && hasFocus == document.body;
+    }
+
+    function save() {textarea.value = cm.getValue();}
+
+    var realSubmit;
+    if (textarea.form) {
+      on(textarea.form, "submit", save);
+      // Deplorable hack to make the submit method do the right thing.
+      if (!options.leaveSubmitMethodAlone) {
+        var form = textarea.form;
+        realSubmit = form.submit;
+        try {
+          var wrappedSubmit = form.submit = function () {
+            save();
+            form.submit = realSubmit;
+            form.submit();
+            form.submit = wrappedSubmit;
+          };
+        } catch(e) {}
+      }
+    }
+
+    options.finishInit = function (cm) {
+      cm.save = save;
+      cm.getTextArea = function () { return textarea; };
+      cm.toTextArea = function () {
+        cm.toTextArea = isNaN; // Prevent this from being ran twice
+        save();
+        textarea.parentNode.removeChild(cm.getWrapperElement());
+        textarea.style.display = "";
+        if (textarea.form) {
+          off(textarea.form, "submit", save);
+          if (!options.leaveSubmitMethodAlone && typeof textarea.form.submit == "function")
+            { textarea.form.submit = realSubmit; }
+        }
+      };
+    };
+
+    textarea.style.display = "none";
+    var cm = CodeMirror(function (node) { return textarea.parentNode.insertBefore(node, textarea.nextSibling); },
+      options);
+    return cm
+  }
+
+  function addLegacyProps(CodeMirror) {
+    CodeMirror.off = off;
+    CodeMirror.on = on;
+    CodeMirror.wheelEventPixels = wheelEventPixels;
+    CodeMirror.Doc = Doc;
+    CodeMirror.splitLines = splitLinesAuto;
+    CodeMirror.countColumn = countColumn;
+    CodeMirror.findColumn = findColumn;
+    CodeMirror.isWordChar = isWordCharBasic;
+    CodeMirror.Pass = Pass;
+    CodeMirror.signal = signal;
+    CodeMirror.Line = Line;
+    CodeMirror.changeEnd = changeEnd;
+    CodeMirror.scrollbarModel = scrollbarModel;
+    CodeMirror.Pos = Pos;
+    CodeMirror.cmpPos = cmp;
+    CodeMirror.modes = modes;
+    CodeMirror.mimeModes = mimeModes;
+    CodeMirror.resolveMode = resolveMode;
+    CodeMirror.getMode = getMode;
+    CodeMirror.modeExtensions = modeExtensions;
+    CodeMirror.extendMode = extendMode;
+    CodeMirror.copyState = copyState;
+    CodeMirror.startState = startState;
+    CodeMirror.innerMode = innerMode;
+    CodeMirror.commands = commands;
+    CodeMirror.keyMap = keyMap;
+    CodeMirror.keyName = keyName;
+    CodeMirror.isModifierKey = isModifierKey;
+    CodeMirror.lookupKey = lookupKey;
+    CodeMirror.normalizeKeyMap = normalizeKeyMap;
+    CodeMirror.StringStream = StringStream;
+    CodeMirror.SharedTextMarker = SharedTextMarker;
+    CodeMirror.TextMarker = TextMarker;
+    CodeMirror.LineWidget = LineWidget;
+    CodeMirror.e_preventDefault = e_preventDefault;
+    CodeMirror.e_stopPropagation = e_stopPropagation;
+    CodeMirror.e_stop = e_stop;
+    CodeMirror.addClass = addClass;
+    CodeMirror.contains = contains;
+    CodeMirror.rmClass = rmClass;
+    CodeMirror.keyNames = keyNames;
+  }
+
+  // EDITOR CONSTRUCTOR
+
+  defineOptions(CodeMirror);
+
+  addEditorMethods(CodeMirror);
+
+  // Set up methods on CodeMirror's prototype to redirect to the editor's document.
+  var dontDelegate = "iter insert remove copy getEditor constructor".split(" ");
+  for (var prop in Doc.prototype) { if (Doc.prototype.hasOwnProperty(prop) && indexOf(dontDelegate, prop) < 0)
+    { CodeMirror.prototype[prop] = (function(method) {
+      return function() {return method.apply(this.doc, arguments)}
+    })(Doc.prototype[prop]); } }
+
+  eventMixin(Doc);
+  CodeMirror.inputStyles = {"textarea": TextareaInput, "contenteditable": ContentEditableInput};
+
+  // Extra arguments are stored as the mode's dependencies, which is
+  // used by (legacy) mechanisms like loadmode.js to automatically
+  // load a mode. (Preferred mechanism is the require/define calls.)
+  CodeMirror.defineMode = function(name/*, mode, …*/) {
+    if (!CodeMirror.defaults.mode && name != "null") { CodeMirror.defaults.mode = name; }
+    defineMode.apply(this, arguments);
+  };
+
+  CodeMirror.defineMIME = defineMIME;
+
+  // Minimal default mode.
+  CodeMirror.defineMode("null", function () { return ({token: function (stream) { return stream.skipToEnd(); }}); });
+  CodeMirror.defineMIME("text/plain", "null");
+
+  // EXTENSIONS
+
+  CodeMirror.defineExtension = function (name, func) {
+    CodeMirror.prototype[name] = func;
+  };
+  CodeMirror.defineDocExtension = function (name, func) {
+    Doc.prototype[name] = func;
+  };
+
+  CodeMirror.fromTextArea = fromTextArea;
+
+  addLegacyProps(CodeMirror);
+
+  CodeMirror.version = "5.57.0";
+
+  return CodeMirror;
+
+})));
+
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/mode/css/css.js":
+/*!*************************************************!*\
+  !*** ./node_modules/codemirror/mode/css/css.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: https://codemirror.net/LICENSE
+
+(function(mod) {
+  if (true) // CommonJS
+    mod(__webpack_require__(/*! ../../lib/codemirror */ "./node_modules/codemirror/lib/codemirror.js"));
+  else {}
+})(function(CodeMirror) {
+"use strict";
+
+CodeMirror.defineMode("css", function(config, parserConfig) {
+  var inline = parserConfig.inline
+  if (!parserConfig.propertyKeywords) parserConfig = CodeMirror.resolveMode("text/css");
+
+  var indentUnit = config.indentUnit,
+      tokenHooks = parserConfig.tokenHooks,
+      documentTypes = parserConfig.documentTypes || {},
+      mediaTypes = parserConfig.mediaTypes || {},
+      mediaFeatures = parserConfig.mediaFeatures || {},
+      mediaValueKeywords = parserConfig.mediaValueKeywords || {},
+      propertyKeywords = parserConfig.propertyKeywords || {},
+      nonStandardPropertyKeywords = parserConfig.nonStandardPropertyKeywords || {},
+      fontProperties = parserConfig.fontProperties || {},
+      counterDescriptors = parserConfig.counterDescriptors || {},
+      colorKeywords = parserConfig.colorKeywords || {},
+      valueKeywords = parserConfig.valueKeywords || {},
+      allowNested = parserConfig.allowNested,
+      lineComment = parserConfig.lineComment,
+      supportsAtComponent = parserConfig.supportsAtComponent === true;
+
+  var type, override;
+  function ret(style, tp) { type = tp; return style; }
+
+  // Tokenizers
+
+  function tokenBase(stream, state) {
+    var ch = stream.next();
+    if (tokenHooks[ch]) {
+      var result = tokenHooks[ch](stream, state);
+      if (result !== false) return result;
+    }
+    if (ch == "@") {
+      stream.eatWhile(/[\w\\\-]/);
+      return ret("def", stream.current());
+    } else if (ch == "=" || (ch == "~" || ch == "|") && stream.eat("=")) {
+      return ret(null, "compare");
+    } else if (ch == "\"" || ch == "'") {
+      state.tokenize = tokenString(ch);
+      return state.tokenize(stream, state);
+    } else if (ch == "#") {
+      stream.eatWhile(/[\w\\\-]/);
+      return ret("atom", "hash");
+    } else if (ch == "!") {
+      stream.match(/^\s*\w*/);
+      return ret("keyword", "important");
+    } else if (/\d/.test(ch) || ch == "." && stream.eat(/\d/)) {
+      stream.eatWhile(/[\w.%]/);
+      return ret("number", "unit");
+    } else if (ch === "-") {
+      if (/[\d.]/.test(stream.peek())) {
+        stream.eatWhile(/[\w.%]/);
+        return ret("number", "unit");
+      } else if (stream.match(/^-[\w\\\-]*/)) {
+        stream.eatWhile(/[\w\\\-]/);
+        if (stream.match(/^\s*:/, false))
+          return ret("variable-2", "variable-definition");
+        return ret("variable-2", "variable");
+      } else if (stream.match(/^\w+-/)) {
+        return ret("meta", "meta");
+      }
+    } else if (/[,+>*\/]/.test(ch)) {
+      return ret(null, "select-op");
+    } else if (ch == "." && stream.match(/^-?[_a-z][_a-z0-9-]*/i)) {
+      return ret("qualifier", "qualifier");
+    } else if (/[:;{}\[\]\(\)]/.test(ch)) {
+      return ret(null, ch);
+    } else if (stream.match(/[\w-.]+(?=\()/)) {
+      if (/^(url(-prefix)?|domain|regexp)$/.test(stream.current().toLowerCase())) {
+        state.tokenize = tokenParenthesized;
+      }
+      return ret("variable callee", "variable");
+    } else if (/[\w\\\-]/.test(ch)) {
+      stream.eatWhile(/[\w\\\-]/);
+      return ret("property", "word");
+    } else {
+      return ret(null, null);
+    }
+  }
+
+  function tokenString(quote) {
+    return function(stream, state) {
+      var escaped = false, ch;
+      while ((ch = stream.next()) != null) {
+        if (ch == quote && !escaped) {
+          if (quote == ")") stream.backUp(1);
+          break;
+        }
+        escaped = !escaped && ch == "\\";
+      }
+      if (ch == quote || !escaped && quote != ")") state.tokenize = null;
+      return ret("string", "string");
+    };
+  }
+
+  function tokenParenthesized(stream, state) {
+    stream.next(); // Must be '('
+    if (!stream.match(/\s*[\"\')]/, false))
+      state.tokenize = tokenString(")");
+    else
+      state.tokenize = null;
+    return ret(null, "(");
+  }
+
+  // Context management
+
+  function Context(type, indent, prev) {
+    this.type = type;
+    this.indent = indent;
+    this.prev = prev;
+  }
+
+  function pushContext(state, stream, type, indent) {
+    state.context = new Context(type, stream.indentation() + (indent === false ? 0 : indentUnit), state.context);
+    return type;
+  }
+
+  function popContext(state) {
+    if (state.context.prev)
+      state.context = state.context.prev;
+    return state.context.type;
+  }
+
+  function pass(type, stream, state) {
+    return states[state.context.type](type, stream, state);
+  }
+  function popAndPass(type, stream, state, n) {
+    for (var i = n || 1; i > 0; i--)
+      state.context = state.context.prev;
+    return pass(type, stream, state);
+  }
+
+  // Parser
+
+  function wordAsValue(stream) {
+    var word = stream.current().toLowerCase();
+    if (valueKeywords.hasOwnProperty(word))
+      override = "atom";
+    else if (colorKeywords.hasOwnProperty(word))
+      override = "keyword";
+    else
+      override = "variable";
+  }
+
+  var states = {};
+
+  states.top = function(type, stream, state) {
+    if (type == "{") {
+      return pushContext(state, stream, "block");
+    } else if (type == "}" && state.context.prev) {
+      return popContext(state);
+    } else if (supportsAtComponent && /@component/i.test(type)) {
+      return pushContext(state, stream, "atComponentBlock");
+    } else if (/^@(-moz-)?document$/i.test(type)) {
+      return pushContext(state, stream, "documentTypes");
+    } else if (/^@(media|supports|(-moz-)?document|import)$/i.test(type)) {
+      return pushContext(state, stream, "atBlock");
+    } else if (/^@(font-face|counter-style)/i.test(type)) {
+      state.stateArg = type;
+      return "restricted_atBlock_before";
+    } else if (/^@(-(moz|ms|o|webkit)-)?keyframes$/i.test(type)) {
+      return "keyframes";
+    } else if (type && type.charAt(0) == "@") {
+      return pushContext(state, stream, "at");
+    } else if (type == "hash") {
+      override = "builtin";
+    } else if (type == "word") {
+      override = "tag";
+    } else if (type == "variable-definition") {
+      return "maybeprop";
+    } else if (type == "interpolation") {
+      return pushContext(state, stream, "interpolation");
+    } else if (type == ":") {
+      return "pseudo";
+    } else if (allowNested && type == "(") {
+      return pushContext(state, stream, "parens");
+    }
+    return state.context.type;
+  };
+
+  states.block = function(type, stream, state) {
+    if (type == "word") {
+      var word = stream.current().toLowerCase();
+      if (propertyKeywords.hasOwnProperty(word)) {
+        override = "property";
+        return "maybeprop";
+      } else if (nonStandardPropertyKeywords.hasOwnProperty(word)) {
+        override = "string-2";
+        return "maybeprop";
+      } else if (allowNested) {
+        override = stream.match(/^\s*:(?:\s|$)/, false) ? "property" : "tag";
+        return "block";
+      } else {
+        override += " error";
+        return "maybeprop";
+      }
+    } else if (type == "meta") {
+      return "block";
+    } else if (!allowNested && (type == "hash" || type == "qualifier")) {
+      override = "error";
+      return "block";
+    } else {
+      return states.top(type, stream, state);
+    }
+  };
+
+  states.maybeprop = function(type, stream, state) {
+    if (type == ":") return pushContext(state, stream, "prop");
+    return pass(type, stream, state);
+  };
+
+  states.prop = function(type, stream, state) {
+    if (type == ";") return popContext(state);
+    if (type == "{" && allowNested) return pushContext(state, stream, "propBlock");
+    if (type == "}" || type == "{") return popAndPass(type, stream, state);
+    if (type == "(") return pushContext(state, stream, "parens");
+
+    if (type == "hash" && !/^#([0-9a-fA-f]{3,4}|[0-9a-fA-f]{6}|[0-9a-fA-f]{8})$/.test(stream.current())) {
+      override += " error";
+    } else if (type == "word") {
+      wordAsValue(stream);
+    } else if (type == "interpolation") {
+      return pushContext(state, stream, "interpolation");
+    }
+    return "prop";
+  };
+
+  states.propBlock = function(type, _stream, state) {
+    if (type == "}") return popContext(state);
+    if (type == "word") { override = "property"; return "maybeprop"; }
+    return state.context.type;
+  };
+
+  states.parens = function(type, stream, state) {
+    if (type == "{" || type == "}") return popAndPass(type, stream, state);
+    if (type == ")") return popContext(state);
+    if (type == "(") return pushContext(state, stream, "parens");
+    if (type == "interpolation") return pushContext(state, stream, "interpolation");
+    if (type == "word") wordAsValue(stream);
+    return "parens";
+  };
+
+  states.pseudo = function(type, stream, state) {
+    if (type == "meta") return "pseudo";
+
+    if (type == "word") {
+      override = "variable-3";
+      return state.context.type;
+    }
+    return pass(type, stream, state);
+  };
+
+  states.documentTypes = function(type, stream, state) {
+    if (type == "word" && documentTypes.hasOwnProperty(stream.current())) {
+      override = "tag";
+      return state.context.type;
+    } else {
+      return states.atBlock(type, stream, state);
+    }
+  };
+
+  states.atBlock = function(type, stream, state) {
+    if (type == "(") return pushContext(state, stream, "atBlock_parens");
+    if (type == "}" || type == ";") return popAndPass(type, stream, state);
+    if (type == "{") return popContext(state) && pushContext(state, stream, allowNested ? "block" : "top");
+
+    if (type == "interpolation") return pushContext(state, stream, "interpolation");
+
+    if (type == "word") {
+      var word = stream.current().toLowerCase();
+      if (word == "only" || word == "not" || word == "and" || word == "or")
+        override = "keyword";
+      else if (mediaTypes.hasOwnProperty(word))
+        override = "attribute";
+      else if (mediaFeatures.hasOwnProperty(word))
+        override = "property";
+      else if (mediaValueKeywords.hasOwnProperty(word))
+        override = "keyword";
+      else if (propertyKeywords.hasOwnProperty(word))
+        override = "property";
+      else if (nonStandardPropertyKeywords.hasOwnProperty(word))
+        override = "string-2";
+      else if (valueKeywords.hasOwnProperty(word))
+        override = "atom";
+      else if (colorKeywords.hasOwnProperty(word))
+        override = "keyword";
+      else
+        override = "error";
+    }
+    return state.context.type;
+  };
+
+  states.atComponentBlock = function(type, stream, state) {
+    if (type == "}")
+      return popAndPass(type, stream, state);
+    if (type == "{")
+      return popContext(state) && pushContext(state, stream, allowNested ? "block" : "top", false);
+    if (type == "word")
+      override = "error";
+    return state.context.type;
+  };
+
+  states.atBlock_parens = function(type, stream, state) {
+    if (type == ")") return popContext(state);
+    if (type == "{" || type == "}") return popAndPass(type, stream, state, 2);
+    return states.atBlock(type, stream, state);
+  };
+
+  states.restricted_atBlock_before = function(type, stream, state) {
+    if (type == "{")
+      return pushContext(state, stream, "restricted_atBlock");
+    if (type == "word" && state.stateArg == "@counter-style") {
+      override = "variable";
+      return "restricted_atBlock_before";
+    }
+    return pass(type, stream, state);
+  };
+
+  states.restricted_atBlock = function(type, stream, state) {
+    if (type == "}") {
+      state.stateArg = null;
+      return popContext(state);
+    }
+    if (type == "word") {
+      if ((state.stateArg == "@font-face" && !fontProperties.hasOwnProperty(stream.current().toLowerCase())) ||
+          (state.stateArg == "@counter-style" && !counterDescriptors.hasOwnProperty(stream.current().toLowerCase())))
+        override = "error";
+      else
+        override = "property";
+      return "maybeprop";
+    }
+    return "restricted_atBlock";
+  };
+
+  states.keyframes = function(type, stream, state) {
+    if (type == "word") { override = "variable"; return "keyframes"; }
+    if (type == "{") return pushContext(state, stream, "top");
+    return pass(type, stream, state);
+  };
+
+  states.at = function(type, stream, state) {
+    if (type == ";") return popContext(state);
+    if (type == "{" || type == "}") return popAndPass(type, stream, state);
+    if (type == "word") override = "tag";
+    else if (type == "hash") override = "builtin";
+    return "at";
+  };
+
+  states.interpolation = function(type, stream, state) {
+    if (type == "}") return popContext(state);
+    if (type == "{" || type == ";") return popAndPass(type, stream, state);
+    if (type == "word") override = "variable";
+    else if (type != "variable" && type != "(" && type != ")") override = "error";
+    return "interpolation";
+  };
+
+  return {
+    startState: function(base) {
+      return {tokenize: null,
+              state: inline ? "block" : "top",
+              stateArg: null,
+              context: new Context(inline ? "block" : "top", base || 0, null)};
+    },
+
+    token: function(stream, state) {
+      if (!state.tokenize && stream.eatSpace()) return null;
+      var style = (state.tokenize || tokenBase)(stream, state);
+      if (style && typeof style == "object") {
+        type = style[1];
+        style = style[0];
+      }
+      override = style;
+      if (type != "comment")
+        state.state = states[state.state](type, stream, state);
+      return override;
+    },
+
+    indent: function(state, textAfter) {
+      var cx = state.context, ch = textAfter && textAfter.charAt(0);
+      var indent = cx.indent;
+      if (cx.type == "prop" && (ch == "}" || ch == ")")) cx = cx.prev;
+      if (cx.prev) {
+        if (ch == "}" && (cx.type == "block" || cx.type == "top" ||
+                          cx.type == "interpolation" || cx.type == "restricted_atBlock")) {
+          // Resume indentation from parent context.
+          cx = cx.prev;
+          indent = cx.indent;
+        } else if (ch == ")" && (cx.type == "parens" || cx.type == "atBlock_parens") ||
+            ch == "{" && (cx.type == "at" || cx.type == "atBlock")) {
+          // Dedent relative to current context.
+          indent = Math.max(0, cx.indent - indentUnit);
+        }
+      }
+      return indent;
+    },
+
+    electricChars: "}",
+    blockCommentStart: "/*",
+    blockCommentEnd: "*/",
+    blockCommentContinue: " * ",
+    lineComment: lineComment,
+    fold: "brace"
+  };
+});
+
+  function keySet(array) {
+    var keys = {};
+    for (var i = 0; i < array.length; ++i) {
+      keys[array[i].toLowerCase()] = true;
+    }
+    return keys;
+  }
+
+  var documentTypes_ = [
+    "domain", "regexp", "url", "url-prefix"
+  ], documentTypes = keySet(documentTypes_);
+
+  var mediaTypes_ = [
+    "all", "aural", "braille", "handheld", "print", "projection", "screen",
+    "tty", "tv", "embossed"
+  ], mediaTypes = keySet(mediaTypes_);
+
+  var mediaFeatures_ = [
+    "width", "min-width", "max-width", "height", "min-height", "max-height",
+    "device-width", "min-device-width", "max-device-width", "device-height",
+    "min-device-height", "max-device-height", "aspect-ratio",
+    "min-aspect-ratio", "max-aspect-ratio", "device-aspect-ratio",
+    "min-device-aspect-ratio", "max-device-aspect-ratio", "color", "min-color",
+    "max-color", "color-index", "min-color-index", "max-color-index",
+    "monochrome", "min-monochrome", "max-monochrome", "resolution",
+    "min-resolution", "max-resolution", "scan", "grid", "orientation",
+    "device-pixel-ratio", "min-device-pixel-ratio", "max-device-pixel-ratio",
+    "pointer", "any-pointer", "hover", "any-hover", "prefers-color-scheme"
+  ], mediaFeatures = keySet(mediaFeatures_);
+
+  var mediaValueKeywords_ = [
+    "landscape", "portrait", "none", "coarse", "fine", "on-demand", "hover",
+    "interlace", "progressive",
+    "dark", "light"
+  ], mediaValueKeywords = keySet(mediaValueKeywords_);
+
+  var propertyKeywords_ = [
+    "align-content", "align-items", "align-self", "alignment-adjust",
+    "alignment-baseline", "all", "anchor-point", "animation", "animation-delay",
+    "animation-direction", "animation-duration", "animation-fill-mode",
+    "animation-iteration-count", "animation-name", "animation-play-state",
+    "animation-timing-function", "appearance", "azimuth", "backdrop-filter",
+    "backface-visibility", "background", "background-attachment",
+    "background-blend-mode", "background-clip", "background-color",
+    "background-image", "background-origin", "background-position",
+    "background-position-x", "background-position-y", "background-repeat",
+    "background-size", "baseline-shift", "binding", "bleed", "block-size",
+    "bookmark-label", "bookmark-level", "bookmark-state", "bookmark-target",
+    "border", "border-bottom", "border-bottom-color", "border-bottom-left-radius",
+    "border-bottom-right-radius", "border-bottom-style", "border-bottom-width",
+    "border-collapse", "border-color", "border-image", "border-image-outset",
+    "border-image-repeat", "border-image-slice", "border-image-source",
+    "border-image-width", "border-left", "border-left-color", "border-left-style",
+    "border-left-width", "border-radius", "border-right", "border-right-color",
+    "border-right-style", "border-right-width", "border-spacing", "border-style",
+    "border-top", "border-top-color", "border-top-left-radius",
+    "border-top-right-radius", "border-top-style", "border-top-width",
+    "border-width", "bottom", "box-decoration-break", "box-shadow", "box-sizing",
+    "break-after", "break-before", "break-inside", "caption-side", "caret-color",
+    "clear", "clip", "color", "color-profile", "column-count", "column-fill",
+    "column-gap", "column-rule", "column-rule-color", "column-rule-style",
+    "column-rule-width", "column-span", "column-width", "columns", "contain",
+    "content", "counter-increment", "counter-reset", "crop", "cue", "cue-after",
+    "cue-before", "cursor", "direction", "display", "dominant-baseline",
+    "drop-initial-after-adjust", "drop-initial-after-align",
+    "drop-initial-before-adjust", "drop-initial-before-align", "drop-initial-size",
+    "drop-initial-value", "elevation", "empty-cells", "fit", "fit-position",
+    "flex", "flex-basis", "flex-direction", "flex-flow", "flex-grow",
+    "flex-shrink", "flex-wrap", "float", "float-offset", "flow-from", "flow-into",
+    "font", "font-family", "font-feature-settings", "font-kerning",
+    "font-language-override", "font-optical-sizing", "font-size",
+    "font-size-adjust", "font-stretch", "font-style", "font-synthesis",
+    "font-variant", "font-variant-alternates", "font-variant-caps",
+    "font-variant-east-asian", "font-variant-ligatures", "font-variant-numeric",
+    "font-variant-position", "font-variation-settings", "font-weight", "gap",
+    "grid", "grid-area", "grid-auto-columns", "grid-auto-flow", "grid-auto-rows",
+    "grid-column", "grid-column-end", "grid-column-gap", "grid-column-start",
+    "grid-gap", "grid-row", "grid-row-end", "grid-row-gap", "grid-row-start",
+    "grid-template", "grid-template-areas", "grid-template-columns",
+    "grid-template-rows", "hanging-punctuation", "height", "hyphens", "icon",
+    "image-orientation", "image-rendering", "image-resolution", "inline-box-align",
+    "inset", "inset-block", "inset-block-end", "inset-block-start", "inset-inline",
+    "inset-inline-end", "inset-inline-start", "isolation", "justify-content",
+    "justify-items", "justify-self", "left", "letter-spacing", "line-break",
+    "line-height", "line-height-step", "line-stacking", "line-stacking-ruby",
+    "line-stacking-shift", "line-stacking-strategy", "list-style",
+    "list-style-image", "list-style-position", "list-style-type", "margin",
+    "margin-bottom", "margin-left", "margin-right", "margin-top", "marks",
+    "marquee-direction", "marquee-loop", "marquee-play-count", "marquee-speed",
+    "marquee-style", "mask-clip", "mask-composite", "mask-image", "mask-mode",
+    "mask-origin", "mask-position", "mask-repeat", "mask-size","mask-type",
+    "max-block-size", "max-height", "max-inline-size",
+    "max-width", "min-block-size", "min-height", "min-inline-size", "min-width",
+    "mix-blend-mode", "move-to", "nav-down", "nav-index", "nav-left", "nav-right",
+    "nav-up", "object-fit", "object-position", "offset", "offset-anchor",
+    "offset-distance", "offset-path", "offset-position", "offset-rotate",
+    "opacity", "order", "orphans", "outline", "outline-color", "outline-offset",
+    "outline-style", "outline-width", "overflow", "overflow-style",
+    "overflow-wrap", "overflow-x", "overflow-y", "padding", "padding-bottom",
+    "padding-left", "padding-right", "padding-top", "page", "page-break-after",
+    "page-break-before", "page-break-inside", "page-policy", "pause",
+    "pause-after", "pause-before", "perspective", "perspective-origin", "pitch",
+    "pitch-range", "place-content", "place-items", "place-self", "play-during",
+    "position", "presentation-level", "punctuation-trim", "quotes",
+    "region-break-after", "region-break-before", "region-break-inside",
+    "region-fragment", "rendering-intent", "resize", "rest", "rest-after",
+    "rest-before", "richness", "right", "rotate", "rotation", "rotation-point",
+    "row-gap", "ruby-align", "ruby-overhang", "ruby-position", "ruby-span",
+    "scale", "scroll-behavior", "scroll-margin", "scroll-margin-block",
+    "scroll-margin-block-end", "scroll-margin-block-start", "scroll-margin-bottom",
+    "scroll-margin-inline", "scroll-margin-inline-end",
+    "scroll-margin-inline-start", "scroll-margin-left", "scroll-margin-right",
+    "scroll-margin-top", "scroll-padding", "scroll-padding-block",
+    "scroll-padding-block-end", "scroll-padding-block-start",
+    "scroll-padding-bottom", "scroll-padding-inline", "scroll-padding-inline-end",
+    "scroll-padding-inline-start", "scroll-padding-left", "scroll-padding-right",
+    "scroll-padding-top", "scroll-snap-align", "scroll-snap-type",
+    "shape-image-threshold", "shape-inside", "shape-margin", "shape-outside",
+    "size", "speak", "speak-as", "speak-header", "speak-numeral",
+    "speak-punctuation", "speech-rate", "stress", "string-set", "tab-size",
+    "table-layout", "target", "target-name", "target-new", "target-position",
+    "text-align", "text-align-last", "text-combine-upright", "text-decoration",
+    "text-decoration-color", "text-decoration-line", "text-decoration-skip",
+    "text-decoration-skip-ink", "text-decoration-style", "text-emphasis",
+    "text-emphasis-color", "text-emphasis-position", "text-emphasis-style",
+    "text-height", "text-indent", "text-justify", "text-orientation",
+    "text-outline", "text-overflow", "text-rendering", "text-shadow",
+    "text-size-adjust", "text-space-collapse", "text-transform",
+    "text-underline-position", "text-wrap", "top", "touch-action", "transform", "transform-origin",
+    "transform-style", "transition", "transition-delay", "transition-duration",
+    "transition-property", "transition-timing-function", "translate",
+    "unicode-bidi", "user-select", "vertical-align", "visibility", "voice-balance",
+    "voice-duration", "voice-family", "voice-pitch", "voice-range", "voice-rate",
+    "voice-stress", "voice-volume", "volume", "white-space", "widows", "width",
+    "will-change", "word-break", "word-spacing", "word-wrap", "writing-mode", "z-index",
+    // SVG-specific
+    "clip-path", "clip-rule", "mask", "enable-background", "filter", "flood-color",
+    "flood-opacity", "lighting-color", "stop-color", "stop-opacity", "pointer-events",
+    "color-interpolation", "color-interpolation-filters",
+    "color-rendering", "fill", "fill-opacity", "fill-rule", "image-rendering",
+    "marker", "marker-end", "marker-mid", "marker-start", "paint-order", "shape-rendering", "stroke",
+    "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin",
+    "stroke-miterlimit", "stroke-opacity", "stroke-width", "text-rendering",
+    "baseline-shift", "dominant-baseline", "glyph-orientation-horizontal",
+    "glyph-orientation-vertical", "text-anchor", "writing-mode",
+  ], propertyKeywords = keySet(propertyKeywords_);
+
+  var nonStandardPropertyKeywords_ = [
+    "border-block", "border-block-color", "border-block-end",
+    "border-block-end-color", "border-block-end-style", "border-block-end-width",
+    "border-block-start", "border-block-start-color", "border-block-start-style",
+    "border-block-start-width", "border-block-style", "border-block-width",
+    "border-inline", "border-inline-color", "border-inline-end",
+    "border-inline-end-color", "border-inline-end-style",
+    "border-inline-end-width", "border-inline-start", "border-inline-start-color",
+    "border-inline-start-style", "border-inline-start-width",
+    "border-inline-style", "border-inline-width", "margin-block",
+    "margin-block-end", "margin-block-start", "margin-inline", "margin-inline-end",
+    "margin-inline-start", "padding-block", "padding-block-end",
+    "padding-block-start", "padding-inline", "padding-inline-end",
+    "padding-inline-start", "scroll-snap-stop", "scrollbar-3d-light-color",
+    "scrollbar-arrow-color", "scrollbar-base-color", "scrollbar-dark-shadow-color",
+    "scrollbar-face-color", "scrollbar-highlight-color", "scrollbar-shadow-color",
+    "scrollbar-track-color", "searchfield-cancel-button", "searchfield-decoration",
+    "searchfield-results-button", "searchfield-results-decoration", "shape-inside", "zoom"
+  ], nonStandardPropertyKeywords = keySet(nonStandardPropertyKeywords_);
+
+  var fontProperties_ = [
+    "font-display", "font-family", "src", "unicode-range", "font-variant",
+     "font-feature-settings", "font-stretch", "font-weight", "font-style"
+  ], fontProperties = keySet(fontProperties_);
+
+  var counterDescriptors_ = [
+    "additive-symbols", "fallback", "negative", "pad", "prefix", "range",
+    "speak-as", "suffix", "symbols", "system"
+  ], counterDescriptors = keySet(counterDescriptors_);
+
+  var colorKeywords_ = [
+    "aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige",
+    "bisque", "black", "blanchedalmond", "blue", "blueviolet", "brown",
+    "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue",
+    "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod",
+    "darkgray", "darkgreen", "darkkhaki", "darkmagenta", "darkolivegreen",
+    "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen",
+    "darkslateblue", "darkslategray", "darkturquoise", "darkviolet",
+    "deeppink", "deepskyblue", "dimgray", "dodgerblue", "firebrick",
+    "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite",
+    "gold", "goldenrod", "gray", "grey", "green", "greenyellow", "honeydew",
+    "hotpink", "indianred", "indigo", "ivory", "khaki", "lavender",
+    "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral",
+    "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgreen", "lightpink",
+    "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray",
+    "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta",
+    "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple",
+    "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise",
+    "mediumvioletred", "midnightblue", "mintcream", "mistyrose", "moccasin",
+    "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange", "orangered",
+    "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred",
+    "papayawhip", "peachpuff", "peru", "pink", "plum", "powderblue",
+    "purple", "rebeccapurple", "red", "rosybrown", "royalblue", "saddlebrown",
+    "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue",
+    "slateblue", "slategray", "snow", "springgreen", "steelblue", "tan",
+    "teal", "thistle", "tomato", "turquoise", "violet", "wheat", "white",
+    "whitesmoke", "yellow", "yellowgreen"
+  ], colorKeywords = keySet(colorKeywords_);
+
+  var valueKeywords_ = [
+    "above", "absolute", "activeborder", "additive", "activecaption", "afar",
+    "after-white-space", "ahead", "alias", "all", "all-scroll", "alphabetic", "alternate",
+    "always", "amharic", "amharic-abegede", "antialiased", "appworkspace",
+    "arabic-indic", "armenian", "asterisks", "attr", "auto", "auto-flow", "avoid", "avoid-column", "avoid-page",
+    "avoid-region", "axis-pan", "background", "backwards", "baseline", "below", "bidi-override", "binary",
+    "bengali", "blink", "block", "block-axis", "bold", "bolder", "border", "border-box",
+    "both", "bottom", "break", "break-all", "break-word", "bullets", "button", "button-bevel",
+    "buttonface", "buttonhighlight", "buttonshadow", "buttontext", "calc", "cambodian",
+    "capitalize", "caps-lock-indicator", "caption", "captiontext", "caret",
+    "cell", "center", "checkbox", "circle", "cjk-decimal", "cjk-earthly-branch",
+    "cjk-heavenly-stem", "cjk-ideographic", "clear", "clip", "close-quote",
+    "col-resize", "collapse", "color", "color-burn", "color-dodge", "column", "column-reverse",
+    "compact", "condensed", "contain", "content", "contents",
+    "content-box", "context-menu", "continuous", "copy", "counter", "counters", "cover", "crop",
+    "cross", "crosshair", "currentcolor", "cursive", "cyclic", "darken", "dashed", "decimal",
+    "decimal-leading-zero", "default", "default-button", "dense", "destination-atop",
+    "destination-in", "destination-out", "destination-over", "devanagari", "difference",
+    "disc", "discard", "disclosure-closed", "disclosure-open", "document",
+    "dot-dash", "dot-dot-dash",
+    "dotted", "double", "down", "e-resize", "ease", "ease-in", "ease-in-out", "ease-out",
+    "element", "ellipse", "ellipsis", "embed", "end", "ethiopic", "ethiopic-abegede",
+    "ethiopic-abegede-am-et", "ethiopic-abegede-gez", "ethiopic-abegede-ti-er",
+    "ethiopic-abegede-ti-et", "ethiopic-halehame-aa-er",
+    "ethiopic-halehame-aa-et", "ethiopic-halehame-am-et",
+    "ethiopic-halehame-gez", "ethiopic-halehame-om-et",
+    "ethiopic-halehame-sid-et", "ethiopic-halehame-so-et",
+    "ethiopic-halehame-ti-er", "ethiopic-halehame-ti-et", "ethiopic-halehame-tig",
+    "ethiopic-numeric", "ew-resize", "exclusion", "expanded", "extends", "extra-condensed",
+    "extra-expanded", "fantasy", "fast", "fill", "fill-box", "fixed", "flat", "flex", "flex-end", "flex-start", "footnotes",
+    "forwards", "from", "geometricPrecision", "georgian", "graytext", "grid", "groove",
+    "gujarati", "gurmukhi", "hand", "hangul", "hangul-consonant", "hard-light", "hebrew",
+    "help", "hidden", "hide", "higher", "highlight", "highlighttext",
+    "hiragana", "hiragana-iroha", "horizontal", "hsl", "hsla", "hue", "icon", "ignore",
+    "inactiveborder", "inactivecaption", "inactivecaptiontext", "infinite",
+    "infobackground", "infotext", "inherit", "initial", "inline", "inline-axis",
+    "inline-block", "inline-flex", "inline-grid", "inline-table", "inset", "inside", "intrinsic", "invert",
+    "italic", "japanese-formal", "japanese-informal", "justify", "kannada",
+    "katakana", "katakana-iroha", "keep-all", "khmer",
+    "korean-hangul-formal", "korean-hanja-formal", "korean-hanja-informal",
+    "landscape", "lao", "large", "larger", "left", "level", "lighter", "lighten",
+    "line-through", "linear", "linear-gradient", "lines", "list-item", "listbox", "listitem",
+    "local", "logical", "loud", "lower", "lower-alpha", "lower-armenian",
+    "lower-greek", "lower-hexadecimal", "lower-latin", "lower-norwegian",
+    "lower-roman", "lowercase", "ltr", "luminosity", "malayalam", "manipulation", "match", "matrix", "matrix3d",
+    "media-controls-background", "media-current-time-display",
+    "media-fullscreen-button", "media-mute-button", "media-play-button",
+    "media-return-to-realtime-button", "media-rewind-button",
+    "media-seek-back-button", "media-seek-forward-button", "media-slider",
+    "media-sliderthumb", "media-time-remaining-display", "media-volume-slider",
+    "media-volume-slider-container", "media-volume-sliderthumb", "medium",
+    "menu", "menulist", "menulist-button", "menulist-text",
+    "menulist-textfield", "menutext", "message-box", "middle", "min-intrinsic",
+    "mix", "mongolian", "monospace", "move", "multiple", "multiple_mask_images", "multiply", "myanmar", "n-resize",
+    "narrower", "ne-resize", "nesw-resize", "no-close-quote", "no-drop",
+    "no-open-quote", "no-repeat", "none", "normal", "not-allowed", "nowrap",
+    "ns-resize", "numbers", "numeric", "nw-resize", "nwse-resize", "oblique", "octal", "opacity", "open-quote",
+    "optimizeLegibility", "optimizeSpeed", "oriya", "oromo", "outset",
+    "outside", "outside-shape", "overlay", "overline", "padding", "padding-box",
+    "painted", "page", "paused", "persian", "perspective", "pinch-zoom", "plus-darker", "plus-lighter",
+    "pointer", "polygon", "portrait", "pre", "pre-line", "pre-wrap", "preserve-3d",
+    "progress", "push-button", "radial-gradient", "radio", "read-only",
+    "read-write", "read-write-plaintext-only", "rectangle", "region",
+    "relative", "repeat", "repeating-linear-gradient",
+    "repeating-radial-gradient", "repeat-x", "repeat-y", "reset", "reverse",
+    "rgb", "rgba", "ridge", "right", "rotate", "rotate3d", "rotateX", "rotateY",
+    "rotateZ", "round", "row", "row-resize", "row-reverse", "rtl", "run-in", "running",
+    "s-resize", "sans-serif", "saturation", "scale", "scale3d", "scaleX", "scaleY", "scaleZ", "screen",
+    "scroll", "scrollbar", "scroll-position", "se-resize", "searchfield",
+    "searchfield-cancel-button", "searchfield-decoration",
+    "searchfield-results-button", "searchfield-results-decoration", "self-start", "self-end",
+    "semi-condensed", "semi-expanded", "separate", "serif", "show", "sidama",
+    "simp-chinese-formal", "simp-chinese-informal", "single",
+    "skew", "skewX", "skewY", "skip-white-space", "slide", "slider-horizontal",
+    "slider-vertical", "sliderthumb-horizontal", "sliderthumb-vertical", "slow",
+    "small", "small-caps", "small-caption", "smaller", "soft-light", "solid", "somali",
+    "source-atop", "source-in", "source-out", "source-over", "space", "space-around", "space-between", "space-evenly", "spell-out", "square",
+    "square-button", "start", "static", "status-bar", "stretch", "stroke", "stroke-box", "sub",
+    "subpixel-antialiased", "svg_masks", "super", "sw-resize", "symbolic", "symbols", "system-ui", "table",
+    "table-caption", "table-cell", "table-column", "table-column-group",
+    "table-footer-group", "table-header-group", "table-row", "table-row-group",
+    "tamil",
+    "telugu", "text", "text-bottom", "text-top", "textarea", "textfield", "thai",
+    "thick", "thin", "threeddarkshadow", "threedface", "threedhighlight",
+    "threedlightshadow", "threedshadow", "tibetan", "tigre", "tigrinya-er",
+    "tigrinya-er-abegede", "tigrinya-et", "tigrinya-et-abegede", "to", "top",
+    "trad-chinese-formal", "trad-chinese-informal", "transform",
+    "translate", "translate3d", "translateX", "translateY", "translateZ",
+    "transparent", "ultra-condensed", "ultra-expanded", "underline", "unidirectional-pan", "unset", "up",
+    "upper-alpha", "upper-armenian", "upper-greek", "upper-hexadecimal",
+    "upper-latin", "upper-norwegian", "upper-roman", "uppercase", "urdu", "url",
+    "var", "vertical", "vertical-text", "view-box", "visible", "visibleFill", "visiblePainted",
+    "visibleStroke", "visual", "w-resize", "wait", "wave", "wider",
+    "window", "windowframe", "windowtext", "words", "wrap", "wrap-reverse", "x-large", "x-small", "xor",
+    "xx-large", "xx-small"
+  ], valueKeywords = keySet(valueKeywords_);
+
+  var allWords = documentTypes_.concat(mediaTypes_).concat(mediaFeatures_).concat(mediaValueKeywords_)
+    .concat(propertyKeywords_).concat(nonStandardPropertyKeywords_).concat(colorKeywords_)
+    .concat(valueKeywords_);
+  CodeMirror.registerHelper("hintWords", "css", allWords);
+
+  function tokenCComment(stream, state) {
+    var maybeEnd = false, ch;
+    while ((ch = stream.next()) != null) {
+      if (maybeEnd && ch == "/") {
+        state.tokenize = null;
+        break;
+      }
+      maybeEnd = (ch == "*");
+    }
+    return ["comment", "comment"];
+  }
+
+  CodeMirror.defineMIME("text/css", {
+    documentTypes: documentTypes,
+    mediaTypes: mediaTypes,
+    mediaFeatures: mediaFeatures,
+    mediaValueKeywords: mediaValueKeywords,
+    propertyKeywords: propertyKeywords,
+    nonStandardPropertyKeywords: nonStandardPropertyKeywords,
+    fontProperties: fontProperties,
+    counterDescriptors: counterDescriptors,
+    colorKeywords: colorKeywords,
+    valueKeywords: valueKeywords,
+    tokenHooks: {
+      "/": function(stream, state) {
+        if (!stream.eat("*")) return false;
+        state.tokenize = tokenCComment;
+        return tokenCComment(stream, state);
+      }
+    },
+    name: "css"
+  });
+
+  CodeMirror.defineMIME("text/x-scss", {
+    mediaTypes: mediaTypes,
+    mediaFeatures: mediaFeatures,
+    mediaValueKeywords: mediaValueKeywords,
+    propertyKeywords: propertyKeywords,
+    nonStandardPropertyKeywords: nonStandardPropertyKeywords,
+    colorKeywords: colorKeywords,
+    valueKeywords: valueKeywords,
+    fontProperties: fontProperties,
+    allowNested: true,
+    lineComment: "//",
+    tokenHooks: {
+      "/": function(stream, state) {
+        if (stream.eat("/")) {
+          stream.skipToEnd();
+          return ["comment", "comment"];
+        } else if (stream.eat("*")) {
+          state.tokenize = tokenCComment;
+          return tokenCComment(stream, state);
+        } else {
+          return ["operator", "operator"];
+        }
+      },
+      ":": function(stream) {
+        if (stream.match(/\s*\{/, false))
+          return [null, null]
+        return false;
+      },
+      "$": function(stream) {
+        stream.match(/^[\w-]+/);
+        if (stream.match(/^\s*:/, false))
+          return ["variable-2", "variable-definition"];
+        return ["variable-2", "variable"];
+      },
+      "#": function(stream) {
+        if (!stream.eat("{")) return false;
+        return [null, "interpolation"];
+      }
+    },
+    name: "css",
+    helperType: "scss"
+  });
+
+  CodeMirror.defineMIME("text/x-less", {
+    mediaTypes: mediaTypes,
+    mediaFeatures: mediaFeatures,
+    mediaValueKeywords: mediaValueKeywords,
+    propertyKeywords: propertyKeywords,
+    nonStandardPropertyKeywords: nonStandardPropertyKeywords,
+    colorKeywords: colorKeywords,
+    valueKeywords: valueKeywords,
+    fontProperties: fontProperties,
+    allowNested: true,
+    lineComment: "//",
+    tokenHooks: {
+      "/": function(stream, state) {
+        if (stream.eat("/")) {
+          stream.skipToEnd();
+          return ["comment", "comment"];
+        } else if (stream.eat("*")) {
+          state.tokenize = tokenCComment;
+          return tokenCComment(stream, state);
+        } else {
+          return ["operator", "operator"];
+        }
+      },
+      "@": function(stream) {
+        if (stream.eat("{")) return [null, "interpolation"];
+        if (stream.match(/^(charset|document|font-face|import|(-(moz|ms|o|webkit)-)?keyframes|media|namespace|page|supports)\b/i, false)) return false;
+        stream.eatWhile(/[\w\\\-]/);
+        if (stream.match(/^\s*:/, false))
+          return ["variable-2", "variable-definition"];
+        return ["variable-2", "variable"];
+      },
+      "&": function() {
+        return ["atom", "atom"];
+      }
+    },
+    name: "css",
+    helperType: "less"
+  });
+
+  CodeMirror.defineMIME("text/x-gss", {
+    documentTypes: documentTypes,
+    mediaTypes: mediaTypes,
+    mediaFeatures: mediaFeatures,
+    propertyKeywords: propertyKeywords,
+    nonStandardPropertyKeywords: nonStandardPropertyKeywords,
+    fontProperties: fontProperties,
+    counterDescriptors: counterDescriptors,
+    colorKeywords: colorKeywords,
+    valueKeywords: valueKeywords,
+    supportsAtComponent: true,
+    tokenHooks: {
+      "/": function(stream, state) {
+        if (!stream.eat("*")) return false;
+        state.tokenize = tokenCComment;
+        return tokenCComment(stream, state);
+      }
+    },
+    name: "css",
+    helperType: "gss"
+  });
+
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/mode/htmlmixed/htmlmixed.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/codemirror/mode/htmlmixed/htmlmixed.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: https://codemirror.net/LICENSE
+
+(function(mod) {
+  if (true) // CommonJS
+    mod(__webpack_require__(/*! ../../lib/codemirror */ "./node_modules/codemirror/lib/codemirror.js"), __webpack_require__(/*! ../xml/xml */ "./node_modules/codemirror/mode/xml/xml.js"), __webpack_require__(/*! ../javascript/javascript */ "./node_modules/codemirror/mode/javascript/javascript.js"), __webpack_require__(/*! ../css/css */ "./node_modules/codemirror/mode/css/css.js"));
+  else {}
+})(function(CodeMirror) {
+  "use strict";
+
+  var defaultTags = {
+    script: [
+      ["lang", /(javascript|babel)/i, "javascript"],
+      ["type", /^(?:text|application)\/(?:x-)?(?:java|ecma)script$|^module$|^$/i, "javascript"],
+      ["type", /./, "text/plain"],
+      [null, null, "javascript"]
+    ],
+    style:  [
+      ["lang", /^css$/i, "css"],
+      ["type", /^(text\/)?(x-)?(stylesheet|css)$/i, "css"],
+      ["type", /./, "text/plain"],
+      [null, null, "css"]
+    ]
+  };
+
+  function maybeBackup(stream, pat, style) {
+    var cur = stream.current(), close = cur.search(pat);
+    if (close > -1) {
+      stream.backUp(cur.length - close);
+    } else if (cur.match(/<\/?$/)) {
+      stream.backUp(cur.length);
+      if (!stream.match(pat, false)) stream.match(cur);
+    }
+    return style;
+  }
+
+  var attrRegexpCache = {};
+  function getAttrRegexp(attr) {
+    var regexp = attrRegexpCache[attr];
+    if (regexp) return regexp;
+    return attrRegexpCache[attr] = new RegExp("\\s+" + attr + "\\s*=\\s*('|\")?([^'\"]+)('|\")?\\s*");
+  }
+
+  function getAttrValue(text, attr) {
+    var match = text.match(getAttrRegexp(attr))
+    return match ? /^\s*(.*?)\s*$/.exec(match[2])[1] : ""
+  }
+
+  function getTagRegexp(tagName, anchored) {
+    return new RegExp((anchored ? "^" : "") + "<\/\s*" + tagName + "\s*>", "i");
+  }
+
+  function addTags(from, to) {
+    for (var tag in from) {
+      var dest = to[tag] || (to[tag] = []);
+      var source = from[tag];
+      for (var i = source.length - 1; i >= 0; i--)
+        dest.unshift(source[i])
+    }
+  }
+
+  function findMatchingMode(tagInfo, tagText) {
+    for (var i = 0; i < tagInfo.length; i++) {
+      var spec = tagInfo[i];
+      if (!spec[0] || spec[1].test(getAttrValue(tagText, spec[0]))) return spec[2];
+    }
+  }
+
+  CodeMirror.defineMode("htmlmixed", function (config, parserConfig) {
+    var htmlMode = CodeMirror.getMode(config, {
+      name: "xml",
+      htmlMode: true,
+      multilineTagIndentFactor: parserConfig.multilineTagIndentFactor,
+      multilineTagIndentPastTag: parserConfig.multilineTagIndentPastTag
+    });
+
+    var tags = {};
+    var configTags = parserConfig && parserConfig.tags, configScript = parserConfig && parserConfig.scriptTypes;
+    addTags(defaultTags, tags);
+    if (configTags) addTags(configTags, tags);
+    if (configScript) for (var i = configScript.length - 1; i >= 0; i--)
+      tags.script.unshift(["type", configScript[i].matches, configScript[i].mode])
+
+    function html(stream, state) {
+      var style = htmlMode.token(stream, state.htmlState), tag = /\btag\b/.test(style), tagName
+      if (tag && !/[<>\s\/]/.test(stream.current()) &&
+          (tagName = state.htmlState.tagName && state.htmlState.tagName.toLowerCase()) &&
+          tags.hasOwnProperty(tagName)) {
+        state.inTag = tagName + " "
+      } else if (state.inTag && tag && />$/.test(stream.current())) {
+        var inTag = /^([\S]+) (.*)/.exec(state.inTag)
+        state.inTag = null
+        var modeSpec = stream.current() == ">" && findMatchingMode(tags[inTag[1]], inTag[2])
+        var mode = CodeMirror.getMode(config, modeSpec)
+        var endTagA = getTagRegexp(inTag[1], true), endTag = getTagRegexp(inTag[1], false);
+        state.token = function (stream, state) {
+          if (stream.match(endTagA, false)) {
+            state.token = html;
+            state.localState = state.localMode = null;
+            return null;
+          }
+          return maybeBackup(stream, endTag, state.localMode.token(stream, state.localState));
+        };
+        state.localMode = mode;
+        state.localState = CodeMirror.startState(mode, htmlMode.indent(state.htmlState, "", ""));
+      } else if (state.inTag) {
+        state.inTag += stream.current()
+        if (stream.eol()) state.inTag += " "
+      }
+      return style;
+    };
+
+    return {
+      startState: function () {
+        var state = CodeMirror.startState(htmlMode);
+        return {token: html, inTag: null, localMode: null, localState: null, htmlState: state};
+      },
+
+      copyState: function (state) {
+        var local;
+        if (state.localState) {
+          local = CodeMirror.copyState(state.localMode, state.localState);
+        }
+        return {token: state.token, inTag: state.inTag,
+                localMode: state.localMode, localState: local,
+                htmlState: CodeMirror.copyState(htmlMode, state.htmlState)};
+      },
+
+      token: function (stream, state) {
+        return state.token(stream, state);
+      },
+
+      indent: function (state, textAfter, line) {
+        if (!state.localMode || /^\s*<\//.test(textAfter))
+          return htmlMode.indent(state.htmlState, textAfter, line);
+        else if (state.localMode.indent)
+          return state.localMode.indent(state.localState, textAfter, line);
+        else
+          return CodeMirror.Pass;
+      },
+
+      innerMode: function (state) {
+        return {state: state.localState || state.htmlState, mode: state.localMode || htmlMode};
+      }
+    };
+  }, "xml", "javascript", "css");
+
+  CodeMirror.defineMIME("text/html", "htmlmixed");
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/mode/javascript/javascript.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/codemirror/mode/javascript/javascript.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: https://codemirror.net/LICENSE
+
+(function(mod) {
+  if (true) // CommonJS
+    mod(__webpack_require__(/*! ../../lib/codemirror */ "./node_modules/codemirror/lib/codemirror.js"));
+  else {}
+})(function(CodeMirror) {
+"use strict";
+
+CodeMirror.defineMode("javascript", function(config, parserConfig) {
+  var indentUnit = config.indentUnit;
+  var statementIndent = parserConfig.statementIndent;
+  var jsonldMode = parserConfig.jsonld;
+  var jsonMode = parserConfig.json || jsonldMode;
+  var isTS = parserConfig.typescript;
+  var wordRE = parserConfig.wordCharacters || /[\w$\xa1-\uffff]/;
+
+  // Tokenizer
+
+  var keywords = function(){
+    function kw(type) {return {type: type, style: "keyword"};}
+    var A = kw("keyword a"), B = kw("keyword b"), C = kw("keyword c"), D = kw("keyword d");
+    var operator = kw("operator"), atom = {type: "atom", style: "atom"};
+
+    return {
+      "if": kw("if"), "while": A, "with": A, "else": B, "do": B, "try": B, "finally": B,
+      "return": D, "break": D, "continue": D, "new": kw("new"), "delete": C, "void": C, "throw": C,
+      "debugger": kw("debugger"), "var": kw("var"), "const": kw("var"), "let": kw("var"),
+      "function": kw("function"), "catch": kw("catch"),
+      "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("default"),
+      "in": operator, "typeof": operator, "instanceof": operator,
+      "true": atom, "false": atom, "null": atom, "undefined": atom, "NaN": atom, "Infinity": atom,
+      "this": kw("this"), "class": kw("class"), "super": kw("atom"),
+      "yield": C, "export": kw("export"), "import": kw("import"), "extends": C,
+      "await": C
+    };
+  }();
+
+  var isOperatorChar = /[+\-*&%=<>!?|~^@]/;
+  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/;
+
+  function readRegexp(stream) {
+    var escaped = false, next, inSet = false;
+    while ((next = stream.next()) != null) {
+      if (!escaped) {
+        if (next == "/" && !inSet) return;
+        if (next == "[") inSet = true;
+        else if (inSet && next == "]") inSet = false;
+      }
+      escaped = !escaped && next == "\\";
+    }
+  }
+
+  // Used as scratch variables to communicate multiple values without
+  // consing up tons of objects.
+  var type, content;
+  function ret(tp, style, cont) {
+    type = tp; content = cont;
+    return style;
+  }
+  function tokenBase(stream, state) {
+    var ch = stream.next();
+    if (ch == '"' || ch == "'") {
+      state.tokenize = tokenString(ch);
+      return state.tokenize(stream, state);
+    } else if (ch == "." && stream.match(/^\d[\d_]*(?:[eE][+\-]?[\d_]+)?/)) {
+      return ret("number", "number");
+    } else if (ch == "." && stream.match("..")) {
+      return ret("spread", "meta");
+    } else if (/[\[\]{}\(\),;\:\.]/.test(ch)) {
+      return ret(ch);
+    } else if (ch == "=" && stream.eat(">")) {
+      return ret("=>", "operator");
+    } else if (ch == "0" && stream.match(/^(?:x[\dA-Fa-f_]+|o[0-7_]+|b[01_]+)n?/)) {
+      return ret("number", "number");
+    } else if (/\d/.test(ch)) {
+      stream.match(/^[\d_]*(?:n|(?:\.[\d_]*)?(?:[eE][+\-]?[\d_]+)?)?/);
+      return ret("number", "number");
+    } else if (ch == "/") {
+      if (stream.eat("*")) {
+        state.tokenize = tokenComment;
+        return tokenComment(stream, state);
+      } else if (stream.eat("/")) {
+        stream.skipToEnd();
+        return ret("comment", "comment");
+      } else if (expressionAllowed(stream, state, 1)) {
+        readRegexp(stream);
+        stream.match(/^\b(([gimyus])(?![gimyus]*\2))+\b/);
+        return ret("regexp", "string-2");
+      } else {
+        stream.eat("=");
+        return ret("operator", "operator", stream.current());
+      }
+    } else if (ch == "`") {
+      state.tokenize = tokenQuasi;
+      return tokenQuasi(stream, state);
+    } else if (ch == "#" && stream.peek() == "!") {
+      stream.skipToEnd();
+      return ret("meta", "meta");
+    } else if (ch == "#" && stream.eatWhile(wordRE)) {
+      return ret("variable", "property")
+    } else if (ch == "<" && stream.match("!--") ||
+               (ch == "-" && stream.match("->") && !/\S/.test(stream.string.slice(0, stream.start)))) {
+      stream.skipToEnd()
+      return ret("comment", "comment")
+    } else if (isOperatorChar.test(ch)) {
+      if (ch != ">" || !state.lexical || state.lexical.type != ">") {
+        if (stream.eat("=")) {
+          if (ch == "!" || ch == "=") stream.eat("=")
+        } else if (/[<>*+\-]/.test(ch)) {
+          stream.eat(ch)
+          if (ch == ">") stream.eat(ch)
+        }
+      }
+      if (ch == "?" && stream.eat(".")) return ret(".")
+      return ret("operator", "operator", stream.current());
+    } else if (wordRE.test(ch)) {
+      stream.eatWhile(wordRE);
+      var word = stream.current()
+      if (state.lastType != ".") {
+        if (keywords.propertyIsEnumerable(word)) {
+          var kw = keywords[word]
+          return ret(kw.type, kw.style, word)
+        }
+        if (word == "async" && stream.match(/^(\s|\/\*.*?\*\/)*[\[\(\w]/, false))
+          return ret("async", "keyword", word)
+      }
+      return ret("variable", "variable", word)
+    }
+  }
+
+  function tokenString(quote) {
+    return function(stream, state) {
+      var escaped = false, next;
+      if (jsonldMode && stream.peek() == "@" && stream.match(isJsonldKeyword)){
+        state.tokenize = tokenBase;
+        return ret("jsonld-keyword", "meta");
+      }
+      while ((next = stream.next()) != null) {
+        if (next == quote && !escaped) break;
+        escaped = !escaped && next == "\\";
+      }
+      if (!escaped) state.tokenize = tokenBase;
+      return ret("string", "string");
+    };
+  }
+
+  function tokenComment(stream, state) {
+    var maybeEnd = false, ch;
+    while (ch = stream.next()) {
+      if (ch == "/" && maybeEnd) {
+        state.tokenize = tokenBase;
+        break;
+      }
+      maybeEnd = (ch == "*");
+    }
+    return ret("comment", "comment");
+  }
+
+  function tokenQuasi(stream, state) {
+    var escaped = false, next;
+    while ((next = stream.next()) != null) {
+      if (!escaped && (next == "`" || next == "$" && stream.eat("{"))) {
+        state.tokenize = tokenBase;
+        break;
+      }
+      escaped = !escaped && next == "\\";
+    }
+    return ret("quasi", "string-2", stream.current());
+  }
+
+  var brackets = "([{}])";
+  // This is a crude lookahead trick to try and notice that we're
+  // parsing the argument patterns for a fat-arrow function before we
+  // actually hit the arrow token. It only works if the arrow is on
+  // the same line as the arguments and there's no strange noise
+  // (comments) in between. Fallback is to only notice when we hit the
+  // arrow, and not declare the arguments as locals for the arrow
+  // body.
+  function findFatArrow(stream, state) {
+    if (state.fatArrowAt) state.fatArrowAt = null;
+    var arrow = stream.string.indexOf("=>", stream.start);
+    if (arrow < 0) return;
+
+    if (isTS) { // Try to skip TypeScript return type declarations after the arguments
+      var m = /:\s*(?:\w+(?:<[^>]*>|\[\])?|\{[^}]*\})\s*$/.exec(stream.string.slice(stream.start, arrow))
+      if (m) arrow = m.index
+    }
+
+    var depth = 0, sawSomething = false;
+    for (var pos = arrow - 1; pos >= 0; --pos) {
+      var ch = stream.string.charAt(pos);
+      var bracket = brackets.indexOf(ch);
+      if (bracket >= 0 && bracket < 3) {
+        if (!depth) { ++pos; break; }
+        if (--depth == 0) { if (ch == "(") sawSomething = true; break; }
+      } else if (bracket >= 3 && bracket < 6) {
+        ++depth;
+      } else if (wordRE.test(ch)) {
+        sawSomething = true;
+      } else if (/["'\/`]/.test(ch)) {
+        for (;; --pos) {
+          if (pos == 0) return
+          var next = stream.string.charAt(pos - 1)
+          if (next == ch && stream.string.charAt(pos - 2) != "\\") { pos--; break }
+        }
+      } else if (sawSomething && !depth) {
+        ++pos;
+        break;
+      }
+    }
+    if (sawSomething && !depth) state.fatArrowAt = pos;
+  }
+
+  // Parser
+
+  var atomicTypes = {"atom": true, "number": true, "variable": true, "string": true, "regexp": true, "this": true, "jsonld-keyword": true};
+
+  function JSLexical(indented, column, type, align, prev, info) {
+    this.indented = indented;
+    this.column = column;
+    this.type = type;
+    this.prev = prev;
+    this.info = info;
+    if (align != null) this.align = align;
+  }
+
+  function inScope(state, varname) {
+    for (var v = state.localVars; v; v = v.next)
+      if (v.name == varname) return true;
+    for (var cx = state.context; cx; cx = cx.prev) {
+      for (var v = cx.vars; v; v = v.next)
+        if (v.name == varname) return true;
+    }
+  }
+
+  function parseJS(state, style, type, content, stream) {
+    var cc = state.cc;
+    // Communicate our context to the combinators.
+    // (Less wasteful than consing up a hundred closures on every call.)
+    cx.state = state; cx.stream = stream; cx.marked = null, cx.cc = cc; cx.style = style;
+
+    if (!state.lexical.hasOwnProperty("align"))
+      state.lexical.align = true;
+
+    while(true) {
+      var combinator = cc.length ? cc.pop() : jsonMode ? expression : statement;
+      if (combinator(type, content)) {
+        while(cc.length && cc[cc.length - 1].lex)
+          cc.pop()();
+        if (cx.marked) return cx.marked;
+        if (type == "variable" && inScope(state, content)) return "variable-2";
+        return style;
+      }
+    }
+  }
+
+  // Combinator utils
+
+  var cx = {state: null, column: null, marked: null, cc: null};
+  function pass() {
+    for (var i = arguments.length - 1; i >= 0; i--) cx.cc.push(arguments[i]);
+  }
+  function cont() {
+    pass.apply(null, arguments);
+    return true;
+  }
+  function inList(name, list) {
+    for (var v = list; v; v = v.next) if (v.name == name) return true
+    return false;
+  }
+  function register(varname) {
+    var state = cx.state;
+    cx.marked = "def";
+    if (state.context) {
+      if (state.lexical.info == "var" && state.context && state.context.block) {
+        // FIXME function decls are also not block scoped
+        var newContext = registerVarScoped(varname, state.context)
+        if (newContext != null) {
+          state.context = newContext
+          return
+        }
+      } else if (!inList(varname, state.localVars)) {
+        state.localVars = new Var(varname, state.localVars)
+        return
+      }
+    }
+    // Fall through means this is global
+    if (parserConfig.globalVars && !inList(varname, state.globalVars))
+      state.globalVars = new Var(varname, state.globalVars)
+  }
+  function registerVarScoped(varname, context) {
+    if (!context) {
+      return null
+    } else if (context.block) {
+      var inner = registerVarScoped(varname, context.prev)
+      if (!inner) return null
+      if (inner == context.prev) return context
+      return new Context(inner, context.vars, true)
+    } else if (inList(varname, context.vars)) {
+      return context
+    } else {
+      return new Context(context.prev, new Var(varname, context.vars), false)
+    }
+  }
+
+  function isModifier(name) {
+    return name == "public" || name == "private" || name == "protected" || name == "abstract" || name == "readonly"
+  }
+
+  // Combinators
+
+  function Context(prev, vars, block) { this.prev = prev; this.vars = vars; this.block = block }
+  function Var(name, next) { this.name = name; this.next = next }
+
+  var defaultVars = new Var("this", new Var("arguments", null))
+  function pushcontext() {
+    cx.state.context = new Context(cx.state.context, cx.state.localVars, false)
+    cx.state.localVars = defaultVars
+  }
+  function pushblockcontext() {
+    cx.state.context = new Context(cx.state.context, cx.state.localVars, true)
+    cx.state.localVars = null
+  }
+  function popcontext() {
+    cx.state.localVars = cx.state.context.vars
+    cx.state.context = cx.state.context.prev
+  }
+  popcontext.lex = true
+  function pushlex(type, info) {
+    var result = function() {
+      var state = cx.state, indent = state.indented;
+      if (state.lexical.type == "stat") indent = state.lexical.indented;
+      else for (var outer = state.lexical; outer && outer.type == ")" && outer.align; outer = outer.prev)
+        indent = outer.indented;
+      state.lexical = new JSLexical(indent, cx.stream.column(), type, null, state.lexical, info);
+    };
+    result.lex = true;
+    return result;
+  }
+  function poplex() {
+    var state = cx.state;
+    if (state.lexical.prev) {
+      if (state.lexical.type == ")")
+        state.indented = state.lexical.indented;
+      state.lexical = state.lexical.prev;
+    }
+  }
+  poplex.lex = true;
+
+  function expect(wanted) {
+    function exp(type) {
+      if (type == wanted) return cont();
+      else if (wanted == ";" || type == "}" || type == ")" || type == "]") return pass();
+      else return cont(exp);
+    };
+    return exp;
+  }
+
+  function statement(type, value) {
+    if (type == "var") return cont(pushlex("vardef", value), vardef, expect(";"), poplex);
+    if (type == "keyword a") return cont(pushlex("form"), parenExpr, statement, poplex);
+    if (type == "keyword b") return cont(pushlex("form"), statement, poplex);
+    if (type == "keyword d") return cx.stream.match(/^\s*$/, false) ? cont() : cont(pushlex("stat"), maybeexpression, expect(";"), poplex);
+    if (type == "debugger") return cont(expect(";"));
+    if (type == "{") return cont(pushlex("}"), pushblockcontext, block, poplex, popcontext);
+    if (type == ";") return cont();
+    if (type == "if") {
+      if (cx.state.lexical.info == "else" && cx.state.cc[cx.state.cc.length - 1] == poplex)
+        cx.state.cc.pop()();
+      return cont(pushlex("form"), parenExpr, statement, poplex, maybeelse);
+    }
+    if (type == "function") return cont(functiondef);
+    if (type == "for") return cont(pushlex("form"), forspec, statement, poplex);
+    if (type == "class" || (isTS && value == "interface")) {
+      cx.marked = "keyword"
+      return cont(pushlex("form", type == "class" ? type : value), className, poplex)
+    }
+    if (type == "variable") {
+      if (isTS && value == "declare") {
+        cx.marked = "keyword"
+        return cont(statement)
+      } else if (isTS && (value == "module" || value == "enum" || value == "type") && cx.stream.match(/^\s*\w/, false)) {
+        cx.marked = "keyword"
+        if (value == "enum") return cont(enumdef);
+        else if (value == "type") return cont(typename, expect("operator"), typeexpr, expect(";"));
+        else return cont(pushlex("form"), pattern, expect("{"), pushlex("}"), block, poplex, poplex)
+      } else if (isTS && value == "namespace") {
+        cx.marked = "keyword"
+        return cont(pushlex("form"), expression, statement, poplex)
+      } else if (isTS && value == "abstract") {
+        cx.marked = "keyword"
+        return cont(statement)
+      } else {
+        return cont(pushlex("stat"), maybelabel);
+      }
+    }
+    if (type == "switch") return cont(pushlex("form"), parenExpr, expect("{"), pushlex("}", "switch"), pushblockcontext,
+                                      block, poplex, poplex, popcontext);
+    if (type == "case") return cont(expression, expect(":"));
+    if (type == "default") return cont(expect(":"));
+    if (type == "catch") return cont(pushlex("form"), pushcontext, maybeCatchBinding, statement, poplex, popcontext);
+    if (type == "export") return cont(pushlex("stat"), afterExport, poplex);
+    if (type == "import") return cont(pushlex("stat"), afterImport, poplex);
+    if (type == "async") return cont(statement)
+    if (value == "@") return cont(expression, statement)
+    return pass(pushlex("stat"), expression, expect(";"), poplex);
+  }
+  function maybeCatchBinding(type) {
+    if (type == "(") return cont(funarg, expect(")"))
+  }
+  function expression(type, value) {
+    return expressionInner(type, value, false);
+  }
+  function expressionNoComma(type, value) {
+    return expressionInner(type, value, true);
+  }
+  function parenExpr(type) {
+    if (type != "(") return pass()
+    return cont(pushlex(")"), maybeexpression, expect(")"), poplex)
+  }
+  function expressionInner(type, value, noComma) {
+    if (cx.state.fatArrowAt == cx.stream.start) {
+      var body = noComma ? arrowBodyNoComma : arrowBody;
+      if (type == "(") return cont(pushcontext, pushlex(")"), commasep(funarg, ")"), poplex, expect("=>"), body, popcontext);
+      else if (type == "variable") return pass(pushcontext, pattern, expect("=>"), body, popcontext);
+    }
+
+    var maybeop = noComma ? maybeoperatorNoComma : maybeoperatorComma;
+    if (atomicTypes.hasOwnProperty(type)) return cont(maybeop);
+    if (type == "function") return cont(functiondef, maybeop);
+    if (type == "class" || (isTS && value == "interface")) { cx.marked = "keyword"; return cont(pushlex("form"), classExpression, poplex); }
+    if (type == "keyword c" || type == "async") return cont(noComma ? expressionNoComma : expression);
+    if (type == "(") return cont(pushlex(")"), maybeexpression, expect(")"), poplex, maybeop);
+    if (type == "operator" || type == "spread") return cont(noComma ? expressionNoComma : expression);
+    if (type == "[") return cont(pushlex("]"), arrayLiteral, poplex, maybeop);
+    if (type == "{") return contCommasep(objprop, "}", null, maybeop);
+    if (type == "quasi") return pass(quasi, maybeop);
+    if (type == "new") return cont(maybeTarget(noComma));
+    if (type == "import") return cont(expression);
+    return cont();
+  }
+  function maybeexpression(type) {
+    if (type.match(/[;\}\)\],]/)) return pass();
+    return pass(expression);
+  }
+
+  function maybeoperatorComma(type, value) {
+    if (type == ",") return cont(maybeexpression);
+    return maybeoperatorNoComma(type, value, false);
+  }
+  function maybeoperatorNoComma(type, value, noComma) {
+    var me = noComma == false ? maybeoperatorComma : maybeoperatorNoComma;
+    var expr = noComma == false ? expression : expressionNoComma;
+    if (type == "=>") return cont(pushcontext, noComma ? arrowBodyNoComma : arrowBody, popcontext);
+    if (type == "operator") {
+      if (/\+\+|--/.test(value) || isTS && value == "!") return cont(me);
+      if (isTS && value == "<" && cx.stream.match(/^([^<>]|<[^<>]*>)*>\s*\(/, false))
+        return cont(pushlex(">"), commasep(typeexpr, ">"), poplex, me);
+      if (value == "?") return cont(expression, expect(":"), expr);
+      return cont(expr);
+    }
+    if (type == "quasi") { return pass(quasi, me); }
+    if (type == ";") return;
+    if (type == "(") return contCommasep(expressionNoComma, ")", "call", me);
+    if (type == ".") return cont(property, me);
+    if (type == "[") return cont(pushlex("]"), maybeexpression, expect("]"), poplex, me);
+    if (isTS && value == "as") { cx.marked = "keyword"; return cont(typeexpr, me) }
+    if (type == "regexp") {
+      cx.state.lastType = cx.marked = "operator"
+      cx.stream.backUp(cx.stream.pos - cx.stream.start - 1)
+      return cont(expr)
+    }
+  }
+  function quasi(type, value) {
+    if (type != "quasi") return pass();
+    if (value.slice(value.length - 2) != "${") return cont(quasi);
+    return cont(expression, continueQuasi);
+  }
+  function continueQuasi(type) {
+    if (type == "}") {
+      cx.marked = "string-2";
+      cx.state.tokenize = tokenQuasi;
+      return cont(quasi);
+    }
+  }
+  function arrowBody(type) {
+    findFatArrow(cx.stream, cx.state);
+    return pass(type == "{" ? statement : expression);
+  }
+  function arrowBodyNoComma(type) {
+    findFatArrow(cx.stream, cx.state);
+    return pass(type == "{" ? statement : expressionNoComma);
+  }
+  function maybeTarget(noComma) {
+    return function(type) {
+      if (type == ".") return cont(noComma ? targetNoComma : target);
+      else if (type == "variable" && isTS) return cont(maybeTypeArgs, noComma ? maybeoperatorNoComma : maybeoperatorComma)
+      else return pass(noComma ? expressionNoComma : expression);
+    };
+  }
+  function target(_, value) {
+    if (value == "target") { cx.marked = "keyword"; return cont(maybeoperatorComma); }
+  }
+  function targetNoComma(_, value) {
+    if (value == "target") { cx.marked = "keyword"; return cont(maybeoperatorNoComma); }
+  }
+  function maybelabel(type) {
+    if (type == ":") return cont(poplex, statement);
+    return pass(maybeoperatorComma, expect(";"), poplex);
+  }
+  function property(type) {
+    if (type == "variable") {cx.marked = "property"; return cont();}
+  }
+  function objprop(type, value) {
+    if (type == "async") {
+      cx.marked = "property";
+      return cont(objprop);
+    } else if (type == "variable" || cx.style == "keyword") {
+      cx.marked = "property";
+      if (value == "get" || value == "set") return cont(getterSetter);
+      var m // Work around fat-arrow-detection complication for detecting typescript typed arrow params
+      if (isTS && cx.state.fatArrowAt == cx.stream.start && (m = cx.stream.match(/^\s*:\s*/, false)))
+        cx.state.fatArrowAt = cx.stream.pos + m[0].length
+      return cont(afterprop);
+    } else if (type == "number" || type == "string") {
+      cx.marked = jsonldMode ? "property" : (cx.style + " property");
+      return cont(afterprop);
+    } else if (type == "jsonld-keyword") {
+      return cont(afterprop);
+    } else if (isTS && isModifier(value)) {
+      cx.marked = "keyword"
+      return cont(objprop)
+    } else if (type == "[") {
+      return cont(expression, maybetype, expect("]"), afterprop);
+    } else if (type == "spread") {
+      return cont(expressionNoComma, afterprop);
+    } else if (value == "*") {
+      cx.marked = "keyword";
+      return cont(objprop);
+    } else if (type == ":") {
+      return pass(afterprop)
+    }
+  }
+  function getterSetter(type) {
+    if (type != "variable") return pass(afterprop);
+    cx.marked = "property";
+    return cont(functiondef);
+  }
+  function afterprop(type) {
+    if (type == ":") return cont(expressionNoComma);
+    if (type == "(") return pass(functiondef);
+  }
+  function commasep(what, end, sep) {
+    function proceed(type, value) {
+      if (sep ? sep.indexOf(type) > -1 : type == ",") {
+        var lex = cx.state.lexical;
+        if (lex.info == "call") lex.pos = (lex.pos || 0) + 1;
+        return cont(function(type, value) {
+          if (type == end || value == end) return pass()
+          return pass(what)
+        }, proceed);
+      }
+      if (type == end || value == end) return cont();
+      if (sep && sep.indexOf(";") > -1) return pass(what)
+      return cont(expect(end));
+    }
+    return function(type, value) {
+      if (type == end || value == end) return cont();
+      return pass(what, proceed);
+    };
+  }
+  function contCommasep(what, end, info) {
+    for (var i = 3; i < arguments.length; i++)
+      cx.cc.push(arguments[i]);
+    return cont(pushlex(end, info), commasep(what, end), poplex);
+  }
+  function block(type) {
+    if (type == "}") return cont();
+    return pass(statement, block);
+  }
+  function maybetype(type, value) {
+    if (isTS) {
+      if (type == ":") return cont(typeexpr);
+      if (value == "?") return cont(maybetype);
+    }
+  }
+  function maybetypeOrIn(type, value) {
+    if (isTS && (type == ":" || value == "in")) return cont(typeexpr)
+  }
+  function mayberettype(type) {
+    if (isTS && type == ":") {
+      if (cx.stream.match(/^\s*\w+\s+is\b/, false)) return cont(expression, isKW, typeexpr)
+      else return cont(typeexpr)
+    }
+  }
+  function isKW(_, value) {
+    if (value == "is") {
+      cx.marked = "keyword"
+      return cont()
+    }
+  }
+  function typeexpr(type, value) {
+    if (value == "keyof" || value == "typeof" || value == "infer") {
+      cx.marked = "keyword"
+      return cont(value == "typeof" ? expressionNoComma : typeexpr)
+    }
+    if (type == "variable" || value == "void") {
+      cx.marked = "type"
+      return cont(afterType)
+    }
+    if (value == "|" || value == "&") return cont(typeexpr)
+    if (type == "string" || type == "number" || type == "atom") return cont(afterType);
+    if (type == "[") return cont(pushlex("]"), commasep(typeexpr, "]", ","), poplex, afterType)
+    if (type == "{") return cont(pushlex("}"), commasep(typeprop, "}", ",;"), poplex, afterType)
+    if (type == "(") return cont(commasep(typearg, ")"), maybeReturnType, afterType)
+    if (type == "<") return cont(commasep(typeexpr, ">"), typeexpr)
+  }
+  function maybeReturnType(type) {
+    if (type == "=>") return cont(typeexpr)
+  }
+  function typeprop(type, value) {
+    if (type == "variable" || cx.style == "keyword") {
+      cx.marked = "property"
+      return cont(typeprop)
+    } else if (value == "?" || type == "number" || type == "string") {
+      return cont(typeprop)
+    } else if (type == ":") {
+      return cont(typeexpr)
+    } else if (type == "[") {
+      return cont(expect("variable"), maybetypeOrIn, expect("]"), typeprop)
+    } else if (type == "(") {
+      return pass(functiondecl, typeprop)
+    }
+  }
+  function typearg(type, value) {
+    if (type == "variable" && cx.stream.match(/^\s*[?:]/, false) || value == "?") return cont(typearg)
+    if (type == ":") return cont(typeexpr)
+    if (type == "spread") return cont(typearg)
+    return pass(typeexpr)
+  }
+  function afterType(type, value) {
+    if (value == "<") return cont(pushlex(">"), commasep(typeexpr, ">"), poplex, afterType)
+    if (value == "|" || type == "." || value == "&") return cont(typeexpr)
+    if (type == "[") return cont(typeexpr, expect("]"), afterType)
+    if (value == "extends" || value == "implements") { cx.marked = "keyword"; return cont(typeexpr) }
+    if (value == "?") return cont(typeexpr, expect(":"), typeexpr)
+  }
+  function maybeTypeArgs(_, value) {
+    if (value == "<") return cont(pushlex(">"), commasep(typeexpr, ">"), poplex, afterType)
+  }
+  function typeparam() {
+    return pass(typeexpr, maybeTypeDefault)
+  }
+  function maybeTypeDefault(_, value) {
+    if (value == "=") return cont(typeexpr)
+  }
+  function vardef(_, value) {
+    if (value == "enum") {cx.marked = "keyword"; return cont(enumdef)}
+    return pass(pattern, maybetype, maybeAssign, vardefCont);
+  }
+  function pattern(type, value) {
+    if (isTS && isModifier(value)) { cx.marked = "keyword"; return cont(pattern) }
+    if (type == "variable") { register(value); return cont(); }
+    if (type == "spread") return cont(pattern);
+    if (type == "[") return contCommasep(eltpattern, "]");
+    if (type == "{") return contCommasep(proppattern, "}");
+  }
+  function proppattern(type, value) {
+    if (type == "variable" && !cx.stream.match(/^\s*:/, false)) {
+      register(value);
+      return cont(maybeAssign);
+    }
+    if (type == "variable") cx.marked = "property";
+    if (type == "spread") return cont(pattern);
+    if (type == "}") return pass();
+    if (type == "[") return cont(expression, expect(']'), expect(':'), proppattern);
+    return cont(expect(":"), pattern, maybeAssign);
+  }
+  function eltpattern() {
+    return pass(pattern, maybeAssign)
+  }
+  function maybeAssign(_type, value) {
+    if (value == "=") return cont(expressionNoComma);
+  }
+  function vardefCont(type) {
+    if (type == ",") return cont(vardef);
+  }
+  function maybeelse(type, value) {
+    if (type == "keyword b" && value == "else") return cont(pushlex("form", "else"), statement, poplex);
+  }
+  function forspec(type, value) {
+    if (value == "await") return cont(forspec);
+    if (type == "(") return cont(pushlex(")"), forspec1, poplex);
+  }
+  function forspec1(type) {
+    if (type == "var") return cont(vardef, forspec2);
+    if (type == "variable") return cont(forspec2);
+    return pass(forspec2)
+  }
+  function forspec2(type, value) {
+    if (type == ")") return cont()
+    if (type == ";") return cont(forspec2)
+    if (value == "in" || value == "of") { cx.marked = "keyword"; return cont(expression, forspec2) }
+    return pass(expression, forspec2)
+  }
+  function functiondef(type, value) {
+    if (value == "*") {cx.marked = "keyword"; return cont(functiondef);}
+    if (type == "variable") {register(value); return cont(functiondef);}
+    if (type == "(") return cont(pushcontext, pushlex(")"), commasep(funarg, ")"), poplex, mayberettype, statement, popcontext);
+    if (isTS && value == "<") return cont(pushlex(">"), commasep(typeparam, ">"), poplex, functiondef)
+  }
+  function functiondecl(type, value) {
+    if (value == "*") {cx.marked = "keyword"; return cont(functiondecl);}
+    if (type == "variable") {register(value); return cont(functiondecl);}
+    if (type == "(") return cont(pushcontext, pushlex(")"), commasep(funarg, ")"), poplex, mayberettype, popcontext);
+    if (isTS && value == "<") return cont(pushlex(">"), commasep(typeparam, ">"), poplex, functiondecl)
+  }
+  function typename(type, value) {
+    if (type == "keyword" || type == "variable") {
+      cx.marked = "type"
+      return cont(typename)
+    } else if (value == "<") {
+      return cont(pushlex(">"), commasep(typeparam, ">"), poplex)
+    }
+  }
+  function funarg(type, value) {
+    if (value == "@") cont(expression, funarg)
+    if (type == "spread") return cont(funarg);
+    if (isTS && isModifier(value)) { cx.marked = "keyword"; return cont(funarg); }
+    if (isTS && type == "this") return cont(maybetype, maybeAssign)
+    return pass(pattern, maybetype, maybeAssign);
+  }
+  function classExpression(type, value) {
+    // Class expressions may have an optional name.
+    if (type == "variable") return className(type, value);
+    return classNameAfter(type, value);
+  }
+  function className(type, value) {
+    if (type == "variable") {register(value); return cont(classNameAfter);}
+  }
+  function classNameAfter(type, value) {
+    if (value == "<") return cont(pushlex(">"), commasep(typeparam, ">"), poplex, classNameAfter)
+    if (value == "extends" || value == "implements" || (isTS && type == ",")) {
+      if (value == "implements") cx.marked = "keyword";
+      return cont(isTS ? typeexpr : expression, classNameAfter);
+    }
+    if (type == "{") return cont(pushlex("}"), classBody, poplex);
+  }
+  function classBody(type, value) {
+    if (type == "async" ||
+        (type == "variable" &&
+         (value == "static" || value == "get" || value == "set" || (isTS && isModifier(value))) &&
+         cx.stream.match(/^\s+[\w$\xa1-\uffff]/, false))) {
+      cx.marked = "keyword";
+      return cont(classBody);
+    }
+    if (type == "variable" || cx.style == "keyword") {
+      cx.marked = "property";
+      return cont(classfield, classBody);
+    }
+    if (type == "number" || type == "string") return cont(classfield, classBody);
+    if (type == "[")
+      return cont(expression, maybetype, expect("]"), classfield, classBody)
+    if (value == "*") {
+      cx.marked = "keyword";
+      return cont(classBody);
+    }
+    if (isTS && type == "(") return pass(functiondecl, classBody)
+    if (type == ";" || type == ",") return cont(classBody);
+    if (type == "}") return cont();
+    if (value == "@") return cont(expression, classBody)
+  }
+  function classfield(type, value) {
+    if (value == "?") return cont(classfield)
+    if (type == ":") return cont(typeexpr, maybeAssign)
+    if (value == "=") return cont(expressionNoComma)
+    var context = cx.state.lexical.prev, isInterface = context && context.info == "interface"
+    return pass(isInterface ? functiondecl : functiondef)
+  }
+  function afterExport(type, value) {
+    if (value == "*") { cx.marked = "keyword"; return cont(maybeFrom, expect(";")); }
+    if (value == "default") { cx.marked = "keyword"; return cont(expression, expect(";")); }
+    if (type == "{") return cont(commasep(exportField, "}"), maybeFrom, expect(";"));
+    return pass(statement);
+  }
+  function exportField(type, value) {
+    if (value == "as") { cx.marked = "keyword"; return cont(expect("variable")); }
+    if (type == "variable") return pass(expressionNoComma, exportField);
+  }
+  function afterImport(type) {
+    if (type == "string") return cont();
+    if (type == "(") return pass(expression);
+    return pass(importSpec, maybeMoreImports, maybeFrom);
+  }
+  function importSpec(type, value) {
+    if (type == "{") return contCommasep(importSpec, "}");
+    if (type == "variable") register(value);
+    if (value == "*") cx.marked = "keyword";
+    return cont(maybeAs);
+  }
+  function maybeMoreImports(type) {
+    if (type == ",") return cont(importSpec, maybeMoreImports)
+  }
+  function maybeAs(_type, value) {
+    if (value == "as") { cx.marked = "keyword"; return cont(importSpec); }
+  }
+  function maybeFrom(_type, value) {
+    if (value == "from") { cx.marked = "keyword"; return cont(expression); }
+  }
+  function arrayLiteral(type) {
+    if (type == "]") return cont();
+    return pass(commasep(expressionNoComma, "]"));
+  }
+  function enumdef() {
+    return pass(pushlex("form"), pattern, expect("{"), pushlex("}"), commasep(enummember, "}"), poplex, poplex)
+  }
+  function enummember() {
+    return pass(pattern, maybeAssign);
+  }
+
+  function isContinuedStatement(state, textAfter) {
+    return state.lastType == "operator" || state.lastType == "," ||
+      isOperatorChar.test(textAfter.charAt(0)) ||
+      /[,.]/.test(textAfter.charAt(0));
+  }
+
+  function expressionAllowed(stream, state, backUp) {
+    return state.tokenize == tokenBase &&
+      /^(?:operator|sof|keyword [bcd]|case|new|export|default|spread|[\[{}\(,;:]|=>)$/.test(state.lastType) ||
+      (state.lastType == "quasi" && /\{\s*$/.test(stream.string.slice(0, stream.pos - (backUp || 0))))
+  }
+
+  // Interface
+
+  return {
+    startState: function(basecolumn) {
+      var state = {
+        tokenize: tokenBase,
+        lastType: "sof",
+        cc: [],
+        lexical: new JSLexical((basecolumn || 0) - indentUnit, 0, "block", false),
+        localVars: parserConfig.localVars,
+        context: parserConfig.localVars && new Context(null, null, false),
+        indented: basecolumn || 0
+      };
+      if (parserConfig.globalVars && typeof parserConfig.globalVars == "object")
+        state.globalVars = parserConfig.globalVars;
+      return state;
+    },
+
+    token: function(stream, state) {
+      if (stream.sol()) {
+        if (!state.lexical.hasOwnProperty("align"))
+          state.lexical.align = false;
+        state.indented = stream.indentation();
+        findFatArrow(stream, state);
+      }
+      if (state.tokenize != tokenComment && stream.eatSpace()) return null;
+      var style = state.tokenize(stream, state);
+      if (type == "comment") return style;
+      state.lastType = type == "operator" && (content == "++" || content == "--") ? "incdec" : type;
+      return parseJS(state, style, type, content, stream);
+    },
+
+    indent: function(state, textAfter) {
+      if (state.tokenize == tokenComment) return CodeMirror.Pass;
+      if (state.tokenize != tokenBase) return 0;
+      var firstChar = textAfter && textAfter.charAt(0), lexical = state.lexical, top
+      // Kludge to prevent 'maybelse' from blocking lexical scope pops
+      if (!/^\s*else\b/.test(textAfter)) for (var i = state.cc.length - 1; i >= 0; --i) {
+        var c = state.cc[i];
+        if (c == poplex) lexical = lexical.prev;
+        else if (c != maybeelse) break;
+      }
+      while ((lexical.type == "stat" || lexical.type == "form") &&
+             (firstChar == "}" || ((top = state.cc[state.cc.length - 1]) &&
+                                   (top == maybeoperatorComma || top == maybeoperatorNoComma) &&
+                                   !/^[,\.=+\-*:?[\(]/.test(textAfter))))
+        lexical = lexical.prev;
+      if (statementIndent && lexical.type == ")" && lexical.prev.type == "stat")
+        lexical = lexical.prev;
+      var type = lexical.type, closing = firstChar == type;
+
+      if (type == "vardef") return lexical.indented + (state.lastType == "operator" || state.lastType == "," ? lexical.info.length + 1 : 0);
+      else if (type == "form" && firstChar == "{") return lexical.indented;
+      else if (type == "form") return lexical.indented + indentUnit;
+      else if (type == "stat")
+        return lexical.indented + (isContinuedStatement(state, textAfter) ? statementIndent || indentUnit : 0);
+      else if (lexical.info == "switch" && !closing && parserConfig.doubleIndentSwitch != false)
+        return lexical.indented + (/^(?:case|default)\b/.test(textAfter) ? indentUnit : 2 * indentUnit);
+      else if (lexical.align) return lexical.column + (closing ? 0 : 1);
+      else return lexical.indented + (closing ? 0 : indentUnit);
+    },
+
+    electricInput: /^\s*(?:case .*?:|default:|\{|\})$/,
+    blockCommentStart: jsonMode ? null : "/*",
+    blockCommentEnd: jsonMode ? null : "*/",
+    blockCommentContinue: jsonMode ? null : " * ",
+    lineComment: jsonMode ? null : "//",
+    fold: "brace",
+    closeBrackets: "()[]{}''\"\"``",
+
+    helperType: jsonMode ? "json" : "javascript",
+    jsonldMode: jsonldMode,
+    jsonMode: jsonMode,
+
+    expressionAllowed: expressionAllowed,
+
+    skipExpression: function(state) {
+      var top = state.cc[state.cc.length - 1]
+      if (top == expression || top == expressionNoComma) state.cc.pop()
+    }
+  };
+});
+
+CodeMirror.registerHelper("wordChars", "javascript", /[\w$]/);
+
+CodeMirror.defineMIME("text/javascript", "javascript");
+CodeMirror.defineMIME("text/ecmascript", "javascript");
+CodeMirror.defineMIME("application/javascript", "javascript");
+CodeMirror.defineMIME("application/x-javascript", "javascript");
+CodeMirror.defineMIME("application/ecmascript", "javascript");
+CodeMirror.defineMIME("application/json", {name: "javascript", json: true});
+CodeMirror.defineMIME("application/x-json", {name: "javascript", json: true});
+CodeMirror.defineMIME("application/ld+json", {name: "javascript", jsonld: true});
+CodeMirror.defineMIME("text/typescript", { name: "javascript", typescript: true });
+CodeMirror.defineMIME("application/typescript", { name: "javascript", typescript: true });
+
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/mode/xml/xml.js":
+/*!*************************************************!*\
+  !*** ./node_modules/codemirror/mode/xml/xml.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: https://codemirror.net/LICENSE
+
+(function(mod) {
+  if (true) // CommonJS
+    mod(__webpack_require__(/*! ../../lib/codemirror */ "./node_modules/codemirror/lib/codemirror.js"));
+  else {}
+})(function(CodeMirror) {
+"use strict";
+
+var htmlConfig = {
+  autoSelfClosers: {'area': true, 'base': true, 'br': true, 'col': true, 'command': true,
+                    'embed': true, 'frame': true, 'hr': true, 'img': true, 'input': true,
+                    'keygen': true, 'link': true, 'meta': true, 'param': true, 'source': true,
+                    'track': true, 'wbr': true, 'menuitem': true},
+  implicitlyClosed: {'dd': true, 'li': true, 'optgroup': true, 'option': true, 'p': true,
+                     'rp': true, 'rt': true, 'tbody': true, 'td': true, 'tfoot': true,
+                     'th': true, 'tr': true},
+  contextGrabbers: {
+    'dd': {'dd': true, 'dt': true},
+    'dt': {'dd': true, 'dt': true},
+    'li': {'li': true},
+    'option': {'option': true, 'optgroup': true},
+    'optgroup': {'optgroup': true},
+    'p': {'address': true, 'article': true, 'aside': true, 'blockquote': true, 'dir': true,
+          'div': true, 'dl': true, 'fieldset': true, 'footer': true, 'form': true,
+          'h1': true, 'h2': true, 'h3': true, 'h4': true, 'h5': true, 'h6': true,
+          'header': true, 'hgroup': true, 'hr': true, 'menu': true, 'nav': true, 'ol': true,
+          'p': true, 'pre': true, 'section': true, 'table': true, 'ul': true},
+    'rp': {'rp': true, 'rt': true},
+    'rt': {'rp': true, 'rt': true},
+    'tbody': {'tbody': true, 'tfoot': true},
+    'td': {'td': true, 'th': true},
+    'tfoot': {'tbody': true},
+    'th': {'td': true, 'th': true},
+    'thead': {'tbody': true, 'tfoot': true},
+    'tr': {'tr': true}
+  },
+  doNotIndent: {"pre": true},
+  allowUnquoted: true,
+  allowMissing: true,
+  caseFold: true
+}
+
+var xmlConfig = {
+  autoSelfClosers: {},
+  implicitlyClosed: {},
+  contextGrabbers: {},
+  doNotIndent: {},
+  allowUnquoted: false,
+  allowMissing: false,
+  allowMissingTagName: false,
+  caseFold: false
+}
+
+CodeMirror.defineMode("xml", function(editorConf, config_) {
+  var indentUnit = editorConf.indentUnit
+  var config = {}
+  var defaults = config_.htmlMode ? htmlConfig : xmlConfig
+  for (var prop in defaults) config[prop] = defaults[prop]
+  for (var prop in config_) config[prop] = config_[prop]
+
+  // Return variables for tokenizers
+  var type, setStyle;
+
+  function inText(stream, state) {
+    function chain(parser) {
+      state.tokenize = parser;
+      return parser(stream, state);
+    }
+
+    var ch = stream.next();
+    if (ch == "<") {
+      if (stream.eat("!")) {
+        if (stream.eat("[")) {
+          if (stream.match("CDATA[")) return chain(inBlock("atom", "]]>"));
+          else return null;
+        } else if (stream.match("--")) {
+          return chain(inBlock("comment", "-->"));
+        } else if (stream.match("DOCTYPE", true, true)) {
+          stream.eatWhile(/[\w\._\-]/);
+          return chain(doctype(1));
+        } else {
+          return null;
+        }
+      } else if (stream.eat("?")) {
+        stream.eatWhile(/[\w\._\-]/);
+        state.tokenize = inBlock("meta", "?>");
+        return "meta";
+      } else {
+        type = stream.eat("/") ? "closeTag" : "openTag";
+        state.tokenize = inTag;
+        return "tag bracket";
+      }
+    } else if (ch == "&") {
+      var ok;
+      if (stream.eat("#")) {
+        if (stream.eat("x")) {
+          ok = stream.eatWhile(/[a-fA-F\d]/) && stream.eat(";");
+        } else {
+          ok = stream.eatWhile(/[\d]/) && stream.eat(";");
+        }
+      } else {
+        ok = stream.eatWhile(/[\w\.\-:]/) && stream.eat(";");
+      }
+      return ok ? "atom" : "error";
+    } else {
+      stream.eatWhile(/[^&<]/);
+      return null;
+    }
+  }
+  inText.isInText = true;
+
+  function inTag(stream, state) {
+    var ch = stream.next();
+    if (ch == ">" || (ch == "/" && stream.eat(">"))) {
+      state.tokenize = inText;
+      type = ch == ">" ? "endTag" : "selfcloseTag";
+      return "tag bracket";
+    } else if (ch == "=") {
+      type = "equals";
+      return null;
+    } else if (ch == "<") {
+      state.tokenize = inText;
+      state.state = baseState;
+      state.tagName = state.tagStart = null;
+      var next = state.tokenize(stream, state);
+      return next ? next + " tag error" : "tag error";
+    } else if (/[\'\"]/.test(ch)) {
+      state.tokenize = inAttribute(ch);
+      state.stringStartCol = stream.column();
+      return state.tokenize(stream, state);
+    } else {
+      stream.match(/^[^\s\u00a0=<>\"\']*[^\s\u00a0=<>\"\'\/]/);
+      return "word";
+    }
+  }
+
+  function inAttribute(quote) {
+    var closure = function(stream, state) {
+      while (!stream.eol()) {
+        if (stream.next() == quote) {
+          state.tokenize = inTag;
+          break;
+        }
+      }
+      return "string";
+    };
+    closure.isInAttribute = true;
+    return closure;
+  }
+
+  function inBlock(style, terminator) {
+    return function(stream, state) {
+      while (!stream.eol()) {
+        if (stream.match(terminator)) {
+          state.tokenize = inText;
+          break;
+        }
+        stream.next();
+      }
+      return style;
+    }
+  }
+
+  function doctype(depth) {
+    return function(stream, state) {
+      var ch;
+      while ((ch = stream.next()) != null) {
+        if (ch == "<") {
+          state.tokenize = doctype(depth + 1);
+          return state.tokenize(stream, state);
+        } else if (ch == ">") {
+          if (depth == 1) {
+            state.tokenize = inText;
+            break;
+          } else {
+            state.tokenize = doctype(depth - 1);
+            return state.tokenize(stream, state);
+          }
+        }
+      }
+      return "meta";
+    };
+  }
+
+  function Context(state, tagName, startOfLine) {
+    this.prev = state.context;
+    this.tagName = tagName;
+    this.indent = state.indented;
+    this.startOfLine = startOfLine;
+    if (config.doNotIndent.hasOwnProperty(tagName) || (state.context && state.context.noIndent))
+      this.noIndent = true;
+  }
+  function popContext(state) {
+    if (state.context) state.context = state.context.prev;
+  }
+  function maybePopContext(state, nextTagName) {
+    var parentTagName;
+    while (true) {
+      if (!state.context) {
+        return;
+      }
+      parentTagName = state.context.tagName;
+      if (!config.contextGrabbers.hasOwnProperty(parentTagName) ||
+          !config.contextGrabbers[parentTagName].hasOwnProperty(nextTagName)) {
+        return;
+      }
+      popContext(state);
+    }
+  }
+
+  function baseState(type, stream, state) {
+    if (type == "openTag") {
+      state.tagStart = stream.column();
+      return tagNameState;
+    } else if (type == "closeTag") {
+      return closeTagNameState;
+    } else {
+      return baseState;
+    }
+  }
+  function tagNameState(type, stream, state) {
+    if (type == "word") {
+      state.tagName = stream.current();
+      setStyle = "tag";
+      return attrState;
+    } else if (config.allowMissingTagName && type == "endTag") {
+      setStyle = "tag bracket";
+      return attrState(type, stream, state);
+    } else {
+      setStyle = "error";
+      return tagNameState;
+    }
+  }
+  function closeTagNameState(type, stream, state) {
+    if (type == "word") {
+      var tagName = stream.current();
+      if (state.context && state.context.tagName != tagName &&
+          config.implicitlyClosed.hasOwnProperty(state.context.tagName))
+        popContext(state);
+      if ((state.context && state.context.tagName == tagName) || config.matchClosing === false) {
+        setStyle = "tag";
+        return closeState;
+      } else {
+        setStyle = "tag error";
+        return closeStateErr;
+      }
+    } else if (config.allowMissingTagName && type == "endTag") {
+      setStyle = "tag bracket";
+      return closeState(type, stream, state);
+    } else {
+      setStyle = "error";
+      return closeStateErr;
+    }
+  }
+
+  function closeState(type, _stream, state) {
+    if (type != "endTag") {
+      setStyle = "error";
+      return closeState;
+    }
+    popContext(state);
+    return baseState;
+  }
+  function closeStateErr(type, stream, state) {
+    setStyle = "error";
+    return closeState(type, stream, state);
+  }
+
+  function attrState(type, _stream, state) {
+    if (type == "word") {
+      setStyle = "attribute";
+      return attrEqState;
+    } else if (type == "endTag" || type == "selfcloseTag") {
+      var tagName = state.tagName, tagStart = state.tagStart;
+      state.tagName = state.tagStart = null;
+      if (type == "selfcloseTag" ||
+          config.autoSelfClosers.hasOwnProperty(tagName)) {
+        maybePopContext(state, tagName);
+      } else {
+        maybePopContext(state, tagName);
+        state.context = new Context(state, tagName, tagStart == state.indented);
+      }
+      return baseState;
+    }
+    setStyle = "error";
+    return attrState;
+  }
+  function attrEqState(type, stream, state) {
+    if (type == "equals") return attrValueState;
+    if (!config.allowMissing) setStyle = "error";
+    return attrState(type, stream, state);
+  }
+  function attrValueState(type, stream, state) {
+    if (type == "string") return attrContinuedState;
+    if (type == "word" && config.allowUnquoted) {setStyle = "string"; return attrState;}
+    setStyle = "error";
+    return attrState(type, stream, state);
+  }
+  function attrContinuedState(type, stream, state) {
+    if (type == "string") return attrContinuedState;
+    return attrState(type, stream, state);
+  }
+
+  return {
+    startState: function(baseIndent) {
+      var state = {tokenize: inText,
+                   state: baseState,
+                   indented: baseIndent || 0,
+                   tagName: null, tagStart: null,
+                   context: null}
+      if (baseIndent != null) state.baseIndent = baseIndent
+      return state
+    },
+
+    token: function(stream, state) {
+      if (!state.tagName && stream.sol())
+        state.indented = stream.indentation();
+
+      if (stream.eatSpace()) return null;
+      type = null;
+      var style = state.tokenize(stream, state);
+      if ((style || type) && style != "comment") {
+        setStyle = null;
+        state.state = state.state(type || style, stream, state);
+        if (setStyle)
+          style = setStyle == "error" ? style + " error" : setStyle;
+      }
+      return style;
+    },
+
+    indent: function(state, textAfter, fullLine) {
+      var context = state.context;
+      // Indent multi-line strings (e.g. css).
+      if (state.tokenize.isInAttribute) {
+        if (state.tagStart == state.indented)
+          return state.stringStartCol + 1;
+        else
+          return state.indented + indentUnit;
+      }
+      if (context && context.noIndent) return CodeMirror.Pass;
+      if (state.tokenize != inTag && state.tokenize != inText)
+        return fullLine ? fullLine.match(/^(\s*)/)[0].length : 0;
+      // Indent the starts of attribute names.
+      if (state.tagName) {
+        if (config.multilineTagIndentPastTag !== false)
+          return state.tagStart + state.tagName.length + 2;
+        else
+          return state.tagStart + indentUnit * (config.multilineTagIndentFactor || 1);
+      }
+      if (config.alignCDATA && /<!\[CDATA\[/.test(textAfter)) return 0;
+      var tagAfter = textAfter && /^<(\/)?([\w_:\.-]*)/.exec(textAfter);
+      if (tagAfter && tagAfter[1]) { // Closing tag spotted
+        while (context) {
+          if (context.tagName == tagAfter[2]) {
+            context = context.prev;
+            break;
+          } else if (config.implicitlyClosed.hasOwnProperty(context.tagName)) {
+            context = context.prev;
+          } else {
+            break;
+          }
+        }
+      } else if (tagAfter) { // Opening tag spotted
+        while (context) {
+          var grabbers = config.contextGrabbers[context.tagName];
+          if (grabbers && grabbers.hasOwnProperty(tagAfter[2]))
+            context = context.prev;
+          else
+            break;
+        }
+      }
+      while (context && context.prev && !context.startOfLine)
+        context = context.prev;
+      if (context) return context.indent + indentUnit;
+      else return state.baseIndent || 0;
+    },
+
+    electricInput: /<\/[\s\w:]+>$/,
+    blockCommentStart: "<!--",
+    blockCommentEnd: "-->",
+
+    configuration: config.htmlMode ? "html" : "xml",
+    helperType: config.htmlMode ? "html" : "xml",
+
+    skipAttribute: function(state) {
+      if (state.state == attrValueState)
+        state.state = attrState
+    },
+
+    xmlCurrentTag: function(state) {
+      return state.tagName ? {name: state.tagName, close: state.type == "closeTag"} : null
+    },
+
+    xmlCurrentContext: function(state) {
+      var context = []
+      for (var cx = state.context; cx; cx = cx.prev)
+        if (cx.tagName) context.push(cx.tagName)
+      return context.reverse()
+    }
+  };
+});
+
+CodeMirror.defineMIME("text/xml", "xml");
+CodeMirror.defineMIME("application/xml", "xml");
+if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
+  CodeMirror.defineMIME("text/html", {name: "xml", htmlMode: true});
+
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/codemirror/theme/base16-light.css":
+/*!********************************************************!*\
+  !*** ./node_modules/codemirror/theme/base16-light.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../editron/node_modules/css-loader/dist/cjs.js!./base16-light.css */ "./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/theme/base16-light.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../editron/node_modules/style-loader/lib/addStyles.js */ "./node_modules/editron/node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/editron/editors/AbstractValueEditor.js":
+/*!************************************************************************************!*\
+  !*** delegated ./editors/AbstractValueEditor.js from dll-reference editronModules ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./editors/AbstractValueEditor.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/lib/codemirror.css":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/lib/codemirror.css ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../editron/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/editron/node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "/* BASICS */\n\n.CodeMirror {\n  /* Set height, width, borders, and global font properties here */\n  font-family: monospace;\n  height: 300px;\n  color: black;\n  direction: ltr;\n}\n\n/* PADDING */\n\n.CodeMirror-lines {\n  padding: 4px 0; /* Vertical padding around content */\n}\n.CodeMirror pre.CodeMirror-line,\n.CodeMirror pre.CodeMirror-line-like {\n  padding: 0 4px; /* Horizontal padding of content */\n}\n\n.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {\n  background-color: white; /* The little square between H and V scrollbars */\n}\n\n/* GUTTER */\n\n.CodeMirror-gutters {\n  border-right: 1px solid #ddd;\n  background-color: #f7f7f7;\n  white-space: nowrap;\n}\n.CodeMirror-linenumbers {}\n.CodeMirror-linenumber {\n  padding: 0 3px 0 5px;\n  min-width: 20px;\n  text-align: right;\n  color: #999;\n  white-space: nowrap;\n}\n\n.CodeMirror-guttermarker { color: black; }\n.CodeMirror-guttermarker-subtle { color: #999; }\n\n/* CURSOR */\n\n.CodeMirror-cursor {\n  border-left: 1px solid black;\n  border-right: none;\n  width: 0;\n}\n/* Shown when moving in bi-directional text */\n.CodeMirror div.CodeMirror-secondarycursor {\n  border-left: 1px solid silver;\n}\n.cm-fat-cursor .CodeMirror-cursor {\n  width: auto;\n  border: 0 !important;\n  background: #7e7;\n}\n.cm-fat-cursor div.CodeMirror-cursors {\n  z-index: 1;\n}\n.cm-fat-cursor-mark {\n  background-color: rgba(20, 255, 20, 0.5);\n  -webkit-animation: blink 1.06s steps(1) infinite;\n  -moz-animation: blink 1.06s steps(1) infinite;\n  animation: blink 1.06s steps(1) infinite;\n}\n.cm-animate-fat-cursor {\n  width: auto;\n  border: 0;\n  -webkit-animation: blink 1.06s steps(1) infinite;\n  -moz-animation: blink 1.06s steps(1) infinite;\n  animation: blink 1.06s steps(1) infinite;\n  background-color: #7e7;\n}\n@-moz-keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n@-webkit-keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n@keyframes blink {\n  0% {}\n  50% { background-color: transparent; }\n  100% {}\n}\n\n/* Can style cursor different in overwrite (non-insert) mode */\n.CodeMirror-overwrite .CodeMirror-cursor {}\n\n.cm-tab { display: inline-block; text-decoration: inherit; }\n\n.CodeMirror-rulers {\n  position: absolute;\n  left: 0; right: 0; top: -50px; bottom: 0;\n  overflow: hidden;\n}\n.CodeMirror-ruler {\n  border-left: 1px solid #ccc;\n  top: 0; bottom: 0;\n  position: absolute;\n}\n\n/* DEFAULT THEME */\n\n.cm-s-default .cm-header {color: blue;}\n.cm-s-default .cm-quote {color: #090;}\n.cm-negative {color: #d44;}\n.cm-positive {color: #292;}\n.cm-header, .cm-strong {font-weight: bold;}\n.cm-em {font-style: italic;}\n.cm-link {text-decoration: underline;}\n.cm-strikethrough {text-decoration: line-through;}\n\n.cm-s-default .cm-keyword {color: #708;}\n.cm-s-default .cm-atom {color: #219;}\n.cm-s-default .cm-number {color: #164;}\n.cm-s-default .cm-def {color: #00f;}\n.cm-s-default .cm-variable,\n.cm-s-default .cm-punctuation,\n.cm-s-default .cm-property,\n.cm-s-default .cm-operator {}\n.cm-s-default .cm-variable-2 {color: #05a;}\n.cm-s-default .cm-variable-3, .cm-s-default .cm-type {color: #085;}\n.cm-s-default .cm-comment {color: #a50;}\n.cm-s-default .cm-string {color: #a11;}\n.cm-s-default .cm-string-2 {color: #f50;}\n.cm-s-default .cm-meta {color: #555;}\n.cm-s-default .cm-qualifier {color: #555;}\n.cm-s-default .cm-builtin {color: #30a;}\n.cm-s-default .cm-bracket {color: #997;}\n.cm-s-default .cm-tag {color: #170;}\n.cm-s-default .cm-attribute {color: #00c;}\n.cm-s-default .cm-hr {color: #999;}\n.cm-s-default .cm-link {color: #00c;}\n\n.cm-s-default .cm-error {color: #f00;}\n.cm-invalidchar {color: #f00;}\n\n.CodeMirror-composing { border-bottom: 2px solid; }\n\n/* Default styles for common addons */\n\ndiv.CodeMirror span.CodeMirror-matchingbracket {color: #0b0;}\ndiv.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}\n.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }\n.CodeMirror-activeline-background {background: #e8f2ff;}\n\n/* STOP */\n\n/* The rest of this file contains styles related to the mechanics of\n   the editor. You probably shouldn't touch them. */\n\n.CodeMirror {\n  position: relative;\n  overflow: hidden;\n  background: white;\n}\n\n.CodeMirror-scroll {\n  overflow: scroll !important; /* Things will break if this is overridden */\n  /* 50px is the magic margin used to hide the element's real scrollbars */\n  /* See overflow: hidden in .CodeMirror */\n  margin-bottom: -50px; margin-right: -50px;\n  padding-bottom: 50px;\n  height: 100%;\n  outline: none; /* Prevent dragging from highlighting the element */\n  position: relative;\n}\n.CodeMirror-sizer {\n  position: relative;\n  border-right: 50px solid transparent;\n}\n\n/* The fake, visible scrollbars. Used to force redraw during scrolling\n   before actual scrolling happens, thus preventing shaking and\n   flickering artifacts. */\n.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {\n  position: absolute;\n  z-index: 6;\n  display: none;\n}\n.CodeMirror-vscrollbar {\n  right: 0; top: 0;\n  overflow-x: hidden;\n  overflow-y: scroll;\n}\n.CodeMirror-hscrollbar {\n  bottom: 0; left: 0;\n  overflow-y: hidden;\n  overflow-x: scroll;\n}\n.CodeMirror-scrollbar-filler {\n  right: 0; bottom: 0;\n}\n.CodeMirror-gutter-filler {\n  left: 0; bottom: 0;\n}\n\n.CodeMirror-gutters {\n  position: absolute; left: 0; top: 0;\n  min-height: 100%;\n  z-index: 3;\n}\n.CodeMirror-gutter {\n  white-space: normal;\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n  margin-bottom: -50px;\n}\n.CodeMirror-gutter-wrapper {\n  position: absolute;\n  z-index: 4;\n  background: none !important;\n  border: none !important;\n}\n.CodeMirror-gutter-background {\n  position: absolute;\n  top: 0; bottom: 0;\n  z-index: 4;\n}\n.CodeMirror-gutter-elt {\n  position: absolute;\n  cursor: default;\n  z-index: 4;\n}\n.CodeMirror-gutter-wrapper ::selection { background-color: transparent }\n.CodeMirror-gutter-wrapper ::-moz-selection { background-color: transparent }\n\n.CodeMirror-lines {\n  cursor: text;\n  min-height: 1px; /* prevents collapsing before first draw */\n}\n.CodeMirror pre.CodeMirror-line,\n.CodeMirror pre.CodeMirror-line-like {\n  /* Reset some styles that the rest of the page might have set */\n  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;\n  border-width: 0;\n  background: transparent;\n  font-family: inherit;\n  font-size: inherit;\n  margin: 0;\n  white-space: pre;\n  word-wrap: normal;\n  line-height: inherit;\n  color: inherit;\n  z-index: 2;\n  position: relative;\n  overflow: visible;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-font-variant-ligatures: contextual;\n  font-variant-ligatures: contextual;\n}\n.CodeMirror-wrap pre.CodeMirror-line,\n.CodeMirror-wrap pre.CodeMirror-line-like {\n  word-wrap: break-word;\n  white-space: pre-wrap;\n  word-break: normal;\n}\n\n.CodeMirror-linebackground {\n  position: absolute;\n  left: 0; right: 0; top: 0; bottom: 0;\n  z-index: 0;\n}\n\n.CodeMirror-linewidget {\n  position: relative;\n  z-index: 2;\n  padding: 0.1px; /* Force widget margins to stay inside of the container */\n}\n\n.CodeMirror-widget {}\n\n.CodeMirror-rtl pre { direction: rtl; }\n\n.CodeMirror-code {\n  outline: none;\n}\n\n/* Force content-box sizing for the elements where we expect it */\n.CodeMirror-scroll,\n.CodeMirror-sizer,\n.CodeMirror-gutter,\n.CodeMirror-gutters,\n.CodeMirror-linenumber {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.CodeMirror-measure {\n  position: absolute;\n  width: 100%;\n  height: 0;\n  overflow: hidden;\n  visibility: hidden;\n}\n\n.CodeMirror-cursor {\n  position: absolute;\n  pointer-events: none;\n}\n.CodeMirror-measure pre { position: static; }\n\ndiv.CodeMirror-cursors {\n  visibility: hidden;\n  position: relative;\n  z-index: 3;\n}\ndiv.CodeMirror-dragcursors {\n  visibility: visible;\n}\n\n.CodeMirror-focused div.CodeMirror-cursors {\n  visibility: visible;\n}\n\n.CodeMirror-selected { background: #d9d9d9; }\n.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }\n.CodeMirror-crosshair { cursor: crosshair; }\n.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }\n.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }\n\n.cm-searching {\n  background-color: #ffa;\n  background-color: rgba(255, 255, 0, .4);\n}\n\n/* Used to force a border model for a node */\n.cm-force-border { padding-right: .1px; }\n\n@media print {\n  /* Hide the cursor when printing */\n  .CodeMirror div.CodeMirror-cursors {\n    visibility: hidden;\n  }\n}\n\n/* See issue #2901 */\n.cm-tab-wrap-hack:after { content: ''; }\n\n/* Help users use markselection to safely style text background */\nspan.CodeMirror-selectedtext { background: none; }\n", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/theme/base16-light.css":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/editron/node_modules/css-loader/dist/cjs.js!./node_modules/codemirror/theme/base16-light.css ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../editron/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/editron/node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "/*\n\n    Name:       Base16 Default Light\n    Author:     Chris Kempson (http://chriskempson.com)\n\n    CodeMirror template by Jan T. Sott (https://github.com/idleberg/base16-codemirror)\n    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)\n\n*/\n\n.cm-s-base16-light.CodeMirror { background: #f5f5f5; color: #202020; }\n.cm-s-base16-light div.CodeMirror-selected { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-line::selection, .cm-s-base16-light .CodeMirror-line > span::selection, .cm-s-base16-light .CodeMirror-line > span > span::selection { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-line::-moz-selection, .cm-s-base16-light .CodeMirror-line > span::-moz-selection, .cm-s-base16-light .CodeMirror-line > span > span::-moz-selection { background: #e0e0e0; }\n.cm-s-base16-light .CodeMirror-gutters { background: #f5f5f5; border-right: 0px; }\n.cm-s-base16-light .CodeMirror-guttermarker { color: #ac4142; }\n.cm-s-base16-light .CodeMirror-guttermarker-subtle { color: #b0b0b0; }\n.cm-s-base16-light .CodeMirror-linenumber { color: #b0b0b0; }\n.cm-s-base16-light .CodeMirror-cursor { border-left: 1px solid #505050; }\n\n.cm-s-base16-light span.cm-comment { color: #8f5536; }\n.cm-s-base16-light span.cm-atom { color: #aa759f; }\n.cm-s-base16-light span.cm-number { color: #aa759f; }\n\n.cm-s-base16-light span.cm-property, .cm-s-base16-light span.cm-attribute { color: #90a959; }\n.cm-s-base16-light span.cm-keyword { color: #ac4142; }\n.cm-s-base16-light span.cm-string { color: #f4bf75; }\n\n.cm-s-base16-light span.cm-variable { color: #90a959; }\n.cm-s-base16-light span.cm-variable-2 { color: #6a9fb5; }\n.cm-s-base16-light span.cm-def { color: #d28445; }\n.cm-s-base16-light span.cm-bracket { color: #202020; }\n.cm-s-base16-light span.cm-tag { color: #ac4142; }\n.cm-s-base16-light span.cm-link { color: #aa759f; }\n.cm-s-base16-light span.cm-error { background: #ac4142; color: #505050; }\n\n.cm-s-base16-light .CodeMirror-activeline-background { background: #DDDCDC; }\n.cm-s-base16-light .CodeMirror-matchingbracket { color: #f5f5f5 !important; background-color: #6A9FB5 !important}\n", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/css-loader/dist/runtime/api.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/editron/node_modules/css-loader/dist/runtime/api.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function (useSourceMap) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item, useSourceMap);
+
+      if (item[2]) {
+        return '@media ' + item[2] + '{' + content + '}';
+      } else {
+        return content;
+      }
+    }).join('');
+  }; // import a list of modules into the list
+
+
+  list.i = function (modules, mediaQuery) {
+    if (typeof modules === 'string') {
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    for (var i = 0; i < this.length; i++) {
+      var id = this[i][0];
+
+      if (id != null) {
+        alreadyImportedModules[id] = true;
+      }
+    }
+
+    for (i = 0; i < modules.length; i++) {
+      var item = modules[i]; // skip already imported module
+      // this implementation is not 100% perfect for weird media query combinations
+      // when a module is imported multiple times with different media queries.
+      // I hope this will never occur (Hey this way we have smaller bundles)
+
+      if (item[0] == null || !alreadyImportedModules[item[0]]) {
+        if (mediaQuery && !item[2]) {
+          item[2] = mediaQuery;
+        } else if (mediaQuery) {
+          item[2] = '(' + item[2] + ') and (' + mediaQuery + ')';
+        }
+
+        list.push(item);
+      }
+    }
+  };
+
+  return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+  var content = item[1] || '';
+  var cssMapping = item[3];
+
+  if (!cssMapping) {
+    return content;
+  }
+
+  if (useSourceMap && typeof btoa === 'function') {
+    var sourceMapping = toComment(cssMapping);
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
+
+  return [content].join('\n');
+} // Adapted from convert-source-map (MIT)
+
+
+function toComment(sourceMap) {
+  // eslint-disable-next-line no-undef
+  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+  var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+  return '/*# ' + data + ' */';
+}
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/gson-pointer/index.js":
+/*!****************************************************************************************!*\
+  !*** delegated ./node_modules/gson-pointer/index.js from dll-reference editronModules ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./node_modules/gson-pointer/index.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/mithril-material-forms/components/errors/index.js":
+/*!********************************************************************************************************************!*\
+  !*** delegated ./node_modules/mithril-material-forms/components/errors/index.js from dll-reference editronModules ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./node_modules/mithril-material-forms/components/errors/index.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/mithril-material-forms/components/label/index.js":
+/*!*******************************************************************************************************************!*\
+  !*** delegated ./node_modules/mithril-material-forms/components/label/index.js from dll-reference editronModules ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./node_modules/mithril-material-forms/components/label/index.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/style-loader/lib/addStyles.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/editron/node_modules/style-loader/lib/addStyles.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/editron/node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (true) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/editron/node_modules/style-loader/lib/urls.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/editron/node_modules/style-loader/lib/urls.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/editron/plugin/index.js":
+/*!*********************************************************************!*\
+  !*** delegated ./plugin/index.js from dll-reference editronModules ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./plugin/index.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/services/OverlayService.js":
+/*!********************************************************************************!*\
+  !*** delegated ./services/OverlayService.js from dll-reference editronModules ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./services/OverlayService.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/utils/i18n.js":
+/*!*******************************************************************!*\
+  !*** delegated ./utils/i18n.js from dll-reference editronModules ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./utils/i18n.js");
+
+/***/ }),
+
+/***/ "./node_modules/editron/utils/isNodeContext.js":
+/*!****************************************************************************!*\
+  !*** delegated ./utils/isNodeContext.js from dll-reference editronModules ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference editronModules */ "dll-reference editronModules"))("./utils/isNodeContext.js");
+
+/***/ }),
+
+/***/ "./wysiwygeditor/HTMLView.js":
+/*!***********************************!*\
+  !*** ./wysiwygeditor/HTMLView.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const m = __webpack_require__(/*! mithril */ "mithril");
+let CodeMirror = __webpack_require__(/*! codemirror */ "./node_modules/codemirror/lib/codemirror.js");
+const isNodeContext = __webpack_require__(/*! editron/utils/isNodeContext */ "./node_modules/editron/utils/isNodeContext.js");
+
+if (!isNodeContext()) { // eslint-disable-line no-negated-condition
+    __webpack_require__(/*! codemirror/lib/codemirror.css */ "./node_modules/codemirror/lib/codemirror.css");
+    __webpack_require__(/*! codemirror/mode/htmlmixed/htmlmixed */ "./node_modules/codemirror/mode/htmlmixed/htmlmixed.js");
+    __webpack_require__(/*! codemirror/theme/base16-light.css */ "./node_modules/codemirror/theme/base16-light.css");
+} else {
+    // @todo mock library in test only
+    CodeMirror = {
+        fromTextArea() {
+            return {
+                on: Function.prototype,
+                setValue: Function.prototype,
+                getValue: Function.prototype,
+                toTextArea: Function.prototype
+            };
+        }
+    };
+}
+
+
+module.exports = {
+
+    initEditor($textarea, content, onchange) {
+        this.htmlEditor = CodeMirror.fromTextArea($textarea, {
+            mode: "htmlmixed",
+            theme: "base16-light",
+            lineWrapping: true
+        });
+
+        this.htmlEditor.on("blur", () => onchange(this.htmlEditor.getValue()));
+    },
+
+    onremove() {
+        this.htmlEditor.toTextArea();
+    },
+
+    view(vnode) {
+        return m(".editron-html-overlay",
+            {
+                style: "min-width: 540px;"
+            },
+            m("textarea", {
+                oninit: () => console.log("init textarea"),
+                oncreate: (node) => this.initEditor(node.dom, vnode.attrs.value, vnode.attrs.onchange)
+            }, vnode.attrs.value)
+        );
+    }
+};
+
+
+/***/ }),
+
+/***/ "./wysiwygeditor/View.js":
+/*!*******************************!*\
+  !*** ./wysiwygeditor/View.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* global document, MediumEditor */
+const m = __webpack_require__(/*! mithril */ "mithril");
+const Label = __webpack_require__(/*! mithril-material-forms/components/label */ "./node_modules/editron/node_modules/mithril-material-forms/components/label/index.js");
+const Errors = __webpack_require__(/*! mithril-material-forms/components/errors */ "./node_modules/editron/node_modules/mithril-material-forms/components/errors/index.js");
+const isEmptyHTML = __webpack_require__(/*! ./isEmptyHTML */ "./wysiwygeditor/isEmptyHTML.js");
+const _ = __webpack_require__(/*! editron/utils/i18n */ "./node_modules/editron/utils/i18n.js").translate;
+const isNodeContext = __webpack_require__(/*! editron/utils/isNodeContext */ "./node_modules/editron/utils/isNodeContext.js");
+let MediumEditor;
+
+if (isNodeContext()) {
+    MediumEditor = function () {}; // eslint-disable-line no-empty-function
+    MediumEditor.prototype.subscribe = Function.prototype;
+    MediumEditor.prototype.getContent = Function.prototype;
+    MediumEditor.prototype.setContent = Function.prototype;
+    MediumEditor.prototype.destroy = Function.prototype;
+} else {
+    MediumEditor = window.MediumEditor;
+}
+
+const HTMLView = __webpack_require__(/*! ./HTMLView */ "./wysiwygeditor/HTMLView.js");
+const OverlayService = __webpack_require__(/*! editron/services/OverlayService */ "./node_modules/editron/services/OverlayService.js");
+
+const View = {
+
+    hasFocus: false,
+    previousValue: null,
+
+    createEditor($textarea, attrs) {
+        const options = {
+            placeholder: {
+                text: "",
+                hideOnClick: true
+            },
+            targetBlank: true,
+            anchor: {
+                placeholderText: "Linkziel eingeben"
+            },
+            paste: {
+                forcePlainText: true,
+                cleanPastedHTML: true,
+                cleanTags: ["meta"],
+                cleanAttrs: ["class", "style", "dir", "role"],
+                unwrapTags: [],
+                cleanReplacements: [
+                    [/ä/g, "ä"],
+                    [/Ä/g, "Ä"],
+                    [/ö/g, "ö"],
+                    [/Ö/g, "Ö"],
+                    [/ü/g, "ü"],
+                    [/Ü/g, "Ü"]
+                ]
+            },
+            toolbar: {
+                buttons: [
+                    "h2",
+                    "h3",
+                    {
+                        name: "bold",
+                        contentDefault: "<b>B</b>"
+                    },
+                    {
+                        name: "italic",
+                        contentDefault: "i"
+                    },
+                    {
+                        name: "quote",
+                        contentDefault: "„ Zitat"
+                    },
+                    {
+                        name: "anchor",
+                        contentDefault: "Link"
+                    },
+                    "removeFormat"
+                ]
+            },
+            disableDoubleReturn: true
+        };
+
+        // merge toolbar options (buttons)
+        options.toolbar = Object.assign(options.toolbar, attrs.mediumEditorOptions);
+
+        this.editor = new MediumEditor($textarea, options);
+
+        if (this.editor.getContent == null) {
+            // version 5.16.1 - where paste (cmd+v) does work as expected
+            this.editor.getContent = () => this.editor.elements[0].innerHTML;
+        }
+
+        this.editor.subscribe("blur", () => {
+            let value = this.editor.getContent();
+            value = isEmptyHTML(value) ? "" : value;
+
+            this.blur(value);
+            attrs.onblur(value);
+        });
+
+        this.editor.subscribe("focus", () => {
+            this.focus();
+            attrs.onfocus();
+        });
+
+        // @overwrite native method
+        // delegate any focus actions from textarea to medium wysiwyg-editor
+        $textarea.focus = () => {
+            try {
+                this.editor.elements[0].dispatchEvent(new Event("focus"));
+            } catch (e) {
+                console.log("Failed focussing wysiwyg editor:", e);
+            }
+        };
+    },
+
+    destroyEditor() {
+        this.editor.destroy();
+    },
+
+    showHTMLMarkup(attrs) {
+        // we need a DOM-Node for the Overlay-Service
+        const $dialog = document.createElement("div");
+
+        OverlayService.open($dialog, {
+            ok: true,
+            save: false,
+            onAbort: () => m.render($dialog, m("i")) // destroy the editor
+        });
+
+        // render the html editor, when the parent node is within the dom. Or else no content will be drawn
+        m.render($dialog, m(HTMLView, {
+            value: this.editor.getContent(),
+            onchange: (value) => {
+                this.blur(value);
+                attrs.onblur(value);
+            }
+        }));
+    },
+
+    setValue(value) {
+        if (this.editor) {
+            this.editor.setContent(value);
+        }
+    },
+
+    focus() {
+        this.hasFocus = true;
+        this.$element.classList.remove("hasNoFocus");
+        this.$element.classList.add("hasFocus");
+    },
+
+    blur(value) {
+        this.hasFocus = false;
+        this.$element.classList.remove("hasFocus");
+        this.$element.classList.add("hasNoFocus");
+        this.updateClasses(value);
+    },
+
+    updateClasses(value) {
+        const isEmpty = isEmptyHTML(value);
+        this.$element.classList.remove(isEmpty ? "isNotEmpty" : "isEmpty");
+        this.$element.classList.add(isEmpty ? "isEmpty" : "isNotEmpty");
+    },
+
+    onupdate(vnode) {
+        if (this.shouldAbort(vnode.attrs.value)) {
+            return;
+        }
+
+        this.setValue(vnode.attrs.value);
+    },
+
+    oncreate(vnode) {
+        this.$element = vnode.dom;
+    },
+
+    shouldAbort(currentData) {
+        if (this.hasFocus && currentData === this.previousValue) {
+            return true;
+        }
+        this.previousValue = currentData;
+        return false;
+    },
+
+    view(vnode) {
+        const attrs = Object.assign({
+            id: null,
+            title: "",
+            value: "",
+            errors: [],
+            mediumEditorOptions: {},
+            description: "",
+            placeholder: "",
+            onblur: Function.prototype,
+            onfocus: Function.prototype
+        }, vnode.attrs);
+
+        return m(".editron-wysiwig-editor.mmf-form",
+            {
+                // eslint-disable-next-line max-len
+                "class": `hasNoFocus ${attrs.errors.length > 0 ? "has-error" : "no-error"} ${isEmptyHTML(attrs.value) ? "isEmpty" : "isNotEmpty"}`
+            },
+            m(".editron-wysiwig-editor__actions",
+                m(".editron-container__controls.editron-container__controls--child",
+                    m("i.mmf-icon",
+                        {
+                            title: _("editor:wysiwyg:edithtml:tooltip"),
+                            onclick: () => this.showHTMLMarkup(attrs)
+                        },
+                        "code"
+                    )
+                )
+            ),
+            m(Label, attrs),
+            m("textarea", {
+                rows: 1,
+                id: attrs.id,
+                value: attrs.value,
+                oncreate: (node) => this.createEditor(node.dom, attrs),
+                onbeforeremove: () => this.destroyEditor()
+            }),
+            m(Errors, attrs),
+            m(".mmf-meta",
+                attrs.description
+            )
+        );
+    }
+};
+
+
+module.exports = View;
+
+
+/***/ }),
+
+/***/ "./wysiwygeditor/htmlValidator.js":
+/*!****************************************!*\
+  !*** ./wysiwygeditor/htmlValidator.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const blockElements = "p|h[1-6]|[ou]l|pre|address|blockquote|dl|div|fieldset|form|hr|noscript|table";
+const wrappedInBlock = new RegExp(`^[\n ]*(<(${blockElements})[^>]*>.*</(${blockElements})>)?[\n ]*$`);
+
+function dashCase(str) {
+    return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+function isWrappedInBlock(html) {
+    return !(typeof html === "string" && html.length > 0 && wrappedInBlock.test(html) === false);
+}
+
+/**
+ * Show a warning if the given html is not wrapped in a block element
+ *
+ * @param  {Core} core
+ * @param  {Object} schema
+ * @param  {String} html
+ * @param  {String} pointer
+ * @return {ErrorObject|undefined}
+ */
+function validateHTML(core, schema, html, pointer) {
+    if (schema.type !== "string" || schema.format !== "html") {
+        return undefined;
+    }
+
+    if (isWrappedInBlock(html) === false) {
+        return {
+            type: "error",
+            severity: "warning",
+            name: "MissingBlockElementWarning",
+            code: dashCase("MissingBlockElementWarning"),
+            message: "The contents should be wrapped in a html block element.",
+            data: {
+                value: html,
+                pointer
+            }
+        };
+    }
+
+    return undefined;
+}
+
+
+module.exports = {
+
+    type: "string",
+    format: "html",
+    validate: validateHTML,
+    isWrappedInBlock
+};
+
+
+/***/ }),
+
+/***/ "./wysiwygeditor/index.js":
+/*!********************************!*\
+  !*** ./wysiwygeditor/index.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const m = __webpack_require__(/*! mithril */ "mithril");
+const gp = __webpack_require__(/*! gson-pointer */ "./node_modules/editron/node_modules/gson-pointer/index.js");
+const View = __webpack_require__(/*! ./View */ "./wysiwygeditor/View.js");
+const AbstractValueEditor = __webpack_require__(/*! editron/editors/AbstractValueEditor */ "./node_modules/editron/editors/AbstractValueEditor.js");
+
+/**
+ * Displays a value with a html-wyswig editor and adds an option to open the content in an html-script editor
+ */
+class WYSIWYGEditor extends AbstractValueEditor {
+
+    static editorOf(pointer, controller) {
+        const schema = controller.schema().get(pointer);
+        return schema.type === "string" && schema.format === "html";
+    }
+
+    constructor(pointer, controller, options) {
+        console.log("editron -- build wysiwyg", options);
+        options = Object.assign({
+            // modify value type
+            editorValueType: "html",
+            viewModel: {
+                // update data on blur of editor
+                onblur: (value) => {
+                    this.setValue(value);
+                    controller.location().blur(pointer);
+                }
+            }
+        }, options);
+
+        super(pointer, controller, options);
+        // @legacy fetch editor options
+        this.viewModel.mediumEditorOptions = gp.get(this.viewModel, "#/schema/options/mediumEditor") || {};
+        this.render();
+    }
+
+    render() {
+        m.render(this.$element, m(View, this.viewModel));
+    }
+}
+
+
+module.exports = WYSIWYGEditor;
+
+
+/***/ }),
+
+/***/ "./wysiwygeditor/isEmptyHTML.js":
+/*!**************************************!*\
+  !*** ./wysiwygeditor/isEmptyHTML.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function isEmptyHTML(string) {
+    if (string == null || typeof string !== "string") {
+        return true;
+    }
+
+    string = string.replace(/<[^>]+>/g, "").replace(/[^A-Za-z0-9]/g, "");
+    return string.length === 0;
+};
+
+
+/***/ }),
+
+/***/ 0:
+/*!***********************************************************************!*\
+  !*** multi ./editron-wysiwyg-editor.js ./editron-wysiwyg-editor.scss ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! /usr/src/app/editron-wysiwyg-editor.js */"./editron-wysiwyg-editor.js");
+module.exports = __webpack_require__(/*! /usr/src/app/editron-wysiwyg-editor.scss */"./editron-wysiwyg-editor.scss");
+
+
+/***/ }),
+
+/***/ "dll-reference editronModules":
+/*!*********************************!*\
+  !*** external "editronModules" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = editronModules;
+
+/***/ }),
+
+/***/ "mithril":
+/*!********************!*\
+  !*** external "m" ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = m;
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=editron-wysiwyg-editor.js.map

@@ -1,16 +1,43 @@
 @import "mithril-material-forms/lib/units";
 @import "mithril-material-forms/lib/colors";
-@import "mithril-material-forms/lib/input";
 @import "mithril-material-forms/lib/typography";
 
 
 .editron-wysiwig-editor {
+    /**
+     * Content styling
+     */
+     // .medium-editor-element { // medium-editor >= 5.17
+     div[data-medium-editor-element="true"] { // medium-editor < 5.17
+        font-family: "Helvetica Neue", "Helvetica", "Arial";
+        line-height: 1.4em;
+        color: rgba($mmf-color--dark, $mmf-opacity--primary);
 
-    // .medium-editor-element { // medium-editor >= 5.17
-    div[data-medium-editor-element="true"] { // medium-editor < 5.17
-        @include with-input();
+        /* mithril material forms: with-input() styling */
         padding: $mmf-height-label 0 0 0;
         min-height: 38px;
+        border: none;
+        border-radius: 0;
+        border-bottom: $mmf-input-border--width $mmf-style--border rgba($mmf-color--dark, $mmf-opacity--secondary);
+        width: 100%;
+        box-sizing: border-box;
+        transform: translateZ(0);
+
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &:not([disabled]):focus {
+            border-color: rgba($mmf-color--secondary, 1);
+        }
+
+        &:not([disabled]):hover {
+            border-color: $mmf-color--secondary;
+        }
+
+        &[disabled] {
+            color: $mmf-color--dark; // on deactivated state, set color to match labels
+            opacity: $mmf-opacity--disabled;
+        }
 
         &.medium-editor-placeholder:after {
             // @todo this is a copy of container title
@@ -25,16 +52,6 @@
             color: $mmf-color--secondary;
             font-style: normal;
         }
-    }
-
-    /**
-     * Content styling
-     */
-     // .medium-editor-element { // medium-editor >= 5.17
-     div[data-medium-editor-element="true"] { // medium-editor < 5.17
-        font-family: "Helvetica Neue", "Helvetica", "Arial";
-        line-height: 1.4em;
-        color: rgba($mmf-color--dark, $mmf-opacity--primary);
 
         *:first-child {
             margin-top: 0;
